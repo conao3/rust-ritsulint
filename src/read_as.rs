@@ -42,6 +42,7 @@ pub struct Counts {
     pub matched_without_parentheses: u64,
     pub external: u64,
     pub unsupported: u64,
+    pub table_paragraphs: u64,
     pub warnings: u64,
 }
 
@@ -53,6 +54,7 @@ impl Counts {
         self.matched_without_parentheses += other.matched_without_parentheses;
         self.external += other.external;
         self.unsupported += other.unsupported;
+        self.table_paragraphs += other.table_paragraphs;
         self.warnings += other.warnings;
     }
 }
@@ -91,11 +93,12 @@ fn status_of(law: &Law, target: &Provision, quoted: &str) -> Status {
             None => return Status::NoParagraph,
         }
     };
-    if text.contains(quoted) {
+    let quoted = &quoted.replace('／', "");
+    if text.contains(quoted.as_str()) {
         Status::Present
-    } else if core::strip_parens(text).contains(quoted) {
+    } else if core::strip_parens(text).contains(quoted.as_str()) {
         Status::PresentWithoutParentheses
-    } else if article.text.contains(quoted) {
+    } else if article.text.contains(quoted.as_str()) {
         Status::OtherParagraph
     } else {
         Status::Absent
@@ -149,7 +152,25 @@ fn similarity(quoted: &str, near: &str) -> f64 {
     (ratio * 100.0).round() / 100.0
 }
 
-fn warning_id(law_id: &str, source: &Provision, scope: &str, quoted: &str) -> String {
+fn names_article(scope: &str) -> bool {
+    let chars: Vec<char> = scope.chars().collect();
+    chars
+        .windows(2)
+        .any(|w| w[1] == '条' && "一二三四五六七八九十百千".contains(w[0]))
+}
+
+fn warning_id(
+    law_id: &str,
+    source: &Provision,
+    scope: &str,
+    targets: &[Provision],
+    quoted: &str,
+    occurrence: usize,
+) -> String {
+    let targets: String = targets
+        .iter()
+        .map(|t| format!("{}/{};", t.article, t.paragraph))
+        .collect();
     let mut h = Sha256::new();
     for part in [
         RULE,
@@ -157,7 +178,9 @@ fn warning_id(law_id: &str, source: &Provision, scope: &str, quoted: &str) -> St
         &source.article,
         &source.paragraph.to_string(),
         scope,
+        &targets,
         quoted,
+        &occurrence.to_string(),
     ] {
         h.update(part.as_bytes());
         h.update([0x1f]);
@@ -189,6 +212,10 @@ fn check_article(
     let (prev, next) = neighbors(law, index);
     for paragraph in &article.paragraphs {
         if !paragraph.text.contains("とあるのは") {
+            continue;
+        }
+        if paragraph.text.contains("読み替えられる字句") {
+            counts.table_paragraphs += 1;
             continue;
         }
         let source = Provision {
@@ -247,14 +274,31 @@ fn check_article(
                 .map(|a| nearest(&a.text, &f.quoted))
                 .unwrap_or_default();
             let sim = similarity(&f.quoted, &near);
-            let confidence = if !f.after_law_name || sim >= 0.75 {
+            let confidence = if f.after_law_name && sim < 0.75 {
+                "low"
+            } else if names_article(&f.scope) && best != Status::NoArticle {
                 "high"
             } else {
-                "low"
+                "medium"
             };
             counts.warnings += 1;
             out.push(Warning {
-                id: warning_id(&law.law_id, &source, &f.scope, &f.quoted),
+                id: {
+                    let occurrence = out[first..]
+                        .iter()
+                        .filter(|w| {
+                            w.scope == f.scope && w.targets == targets && w.quoted == f.quoted
+                        })
+                        .count();
+                    warning_id(
+                        &law.law_id,
+                        &source,
+                        &f.scope,
+                        &targets,
+                        &f.quoted,
+                        occurrence,
+                    )
+                },
                 rule: RULE.to_string(),
                 status: best.name().to_string(),
                 law_id: law.law_id.clone(),

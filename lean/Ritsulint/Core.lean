@@ -219,6 +219,10 @@ def isLawishOther : Tok → Bool
   | .other c => lawish c
   | _ => false
 
+def isBracketOther : Tok → Bool
+  | .other c => c = '（' || c = '）' || c = '＃'
+  | _ => false
+
 def isRefTok : Tok → Bool
   | .art _ | .para _ | .sameArt | .samePara | .prevArt | .nextArt | .prevPara | .nextPara => true
   | _ => false
@@ -235,14 +239,17 @@ def resolveRefs (ctx : Context) (last : Option Target) (toks : List Tok) (afterR
 /-- Resolves the words before `中`. Words that are not part of a reference (`届出については、`)
 may come first when a comma separates them from the reference; `afterRemark` then tells whether
 those words contain the name of a law or rule. A reference that follows such words without a
-comma (`拳銃規範第十条第一項`) belongs to that law or rule. -/
+comma (`拳銃規範第十条第一項`) belongs to that law or rule. Words with a parenthesis or a
+quotation in them are not split at the comma. -/
 def resolveScope (ctx : Context) (last : Option Target) (scope : List Char) : Scope :=
   let toks := tokenize scope.length scope
   if !toks.any isOther then resolveRefs ctx last toks false
   else
     let tail := (toks.reverse.takeWhile (fun t => !isOther t)).reverse
     match tail with
-    | .conn :: rest => resolveRefs ctx last rest (toks.any isLawishOther)
+    | .conn :: rest =>
+      if toks.any isBracketOther then (if toks.any isLawishOther then .external else .unsupported)
+      else resolveRefs ctx last rest (toks.any isLawishOther)
     | _ => if toks.any isLawishOther then .external else .unsupported
 
 /-- A clause as written: the words before `中` (without the `中`), the quoted words, the

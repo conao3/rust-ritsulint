@@ -2562,7 +2562,11 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
     let mut x_16: Obj = rt::lean_box(0);
     let mut x_17: Obj = rt::lean_box(0);
     let mut x_18: u8 = 0;
-    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_19: u8 = 0;
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_21: u8 = 0;
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
@@ -2594,14 +2598,38 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
                                         rt::lean_inc(x_17);
                                         rt::lean_dec_ref(x_15);
                                         x_18 =
-                                            l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
-                                        rt::lean_dec(x_5);
-                                        x_19 = l_Ritsulint_resolveRefs(x_1, x_2, x_17, x_18);
-                                        return x_19;
+                                            l_List_any___at___00Ritsulint_resolveScope_spec__3(x_5);
+                                        match x_18 as u32 {
+                                            0 => {
+                                                x_19 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+                                                rt::lean_dec(x_5);
+                                                x_20 =
+                                                    l_Ritsulint_resolveRefs(x_1, x_2, x_17, x_19);
+                                                return x_20;
+                                            }
+                                            1 => {
+                                                rt::lean_dec(x_17);
+                                                rt::lean_dec(x_2);
+                                                x_21 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+                                                rt::lean_dec(x_5);
+                                                match x_21 as u32 {
+                                                    0 => {
+                                                        x_22 = rt::lean_box(3);
+                                                        return x_22;
+                                                    }
+                                                    1 => {
+                                                        x_23 = rt::lean_box(2);
+                                                        return x_23;
+                                                    }
+                                                    _ => rt::lean_internal_panic_unreachable(),
+                                                }
+                                            }
+                                            _ => rt::lean_internal_panic_unreachable(),
+                                        }
                                     }
                                     _ => {
-                                        rt::lean_dec(x_16);
                                         rt::lean_dec_ref(x_15);
+                                        rt::lean_dec(x_16);
                                         rt::lean_dec(x_2);
                                         {}
                                         __blk = 1;
@@ -10803,6 +10831,109 @@ pub(crate) unsafe fn l___private_Init_Data_List_Impl_0__List_takeWhileTR_go___at
                 _ => rt::lean_internal_panic_unreachable(),
             },
             _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_any___at___00Ritsulint_resolveScope_spec__3(mut x_1: Obj) -> u8 {
+    let mut x_2: u8 = 0;
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: u8 = 0;
+    let mut x_6: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = 0u8;
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    x_4 = rt::lean_ctor_get(x_1, 1);
+                    x_5 = l_Ritsulint_isBracketOther(x_3);
+                    match x_5 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_4;
+                                x_1 = t_0;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        1 => {
+                            return x_5;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_isBracketOther(mut x_1: Obj) -> u8 {
+    let mut x_2: u32 = 0;
+    let mut x_3: u32 = 0;
+    let mut x_4: u8 = 0;
+    let mut x_5: u32 = 0;
+    let mut x_6: u8 = 0;
+    let mut x_7: u32 = 0;
+    let mut x_8: u8 = 0;
+    let mut x_9: u8 = 0;
+    match rt::lean_obj_tag(x_1) {
+        13 => {
+            x_2 = rt::lean_ctor_get_uint32(x_1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+            x_3 = 65288u32;
+            x_4 = rt::lean_uint32_dec_eq(x_2, x_3);
+            match x_4 as u32 {
+                0 => {
+                    x_5 = 65289u32;
+                    x_6 = rt::lean_uint32_dec_eq(x_2, x_5);
+                    match x_6 as u32 {
+                        0 => {
+                            x_7 = 65283u32;
+                            x_8 = rt::lean_uint32_dec_eq(x_2, x_7);
+                            return x_8;
+                        }
+                        1 => {
+                            return x_6;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                1 => {
+                    return x_4;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            }
+        }
+        _ => {
+            x_9 = 0u8;
+            return x_9;
         }
     }
 }

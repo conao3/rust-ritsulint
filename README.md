@@ -21,9 +21,13 @@ The warnings describe the consolidated text in the e-Gov data. Whether a warning
 | `no-paragraph` | The article has no paragraph with that number |
 | `no-article` | The law has no article with that number |
 
-`Confidence` is `low` when words naming another law stand before the reference and the nearest text of the target is unlike the quotation, or when several clauses of one paragraph name articles the law does not have. Such clauses usually refer to another law.
+`Confidence` tells how sure the linter is of the provision the clause names:
 
-A clause that names a provision of another law, a provision that another read-as has already changed (`…において読み替えて準用する第…条中`), a range (`第…条から第…条まで`) or `これらの規定` is counted in `External` or `Unsupported` and gives no warning. Supplementary provisions are not read.
+- `high`: the clause names the article by number (`第七条第一項中`) and the law has that article.
+- `medium`: the clause names the provision relative to another (`同項中`, `前条中`) or takes it over from the clause before it, where a wrong resolution of the earlier reference carries over; or the law has no article with the number, which usually means the clause refers to another law.
+- `low`: words naming another law stand before the reference and the nearest text of the target is unlike the quotation, or several clauses of one paragraph name articles the law does not have. Such clauses usually refer to another law.
+
+A clause that names a provision of another law, a provision that another read-as has already changed (`…において読み替えて準用する第…条中`), a range (`第…条から第…条まで`) or `これらの規定` is counted in `External` or `Unsupported` and gives no warning. A paragraph that gives its read-as as a table (`読み替えられる字句`) is counted in `TableParagraphs` and skipped. Supplementary provisions are not read.
 
 ## Usage
 
@@ -38,13 +42,15 @@ nix run github:conao3/rust-ritsulint -- corpus check-corpus --xml-dir path/to/xm
 - `--fail-on-warnings` makes the exit code 1 when there is a warning.
 - Exit codes: 0 success, 1 warnings found with `--fail-on-warnings`, 252 wrong command line, 254 unreadable input.
 
-Each warning has an `Id` computed from the law, the rule, the paragraph the clause stands in, the words before `中` and the quoted words. The revision is not part of it, so the warnings an amendment introduced are the IDs present in the output for the later revision and absent from the earlier one.
+Each warning has an `Id` computed from the law, the rule, the paragraph the clause stands in, the words before `中`, the provisions they resolve to and the quoted words. The revision is not part of it, so the warnings an amendment introduced are the IDs present in the output for the later revision and absent from the earlier one. The e-Gov API serves the XML of each revision (`https://laws.e-gov.go.jp/api/2/law_file/xml/<revision id>`); the bulk download holds the current and the not yet enforced revisions only.
 
 ```sh
-ritsulint corpus check-corpus --xml-dir xml --as-of 20240401 | jq -r '.Warnings[].Id' | sort > before
-ritsulint corpus check-corpus --xml-dir xml --as-of 20240610 | jq -r '.Warnings[].Id' | sort > after
+ritsulint law check-law --xml-file 326CO0000000319_20240401_505AC0000000063.xml | jq -r '.Warnings[].Id' | sort > before
+ritsulint law check-law --xml-file 326CO0000000319_20240610_505AC0000000056.xml | jq -r '.Warnings[].Id' | sort > after
 comm -13 before after
 ```
+
+For the Immigration Control Act this prints one ID: the amendment enforced on 2024-06-10 rewrote `但し` in article 41 as `ただし` and left the quotation in article 13 paragraph 7 as it was.
 
 ## How it is built
 

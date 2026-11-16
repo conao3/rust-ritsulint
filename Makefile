@@ -30,8 +30,9 @@ test:
 .PHONY: check
 check: fmt-check lint test
 
-# Run the release build over the e-Gov bulk download unpacked at CORPUS, and require a
-# high-confidence warning for every law listed in tests/corpus-expected.txt.
+# Run the release build over the e-Gov bulk download unpacked at CORPUS. Require a
+# high-confidence warning for every law listed in tests/corpus-expected.txt, no high-confidence
+# warning for the laws listed in tests/corpus-rejected.txt, and distinct warning IDs.
 .PHONY: corpus-check
 corpus-check:
 	test -n "$(CORPUS)"
@@ -40,3 +41,6 @@ corpus-check:
 	jq -r '[.Warnings[] | select(.Confidence == "high") | .LawId] | unique | .[]' target/corpus.json > target/corpus-found.txt
 	sort tests/corpus-expected.txt | comm -23 - target/corpus-found.txt > target/corpus-missing.txt
 	test ! -s target/corpus-missing.txt
+	sort tests/corpus-rejected.txt | comm -12 - target/corpus-found.txt > target/corpus-rejected-found.txt
+	test ! -s target/corpus-rejected-found.txt
+	test "$$(jq '.Warnings | length' target/corpus.json)" = "$$(jq '[.Warnings[].Id] | unique | length' target/corpus.json)"

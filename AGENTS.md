@@ -5,7 +5,7 @@
 - `lean/Ritsulint/Core.lean`: the rules that read a provision (kanji numerals, read-as clauses, references). `lean/Ritsulint/Api.lean`: the functions Rust calls. `lean/Ritsulint/Test.lean`: kernel-checked statements about `Core` on real provisions.
 - `src/generated/`: Rust generated from `Ritsulint.Api` by leanfran. Regenerate it with `make generate` and commit it with the Lean change.
 - `src/law.rs`: e-Gov law XML to articles and paragraphs. `src/read_as.rs`: the `read-as-quote` rule. `src/main.rs`: the CLI.
-- `tests/corpus-expected.txt`: law IDs that `make corpus-check` requires a high-confidence warning for. Each was confirmed by reading the provisions.
+- `tests/corpus-expected.txt`: law IDs that `make corpus-check` requires a high-confidence warning for. Each was confirmed by reading the provisions. `tests/corpus-rejected.txt`: law IDs that must have no high-confidence warning; each once gave a warning for a clause that names another law or quotes an item number.
 
 ## Lean and Rust
 
