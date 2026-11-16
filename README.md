@@ -25,9 +25,9 @@ The warnings describe the consolidated text in the e-Gov data. Whether a warning
 
 - `high`: the clause names the article by number (`第七条第一項中`) and the law has that article.
 - `medium`: the clause names the provision relative to another (`同項中`, `前条中`) or takes it over from the clause before it, where a wrong resolution of the earlier reference carries over; or the law has no article with the number, which usually means the clause refers to another law.
-- `low`: words naming another law stand before the reference and the nearest text of the target is unlike the quotation, or several clauses of one paragraph name articles the law does not have. Such clauses usually refer to another law.
+- `low`: words naming another law stand before the reference and the nearest text of the target is unlike the quotation; or the text before the clause names the same article number as an article of another law (`犯罪捜査規範第十六条から第十九条までの規定を準用する。この場合において、第十六条中…`), which also lowers the clauses after it in the paragraph; or several clauses of one paragraph name articles the law does not have. Such clauses usually refer to another law.
 
-A clause that names a provision of another law, a provision that another read-as has already changed (`…において読み替えて準用する第…条中`), a range (`第…条から第…条まで`) or `これらの規定` is counted in `External` or `Unsupported` and gives no warning. A paragraph that gives its read-as as a table (`読み替えられる字句`) is counted in `TableParagraphs` and skipped. Supplementary provisions are not read.
+A clause that names a provision of another law, a provision that another read-as has already changed (`…において読み替えて準用する第…条中`), a range (`第…条から第…条まで`) or `これらの規定` is counted in `External` or `Unsupported` and gives no warning. A paragraph that gives its read-as as a table (`読み替えられる字句`, `…欄に掲げる字句`) is counted in `TableParagraphs` and skipped. Supplementary provisions are not read.
 
 ## Usage
 

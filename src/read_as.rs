@@ -161,24 +161,85 @@ fn similarity(quoted: &str, near: &str) -> f64 {
     (ratio * 100.0).round() / 100.0
 }
 
-/// Whether the text before a clause names one of the articles of `scope` right after the name of
-/// a law or rule (`犯罪捜査規範第十九条`), which makes the clause a reference to that law.
+const KANSUJI: &str = "一二三四五六七八九十百千";
+
+/// The articles (`第十九条`) that `text` names in a list that starts right after the name of a law
+/// or rule or after a closing parenthesis: `犯罪捜査規範第十六条から第十九条まで` gives both.
+fn external_articles(text: &str) -> Vec<String> {
+    let chars: Vec<char> = text.chars().collect();
+    let starts_with = |at: usize, word: &str| {
+        let w: Vec<char> = word.chars().collect();
+        chars.len() >= at + w.len() && chars[at..at + w.len()] == w[..]
+    };
+    let mut found = Vec::new();
+    let mut i = 0;
+    while i + 1 < chars.len() {
+        if !("法令則程範約款）".contains(chars[i]) && chars[i + 1] == '第') {
+            i += 1;
+            continue;
+        }
+        let mut j = i + 1;
+        while j < chars.len() && chars[j] == '第' {
+            let mut k = j + 1;
+            while k < chars.len() && KANSUJI.contains(chars[k]) {
+                k += 1;
+            }
+            if k == j + 1 || k >= chars.len() || !"条項号".contains(chars[k]) {
+                break;
+            }
+            if chars[k] == '条' {
+                found.push(chars[j..=k].iter().collect());
+            }
+            j = k + 1;
+            while j < chars.len() && (chars[j] == 'の' || KANSUJI.contains(chars[j])) {
+                j += 1;
+            }
+            if j < chars.len() && chars[j] == '（' {
+                let mut depth = 0usize;
+                while j < chars.len() {
+                    match chars[j] {
+                        '（' => depth += 1,
+                        '）' => depth -= 1,
+                        _ => {}
+                    }
+                    j += 1;
+                    if depth == 0 {
+                        break;
+                    }
+                }
+            }
+            for word in ["、", "及び", "並びに", "又は", "若しくは", "から", "まで"]
+            {
+                if starts_with(j, word) {
+                    j += word.chars().count();
+                    break;
+                }
+            }
+        }
+        i = j.max(i + 1);
+    }
+    found
+}
+
+/// Whether the text before a clause names one of the articles of `scope` as an article of another
+/// law or rule, which makes the clause a reference to that law.
 fn lead_names_external(lead: &str, scope: &str) -> bool {
+    let external = external_articles(lead);
+    if external.is_empty() {
+        return false;
+    }
     let tail = scope.rsplit('、').next().unwrap_or(scope);
     let chars: Vec<char> = tail.chars().collect();
     let mut i = 0;
     while i < chars.len() {
         if chars[i] == '第' {
             let mut j = i + 1;
-            while j < chars.len() && "一二三四五六七八九十百千".contains(chars[j]) {
+            while j < chars.len() && KANSUJI.contains(chars[j]) {
                 j += 1;
             }
             if j > i + 1 && j < chars.len() && chars[j] == '条' {
                 let article: String = chars[i..=j].iter().collect();
-                if "法令則程範約款"
-                    .chars()
-                    .any(|c| lead.contains(&format!("{c}{article}")))
-                {
+                if external.contains(&article) {
                     return true;
                 }
             }
@@ -196,7 +257,7 @@ fn names_article(scope: &str) -> bool {
     let chars: Vec<char> = first.chars().collect();
     chars
         .windows(2)
-        .any(|w| w[1] == '条' && "一二三四五六七八九十百千".contains(w[0]))
+        .any(|w| w[1] == '条' && KANSUJI.contains(w[0]))
 }
 
 fn warning_id(
@@ -256,7 +317,9 @@ fn check_article(
         if !paragraph.text.contains("とあるのは") {
             continue;
         }
-        if paragraph.text.contains("読み替えられる字句") {
+        if paragraph.text.contains("読み替えられる字句")
+            || paragraph.text.contains("欄に掲げる字句")
+        {
             counts.table_paragraphs += 1;
             continue;
         }
@@ -265,6 +328,7 @@ fn check_article(
             paragraph: paragraph.num,
         };
         let first = out.len();
+        let mut external_block = false;
         let findings = core::analyze(
             &paragraph.text,
             &article.num,
@@ -291,6 +355,11 @@ fn check_article(
                     continue;
                 }
             }
+            let lead = paragraph
+                .text
+                .find(&format!("「{}」", f.quoted))
+                .map_or("", |at| &paragraph.text[..at]);
+            external_block = external_block || lead_names_external(lead, &f.scope);
             let targets: Vec<Provision> = f
                 .targets
                 .into_iter()
@@ -322,18 +391,13 @@ fn check_article(
                 .map(|a| nearest(&a.text, &f.quoted))
                 .unwrap_or_default();
             let sim = similarity(&f.quoted, &near);
-            let lead = paragraph
-                .text
-                .find(&format!("「{}」", f.quoted))
-                .map_or("", |at| &paragraph.text[..at]);
-            let confidence =
-                if (f.after_law_name && sim < 0.75) || lead_names_external(lead, &f.scope) {
-                    "low"
-                } else if names_article(&f.scope) && best != Status::NoArticle {
-                    "high"
-                } else {
-                    "medium"
-                };
+            let confidence = if (f.after_law_name && sim < 0.75) || external_block {
+                "low"
+            } else if names_article(&f.scope) && best != Status::NoArticle {
+                "high"
+            } else {
+                "medium"
+            };
             counts.warnings += 1;
             out.push(Warning {
                 id: {
