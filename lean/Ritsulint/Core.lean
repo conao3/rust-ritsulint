@@ -89,6 +89,7 @@ def keywords : List (List Char × Tok) :=
     ("この場合において".toList, .filler),
     ("これらの規定".toList, .all),
     ("ただし書".toList, .filler),
+    ("各号".toList, .filler),
     ("の見出し".toList, .filler),
     ("の規定".toList, .filler),
     ("それぞれ".toList, .filler),
@@ -143,17 +144,20 @@ def numbered (cs : List Char) : Option (Tok × List Char) :=
     some (.item, rest)
   | _, _ => none
 
-def tokenize : Nat → List Char → List Tok
-  | 0, _ => []
-  | _, [] => []
-  | fuel + 1, '第' :: cs =>
+def tokenizeAux : Nat → List Char → List Tok → List Tok
+  | 0, _, acc => acc.reverse
+  | _, [], acc => acc.reverse
+  | fuel + 1, '第' :: cs, acc =>
     match numbered cs with
-    | some (t, rest) => t :: tokenize fuel rest
-    | none => .other '第' :: tokenize fuel cs
-  | fuel + 1, c :: cs =>
+    | some (t, rest) => tokenizeAux fuel rest (t :: acc)
+    | none => tokenizeAux fuel cs (.other '第' :: acc)
+  | fuel + 1, c :: cs, acc =>
     match matchKeyword (c :: cs) keywords with
-    | some (t, rest) => t :: tokenize fuel rest
-    | none => .other c :: tokenize fuel cs
+    | some (t, rest) => tokenizeAux fuel rest (t :: acc)
+    | none => tokenizeAux fuel cs (.other c :: acc)
+
+def tokenize (fuel : Nat) (cs : List Char) : List Tok :=
+  tokenizeAux fuel cs []
 
 /-- Characters that end the name of a law or of another kind of rule (法, 令, 規則, 規程, 規範,
 条約, 定款, 附則). A clause with one of them before `中` names a provision outside the main
@@ -200,7 +204,7 @@ def refStep (ctx : Context) (s : RefState) : Tok → Option RefState
     | some t =>
       if t.paragraph = 0 then some { s with openRef := some ⟨t.article, n⟩ }
       else some (s.start ⟨t.article, n⟩)
-    | none => none
+    | none => some (s.start ⟨ctx.article, n⟩)
   | _ => some s
 
 /-- What the words before `中` of a clause name. -/
@@ -223,6 +227,10 @@ def isBracketOther : Tok → Bool
   | .other c => c = '（' || c = '）' || c = '＃'
   | _ => false
 
+def isArtTok : Tok → Bool
+  | .art _ => true
+  | _ => false
+
 def isRefTok : Tok → Bool
   | .art _ | .para _ | .sameArt | .samePara | .prevArt | .nextArt | .prevPara | .nextPara => true
   | _ => false
@@ -240,7 +248,10 @@ def resolveRefs (ctx : Context) (last : Option Target) (toks : List Tok) (afterR
 may come first when a comma separates them from the reference; `afterRemark` then tells whether
 those words contain the name of a law or rule. A reference that follows such words without a
 comma (`拳銃規範第十条第一項`) belongs to that law or rule. Words with a parenthesis or a
-quotation in them are not split at the comma. -/
+quotation in them are not split at the comma. When the reference after the comma names no
+article and the words before the comma contain a reference themselves
+(`第十条の規定の適用については、同条第二項`), `同条` and `同項` are about that reference, or about
+another law when those words name one. -/
 def resolveScope (ctx : Context) (last : Option Target) (scope : List Char) : Scope :=
   let toks := tokenize scope.length scope
   if !toks.any isOther then resolveRefs ctx last toks false
@@ -248,8 +259,15 @@ def resolveScope (ctx : Context) (last : Option Target) (scope : List Char) : Sc
     let tail := (toks.reverse.takeWhile (fun t => !isOther t)).reverse
     match tail with
     | .conn :: rest =>
+      let head := toks.take (toks.length - tail.length)
       if toks.any isBracketOther then (if toks.any isLawishOther then .external else .unsupported)
-      else resolveRefs ctx last rest (toks.any isLawishOther)
+      else if rest.any isArtTok || !head.any isRefTok then
+        resolveRefs ctx last rest (toks.any isLawishOther)
+      else if toks.any isLawishOther then .external
+      else
+        match (head.filter fun t => !isOther t).foldlM (refStep ctx) ⟨none, [], last⟩ with
+        | some s => resolveRefs ctx s.flush.last rest false
+        | none => .unsupported
     | _ => if toks.any isLawishOther then .external else .unsupported
 
 /-- A clause as written: the words before `中` (without the `中`), the quoted words, the
@@ -259,6 +277,7 @@ structure RawClause where
   quoted : List Char
   replacement : List Char
   hasNaka : Bool
+  lead : List Char
 
 /-- The body of a quotation and the text after its closing bracket. The input starts after the
 opening bracket. Brackets inside the quotation nest. -/
@@ -273,19 +292,23 @@ def dropOne (c : Char) : List Char → List Char
   | x :: rest => if x = c then rest else x :: rest
   | [] => []
 
-def mkClause (segRev quoted replacement : List Char) : RawClause :=
+def mkClause (segRev quoted replacement leadRev : List Char) : RawClause :=
   match segRev with
-  | '中' :: rest => ⟨rest.reverse, quoted, replacement, true⟩
-  | _ => ⟨segRev.reverse, quoted, replacement, segRev.isEmpty⟩
+  | '中' :: rest => ⟨rest.reverse, quoted, replacement, true, leadRev.reverse⟩
+  | _ => ⟨segRev.reverse, quoted, replacement, segRev.isEmpty, leadRev.reverse⟩
 
 /-- Splits the text of a paragraph into read-as clauses. `seg` holds, reversed, the text since
 the last clause or sentence ended. `pend` holds the clauses of the form `「A」とあり、` that still
-wait for the replacement they share with the next `とあるのは`. -/
-def scan : Nat → List Char → List Char → List RawClause → List RawClause → List RawClause
-  | 0, _, _, _, out => out.reverse
-  | _, [], _, _, out => out.reverse
-  | fuel + 1, '。' :: rest, _, _, out => scan fuel rest [] [] out
-  | fuel + 1, '「' :: rest, seg, pend, out =>
+wait for the replacement they share with the next `とあるのは`. `cur` holds, reversed, the sentence
+being read (a quotation in it is kept as its opening bracket only) and `lead` the sentence before
+it, which a clause may take its reference from. -/
+def scan : Nat → List Char → List Char → List RawClause → List Char → List Char →
+    List RawClause → List RawClause
+  | 0, _, _, _, _, _, out => out.reverse
+  | _, [], _, _, _, _, out => out.reverse
+  | fuel + 1, '。' :: rest, _, _, cur, _, out => scan fuel rest [] [] [] cur out
+  | fuel + 1, '「' :: rest, seg, pend, cur, lead, out =>
+    let cur := '「' :: cur
     match takeQuote rest 0 [] with
     | none => out.reverse
     | some (q, rest1) =>
@@ -297,16 +320,51 @@ def scan : Nat → List Char → List Char → List RawClause → List RawClause
           | none => out.reverse
           | some (b, rest3) =>
             let pend := pend.map fun p => { p with replacement := b }
-            scan fuel (dropOne '、' (dropOne 'と' rest3)) [] [] (mkClause seg q b :: pend ++ out)
-        | rest3 => scan fuel rest3 [] [] (mkClause seg q [] :: pend ++ out)
+            scan fuel (dropOne '、' (dropOne 'と' rest3)) [] [] cur lead
+              (mkClause seg q b lead :: pend ++ out)
+        | rest3 => scan fuel rest3 [] [] cur lead (mkClause seg q [] lead :: pend ++ out)
       | none =>
         match stripPrefix? "とあり".toList rest1 with
-        | some rest2 => scan fuel (dropOne '、' rest2) [] (mkClause seg q [] :: pend) out
-        | none => scan fuel rest1 ('＃' :: seg) pend out
-  | fuel + 1, c :: rest, seg, pend, out => scan fuel rest (c :: seg) pend out
+        | some rest2 =>
+          scan fuel (dropOne '、' rest2) [] (mkClause seg q [] lead :: pend) cur lead out
+        | none => scan fuel rest1 ('＃' :: seg) pend cur lead out
+  | fuel + 1, c :: rest, seg, pend, cur, lead, out =>
+    scan fuel rest (c :: seg) pend (c :: cur) lead out
 
 def rawClauses (text : List Char) : List RawClause :=
-  scan text.length text [] [] []
+  scan text.length text [] [] [] [] []
+
+/-- What the sentence before a clause says about the provision the clause is about. -/
+inductive Lead where
+  | unknown
+  | external
+  | target (t : Target)
+deriving Repr, BEq
+
+def artKeys : List Tok → List String
+  | [] => []
+  | .art key :: rest => key :: artKeys rest
+  | _ :: rest => artKeys rest
+
+def firstArtTarget : List Tok → Option Target
+  | .art key :: .para n :: _ => some ⟨key, n⟩
+  | .art key :: _ => some ⟨key, 0⟩
+  | _ :: rest => firstArtTarget rest
+  | [] => none
+
+/-- Reads the sentence before a clause (`第四十二条の規定は、…について準用する。`). When it names
+one article of the law and no other law or rule, a clause that says `同条` or names no provision
+is about that article. When it names a law or rule, such a clause is about a provision of it. -/
+def leadOf (lead : List Char) : Lead :=
+  if lead.contains '「' then .unknown
+  else
+    let toks := tokenize lead.length lead
+    if toks.any isLawishOther then .external
+    else
+      match (artKeys toks).eraseDups, firstArtTarget toks with
+      | [_], some t =>
+        if (toks.filter isRefTok).length ≤ 2 then .target t else .target ⟨t.article, 0⟩
+      | _, _ => .unknown
 
 /-- A read-as clause with the provisions it names. `kind` is `refs` (the provisions are in
 `targets`), `external` (the clause names another law, or follows one that does) or `unsupported`.
@@ -326,19 +384,35 @@ structure AnalyzeState where
   external : Bool
   out : List Finding
 
+def hasArtTok (scope : List Char) : Bool :=
+  (tokenize scope.length scope).any fun t =>
+    match t with
+    | .art _ => true
+    | _ => false
+
 def analyzeStep (ctx : Context) (s : AnalyzeState) (c : RawClause) : AnalyzeState :=
   let mk (kind : String) (targets : List Target) (afterLawName : Bool) : Finding :=
     ⟨String.ofList c.scope, String.ofList c.quoted, String.ofList c.replacement, kind, targets,
       afterLawName⟩
+  let lead := if s.last.isEmpty then leadOf c.lead else .unknown
+  let base : Option Target :=
+    match s.last.getLast?, lead with
+    | some t, _ => some t
+    | none, .target t => some t
+    | none, _ => none
   if s.external then { s with out := mk "external" [] false :: s.out }
   else if !c.hasNaka then { s with last := [], out := mk "unsupported" [] false :: s.out }
+  else if lead == .external && !hasArtTok c.scope then
+    { s with external := true, last := [], out := mk "external" [] false :: s.out }
   else
-    match resolveScope ctx s.last.getLast? c.scope with
+    match resolveScope ctx base c.scope with
     | .refs ts after =>
       { s with last := ts, lastAfterLawName := after, out := mk "refs" ts after :: s.out }
     | .inherit =>
-      if s.last.isEmpty then { s with out := mk "unsupported" [] false :: s.out }
-      else { s with out := mk "refs" s.last s.lastAfterLawName :: s.out }
+      match s.last, base with
+      | [], some t => { s with last := [t], out := mk "refs" [t] false :: s.out }
+      | [], none => { s with out := mk "unsupported" [] false :: s.out }
+      | ts, _ => { s with out := mk "refs" ts s.lastAfterLawName :: s.out }
     | .external => { s with external := true, last := [], out := mk "external" [] false :: s.out }
     | .unsupported => { s with last := [], out := mk "unsupported" [] false :: s.out }
 

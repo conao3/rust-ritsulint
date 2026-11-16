@@ -57,4 +57,11 @@ example : stripParens "社会福祉士法（昭和六十二年法律第三十号
     = "社会福祉士法第十条第二項" := by
   decide +kernel
 
+/-- 保険業法 第199条: a reference before `各号並びに` is part of the words before `中`. -/
+example :
+    targetsOf "この場合において、第百五条の二第一項各号並びに同条第二項及び第三項第二号中「A機関」とあるのは「B機関」とする。"
+      "199" "198" "200" 1
+      = [("refs", [⟨"105_2", 1⟩, ⟨"105_2", 2⟩, ⟨"105_2", 3⟩])] := by
+  decide +kernel
+
 end Ritsulint.Test

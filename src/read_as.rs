@@ -33,6 +33,15 @@ pub struct Warning {
     pub confidence: String,
 }
 
+#[derive(Debug, Serialize, Clone)]
+#[serde(rename_all = "PascalCase")]
+pub struct Skipped {
+    pub law_id: String,
+    pub source: Provision,
+    pub kind: String,
+    pub scope: String,
+}
+
 #[derive(Debug, Default, Serialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Counts {
@@ -152,14 +161,46 @@ fn similarity(quoted: &str, near: &str) -> f64 {
     (ratio * 100.0).round() / 100.0
 }
 
+/// Whether the text before a clause names one of the articles of `scope` right after the name of
+/// a law or rule (`犯罪捜査規範第十九条`), which makes the clause a reference to that law.
+fn lead_names_external(lead: &str, scope: &str) -> bool {
+    let tail = scope.rsplit('、').next().unwrap_or(scope);
+    let chars: Vec<char> = tail.chars().collect();
+    let mut i = 0;
+    while i < chars.len() {
+        if chars[i] == '第' {
+            let mut j = i + 1;
+            while j < chars.len() && "一二三四五六七八九十百千".contains(chars[j]) {
+                j += 1;
+            }
+            if j > i + 1 && j < chars.len() && chars[j] == '条' {
+                let article: String = chars[i..=j].iter().collect();
+                if "法令則程範約款"
+                    .chars()
+                    .any(|c| lead.contains(&format!("{c}{article}")))
+                {
+                    return true;
+                }
+            }
+            i = j;
+        } else {
+            i += 1;
+        }
+    }
+    false
+}
+
 fn names_article(scope: &str) -> bool {
-    let chars: Vec<char> = scope.chars().collect();
+    let tail = scope.rsplit('、').next().unwrap_or(scope);
+    let first = tail.split(['及', '並']).next().unwrap_or(tail);
+    let chars: Vec<char> = first.chars().collect();
     chars
         .windows(2)
         .any(|w| w[1] == '条' && "一二三四五六七八九十百千".contains(w[0]))
 }
 
 fn warning_id(
+    rule: &str,
     law_id: &str,
     source: &Provision,
     scope: &str,
@@ -173,7 +214,7 @@ fn warning_id(
         .collect();
     let mut h = Sha256::new();
     for part in [
-        RULE,
+        rule,
         law_id,
         &source.article,
         &source.paragraph.to_string(),
@@ -208,6 +249,7 @@ fn check_article(
     article: &Article,
     counts: &mut Counts,
     out: &mut Vec<Warning>,
+    skipped: &mut Vec<Skipped>,
 ) {
     let (prev, next) = neighbors(law, index);
     for paragraph in &article.paragraphs {
@@ -233,13 +275,19 @@ fn check_article(
         for f in findings {
             counts.clauses += 1;
             match f.kind.as_str() {
-                "external" => {
-                    counts.external += 1;
-                    continue;
-                }
                 "refs" => {}
-                _ => {
-                    counts.unsupported += 1;
+                kind => {
+                    if kind == "external" {
+                        counts.external += 1;
+                    } else {
+                        counts.unsupported += 1;
+                    }
+                    skipped.push(Skipped {
+                        law_id: law.law_id.clone(),
+                        source: source.clone(),
+                        kind: kind.to_string(),
+                        scope: f.scope,
+                    });
                     continue;
                 }
             }
@@ -274,13 +322,18 @@ fn check_article(
                 .map(|a| nearest(&a.text, &f.quoted))
                 .unwrap_or_default();
             let sim = similarity(&f.quoted, &near);
-            let confidence = if f.after_law_name && sim < 0.75 {
-                "low"
-            } else if names_article(&f.scope) && best != Status::NoArticle {
-                "high"
-            } else {
-                "medium"
-            };
+            let lead = paragraph
+                .text
+                .find(&format!("「{}」", f.quoted))
+                .map_or("", |at| &paragraph.text[..at]);
+            let confidence =
+                if (f.after_law_name && sim < 0.75) || lead_names_external(lead, &f.scope) {
+                    "low"
+                } else if names_article(&f.scope) && best != Status::NoArticle {
+                    "high"
+                } else {
+                    "medium"
+                };
             counts.warnings += 1;
             out.push(Warning {
                 id: {
@@ -291,6 +344,7 @@ fn check_article(
                         })
                         .count();
                     warning_id(
+                        RULE,
                         &law.law_id,
                         &source,
                         &f.scope,
@@ -326,13 +380,14 @@ fn check_article(
     }
 }
 
-pub fn check(law: &Law) -> (Counts, Vec<Warning>) {
+pub fn check(law: &Law) -> (Counts, Vec<Warning>, Vec<Skipped>) {
     let mut counts = Counts::default();
     let mut out = Vec::new();
+    let mut skipped = Vec::new();
     for (index, article) in law.articles.iter().enumerate() {
-        check_article(law, index, article, &mut counts, &mut out);
+        check_article(law, index, article, &mut counts, &mut out, &mut skipped);
     }
-    (counts, out)
+    (counts, out, skipped)
 }
 
 #[cfg(test)]
@@ -396,7 +451,7 @@ mod tests {
                     "<Sentence>この場合において、前条中「三十日以内」とあるのは「十日以内」と、「期間」とあるのは「日数」と読み替える。</Sentence>",
                 ],
             );
-        let (counts, warnings) = check(&law(&body));
+        let (counts, warnings, _) = check(&law(&body));
         assert!(warnings.is_empty());
         assert_eq!(counts.matched, 2);
     }
@@ -449,7 +504,7 @@ mod tests {
                     "<Sentence>この場合において、拳銃規範第一条第一項中「警察官は、」とあるのは「指揮官は、」と、同条第三項中「所属長」とあるのは「指定所属長」とする。</Sentence>",
                 ],
             );
-        let (counts, warnings) = check(&law(&body));
+        let (counts, warnings, _) = check(&law(&body));
         assert!(warnings.is_empty());
         assert_eq!(counts.external, 2);
     }
@@ -467,7 +522,7 @@ mod tests {
                 "<Sentence>この場合において、第一条第一項中「法第十条第二項」とあるのは「法第三十五条」と読み替える。</Sentence>",
             ],
         );
-        let (counts, warnings) = check(&law(&body));
+        let (counts, warnings, _) = check(&law(&body));
         assert!(warnings.is_empty());
         assert_eq!(counts.matched_without_parentheses, 1);
     }

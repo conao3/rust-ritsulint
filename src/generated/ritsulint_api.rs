@@ -116,7 +116,7 @@ pub(crate) unsafe fn l_Ritsulint_rawClauses(mut x_1: Obj) -> Obj {
     let mut x_4: Obj = rt::lean_box(0);
     x_2 = l_List_lengthTR___redArg(x_1);
     x_3 = rt::lean_box(0);
-    x_4 = l_Ritsulint_scan(x_2, x_1, x_3, x_3, x_3);
+    x_4 = l_Ritsulint_scan(x_2, x_1, x_3, x_3, x_3, x_3, x_3);
     return x_4;
 }
 
@@ -197,25 +197,25 @@ pub(crate) unsafe fn l_Ritsulint_scan(
     mut x_3: Obj,
     mut x_4: Obj,
     mut x_5: Obj,
+    mut x_6: Obj,
+    mut x_7: Obj,
 ) -> Obj {
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_7: u8 = 0;
     let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
     let mut x_10: Obj = rt::lean_box(0);
     let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
     let mut x_13: Obj = rt::lean_box(0);
-    let mut x_14: u8 = 0;
     let mut x_15: Obj = rt::lean_box(0);
-    let mut x_16: Obj = rt::lean_box(0);
-    let mut x_17: u32 = 0;
-    let mut x_18: u32 = 0;
-    let mut x_19: u8 = 0;
+    let mut x_16: u8 = 0;
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: u32 = 0;
     let mut x_20: u32 = 0;
-    let mut x_21: u32 = 0;
-    let mut x_22: u8 = 0;
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_21: u8 = 0;
+    let mut x_22: u32 = 0;
+    let mut x_23: u32 = 0;
+    let mut x_24: u8 = 0;
     let mut x_26: Obj = rt::lean_box(0);
     let mut x_27: Obj = rt::lean_box(0);
     let mut x_28: Obj = rt::lean_box(0);
@@ -223,106 +223,114 @@ pub(crate) unsafe fn l_Ritsulint_scan(
     let mut x_30: Obj = rt::lean_box(0);
     let mut x_31: Obj = rt::lean_box(0);
     let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: Obj = rt::lean_box(0);
     let mut x_34: Obj = rt::lean_box(0);
-    let mut x_35: u8 = 0;
+    let mut x_35: Obj = rt::lean_box(0);
     let mut x_37: Obj = rt::lean_box(0);
-    let mut x_38: Obj = rt::lean_box(0);
-    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_38: u8 = 0;
+    let mut x_39: Obj = rt::lean_box(0);
     let mut x_41: Obj = rt::lean_box(0);
-    let mut x_42: Obj = rt::lean_box(0);
     let mut x_43: Obj = rt::lean_box(0);
     let mut x_44: Obj = rt::lean_box(0);
-    let mut x_45: Obj = rt::lean_box(0);
     let mut x_46: Obj = rt::lean_box(0);
     let mut x_47: Obj = rt::lean_box(0);
     let mut x_48: Obj = rt::lean_box(0);
+    let mut x_49: Obj = rt::lean_box(0);
     let mut x_50: Obj = rt::lean_box(0);
     let mut x_51: Obj = rt::lean_box(0);
     let mut x_52: Obj = rt::lean_box(0);
     let mut x_53: Obj = rt::lean_box(0);
-    let mut x_54: u32 = 0;
+    let mut x_54: Obj = rt::lean_box(0);
     let mut x_55: Obj = rt::lean_box(0);
     let mut x_56: Obj = rt::lean_box(0);
-    let mut x_58: Obj = rt::lean_box(0);
+    let mut x_57: Obj = rt::lean_box(0);
+    let mut x_58: u32 = 0;
     let mut x_59: Obj = rt::lean_box(0);
     let mut x_60: Obj = rt::lean_box(0);
     let mut x_61: Obj = rt::lean_box(0);
-    let mut x_62: u32 = 0;
+    let mut x_62: Obj = rt::lean_box(0);
     let mut x_63: Obj = rt::lean_box(0);
-    let mut x_64: Obj = rt::lean_box(0);
+    let mut x_64: u32 = 0;
     let mut x_65: Obj = rt::lean_box(0);
-    let mut x_66: u32 = 0;
-    let mut x_67: u8 = 0;
-    let mut x_69: Obj = rt::lean_box(0);
-    let mut x_70: u8 = 0;
+    let mut x_66: Obj = rt::lean_box(0);
+    let mut x_67: Obj = rt::lean_box(0);
+    let mut x_68: u32 = 0;
+    let mut x_69: u8 = 0;
     let mut x_71: Obj = rt::lean_box(0);
-    let mut x_72: Obj = rt::lean_box(0);
+    let mut x_72: u8 = 0;
     let mut x_73: Obj = rt::lean_box(0);
     let mut x_74: Obj = rt::lean_box(0);
     let mut x_75: Obj = rt::lean_box(0);
     let mut x_76: Obj = rt::lean_box(0);
-    let mut x_77: u32 = 0;
+    let mut x_77: Obj = rt::lean_box(0);
     let mut x_78: Obj = rt::lean_box(0);
-    let mut x_79: Obj = rt::lean_box(0);
+    let mut x_79: u32 = 0;
     let mut x_80: Obj = rt::lean_box(0);
+    let mut x_81: Obj = rt::lean_box(0);
     let mut x_82: Obj = rt::lean_box(0);
-    let mut x_83: Obj = rt::lean_box(0);
     let mut x_84: Obj = rt::lean_box(0);
     let mut x_85: Obj = rt::lean_box(0);
-    let mut x_86: u8 = 0;
+    let mut x_86: Obj = rt::lean_box(0);
     let mut x_87: Obj = rt::lean_box(0);
-    let mut x_88: Obj = rt::lean_box(0);
-    let mut x_89: u8 = 0;
+    let mut x_88: u8 = 0;
+    let mut x_89: Obj = rt::lean_box(0);
     let mut x_90: Obj = rt::lean_box(0);
     let mut x_91: Obj = rt::lean_box(0);
     let mut x_92: u8 = 0;
+    let mut x_93: Obj = rt::lean_box(0);
+    let mut x_94: Obj = rt::lean_box(0);
+    let mut x_95: u8 = 0;
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
             0 => {
-                x_6 = rt::lean_unsigned_to_nat(0u32);
-                x_7 = rt::lean_nat_dec_eq(x_1, x_6);
-                match x_7 as u32 {
+                x_8 = rt::lean_unsigned_to_nat(0u32);
+                x_9 = rt::lean_nat_dec_eq(x_1, x_8);
+                match x_9 as u32 {
                     1 => {
+                        rt::lean_dec(x_6);
+                        rt::lean_dec(x_5);
                         rt::lean_dec(x_4);
                         rt::lean_dec(x_3);
                         rt::lean_dec(x_2);
                         rt::lean_dec(x_1);
-                        x_8 = l_List_reverse___redArg(x_5);
-                        return x_8;
+                        x_10 = l_List_reverse___redArg(x_7);
+                        return x_10;
                     }
                     0 => match rt::lean_obj_tag(x_2) {
                         0 => {
+                            rt::lean_dec(x_6);
+                            rt::lean_dec(x_5);
                             rt::lean_dec(x_4);
                             rt::lean_dec(x_3);
                             rt::lean_dec(x_1);
-                            x_9 = l_List_reverse___redArg(x_5);
-                            return x_9;
+                            x_11 = l_List_reverse___redArg(x_7);
+                            return x_11;
                         }
                         1 => {
-                            x_10 = rt::lean_ctor_get(x_2, 0);
-                            x_11 = rt::lean_ctor_get(x_2, 1);
-                            x_92 = (!rt::lean_is_exclusive(x_2)) as u8;
-                            match x_92 as u32 {
+                            x_12 = rt::lean_ctor_get(x_2, 0);
+                            x_13 = rt::lean_ctor_get(x_2, 1);
+                            x_95 = (!rt::lean_is_exclusive(x_2)) as u8;
+                            match x_95 as u32 {
                                 0 => {
                                     {
                                         let t_0 = x_2;
-                                        let t_1 = x_92;
-                                        x_13 = t_0;
-                                        x_14 = t_1;
+                                        let t_1 = x_95;
+                                        x_15 = t_0;
+                                        x_16 = t_1;
                                     }
                                     __blk = 1;
                                     continue 'body;
                                 }
                                 1 => {
-                                    rt::lean_inc(x_11);
-                                    rt::lean_inc(x_10);
+                                    rt::lean_inc(x_13);
+                                    rt::lean_inc(x_12);
                                     rt::lean_dec(x_2);
                                     {
                                         let t_0 = rt::lean_box(0);
-                                        let t_1 = x_92;
-                                        x_13 = t_0;
-                                        x_14 = t_1;
+                                        let t_1 = x_95;
+                                        x_15 = t_0;
+                                        x_16 = t_1;
                                     }
                                     __blk = 1;
                                     continue 'body;
@@ -336,85 +344,90 @@ pub(crate) unsafe fn l_Ritsulint_scan(
                 }
             }
             1 => {
-                x_15 = rt::lean_unsigned_to_nat(1u32);
-                x_16 = rt::lean_nat_sub(x_1, x_15);
+                x_17 = rt::lean_unsigned_to_nat(1u32);
+                x_18 = rt::lean_nat_sub(x_1, x_17);
                 rt::lean_dec(x_1);
-                x_17 = 12290u32;
-                x_18 = rt::lean_unbox_uint32(x_10);
-                x_19 = rt::lean_uint32_dec_eq(x_18, x_17);
-                match x_19 as u32 {
+                x_19 = 12290u32;
+                x_20 = rt::lean_unbox_uint32(x_12);
+                x_21 = rt::lean_uint32_dec_eq(x_20, x_19);
+                match x_21 as u32 {
                     0 => {
-                        x_20 = 12300u32;
-                        x_21 = rt::lean_unbox_uint32(x_10);
-                        x_22 = rt::lean_uint32_dec_eq(x_21, x_20);
-                        match x_22 as u32 {
-                            0 => match x_14 as u32 {
-                                0 => {
-                                    rt::lean_ctor_set(x_13, 1, x_3);
-                                    {
-                                        let t_0 = x_13;
-                                        x_24 = t_0;
-                                    }
-                                    __blk = 2;
-                                    continue 'body;
-                                }
-                                1 => {
-                                    x_26 = rt::lean_alloc_ctor(
-                                        1,
-                                        2,
-                                        0 * core::mem::size_of::<usize>() as u32 + 0,
-                                    );
-                                    rt::lean_ctor_set(x_26, 0, x_10);
-                                    rt::lean_ctor_set(x_26, 1, x_3);
-                                    {
-                                        let t_0 = x_26;
-                                        x_24 = t_0;
-                                    }
-                                    __blk = 2;
-                                    continue 'body;
-                                }
-                                _ => rt::lean_internal_panic_unreachable(),
-                            },
-                            1 => {
-                                rt::lean_dec(x_10);
-                                x_27 = rt::lean_box(0);
-                                x_28 = l_Ritsulint_takeQuote(x_11, x_6, x_27);
-                                match rt::lean_obj_tag(x_28) {
+                        x_22 = 12300u32;
+                        x_23 = rt::lean_unbox_uint32(x_12);
+                        x_24 = rt::lean_uint32_dec_eq(x_23, x_22);
+                        match x_24 as u32 {
+                            0 => {
+                                rt::lean_inc(x_12);
+                                match x_16 as u32 {
                                     0 => {
-                                        rt::lean_dec(x_16);
-                                        rt::lean_del_object(x_13);
-                                        rt::lean_dec(x_4);
-                                        rt::lean_dec(x_3);
-                                        x_29 = l_List_reverse___redArg(x_5);
-                                        return x_29;
+                                        rt::lean_ctor_set(x_15, 1, x_3);
+                                        {
+                                            let t_0 = x_15;
+                                            x_26 = t_0;
+                                        }
+                                        __blk = 2;
+                                        continue 'body;
                                     }
                                     1 => {
-                                        x_30 = rt::lean_ctor_get(x_28, 0);
-                                        rt::lean_inc(x_30);
-                                        rt::lean_dec_ref(x_28);
-                                        x_31 = rt::lean_ctor_get(x_30, 0);
-                                        x_32 = rt::lean_ctor_get(x_30, 1);
-                                        x_89 = (!rt::lean_is_exclusive(x_30)) as u8;
-                                        match x_89 as u32 {
+                                        x_29 = rt::lean_alloc_ctor(
+                                            1,
+                                            2,
+                                            0 * core::mem::size_of::<usize>() as u32 + 0,
+                                        );
+                                        rt::lean_ctor_set(x_29, 0, x_12);
+                                        rt::lean_ctor_set(x_29, 1, x_3);
+                                        {
+                                            let t_0 = x_29;
+                                            x_26 = t_0;
+                                        }
+                                        __blk = 2;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            1 => {
+                                rt::lean_dec(x_12);
+                                x_30 = rt::lean_box(0);
+                                x_31 = l_Ritsulint_takeQuote(x_13, x_8, x_30);
+                                match rt::lean_obj_tag(x_31) {
+                                    0 => {
+                                        rt::lean_dec(x_18);
+                                        rt::lean_del_object(x_15);
+                                        rt::lean_dec(x_6);
+                                        rt::lean_dec(x_5);
+                                        rt::lean_dec(x_4);
+                                        rt::lean_dec(x_3);
+                                        x_32 = l_List_reverse___redArg(x_7);
+                                        return x_32;
+                                    }
+                                    1 => {
+                                        x_33 = rt::lean_ctor_get(x_31, 0);
+                                        rt::lean_inc(x_33);
+                                        rt::lean_dec_ref(x_31);
+                                        x_34 = rt::lean_ctor_get(x_33, 0);
+                                        x_35 = rt::lean_ctor_get(x_33, 1);
+                                        x_92 = (!rt::lean_is_exclusive(x_33)) as u8;
+                                        match x_92 as u32 {
                                             0 => {
                                                 {
-                                                    let t_0 = x_30;
-                                                    let t_1 = x_89;
-                                                    x_34 = t_0;
-                                                    x_35 = t_1;
+                                                    let t_0 = x_33;
+                                                    let t_1 = x_92;
+                                                    x_37 = t_0;
+                                                    x_38 = t_1;
                                                 }
                                                 __blk = 3;
                                                 continue 'body;
                                             }
                                             1 => {
-                                                rt::lean_inc(x_32);
-                                                rt::lean_inc(x_31);
-                                                rt::lean_dec(x_30);
+                                                rt::lean_inc(x_35);
+                                                rt::lean_inc(x_34);
+                                                rt::lean_dec(x_33);
                                                 {
                                                     let t_0 = rt::lean_box(0);
-                                                    let t_1 = x_89;
-                                                    x_34 = t_0;
-                                                    x_35 = t_1;
+                                                    let t_1 = x_92;
+                                                    x_37 = t_0;
+                                                    x_38 = t_1;
                                                 }
                                                 __blk = 3;
                                                 continue 'body;
@@ -429,22 +442,27 @@ pub(crate) unsafe fn l_Ritsulint_scan(
                         }
                     }
                     1 => {
-                        rt::lean_del_object(x_13);
-                        rt::lean_dec(x_10);
+                        rt::lean_del_object(x_15);
+                        rt::lean_dec(x_12);
+                        rt::lean_dec(x_6);
                         rt::lean_dec(x_4);
                         rt::lean_dec(x_3);
-                        x_90 = rt::lean_box(0);
+                        x_93 = rt::lean_box(0);
                         {
-                            let t_0 = x_16;
-                            let t_1 = x_11;
-                            let t_2 = x_90;
-                            let t_3 = x_90;
-                            let t_4 = x_5;
+                            let t_0 = x_18;
+                            let t_1 = x_13;
+                            let t_2 = x_93;
+                            let t_3 = x_93;
+                            let t_4 = x_93;
+                            let t_5 = x_5;
+                            let t_6 = x_7;
                             x_1 = t_0;
                             x_2 = t_1;
                             x_3 = t_2;
                             x_4 = t_3;
                             x_5 = t_4;
+                            x_6 = t_5;
+                            x_7 = t_6;
                         }
                         __blk = 0;
                         continue 'body;
@@ -453,162 +471,189 @@ pub(crate) unsafe fn l_Ritsulint_scan(
                 }
             }
             2 => {
+                x_27 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_27, 0, x_12);
+                rt::lean_ctor_set(x_27, 1, x_5);
                 {
-                    let t_0 = x_16;
-                    let t_1 = x_11;
-                    let t_2 = x_24;
+                    let t_0 = x_18;
+                    let t_1 = x_13;
+                    let t_2 = x_26;
                     let t_3 = x_4;
-                    let t_4 = x_5;
+                    let t_4 = x_27;
+                    let t_5 = x_6;
+                    let t_6 = x_7;
                     x_1 = t_0;
                     x_2 = t_1;
                     x_3 = t_2;
                     x_4 = t_3;
                     x_5 = t_4;
+                    x_6 = t_5;
+                    x_7 = t_6;
                 }
                 __blk = 0;
                 continue 'body;
             }
             3 => {
-                x_44 = l_Ritsulint_scan___closed__1();
-                rt::lean_inc(x_32);
-                x_45 = l_Ritsulint_stripPrefix_x3f(x_44, x_32);
-                match rt::lean_obj_tag(x_45) {
+                x_39 = l_Ritsulint_takeQuote___boxed__const__1();
+                match x_16 as u32 {
                     0 => {
-                        rt::lean_del_object(x_13);
-                        x_46 = l_Ritsulint_scan___closed__3();
-                        rt::lean_inc(x_32);
-                        x_47 = l_Ritsulint_stripPrefix_x3f(x_46, x_32);
-                        match rt::lean_obj_tag(x_47) {
+                        rt::lean_ctor_set(x_15, 1, x_5);
+                        rt::lean_ctor_set(x_15, 0, x_39);
+                        {
+                            let t_0 = x_15;
+                            x_41 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_91 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_91, 0, x_39);
+                        rt::lean_ctor_set(x_91, 1, x_5);
+                        {
+                            let t_0 = x_91;
+                            x_41 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => {
+                x_50 = l_Ritsulint_scan___closed__1();
+                rt::lean_inc(x_35);
+                x_51 = l_Ritsulint_stripPrefix_x3f(x_50, x_35);
+                match rt::lean_obj_tag(x_51) {
+                    0 => {
+                        rt::lean_del_object(x_37);
+                        x_52 = l_Ritsulint_scan___closed__3();
+                        rt::lean_inc(x_35);
+                        x_53 = l_Ritsulint_stripPrefix_x3f(x_52, x_35);
+                        match rt::lean_obj_tag(x_53) {
                             0 => {
-                                rt::lean_dec(x_31);
-                                x_48 = l_Ritsulint_scan___boxed__const__1();
-                                match x_35 as u32 {
-                                    0 => {
-                                        rt::lean_ctor_set_tag(x_34, 1);
-                                        rt::lean_ctor_set(x_34, 1, x_3);
-                                        rt::lean_ctor_set(x_34, 0, x_48);
-                                        {
-                                            let t_0 = x_34;
-                                            x_50 = t_0;
-                                        }
-                                        __blk = 6;
-                                        continue 'body;
-                                    }
-                                    1 => {
-                                        x_52 = rt::lean_alloc_ctor(
-                                            1,
-                                            2,
-                                            0 * core::mem::size_of::<usize>() as u32 + 0,
-                                        );
-                                        rt::lean_ctor_set(x_52, 0, x_48);
-                                        rt::lean_ctor_set(x_52, 1, x_3);
-                                        {
-                                            let t_0 = x_52;
-                                            x_50 = t_0;
-                                        }
-                                        __blk = 6;
-                                        continue 'body;
-                                    }
-                                    _ => rt::lean_internal_panic_unreachable(),
+                                rt::lean_dec(x_34);
+                                x_54 = l_Ritsulint_scan___boxed__const__1();
+                                x_55 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_55, 0, x_54);
+                                rt::lean_ctor_set(x_55, 1, x_3);
+                                {
+                                    let t_0 = x_18;
+                                    let t_1 = x_35;
+                                    let t_2 = x_55;
+                                    let t_3 = x_4;
+                                    let t_4 = x_41;
+                                    let t_5 = x_6;
+                                    let t_6 = x_7;
+                                    x_1 = t_0;
+                                    x_2 = t_1;
+                                    x_3 = t_2;
+                                    x_4 = t_3;
+                                    x_5 = t_4;
+                                    x_6 = t_5;
+                                    x_7 = t_6;
                                 }
+                                __blk = 0;
+                                continue 'body;
                             }
                             1 => {
-                                rt::lean_dec(x_32);
-                                x_53 = rt::lean_ctor_get(x_47, 0);
-                                rt::lean_inc(x_53);
-                                rt::lean_dec_ref(x_47);
-                                x_54 = 12289u32;
-                                x_55 = l_Ritsulint_dropOne(x_54, x_53);
-                                rt::lean_dec(x_53);
-                                x_56 = l_Ritsulint_mkClause(x_3, x_31, x_27);
-                                match x_35 as u32 {
-                                    0 => {
-                                        rt::lean_ctor_set_tag(x_34, 1);
-                                        rt::lean_ctor_set(x_34, 1, x_4);
-                                        rt::lean_ctor_set(x_34, 0, x_56);
-                                        {
-                                            let t_0 = x_34;
-                                            x_58 = t_0;
-                                        }
-                                        __blk = 7;
-                                        continue 'body;
-                                    }
-                                    1 => {
-                                        x_60 = rt::lean_alloc_ctor(
-                                            1,
-                                            2,
-                                            0 * core::mem::size_of::<usize>() as u32 + 0,
-                                        );
-                                        rt::lean_ctor_set(x_60, 0, x_56);
-                                        rt::lean_ctor_set(x_60, 1, x_4);
-                                        {
-                                            let t_0 = x_60;
-                                            x_58 = t_0;
-                                        }
-                                        __blk = 7;
-                                        continue 'body;
-                                    }
-                                    _ => rt::lean_internal_panic_unreachable(),
+                                rt::lean_dec(x_35);
+                                x_57 = rt::lean_ctor_get(x_53, 0);
+                                rt::lean_inc(x_57);
+                                rt::lean_dec_ref(x_53);
+                                x_58 = 12289u32;
+                                x_59 = l_Ritsulint_dropOne(x_58, x_57);
+                                rt::lean_dec(x_57);
+                                rt::lean_inc(x_6);
+                                x_60 = l_Ritsulint_mkClause(x_3, x_34, x_30, x_6);
+                                x_61 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_61, 0, x_60);
+                                rt::lean_ctor_set(x_61, 1, x_4);
+                                {
+                                    let t_0 = x_18;
+                                    let t_1 = x_59;
+                                    let t_2 = x_30;
+                                    let t_3 = x_61;
+                                    let t_4 = x_41;
+                                    let t_5 = x_6;
+                                    let t_6 = x_7;
+                                    x_1 = t_0;
+                                    x_2 = t_1;
+                                    x_3 = t_2;
+                                    x_4 = t_3;
+                                    x_5 = t_4;
+                                    x_6 = t_5;
+                                    x_7 = t_6;
                                 }
+                                __blk = 0;
+                                continue 'body;
                             }
                             _ => rt::lean_internal_panic_unreachable(),
                         }
                     }
                     1 => {
-                        rt::lean_del_object(x_34);
-                        rt::lean_dec(x_32);
-                        x_61 = rt::lean_ctor_get(x_45, 0);
-                        rt::lean_inc(x_61);
-                        rt::lean_dec_ref(x_45);
-                        x_62 = 12289u32;
-                        x_63 = l_Ritsulint_dropOne(x_62, x_61);
-                        rt::lean_dec(x_61);
-                        match rt::lean_obj_tag(x_63) {
+                        rt::lean_dec(x_35);
+                        x_63 = rt::lean_ctor_get(x_51, 0);
+                        rt::lean_inc(x_63);
+                        rt::lean_dec_ref(x_51);
+                        x_64 = 12289u32;
+                        x_65 = l_Ritsulint_dropOne(x_64, x_63);
+                        rt::lean_dec(x_63);
+                        match rt::lean_obj_tag(x_65) {
                             1 => {
-                                x_64 = rt::lean_ctor_get(x_63, 0);
-                                rt::lean_inc(x_64);
-                                x_65 = rt::lean_ctor_get(x_63, 1);
-                                rt::lean_inc(x_65);
-                                x_66 = rt::lean_unbox_uint32(x_64);
-                                rt::lean_dec(x_64);
-                                x_67 = rt::lean_uint32_dec_eq(x_66, x_20);
-                                match x_67 as u32 {
+                                x_66 = rt::lean_ctor_get(x_65, 0);
+                                rt::lean_inc(x_66);
+                                x_67 = rt::lean_ctor_get(x_65, 1);
+                                rt::lean_inc(x_67);
+                                x_68 = rt::lean_unbox_uint32(x_66);
+                                rt::lean_dec(x_66);
+                                x_69 = rt::lean_uint32_dec_eq(x_68, x_22);
+                                match x_69 as u32 {
                                     0 => {
-                                        rt::lean_dec(x_65);
+                                        rt::lean_dec(x_67);
                                         {
-                                            let t_0 = x_63;
-                                            x_37 = t_0;
+                                            let t_0 = x_65;
+                                            x_43 = t_0;
                                         }
-                                        __blk = 4;
+                                        __blk = 5;
                                         continue 'body;
                                     }
                                     1 => {
-                                        rt::lean_del_object(x_13);
-                                        x_86 = (!rt::lean_is_exclusive(x_63)) as u8;
-                                        match x_86 as u32 {
+                                        rt::lean_del_object(x_37);
+                                        x_88 = (!rt::lean_is_exclusive(x_65)) as u8;
+                                        match x_88 as u32 {
                                             0 => {
-                                                x_87 = rt::lean_ctor_get(x_63, 1);
-                                                rt::lean_dec(x_87);
-                                                x_88 = rt::lean_ctor_get(x_63, 0);
-                                                rt::lean_dec(x_88);
+                                                x_89 = rt::lean_ctor_get(x_65, 1);
+                                                rt::lean_dec(x_89);
+                                                x_90 = rt::lean_ctor_get(x_65, 0);
+                                                rt::lean_dec(x_90);
                                                 {
-                                                    let t_0 = x_63;
-                                                    let t_1 = x_86;
-                                                    x_69 = t_0;
-                                                    x_70 = t_1;
+                                                    let t_0 = x_65;
+                                                    let t_1 = x_88;
+                                                    x_71 = t_0;
+                                                    x_72 = t_1;
                                                 }
-                                                __blk = 8;
+                                                __blk = 7;
                                                 continue 'body;
                                             }
                                             1 => {
-                                                rt::lean_dec(x_63);
+                                                rt::lean_dec(x_65);
                                                 {
                                                     let t_0 = rt::lean_box(0);
-                                                    let t_1 = x_86;
-                                                    x_69 = t_0;
-                                                    x_70 = t_1;
+                                                    let t_1 = x_88;
+                                                    x_71 = t_0;
+                                                    x_72 = t_1;
                                                 }
-                                                __blk = 8;
+                                                __blk = 7;
                                                 continue 'body;
                                             }
                                             _ => rt::lean_internal_panic_unreachable(),
@@ -619,146 +664,123 @@ pub(crate) unsafe fn l_Ritsulint_scan(
                             }
                             _ => {
                                 {
-                                    let t_0 = x_63;
-                                    x_37 = t_0;
+                                    let t_0 = x_65;
+                                    x_43 = t_0;
                                 }
-                                __blk = 4;
+                                __blk = 5;
                                 continue 'body;
                             }
                         }
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            4 => {
-                x_38 = l_Ritsulint_mkClause(x_3, x_31, x_27);
-                match x_14 as u32 {
-                    0 => {
-                        rt::lean_ctor_set(x_13, 1, x_4);
-                        rt::lean_ctor_set(x_13, 0, x_38);
-                        {
-                            let t_0 = x_13;
-                            x_40 = t_0;
-                        }
-                        __blk = 5;
-                        continue 'body;
-                    }
-                    1 => {
-                        x_43 =
-                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_43, 0, x_38);
-                        rt::lean_ctor_set(x_43, 1, x_4);
-                        {
-                            let t_0 = x_43;
-                            x_40 = t_0;
-                        }
-                        __blk = 5;
-                        continue 'body;
                     }
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
             5 => {
-                x_41 = l_List_appendTR___redArg(x_40, x_5);
-                {
-                    let t_0 = x_16;
-                    let t_1 = x_37;
-                    let t_2 = x_27;
-                    let t_3 = x_27;
-                    let t_4 = x_41;
-                    x_1 = t_0;
-                    x_2 = t_1;
-                    x_3 = t_2;
-                    x_4 = t_3;
-                    x_5 = t_4;
+                rt::lean_inc(x_6);
+                x_44 = l_Ritsulint_mkClause(x_3, x_34, x_30, x_6);
+                match x_38 as u32 {
+                    0 => {
+                        rt::lean_ctor_set_tag(x_37, 1);
+                        rt::lean_ctor_set(x_37, 1, x_4);
+                        rt::lean_ctor_set(x_37, 0, x_44);
+                        {
+                            let t_0 = x_37;
+                            x_46 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_49 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_49, 0, x_44);
+                        rt::lean_ctor_set(x_49, 1, x_4);
+                        {
+                            let t_0 = x_49;
+                            x_46 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
                 }
-                __blk = 0;
-                continue 'body;
             }
             6 => {
+                x_47 = l_List_appendTR___redArg(x_46, x_7);
                 {
-                    let t_0 = x_16;
-                    let t_1 = x_32;
-                    let t_2 = x_50;
-                    let t_3 = x_4;
-                    let t_4 = x_5;
+                    let t_0 = x_18;
+                    let t_1 = x_43;
+                    let t_2 = x_30;
+                    let t_3 = x_30;
+                    let t_4 = x_41;
+                    let t_5 = x_6;
+                    let t_6 = x_47;
                     x_1 = t_0;
                     x_2 = t_1;
                     x_3 = t_2;
                     x_4 = t_3;
                     x_5 = t_4;
+                    x_6 = t_5;
+                    x_7 = t_6;
                 }
                 __blk = 0;
                 continue 'body;
             }
             7 => {
-                {
-                    let t_0 = x_16;
-                    let t_1 = x_55;
-                    let t_2 = x_27;
-                    let t_3 = x_58;
-                    let t_4 = x_5;
-                    x_1 = t_0;
-                    x_2 = t_1;
-                    x_3 = t_2;
-                    x_4 = t_3;
-                    x_5 = t_4;
-                }
-                __blk = 0;
-                continue 'body;
-            }
-            8 => {
-                x_71 = l_Ritsulint_takeQuote(x_65, x_6, x_27);
-                match rt::lean_obj_tag(x_71) {
+                x_73 = l_Ritsulint_takeQuote(x_67, x_8, x_30);
+                match rt::lean_obj_tag(x_73) {
                     0 => {
-                        rt::lean_del_object(x_69);
-                        rt::lean_dec(x_31);
-                        rt::lean_dec(x_16);
+                        rt::lean_del_object(x_71);
+                        rt::lean_dec_ref(x_41);
+                        rt::lean_dec(x_34);
+                        rt::lean_dec(x_18);
+                        rt::lean_dec(x_6);
                         rt::lean_dec(x_4);
                         rt::lean_dec(x_3);
-                        x_72 = l_List_reverse___redArg(x_5);
-                        return x_72;
+                        x_74 = l_List_reverse___redArg(x_7);
+                        return x_74;
                     }
                     1 => {
-                        x_73 = rt::lean_ctor_get(x_71, 0);
-                        rt::lean_inc(x_73);
-                        rt::lean_dec_ref(x_71);
-                        x_74 = rt::lean_ctor_get(x_73, 0);
-                        rt::lean_inc_n(x_74, 2);
-                        x_75 = rt::lean_ctor_get(x_73, 1);
+                        x_75 = rt::lean_ctor_get(x_73, 0);
                         rt::lean_inc(x_75);
-                        rt::lean_dec(x_73);
-                        x_76 = l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(x_74, x_4, x_27);
-                        x_77 = 12392u32;
-                        x_78 = l_Ritsulint_dropOne(x_77, x_75);
+                        rt::lean_dec_ref(x_73);
+                        x_76 = rt::lean_ctor_get(x_75, 0);
+                        rt::lean_inc_n(x_76, 2);
+                        x_77 = rt::lean_ctor_get(x_75, 1);
+                        rt::lean_inc(x_77);
                         rt::lean_dec(x_75);
-                        x_79 = l_Ritsulint_dropOne(x_62, x_78);
-                        rt::lean_dec(x_78);
-                        x_80 = l_Ritsulint_mkClause(x_3, x_31, x_74);
-                        match x_70 as u32 {
+                        x_78 = l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(x_76, x_4, x_30);
+                        x_79 = 12392u32;
+                        x_80 = l_Ritsulint_dropOne(x_79, x_77);
+                        rt::lean_dec(x_77);
+                        x_81 = l_Ritsulint_dropOne(x_64, x_80);
+                        rt::lean_dec(x_80);
+                        rt::lean_inc(x_6);
+                        x_82 = l_Ritsulint_mkClause(x_3, x_34, x_76, x_6);
+                        match x_72 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_69, 1, x_76);
-                                rt::lean_ctor_set(x_69, 0, x_80);
+                                rt::lean_ctor_set(x_71, 1, x_78);
+                                rt::lean_ctor_set(x_71, 0, x_82);
                                 {
-                                    let t_0 = x_69;
-                                    x_82 = t_0;
+                                    let t_0 = x_71;
+                                    x_84 = t_0;
                                 }
-                                __blk = 9;
+                                __blk = 8;
                                 continue 'body;
                             }
                             1 => {
-                                x_85 = rt::lean_alloc_ctor(
+                                x_87 = rt::lean_alloc_ctor(
                                     1,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 0,
                                 );
-                                rt::lean_ctor_set(x_85, 0, x_80);
-                                rt::lean_ctor_set(x_85, 1, x_76);
+                                rt::lean_ctor_set(x_87, 0, x_82);
+                                rt::lean_ctor_set(x_87, 1, x_78);
                                 {
-                                    let t_0 = x_85;
-                                    x_82 = t_0;
+                                    let t_0 = x_87;
+                                    x_84 = t_0;
                                 }
-                                __blk = 9;
+                                __blk = 8;
                                 continue 'body;
                             }
                             _ => rt::lean_internal_panic_unreachable(),
@@ -767,19 +789,23 @@ pub(crate) unsafe fn l_Ritsulint_scan(
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
-            9 => {
-                x_83 = l_List_appendTR___redArg(x_82, x_5);
+            8 => {
+                x_85 = l_List_appendTR___redArg(x_84, x_7);
                 {
-                    let t_0 = x_16;
-                    let t_1 = x_79;
-                    let t_2 = x_27;
-                    let t_3 = x_27;
-                    let t_4 = x_83;
+                    let t_0 = x_18;
+                    let t_1 = x_81;
+                    let t_2 = x_30;
+                    let t_3 = x_30;
+                    let t_4 = x_41;
+                    let t_5 = x_6;
+                    let t_6 = x_85;
                     x_1 = t_0;
                     x_2 = t_1;
                     x_3 = t_2;
                     x_4 = t_3;
                     x_5 = t_4;
+                    x_6 = t_5;
+                    x_7 = t_6;
                 }
                 __blk = 0;
                 continue 'body;
@@ -1234,51 +1260,60 @@ pub(crate) unsafe fn l_Ritsulint_takeQuote___boxed__const__2() -> Obj {
     unused_unsafe,
     clippy::all
 )]
-pub(crate) unsafe fn l_Ritsulint_mkClause(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: u8 = 0;
-    let mut x_7: Obj = rt::lean_box(0);
+pub(crate) unsafe fn l_Ritsulint_mkClause(
+    mut x_1: Obj,
+    mut x_2: Obj,
+    mut x_3: Obj,
+    mut x_4: Obj,
+) -> Obj {
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
     let mut x_8: Obj = rt::lean_box(0);
     let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: u32 = 0;
-    let mut x_11: u32 = 0;
-    let mut x_12: u8 = 0;
-    let mut x_13: Obj = rt::lean_box(0);
-    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: u32 = 0;
+    let mut x_13: u32 = 0;
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
             0 => match rt::lean_obj_tag(x_1) {
                 1 => {
-                    x_8 = rt::lean_ctor_get(x_1, 0);
-                    x_9 = rt::lean_ctor_get(x_1, 1);
-                    x_10 = 20013u32;
-                    x_11 = rt::lean_unbox_uint32(x_8);
-                    x_12 = rt::lean_uint32_dec_eq(x_11, x_10);
-                    match x_12 as u32 {
+                    x_10 = rt::lean_ctor_get(x_1, 0);
+                    x_11 = rt::lean_ctor_get(x_1, 1);
+                    x_12 = 20013u32;
+                    x_13 = rt::lean_unbox_uint32(x_10);
+                    x_14 = rt::lean_uint32_dec_eq(x_13, x_12);
+                    match x_14 as u32 {
                         0 => {
                             {}
                             __blk = 1;
                             continue 'body;
                         }
                         1 => {
-                            rt::lean_inc(x_9);
+                            rt::lean_inc(x_11);
                             rt::lean_dec_ref(x_1);
-                            x_13 = l_List_reverse___redArg(x_9);
-                            x_14 = rt::lean_alloc_ctor(
+                            x_15 = l_List_reverse___redArg(x_11);
+                            x_16 = l_List_reverse___redArg(x_4);
+                            x_17 = rt::lean_alloc_ctor(
                                 0,
-                                3,
+                                4,
                                 0 * core::mem::size_of::<usize>() as u32 + 1,
                             );
-                            rt::lean_ctor_set(x_14, 0, x_13);
-                            rt::lean_ctor_set(x_14, 1, x_2);
-                            rt::lean_ctor_set(x_14, 2, x_3);
+                            rt::lean_ctor_set(x_17, 0, x_15);
+                            rt::lean_ctor_set(x_17, 1, x_2);
+                            rt::lean_ctor_set(x_17, 2, x_3);
+                            rt::lean_ctor_set(x_17, 3, x_16);
                             rt::lean_ctor_set_uint8(
+                                x_17,
+                                4 * core::mem::size_of::<usize>() as u32 + 0,
                                 x_14,
-                                3 * core::mem::size_of::<usize>() as u32 + 0,
-                                x_12,
                             );
-                            return x_14;
+                            return x_17;
                         }
                         _ => rt::lean_internal_panic_unreachable(),
                     }
@@ -1291,15 +1326,17 @@ pub(crate) unsafe fn l_Ritsulint_mkClause(mut x_1: Obj, mut x_2: Obj, mut x_3: O
             },
             1 => {
                 rt::lean_inc(x_1);
-                x_5 = l_List_reverse___redArg(x_1);
-                x_6 = l_List_isEmpty___redArg(x_1);
+                x_6 = l_List_reverse___redArg(x_1);
+                x_7 = l_List_isEmpty___redArg(x_1);
                 rt::lean_dec(x_1);
-                x_7 = rt::lean_alloc_ctor(0, 3, 0 * core::mem::size_of::<usize>() as u32 + 1);
-                rt::lean_ctor_set(x_7, 0, x_5);
-                rt::lean_ctor_set(x_7, 1, x_2);
-                rt::lean_ctor_set(x_7, 2, x_3);
-                rt::lean_ctor_set_uint8(x_7, 3 * core::mem::size_of::<usize>() as u32 + 0, x_6);
-                return x_7;
+                x_8 = l_List_reverse___redArg(x_4);
+                x_9 = rt::lean_alloc_ctor(0, 4, 0 * core::mem::size_of::<usize>() as u32 + 1);
+                rt::lean_ctor_set(x_9, 0, x_6);
+                rt::lean_ctor_set(x_9, 1, x_2);
+                rt::lean_ctor_set(x_9, 2, x_3);
+                rt::lean_ctor_set(x_9, 3, x_8);
+                rt::lean_ctor_set_uint8(x_9, 4 * core::mem::size_of::<usize>() as u32 + 0, x_7);
+                return x_9;
             }
             _ => rt::lean_internal_panic_unreachable(),
         }
@@ -1620,16 +1657,17 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
     let mut x_10: Obj = rt::lean_box(0);
     let mut x_11: Obj = rt::lean_box(0);
     let mut x_12: u8 = 0;
-    let mut x_14: Obj = rt::lean_box(0);
-    let mut x_15: u8 = 0;
-    let mut x_17: Obj = rt::lean_box(0);
-    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: u8 = 0;
+    let mut x_18: Obj = rt::lean_box(0);
     let mut x_20: Obj = rt::lean_box(0);
     let mut x_21: Obj = rt::lean_box(0);
     let mut x_22: Obj = rt::lean_box(0);
-    let mut x_23: u8 = 0;
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: u8 = 0;
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: u8 = 0;
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: u8 = 0;
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
@@ -1642,12 +1680,12 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
                 1 => {
                     x_5 = rt::lean_ctor_get(x_2, 0);
                     x_6 = rt::lean_ctor_get(x_2, 1);
-                    x_25 = (!rt::lean_is_exclusive(x_2)) as u8;
-                    match x_25 as u32 {
+                    x_26 = (!rt::lean_is_exclusive(x_2)) as u8;
+                    match x_26 as u32 {
                         0 => {
                             {
                                 let t_0 = x_2;
-                                let t_1 = x_25;
+                                let t_1 = x_26;
                                 x_8 = t_0;
                                 x_9 = t_1;
                             }
@@ -1660,7 +1698,7 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
                             rt::lean_dec(x_2);
                             {
                                 let t_0 = rt::lean_box(0);
-                                let t_1 = x_25;
+                                let t_1 = x_26;
                                 x_8 = t_0;
                                 x_9 = t_1;
                             }
@@ -1675,30 +1713,32 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
             1 => {
                 x_10 = rt::lean_ctor_get(x_5, 0);
                 x_11 = rt::lean_ctor_get(x_5, 1);
-                x_12 = rt::lean_ctor_get_uint8(x_5, 3 * core::mem::size_of::<usize>() as u32 + 0);
-                x_23 = (!rt::lean_is_exclusive(x_5)) as u8;
-                match x_23 as u32 {
+                x_12 = rt::lean_ctor_get_uint8(x_5, 4 * core::mem::size_of::<usize>() as u32 + 0);
+                x_13 = rt::lean_ctor_get(x_5, 3);
+                x_24 = (!rt::lean_is_exclusive(x_5)) as u8;
+                match x_24 as u32 {
                     0 => {
-                        x_24 = rt::lean_ctor_get(x_5, 2);
-                        rt::lean_dec(x_24);
+                        x_25 = rt::lean_ctor_get(x_5, 2);
+                        rt::lean_dec(x_25);
                         {
                             let t_0 = x_5;
-                            let t_1 = x_23;
-                            x_14 = t_0;
-                            x_15 = t_1;
+                            let t_1 = x_24;
+                            x_15 = t_0;
+                            x_16 = t_1;
                         }
                         __blk = 2;
                         continue 'body;
                     }
                     1 => {
+                        rt::lean_inc(x_13);
                         rt::lean_inc(x_11);
                         rt::lean_inc(x_10);
                         rt::lean_dec(x_5);
                         {
                             let t_0 = rt::lean_box(0);
-                            let t_1 = x_23;
-                            x_14 = t_0;
-                            x_15 = t_1;
+                            let t_1 = x_24;
+                            x_15 = t_0;
+                            x_16 = t_1;
                         }
                         __blk = 2;
                         continue 'body;
@@ -1708,30 +1748,31 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
             }
             2 => {
                 rt::lean_inc(x_1);
-                match x_15 as u32 {
+                match x_16 as u32 {
                     0 => {
-                        rt::lean_ctor_set(x_14, 2, x_1);
+                        rt::lean_ctor_set(x_15, 2, x_1);
                         {
-                            let t_0 = x_14;
-                            x_17 = t_0;
+                            let t_0 = x_15;
+                            x_18 = t_0;
                         }
                         __blk = 3;
                         continue 'body;
                     }
                     1 => {
-                        x_22 =
-                            rt::lean_alloc_ctor(0, 3, 0 * core::mem::size_of::<usize>() as u32 + 1);
-                        rt::lean_ctor_set(x_22, 0, x_10);
-                        rt::lean_ctor_set(x_22, 1, x_11);
-                        rt::lean_ctor_set(x_22, 2, x_1);
+                        x_23 =
+                            rt::lean_alloc_ctor(0, 4, 0 * core::mem::size_of::<usize>() as u32 + 1);
+                        rt::lean_ctor_set(x_23, 0, x_10);
+                        rt::lean_ctor_set(x_23, 1, x_11);
+                        rt::lean_ctor_set(x_23, 2, x_1);
+                        rt::lean_ctor_set(x_23, 3, x_13);
                         rt::lean_ctor_set_uint8(
-                            x_22,
-                            3 * core::mem::size_of::<usize>() as u32 + 0,
+                            x_23,
+                            4 * core::mem::size_of::<usize>() as u32 + 0,
                             x_12,
                         );
                         {
-                            let t_0 = x_22;
-                            x_17 = t_0;
+                            let t_0 = x_23;
+                            x_18 = t_0;
                         }
                         __blk = 3;
                         continue 'body;
@@ -1742,21 +1783,21 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
             3 => match x_9 as u32 {
                 0 => {
                     rt::lean_ctor_set(x_8, 1, x_3);
-                    rt::lean_ctor_set(x_8, 0, x_17);
+                    rt::lean_ctor_set(x_8, 0, x_18);
                     {
                         let t_0 = x_8;
-                        x_19 = t_0;
+                        x_20 = t_0;
                     }
                     __blk = 4;
                     continue 'body;
                 }
                 1 => {
-                    x_21 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_21, 0, x_17);
-                    rt::lean_ctor_set(x_21, 1, x_3);
+                    x_22 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_22, 0, x_18);
+                    rt::lean_ctor_set(x_22, 1, x_3);
                     {
-                        let t_0 = x_21;
-                        x_19 = t_0;
+                        let t_0 = x_22;
+                        x_20 = t_0;
                     }
                     __blk = 4;
                     continue 'body;
@@ -1767,7 +1808,7 @@ pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_scan_spec__0(
                 {
                     let t_0 = x_1;
                     let t_1 = x_6;
-                    let t_2 = x_19;
+                    let t_2 = x_20;
                     x_1 = t_0;
                     x_2 = t_1;
                     x_3 = t_2;
@@ -1842,437 +1883,404 @@ pub(crate) unsafe fn l_List_foldl___at___00Ritsulint_analyze_spec__0(
     clippy::all
 )]
 pub(crate) unsafe fn l_Ritsulint_analyzeStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
-    let mut x_4: u8 = 0;
+    let mut x_4: Obj = rt::lean_box(0);
     let mut x_5: u8 = 0;
     let mut x_6: u8 = 0;
     let mut x_7: Obj = rt::lean_box(0);
     let mut x_9: Obj = rt::lean_box(0);
     let mut x_10: u8 = 0;
-    let mut x_11: Obj = rt::lean_box(0);
-    let mut x_12: Obj = rt::lean_box(0);
-    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_11: u8 = 0;
+    let mut x_12: u8 = 0;
     let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: u8 = 0;
     let mut x_16: Obj = rt::lean_box(0);
     let mut x_17: Obj = rt::lean_box(0);
-    let mut x_18: u8 = 0;
-    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: u8 = 0;
     let mut x_20: Obj = rt::lean_box(0);
-    let mut x_21: u8 = 0;
+    let mut x_21: Obj = rt::lean_box(0);
     let mut x_22: Obj = rt::lean_box(0);
     let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: u8 = 0;
+    let mut x_25: Obj = rt::lean_box(0);
     let mut x_26: Obj = rt::lean_box(0);
     let mut x_27: Obj = rt::lean_box(0);
     let mut x_28: Obj = rt::lean_box(0);
-    let mut x_29: Obj = rt::lean_box(0);
-    let mut x_30: u8 = 0;
+    let mut x_30: Obj = rt::lean_box(0);
     let mut x_31: Obj = rt::lean_box(0);
     let mut x_32: Obj = rt::lean_box(0);
     let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
     let mut x_35: Obj = rt::lean_box(0);
     let mut x_36: Obj = rt::lean_box(0);
-    let mut x_37: u8 = 0;
     let mut x_38: Obj = rt::lean_box(0);
     let mut x_39: Obj = rt::lean_box(0);
     let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
     let mut x_42: Obj = rt::lean_box(0);
-    let mut x_43: Obj = rt::lean_box(0);
     let mut x_44: Obj = rt::lean_box(0);
     let mut x_45: Obj = rt::lean_box(0);
     let mut x_46: Obj = rt::lean_box(0);
     let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: Obj = rt::lean_box(0);
     let mut x_49: Obj = rt::lean_box(0);
-    let mut x_50: Obj = rt::lean_box(0);
     let mut x_51: Obj = rt::lean_box(0);
     let mut x_52: Obj = rt::lean_box(0);
     let mut x_53: Obj = rt::lean_box(0);
     let mut x_54: Obj = rt::lean_box(0);
+    let mut x_55: Obj = rt::lean_box(0);
     let mut x_56: Obj = rt::lean_box(0);
-    let mut x_57: Obj = rt::lean_box(0);
     let mut x_58: Obj = rt::lean_box(0);
     let mut x_59: Obj = rt::lean_box(0);
-    let mut x_60: Obj = rt::lean_box(0);
     let mut x_61: Obj = rt::lean_box(0);
-    let mut x_63: Obj = rt::lean_box(0);
+    let mut x_62: Obj = rt::lean_box(0);
+    let mut x_63: u8 = 0;
     let mut x_64: Obj = rt::lean_box(0);
-    let mut x_65: u8 = 0;
+    let mut x_65: Obj = rt::lean_box(0);
     let mut x_66: Obj = rt::lean_box(0);
-    let mut x_67: u8 = 0;
+    let mut x_67: Obj = rt::lean_box(0);
     let mut x_68: Obj = rt::lean_box(0);
+    let mut x_69: Obj = rt::lean_box(0);
     let mut x_70: Obj = rt::lean_box(0);
     let mut x_71: u8 = 0;
-    let mut x_72: Obj = rt::lean_box(0);
+    let mut x_72: u8 = 0;
     let mut x_73: Obj = rt::lean_box(0);
-    let mut x_74: u8 = 0;
+    let mut x_74: Obj = rt::lean_box(0);
     let mut x_75: Obj = rt::lean_box(0);
     let mut x_76: Obj = rt::lean_box(0);
+    let mut x_77: Obj = rt::lean_box(0);
     let mut x_78: Obj = rt::lean_box(0);
     let mut x_79: Obj = rt::lean_box(0);
     let mut x_80: u8 = 0;
+    let mut x_81: Obj = rt::lean_box(0);
+    let mut x_82: Obj = rt::lean_box(0);
+    let mut x_83: Obj = rt::lean_box(0);
+    let mut x_85: Obj = rt::lean_box(0);
+    let mut x_86: Obj = rt::lean_box(0);
+    let mut x_87: Obj = rt::lean_box(0);
+    let mut x_88: Obj = rt::lean_box(0);
+    let mut x_89: Obj = rt::lean_box(0);
+    let mut x_90: Obj = rt::lean_box(0);
+    let mut x_91: Obj = rt::lean_box(0);
+    let mut x_92: u8 = 0;
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
             0 => {
-                x_4 = rt::lean_ctor_get_uint8(x_2, 2 * core::mem::size_of::<usize>() as u32 + 1);
-                match x_4 as u32 {
+                x_4 = rt::lean_ctor_get(x_2, 0);
+                x_5 = rt::lean_ctor_get_uint8(x_2, 2 * core::mem::size_of::<usize>() as u32 + 0);
+                x_6 = rt::lean_ctor_get_uint8(x_2, 2 * core::mem::size_of::<usize>() as u32 + 1);
+                x_7 = rt::lean_ctor_get(x_2, 1);
+                x_92 = (!rt::lean_is_exclusive(x_2)) as u8;
+                match x_92 as u32 {
                     0 => {
-                        x_5 = rt::lean_ctor_get_uint8(
-                            x_3,
-                            3 * core::mem::size_of::<usize>() as u32 + 0,
-                        );
-                        match x_5 as u32 {
-                            0 => {
-                                x_6 = rt::lean_ctor_get_uint8(
-                                    x_2,
-                                    2 * core::mem::size_of::<usize>() as u32 + 0,
-                                );
-                                x_7 = rt::lean_ctor_get(x_2, 1);
-                                x_18 = (!rt::lean_is_exclusive(x_2)) as u8;
-                                match x_18 as u32 {
-                                    0 => {
-                                        x_19 = rt::lean_ctor_get(x_2, 0);
-                                        rt::lean_dec(x_19);
-                                        {
-                                            let t_0 = x_2;
-                                            let t_1 = x_18;
-                                            x_9 = t_0;
-                                            x_10 = t_1;
-                                        }
-                                        __blk = 1;
-                                        continue 'body;
-                                    }
-                                    1 => {
-                                        rt::lean_inc(x_7);
-                                        rt::lean_dec(x_2);
-                                        {
-                                            let t_0 = rt::lean_box(0);
-                                            let t_1 = x_18;
-                                            x_9 = t_0;
-                                            x_10 = t_1;
-                                        }
-                                        __blk = 1;
-                                        continue 'body;
-                                    }
-                                    _ => rt::lean_internal_panic_unreachable(),
-                                }
-                            }
-                            1 => {
-                                x_20 = rt::lean_ctor_get(x_2, 0);
-                                x_21 = rt::lean_ctor_get_uint8(
-                                    x_2,
-                                    2 * core::mem::size_of::<usize>() as u32 + 0,
-                                );
-                                x_22 = rt::lean_ctor_get(x_2, 1);
-                                x_65 = (!rt::lean_is_exclusive(x_2)) as u8;
-                                match x_65 as u32 {
-                                    0 => {
-                                        {
-                                            let t_0 = x_2;
-                                            let t_1 = x_65;
-                                            x_24 = t_0;
-                                            x_25 = t_1;
-                                        }
-                                        __blk = 3;
-                                        continue 'body;
-                                    }
-                                    1 => {
-                                        rt::lean_inc(x_22);
-                                        rt::lean_inc(x_20);
-                                        rt::lean_dec(x_2);
-                                        {
-                                            let t_0 = rt::lean_box(0);
-                                            let t_1 = x_65;
-                                            x_24 = t_0;
-                                            x_25 = t_1;
-                                        }
-                                        __blk = 3;
-                                        continue 'body;
-                                    }
-                                    _ => rt::lean_internal_panic_unreachable(),
-                                }
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
+                        {
+                            let t_0 = x_2;
+                            let t_1 = x_92;
+                            x_9 = t_0;
+                            x_10 = t_1;
                         }
+                        __blk = 1;
+                        continue 'body;
                     }
                     1 => {
-                        x_66 = rt::lean_ctor_get(x_2, 0);
-                        x_67 = rt::lean_ctor_get_uint8(
-                            x_2,
-                            2 * core::mem::size_of::<usize>() as u32 + 0,
-                        );
-                        x_68 = rt::lean_ctor_get(x_2, 1);
-                        x_80 = (!rt::lean_is_exclusive(x_2)) as u8;
-                        match x_80 as u32 {
-                            0 => {
-                                {
-                                    let t_0 = x_2;
-                                    let t_1 = x_80;
-                                    x_70 = t_0;
-                                    x_71 = t_1;
-                                }
-                                __blk = 9;
-                                continue 'body;
-                            }
-                            1 => {
-                                rt::lean_inc(x_68);
-                                rt::lean_inc(x_66);
-                                rt::lean_dec(x_2);
-                                {
-                                    let t_0 = rt::lean_box(0);
-                                    let t_1 = x_80;
-                                    x_70 = t_0;
-                                    x_71 = t_1;
-                                }
-                                __blk = 9;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
+                        rt::lean_inc(x_7);
+                        rt::lean_inc(x_4);
+                        rt::lean_dec(x_2);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_92;
+                            x_9 = t_0;
+                            x_10 = t_1;
                         }
+                        __blk = 1;
+                        continue 'body;
                     }
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
             1 => {
-                x_11 = rt::lean_box(0);
-                x_12 = l_Ritsulint_analyzeStep___closed__0();
-                x_13 = l_Ritsulint_analyzeStep___lam__0(x_3, x_12, x_11, x_4);
-                x_14 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                rt::lean_ctor_set(x_14, 0, x_13);
-                rt::lean_ctor_set(x_14, 1, x_7);
-                match x_10 as u32 {
+                x_11 = l_List_isEmpty___redArg(x_4);
+                x_12 = 1u8;
+                match x_11 as u32 {
                     0 => {
-                        rt::lean_ctor_set(x_9, 1, x_14);
-                        rt::lean_ctor_set(x_9, 0, x_11);
+                        x_89 = rt::lean_box(0);
                         {
-                            let t_0 = x_9;
-                            x_16 = t_0;
+                            let t_0 = x_89;
+                            x_85 = t_0;
                         }
-                        __blk = 2;
+                        __blk = 10;
                         continue 'body;
                     }
                     1 => {
-                        x_17 =
-                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 2);
-                        rt::lean_ctor_set(x_17, 0, x_11);
-                        rt::lean_ctor_set(x_17, 1, x_14);
-                        rt::lean_ctor_set_uint8(
-                            x_17,
-                            2 * core::mem::size_of::<usize>() as u32 + 0,
-                            x_6,
-                        );
-                        rt::lean_ctor_set_uint8(
-                            x_17,
-                            2 * core::mem::size_of::<usize>() as u32 + 1,
-                            x_4,
-                        );
+                        x_90 = rt::lean_ctor_get(x_3, 3);
+                        rt::lean_inc(x_90);
+                        x_91 = l_Ritsulint_leadOf(x_90);
                         {
-                            let t_0 = x_17;
-                            x_16 = t_0;
+                            let t_0 = x_91;
+                            x_85 = t_0;
                         }
-                        __blk = 2;
+                        __blk = 10;
                         continue 'body;
                     }
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
             2 => {
-                return x_16;
-            }
-            3 => {
-                x_26 = rt::lean_ctor_get(x_3, 0);
-                x_27 = l_List_getLast_x3f___redArg(x_20);
-                rt::lean_inc(x_26);
-                x_28 = l_Ritsulint_resolveScope(x_1, x_27, x_26);
-                match rt::lean_obj_tag(x_28) {
+                x_16 = rt::lean_ctor_get(x_3, 0);
+                rt::lean_inc(x_16);
+                rt::lean_inc(x_14);
+                x_17 = l_Ritsulint_resolveScope(x_1, x_14, x_16);
+                match rt::lean_obj_tag(x_17) {
                     0 => {
-                        rt::lean_dec(x_20);
-                        x_29 = rt::lean_ctor_get(x_28, 0);
-                        rt::lean_inc_n(x_29, 2);
-                        x_30 = rt::lean_ctor_get_uint8(
-                            x_28,
+                        rt::lean_dec(x_14);
+                        rt::lean_dec(x_4);
+                        x_18 = rt::lean_ctor_get(x_17, 0);
+                        rt::lean_inc_n(x_18, 2);
+                        x_19 = rt::lean_ctor_get_uint8(
+                            x_17,
                             1 * core::mem::size_of::<usize>() as u32 + 0,
                         );
-                        rt::lean_dec_ref(x_28);
-                        x_31 = l_Ritsulint_analyzeStep___closed__1();
-                        x_32 = l_Ritsulint_analyzeStep___lam__0(x_3, x_31, x_29, x_30);
-                        x_33 =
+                        rt::lean_dec_ref(x_17);
+                        x_20 = l_Ritsulint_analyzeStep___closed__0();
+                        x_21 = l_Ritsulint_analyzeStep___lam__0(x_3, x_20, x_18, x_19);
+                        x_22 =
                             rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_33, 0, x_32);
-                        rt::lean_ctor_set(x_33, 1, x_22);
-                        match x_25 as u32 {
+                        rt::lean_ctor_set(x_22, 0, x_21);
+                        rt::lean_ctor_set(x_22, 1, x_7);
+                        match x_10 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_24, 1, x_33);
-                                rt::lean_ctor_set(x_24, 0, x_29);
+                                rt::lean_ctor_set(x_9, 1, x_22);
+                                rt::lean_ctor_set(x_9, 0, x_18);
                                 {
-                                    let t_0 = x_24;
-                                    x_35 = t_0;
+                                    let t_0 = x_9;
+                                    x_24 = t_0;
                                 }
-                                __blk = 4;
+                                __blk = 3;
                                 continue 'body;
                             }
                             1 => {
-                                x_36 = rt::lean_alloc_ctor(
+                                x_25 = rt::lean_alloc_ctor(
                                     0,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 2,
                                 );
-                                rt::lean_ctor_set(x_36, 0, x_29);
-                                rt::lean_ctor_set(x_36, 1, x_33);
+                                rt::lean_ctor_set(x_25, 0, x_18);
+                                rt::lean_ctor_set(x_25, 1, x_22);
                                 rt::lean_ctor_set_uint8(
-                                    x_36,
+                                    x_25,
                                     2 * core::mem::size_of::<usize>() as u32 + 1,
-                                    x_4,
+                                    x_6,
                                 );
                                 {
-                                    let t_0 = x_36;
-                                    x_35 = t_0;
+                                    let t_0 = x_25;
+                                    x_24 = t_0;
                                 }
-                                __blk = 4;
+                                __blk = 3;
                                 continue 'body;
                             }
                             _ => rt::lean_internal_panic_unreachable(),
                         }
                     }
-                    1 => {
-                        x_37 = l_List_isEmpty___redArg(x_20);
-                        match x_37 as u32 {
+                    1 => match rt::lean_obj_tag(x_4) {
+                        0 => match rt::lean_obj_tag(x_14) {
                             0 => {
-                                x_38 = l_Ritsulint_analyzeStep___closed__1();
-                                rt::lean_inc(x_20);
-                                x_39 = l_Ritsulint_analyzeStep___lam__0(x_3, x_38, x_20, x_21);
-                                x_40 = rt::lean_alloc_ctor(
+                                x_26 = l_Ritsulint_analyzeStep___closed__1();
+                                x_27 = l_Ritsulint_analyzeStep___lam__0(x_3, x_26, x_4, x_15);
+                                x_28 = rt::lean_alloc_ctor(
                                     1,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 0,
                                 );
-                                rt::lean_ctor_set(x_40, 0, x_39);
-                                rt::lean_ctor_set(x_40, 1, x_22);
-                                match x_25 as u32 {
+                                rt::lean_ctor_set(x_28, 0, x_27);
+                                rt::lean_ctor_set(x_28, 1, x_7);
+                                match x_10 as u32 {
                                     0 => {
-                                        rt::lean_ctor_set(x_24, 1, x_40);
+                                        rt::lean_ctor_set(x_9, 1, x_28);
                                         {
-                                            let t_0 = x_24;
-                                            x_42 = t_0;
+                                            let t_0 = x_9;
+                                            x_30 = t_0;
                                         }
-                                        __blk = 5;
+                                        __blk = 4;
                                         continue 'body;
                                     }
                                     1 => {
-                                        x_43 = rt::lean_alloc_ctor(
+                                        x_31 = rt::lean_alloc_ctor(
                                             0,
                                             2,
                                             0 * core::mem::size_of::<usize>() as u32 + 2,
                                         );
-                                        rt::lean_ctor_set(x_43, 0, x_20);
-                                        rt::lean_ctor_set(x_43, 1, x_40);
+                                        rt::lean_ctor_set(x_31, 0, x_4);
+                                        rt::lean_ctor_set(x_31, 1, x_28);
                                         rt::lean_ctor_set_uint8(
-                                            x_43,
+                                            x_31,
                                             2 * core::mem::size_of::<usize>() as u32 + 0,
-                                            x_21,
+                                            x_5,
                                         );
                                         rt::lean_ctor_set_uint8(
-                                            x_43,
+                                            x_31,
                                             2 * core::mem::size_of::<usize>() as u32 + 1,
-                                            x_4,
+                                            x_6,
                                         );
                                         {
-                                            let t_0 = x_43;
-                                            x_42 = t_0;
+                                            let t_0 = x_31;
+                                            x_30 = t_0;
                                         }
-                                        __blk = 5;
+                                        __blk = 4;
                                         continue 'body;
                                     }
                                     _ => rt::lean_internal_panic_unreachable(),
                                 }
                             }
                             1 => {
-                                x_44 = l_Ritsulint_analyzeStep___closed__0();
-                                x_45 = rt::lean_box(0);
-                                x_46 = l_Ritsulint_analyzeStep___lam__0(x_3, x_44, x_45, x_4);
-                                x_47 = rt::lean_alloc_ctor(
+                                x_32 = rt::lean_ctor_get(x_14, 0);
+                                rt::lean_inc(x_32);
+                                rt::lean_dec_ref(x_14);
+                                x_33 = rt::lean_alloc_ctor(
                                     1,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 0,
                                 );
-                                rt::lean_ctor_set(x_47, 0, x_46);
-                                rt::lean_ctor_set(x_47, 1, x_22);
-                                match x_25 as u32 {
+                                rt::lean_ctor_set(x_33, 0, x_32);
+                                rt::lean_ctor_set(x_33, 1, x_4);
+                                x_34 = l_Ritsulint_analyzeStep___closed__0();
+                                rt::lean_inc_ref(x_33);
+                                x_35 = l_Ritsulint_analyzeStep___lam__0(x_3, x_34, x_33, x_15);
+                                x_36 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_36, 0, x_35);
+                                rt::lean_ctor_set(x_36, 1, x_7);
+                                match x_10 as u32 {
                                     0 => {
-                                        rt::lean_ctor_set(x_24, 1, x_47);
+                                        rt::lean_ctor_set(x_9, 1, x_36);
+                                        rt::lean_ctor_set(x_9, 0, x_33);
                                         {
-                                            let t_0 = x_24;
-                                            x_49 = t_0;
+                                            let t_0 = x_9;
+                                            x_38 = t_0;
                                         }
-                                        __blk = 6;
+                                        __blk = 5;
                                         continue 'body;
                                     }
                                     1 => {
-                                        x_50 = rt::lean_alloc_ctor(
+                                        x_39 = rt::lean_alloc_ctor(
                                             0,
                                             2,
                                             0 * core::mem::size_of::<usize>() as u32 + 2,
                                         );
-                                        rt::lean_ctor_set(x_50, 0, x_20);
-                                        rt::lean_ctor_set(x_50, 1, x_47);
+                                        rt::lean_ctor_set(x_39, 0, x_33);
+                                        rt::lean_ctor_set(x_39, 1, x_36);
                                         rt::lean_ctor_set_uint8(
-                                            x_50,
+                                            x_39,
                                             2 * core::mem::size_of::<usize>() as u32 + 0,
-                                            x_21,
+                                            x_5,
                                         );
                                         rt::lean_ctor_set_uint8(
-                                            x_50,
+                                            x_39,
                                             2 * core::mem::size_of::<usize>() as u32 + 1,
-                                            x_4,
+                                            x_6,
                                         );
                                         {
-                                            let t_0 = x_50;
-                                            x_49 = t_0;
+                                            let t_0 = x_39;
+                                            x_38 = t_0;
                                         }
-                                        __blk = 6;
+                                        __blk = 5;
                                         continue 'body;
                                     }
                                     _ => rt::lean_internal_panic_unreachable(),
                                 }
                             }
                             _ => rt::lean_internal_panic_unreachable(),
+                        },
+                        _ => {
+                            rt::lean_dec(x_14);
+                            x_40 = l_Ritsulint_analyzeStep___closed__0();
+                            rt::lean_inc(x_4);
+                            x_41 = l_Ritsulint_analyzeStep___lam__0(x_3, x_40, x_4, x_5);
+                            x_42 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_42, 0, x_41);
+                            rt::lean_ctor_set(x_42, 1, x_7);
+                            match x_10 as u32 {
+                                0 => {
+                                    rt::lean_ctor_set(x_9, 1, x_42);
+                                    {
+                                        let t_0 = x_9;
+                                        x_44 = t_0;
+                                    }
+                                    __blk = 6;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    x_45 = rt::lean_alloc_ctor(
+                                        0,
+                                        2,
+                                        0 * core::mem::size_of::<usize>() as u32 + 2,
+                                    );
+                                    rt::lean_ctor_set(x_45, 0, x_4);
+                                    rt::lean_ctor_set(x_45, 1, x_42);
+                                    rt::lean_ctor_set_uint8(
+                                        x_45,
+                                        2 * core::mem::size_of::<usize>() as u32 + 0,
+                                        x_5,
+                                    );
+                                    rt::lean_ctor_set_uint8(
+                                        x_45,
+                                        2 * core::mem::size_of::<usize>() as u32 + 1,
+                                        x_6,
+                                    );
+                                    {
+                                        let t_0 = x_45;
+                                        x_44 = t_0;
+                                    }
+                                    __blk = 6;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
                         }
-                    }
+                    },
                     2 => {
-                        rt::lean_dec(x_20);
-                        x_51 = rt::lean_box(0);
-                        x_52 = l_Ritsulint_analyzeStep___closed__2();
-                        x_53 = l_Ritsulint_analyzeStep___lam__0(x_3, x_52, x_51, x_4);
-                        x_54 =
+                        rt::lean_dec(x_14);
+                        rt::lean_dec(x_4);
+                        x_46 = rt::lean_box(0);
+                        x_47 = l_Ritsulint_analyzeStep___closed__2();
+                        x_48 = l_Ritsulint_analyzeStep___lam__0(x_3, x_47, x_46, x_15);
+                        x_49 =
                             rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_54, 0, x_53);
-                        rt::lean_ctor_set(x_54, 1, x_22);
-                        match x_25 as u32 {
+                        rt::lean_ctor_set(x_49, 0, x_48);
+                        rt::lean_ctor_set(x_49, 1, x_7);
+                        match x_10 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_24, 1, x_54);
-                                rt::lean_ctor_set(x_24, 0, x_51);
+                                rt::lean_ctor_set(x_9, 1, x_49);
+                                rt::lean_ctor_set(x_9, 0, x_46);
                                 {
-                                    let t_0 = x_24;
-                                    x_56 = t_0;
+                                    let t_0 = x_9;
+                                    x_51 = t_0;
                                 }
                                 __blk = 7;
                                 continue 'body;
                             }
                             1 => {
-                                x_57 = rt::lean_alloc_ctor(
+                                x_52 = rt::lean_alloc_ctor(
                                     0,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 2,
                                 );
-                                rt::lean_ctor_set(x_57, 0, x_51);
-                                rt::lean_ctor_set(x_57, 1, x_54);
+                                rt::lean_ctor_set(x_52, 0, x_46);
+                                rt::lean_ctor_set(x_52, 1, x_49);
                                 rt::lean_ctor_set_uint8(
-                                    x_57,
+                                    x_52,
                                     2 * core::mem::size_of::<usize>() as u32 + 0,
-                                    x_21,
+                                    x_5,
                                 );
                                 {
-                                    let t_0 = x_57;
-                                    x_56 = t_0;
+                                    let t_0 = x_52;
+                                    x_51 = t_0;
                                 }
                                 __blk = 7;
                                 continue 'body;
@@ -2281,46 +2289,47 @@ pub(crate) unsafe fn l_Ritsulint_analyzeStep(mut x_1: Obj, mut x_2: Obj, mut x_3
                         }
                     }
                     3 => {
-                        rt::lean_dec(x_20);
-                        x_58 = rt::lean_box(0);
-                        x_59 = l_Ritsulint_analyzeStep___closed__0();
-                        x_60 = l_Ritsulint_analyzeStep___lam__0(x_3, x_59, x_58, x_4);
-                        x_61 =
+                        rt::lean_dec(x_14);
+                        rt::lean_dec(x_4);
+                        x_53 = rt::lean_box(0);
+                        x_54 = l_Ritsulint_analyzeStep___closed__1();
+                        x_55 = l_Ritsulint_analyzeStep___lam__0(x_3, x_54, x_53, x_15);
+                        x_56 =
                             rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_61, 0, x_60);
-                        rt::lean_ctor_set(x_61, 1, x_22);
-                        match x_25 as u32 {
+                        rt::lean_ctor_set(x_56, 0, x_55);
+                        rt::lean_ctor_set(x_56, 1, x_7);
+                        match x_10 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_24, 1, x_61);
-                                rt::lean_ctor_set(x_24, 0, x_58);
+                                rt::lean_ctor_set(x_9, 1, x_56);
+                                rt::lean_ctor_set(x_9, 0, x_53);
                                 {
-                                    let t_0 = x_24;
-                                    x_63 = t_0;
+                                    let t_0 = x_9;
+                                    x_58 = t_0;
                                 }
                                 __blk = 8;
                                 continue 'body;
                             }
                             1 => {
-                                x_64 = rt::lean_alloc_ctor(
+                                x_59 = rt::lean_alloc_ctor(
                                     0,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 2,
                                 );
-                                rt::lean_ctor_set(x_64, 0, x_58);
-                                rt::lean_ctor_set(x_64, 1, x_61);
+                                rt::lean_ctor_set(x_59, 0, x_53);
+                                rt::lean_ctor_set(x_59, 1, x_56);
                                 rt::lean_ctor_set_uint8(
-                                    x_64,
+                                    x_59,
                                     2 * core::mem::size_of::<usize>() as u32 + 0,
-                                    x_21,
+                                    x_5,
                                 );
                                 rt::lean_ctor_set_uint8(
-                                    x_64,
+                                    x_59,
                                     2 * core::mem::size_of::<usize>() as u32 + 1,
-                                    x_4,
+                                    x_6,
                                 );
                                 {
-                                    let t_0 = x_64;
-                                    x_63 = t_0;
+                                    let t_0 = x_59;
+                                    x_58 = t_0;
                                 }
                                 __blk = 8;
                                 continue 'body;
@@ -2331,202 +2340,221 @@ pub(crate) unsafe fn l_Ritsulint_analyzeStep(mut x_1: Obj, mut x_2: Obj, mut x_3
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
+            3 => {
+                rt::lean_ctor_set_uint8(x_24, 2 * core::mem::size_of::<usize>() as u32 + 0, x_19);
+                return x_24;
+            }
             4 => {
-                rt::lean_ctor_set_uint8(x_35, 2 * core::mem::size_of::<usize>() as u32 + 0, x_30);
-                return x_35;
+                return x_30;
             }
             5 => {
-                return x_42;
+                return x_38;
             }
             6 => {
-                return x_49;
+                return x_44;
             }
             7 => {
-                rt::lean_ctor_set_uint8(x_56, 2 * core::mem::size_of::<usize>() as u32 + 1, x_5);
-                return x_56;
+                rt::lean_ctor_set_uint8(x_51, 2 * core::mem::size_of::<usize>() as u32 + 1, x_12);
+                return x_51;
             }
             8 => {
-                return x_63;
+                return x_58;
             }
-            9 => {
-                x_72 = l_Ritsulint_analyzeStep___closed__2();
-                x_73 = rt::lean_box(0);
-                x_74 = 0u8;
-                x_75 = l_Ritsulint_analyzeStep___lam__0(x_3, x_72, x_73, x_74);
-                x_76 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                rt::lean_ctor_set(x_76, 0, x_75);
-                rt::lean_ctor_set(x_76, 1, x_68);
-                match x_71 as u32 {
-                    0 => {
-                        rt::lean_ctor_set(x_70, 1, x_76);
-                        {
-                            let t_0 = x_70;
-                            x_78 = t_0;
+            9 => match x_6 as u32 {
+                0 => {
+                    x_63 =
+                        rt::lean_ctor_get_uint8(x_3, 4 * core::mem::size_of::<usize>() as u32 + 0);
+                    match x_63 as u32 {
+                        0 => {
+                            rt::lean_dec(x_62);
+                            rt::lean_dec(x_61);
+                            rt::lean_del_object(x_9);
+                            rt::lean_dec(x_4);
+                            x_64 = rt::lean_box(0);
+                            x_65 = l_Ritsulint_analyzeStep___closed__1();
+                            x_66 = l_Ritsulint_analyzeStep___lam__0(x_3, x_65, x_64, x_6);
+                            x_67 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_67, 0, x_66);
+                            rt::lean_ctor_set(x_67, 1, x_7);
+                            x_68 = rt::lean_alloc_ctor(
+                                0,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 2,
+                            );
+                            rt::lean_ctor_set(x_68, 0, x_64);
+                            rt::lean_ctor_set(x_68, 1, x_67);
+                            rt::lean_ctor_set_uint8(
+                                x_68,
+                                2 * core::mem::size_of::<usize>() as u32 + 0,
+                                x_5,
+                            );
+                            rt::lean_ctor_set_uint8(
+                                x_68,
+                                2 * core::mem::size_of::<usize>() as u32 + 1,
+                                x_6,
+                            );
+                            return x_68;
                         }
-                        __blk = 10;
-                        continue 'body;
-                    }
-                    1 => {
-                        x_79 =
-                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 2);
-                        rt::lean_ctor_set(x_79, 0, x_66);
-                        rt::lean_ctor_set(x_79, 1, x_76);
-                        rt::lean_ctor_set_uint8(
-                            x_79,
-                            2 * core::mem::size_of::<usize>() as u32 + 0,
-                            x_67,
-                        );
-                        rt::lean_ctor_set_uint8(
-                            x_79,
-                            2 * core::mem::size_of::<usize>() as u32 + 1,
-                            x_4,
-                        );
-                        {
-                            let t_0 = x_79;
-                            x_78 = t_0;
+                        1 => {
+                            x_69 = rt::lean_ctor_get(x_3, 0);
+                            x_70 = rt::lean_box(1);
+                            x_71 = l_Ritsulint_instBEqLead_beq(x_61, x_70);
+                            rt::lean_dec(x_61);
+                            match x_71 as u32 {
+                                0 => {
+                                    {
+                                        let t_0 = x_62;
+                                        let t_1 = x_6;
+                                        x_14 = t_0;
+                                        x_15 = t_1;
+                                    }
+                                    __blk = 2;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_69);
+                                    x_72 = l_Ritsulint_hasArtTok(x_69);
+                                    match x_72 as u32 {
+                                        0 => match x_71 as u32 {
+                                            0 => {
+                                                {
+                                                    let t_0 = x_62;
+                                                    let t_1 = x_71;
+                                                    x_14 = t_0;
+                                                    x_15 = t_1;
+                                                }
+                                                __blk = 2;
+                                                continue 'body;
+                                            }
+                                            1 => {
+                                                rt::lean_dec(x_62);
+                                                rt::lean_del_object(x_9);
+                                                rt::lean_dec(x_4);
+                                                x_73 = rt::lean_box(0);
+                                                x_74 = l_Ritsulint_analyzeStep___closed__2();
+                                                x_75 = l_Ritsulint_analyzeStep___lam__0(
+                                                    x_3, x_74, x_73, x_6,
+                                                );
+                                                x_76 = rt::lean_alloc_ctor(
+                                                    1,
+                                                    2,
+                                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                                );
+                                                rt::lean_ctor_set(x_76, 0, x_75);
+                                                rt::lean_ctor_set(x_76, 1, x_7);
+                                                x_77 = rt::lean_alloc_ctor(
+                                                    0,
+                                                    2,
+                                                    0 * core::mem::size_of::<usize>() as u32 + 2,
+                                                );
+                                                rt::lean_ctor_set(x_77, 0, x_73);
+                                                rt::lean_ctor_set(x_77, 1, x_76);
+                                                rt::lean_ctor_set_uint8(
+                                                    x_77,
+                                                    2 * core::mem::size_of::<usize>() as u32 + 0,
+                                                    x_5,
+                                                );
+                                                rt::lean_ctor_set_uint8(
+                                                    x_77,
+                                                    2 * core::mem::size_of::<usize>() as u32 + 1,
+                                                    x_12,
+                                                );
+                                                return x_77;
+                                            }
+                                            _ => rt::lean_internal_panic_unreachable(),
+                                        },
+                                        1 => {
+                                            {
+                                                let t_0 = x_62;
+                                                let t_1 = x_6;
+                                                x_14 = t_0;
+                                                x_15 = t_1;
+                                            }
+                                            __blk = 2;
+                                            continue 'body;
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
                         }
-                        __blk = 10;
-                        continue 'body;
+                        _ => rt::lean_internal_panic_unreachable(),
                     }
-                    _ => rt::lean_internal_panic_unreachable(),
                 }
-            }
+                1 => {
+                    rt::lean_dec(x_62);
+                    rt::lean_dec(x_61);
+                    rt::lean_del_object(x_9);
+                    x_78 = l_Ritsulint_analyzeStep___closed__2();
+                    x_79 = rt::lean_box(0);
+                    x_80 = 0u8;
+                    x_81 = l_Ritsulint_analyzeStep___lam__0(x_3, x_78, x_79, x_80);
+                    x_82 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_82, 0, x_81);
+                    rt::lean_ctor_set(x_82, 1, x_7);
+                    x_83 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 2);
+                    rt::lean_ctor_set(x_83, 0, x_4);
+                    rt::lean_ctor_set(x_83, 1, x_82);
+                    rt::lean_ctor_set_uint8(
+                        x_83,
+                        2 * core::mem::size_of::<usize>() as u32 + 0,
+                        x_5,
+                    );
+                    rt::lean_ctor_set_uint8(
+                        x_83,
+                        2 * core::mem::size_of::<usize>() as u32 + 1,
+                        x_6,
+                    );
+                    return x_83;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
             10 => {
-                return x_78;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_analyzeStep___closed__0_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("unsupported", 11, 11);
-    return x_1;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_analyzeStep___closed__0() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_analyzeStep___closed__0_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_analyzeStep___lam__0(
-    mut x_1: Obj,
-    mut x_2: Obj,
-    mut x_3: Obj,
-    mut x_4: u8,
-) -> Obj {
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_7: Obj = rt::lean_box(0);
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: Obj = rt::lean_box(0);
-    x_5 = rt::lean_ctor_get(x_1, 0);
-    rt::lean_inc(x_5);
-    x_6 = rt::lean_ctor_get(x_1, 1);
-    rt::lean_inc(x_6);
-    x_7 = rt::lean_ctor_get(x_1, 2);
-    rt::lean_inc(x_7);
-    rt::lean_dec_ref(x_1);
-    x_8 = rt::lean_string_mk(x_5);
-    x_9 = rt::lean_string_mk(x_6);
-    x_10 = rt::lean_string_mk(x_7);
-    x_11 = rt::lean_alloc_ctor(0, 5, 0 * core::mem::size_of::<usize>() as u32 + 1);
-    rt::lean_ctor_set(x_11, 0, x_8);
-    rt::lean_ctor_set(x_11, 1, x_9);
-    rt::lean_ctor_set(x_11, 2, x_10);
-    rt::lean_ctor_set(x_11, 3, x_2);
-    rt::lean_ctor_set(x_11, 4, x_3);
-    rt::lean_ctor_set_uint8(x_11, 5 * core::mem::size_of::<usize>() as u32 + 0, x_4);
-    return x_11;
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_getLast_x3f___redArg(mut x_1: Obj) -> Obj {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    match rt::lean_obj_tag(x_1) {
-        0 => {
-            x_2 = rt::lean_box(0);
-            return x_2;
-        }
-        1 => {
-            x_3 = l_List_getLast___redArg(x_1);
-            x_4 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-            rt::lean_ctor_set(x_4, 0, x_3);
-            return x_4;
-        }
-        _ => rt::lean_internal_panic_unreachable(),
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_getLast___redArg(mut x_1: Obj) -> Obj {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => {
-                x_2 = rt::lean_ctor_get(x_1, 1);
-                match rt::lean_obj_tag(x_2) {
-                    0 => {
-                        x_3 = rt::lean_ctor_get(x_1, 0);
-                        rt::lean_inc(x_3);
-                        return x_3;
-                    }
+                x_86 = l_List_getLast_x3f___redArg(x_4);
+                match rt::lean_obj_tag(x_86) {
+                    0 => match rt::lean_obj_tag(x_85) {
+                        2 => {
+                            x_87 = rt::lean_ctor_get(x_85, 0);
+                            rt::lean_inc_ref(x_87);
+                            x_88 = rt::lean_alloc_ctor(
+                                1,
+                                1,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_88, 0, x_87);
+                            {
+                                let t_0 = x_85;
+                                let t_1 = x_88;
+                                x_61 = t_0;
+                                x_62 = t_1;
+                            }
+                            __blk = 9;
+                            continue 'body;
+                        }
+                        _ => {
+                            {
+                                let t_0 = x_85;
+                                let t_1 = x_86;
+                                x_61 = t_0;
+                                x_62 = t_1;
+                            }
+                            __blk = 9;
+                            continue 'body;
+                        }
+                    },
                     1 => {
                         {
-                            let t_0 = x_2;
-                            x_1 = t_0;
+                            let t_0 = x_85;
+                            let t_1 = x_86;
+                            x_61 = t_0;
+                            x_62 = t_1;
                         }
-                        __blk = 0;
+                        __blk = 9;
                         continue 'body;
                     }
                     _ => rt::lean_internal_panic_unreachable(),
@@ -2561,19 +2589,36 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
     let mut x_15: Obj = rt::lean_box(0);
     let mut x_16: Obj = rt::lean_box(0);
     let mut x_17: Obj = rt::lean_box(0);
-    let mut x_18: u8 = 0;
     let mut x_19: u8 = 0;
     let mut x_20: Obj = rt::lean_box(0);
-    let mut x_21: u8 = 0;
+    let mut x_21: Obj = rt::lean_box(0);
     let mut x_22: Obj = rt::lean_box(0);
     let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: u8 = 0;
+    let mut x_26: u8 = 0;
+    let mut x_27: u8 = 0;
+    let mut x_28: u8 = 0;
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: u8 = 0;
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
             0 => {
                 x_4 = l_List_lengthTR___redArg(x_3);
                 x_5 = l_Ritsulint_tokenize(x_4, x_3);
-                rt::lean_dec(x_4);
                 x_10 = l_List_any___at___00Ritsulint_resolveScope_spec__1(x_5);
                 match x_10 as u32 {
                     0 => {
@@ -2592,34 +2637,108 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
                             1 => {
                                 x_16 = rt::lean_ctor_get(x_15, 0);
                                 rt::lean_inc(x_16);
+                                x_17 = rt::lean_ctor_get(x_15, 1);
+                                rt::lean_inc(x_17);
                                 match rt::lean_obj_tag(x_16) {
                                     9 => {
-                                        x_17 = rt::lean_ctor_get(x_15, 1);
-                                        rt::lean_inc(x_17);
+                                        x_21 = l_List_lengthTR___redArg(x_5);
+                                        x_22 = l_List_lengthTR___redArg(x_15);
                                         rt::lean_dec_ref(x_15);
-                                        x_18 =
+                                        x_23 = rt::lean_nat_sub(x_21, x_22);
+                                        rt::lean_dec(x_22);
+                                        rt::lean_dec(x_21);
+                                        rt::lean_inc(x_5);
+                                        x_24 = l___private_Init_Data_List_Impl_0__List_takeTR_go___redArg(x_5, x_5, x_23, x_13);
+                                        x_25 =
                                             l_List_any___at___00Ritsulint_resolveScope_spec__3(x_5);
-                                        match x_18 as u32 {
+                                        match x_25 as u32 {
                                             0 => {
-                                                x_19 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
-                                                rt::lean_dec(x_5);
-                                                x_20 =
-                                                    l_Ritsulint_resolveRefs(x_1, x_2, x_17, x_19);
-                                                return x_20;
-                                            }
-                                            1 => {
-                                                rt::lean_dec(x_17);
-                                                rt::lean_dec(x_2);
-                                                x_21 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
-                                                rt::lean_dec(x_5);
-                                                match x_21 as u32 {
+                                                x_26 = l_List_any___at___00Ritsulint_resolveScope_spec__4(x_17);
+                                                match x_26 as u32 {
                                                     0 => {
-                                                        x_22 = rt::lean_box(3);
-                                                        return x_22;
+                                                        x_27 = l_List_any___at___00Ritsulint_resolveRefs_spec__1(x_24);
+                                                        match x_27 as u32 {
+0 => {
+rt::lean_dec(x_24);
+{ }
+__blk = 2; continue 'body;
+}
+1 => {
+match x_25 as u32 {
+0 => {
+x_28 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+rt::lean_dec(x_5);
+match x_28 as u32 {
+0 => {
+x_29 = rt::lean_box(0);
+x_30 = rt::lean_box(0);
+x_31 = rt::lean_alloc_ctor(0, 3, 0 * core::mem::size_of::<usize>() as u32 + 0); rt::lean_ctor_set(x_31, 0, x_29); rt::lean_ctor_set(x_31, 1, x_30); rt::lean_ctor_set(x_31, 2, x_2);
+x_32 = l_List_filterTR_loop___at___00Ritsulint_resolveScope_spec__5(x_10, x_24, x_30);
+x_33 = l_List_foldlM___at___00Ritsulint_resolveRefs_spec__2(x_1, x_31, x_32);
+match rt::lean_obj_tag(x_33) {
+0 => {
+rt::lean_dec(x_17);
+x_34 = rt::lean_box(3);
+return x_34;
+}
+1 => {
+x_35 = rt::lean_ctor_get(x_33, 0);
+rt::lean_inc(x_35);
+rt::lean_dec_ref(x_33);
+x_36 = l_Ritsulint_RefState_flush(x_35);
+x_37 = rt::lean_ctor_get(x_36, 2);
+rt::lean_inc(x_37);
+rt::lean_dec_ref(x_36);
+x_38 = l_Ritsulint_resolveRefs(x_1, x_37, x_17, x_28);
+return x_38;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+}
+1 => {
+rt::lean_dec(x_24);
+rt::lean_dec(x_17);
+rt::lean_dec(x_2);
+x_39 = rt::lean_box(2);
+return x_39;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+}
+1 => {
+rt::lean_dec(x_24);
+{ }
+__blk = 2; continue 'body;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
                                                     }
                                                     1 => {
-                                                        x_23 = rt::lean_box(2);
-                                                        return x_23;
+                                                        rt::lean_dec(x_24);
+                                                        {}
+                                                        __blk = 2;
+                                                        continue 'body;
+                                                    }
+                                                    _ => rt::lean_internal_panic_unreachable(),
+                                                }
+                                            }
+                                            1 => {
+                                                rt::lean_dec(x_24);
+                                                rt::lean_dec(x_17);
+                                                rt::lean_dec(x_2);
+                                                x_40 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+                                                rt::lean_dec(x_5);
+                                                match x_40 as u32 {
+                                                    0 => {
+                                                        x_41 = rt::lean_box(3);
+                                                        return x_41;
+                                                    }
+                                                    1 => {
+                                                        x_42 = rt::lean_box(2);
+                                                        return x_42;
                                                     }
                                                     _ => rt::lean_internal_panic_unreachable(),
                                                 }
@@ -2628,8 +2747,9 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
                                         }
                                     }
                                     _ => {
-                                        rt::lean_dec_ref(x_15);
+                                        rt::lean_dec(x_17);
                                         rt::lean_dec(x_16);
+                                        rt::lean_dec_ref(x_15);
                                         rt::lean_dec(x_2);
                                         {}
                                         __blk = 1;
@@ -2664,6 +2784,12 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
+            2 => {
+                x_19 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+                rt::lean_dec(x_5);
+                x_20 = l_Ritsulint_resolveRefs(x_1, x_2, x_17, x_19);
+                return x_20;
+            }
             _ => rt::lean_internal_panic_unreachable(),
         }
     }
@@ -2681,34 +2807,51 @@ pub(crate) unsafe fn l_Ritsulint_resolveScope(mut x_1: Obj, mut x_2: Obj, mut x_
 )]
 pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
     let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: u8 = 0;
-    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    x_3 = rt::lean_box(0);
+    x_4 = l_Ritsulint_tokenizeAux(x_1, x_2, x_3);
+    return x_4;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_tokenizeAux(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: u8 = 0;
     let mut x_6: Obj = rt::lean_box(0);
     let mut x_7: Obj = rt::lean_box(0);
     let mut x_8: Obj = rt::lean_box(0);
     let mut x_9: Obj = rt::lean_box(0);
     let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: u32 = 0;
+    let mut x_11: Obj = rt::lean_box(0);
     let mut x_12: u32 = 0;
-    let mut x_13: u8 = 0;
-    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_13: u32 = 0;
+    let mut x_14: u8 = 0;
     let mut x_15: Obj = rt::lean_box(0);
     let mut x_16: Obj = rt::lean_box(0);
-    let mut x_17: u32 = 0;
-    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: u32 = 0;
     let mut x_19: Obj = rt::lean_box(0);
     let mut x_20: Obj = rt::lean_box(0);
     let mut x_21: Obj = rt::lean_box(0);
     let mut x_22: Obj = rt::lean_box(0);
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: u8 = 0;
-    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: u8 = 0;
     let mut x_28: Obj = rt::lean_box(0);
     let mut x_29: Obj = rt::lean_box(0);
-    let mut x_30: u8 = 0;
-    let mut x_32: Obj = rt::lean_box(0);
-    let mut x_33: u8 = 0;
-    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_31: u8 = 0;
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: u8 = 0;
     let mut x_35: Obj = rt::lean_box(0);
     let mut x_36: Obj = rt::lean_box(0);
     let mut x_38: Obj = rt::lean_box(0);
@@ -2719,94 +2862,105 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
     let mut x_43: Obj = rt::lean_box(0);
     let mut x_45: Obj = rt::lean_box(0);
     let mut x_46: Obj = rt::lean_box(0);
-    let mut x_47: u8 = 0;
-    let mut x_48: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: u8 = 0;
     let mut x_49: Obj = rt::lean_box(0);
+    let mut x_50: Obj = rt::lean_box(0);
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
             0 => {
-                x_3 = rt::lean_unsigned_to_nat(0u32);
-                x_4 = rt::lean_nat_dec_eq(x_1, x_3);
-                match x_4 as u32 {
+                x_4 = rt::lean_unsigned_to_nat(0u32);
+                x_5 = rt::lean_nat_dec_eq(x_1, x_4);
+                match x_5 as u32 {
                     1 => {
                         rt::lean_dec(x_2);
-                        x_5 = rt::lean_box(0);
-                        return x_5;
+                        rt::lean_dec(x_1);
+                        x_6 = l_List_reverse___redArg(x_3);
+                        return x_6;
                     }
                     0 => match rt::lean_obj_tag(x_2) {
                         0 => {
-                            x_6 = rt::lean_box(0);
-                            return x_6;
+                            rt::lean_dec(x_1);
+                            x_7 = l_List_reverse___redArg(x_3);
+                            return x_7;
                         }
                         1 => {
-                            x_7 = rt::lean_ctor_get(x_2, 0);
-                            x_8 = rt::lean_ctor_get(x_2, 1);
-                            rt::lean_inc(x_8);
-                            x_9 = rt::lean_unsigned_to_nat(1u32);
-                            x_10 = rt::lean_nat_sub(x_1, x_9);
-                            x_11 = 31532u32;
-                            x_12 = rt::lean_unbox_uint32(x_7);
-                            x_13 = rt::lean_uint32_dec_eq(x_12, x_11);
-                            match x_13 as u32 {
+                            x_8 = rt::lean_ctor_get(x_2, 0);
+                            x_9 = rt::lean_ctor_get(x_2, 1);
+                            rt::lean_inc(x_9);
+                            x_10 = rt::lean_unsigned_to_nat(1u32);
+                            x_11 = rt::lean_nat_sub(x_1, x_10);
+                            rt::lean_dec(x_1);
+                            x_12 = 31532u32;
+                            x_13 = rt::lean_unbox_uint32(x_8);
+                            x_14 = rt::lean_uint32_dec_eq(x_13, x_12);
+                            match x_14 as u32 {
                                 0 => {
-                                    rt::lean_inc(x_7);
-                                    x_14 = l_Ritsulint_keywords();
-                                    x_15 = l_Ritsulint_matchKeyword(x_2, x_14);
-                                    match rt::lean_obj_tag(x_15) {
+                                    rt::lean_inc(x_8);
+                                    x_15 = l_Ritsulint_keywords();
+                                    x_16 = l_Ritsulint_matchKeyword(x_2, x_15);
+                                    match rt::lean_obj_tag(x_16) {
                                         0 => {
-                                            x_16 = rt::lean_alloc_ctor(
+                                            x_17 = rt::lean_alloc_ctor(
                                                 13,
                                                 0,
                                                 0 * core::mem::size_of::<usize>() as u32 + 4,
                                             );
-                                            x_17 = rt::lean_unbox_uint32(x_7);
-                                            rt::lean_dec(x_7);
+                                            x_18 = rt::lean_unbox_uint32(x_8);
+                                            rt::lean_dec(x_8);
                                             rt::lean_ctor_set_uint32(
-                                                x_16,
-                                                0 * core::mem::size_of::<usize>() as u32 + 0,
                                                 x_17,
+                                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                                                x_18,
                                             );
-                                            x_18 = l_Ritsulint_tokenize(x_10, x_8);
-                                            rt::lean_dec(x_10);
                                             x_19 = rt::lean_alloc_ctor(
                                                 1,
                                                 2,
                                                 0 * core::mem::size_of::<usize>() as u32 + 0,
                                             );
-                                            rt::lean_ctor_set(x_19, 0, x_16);
-                                            rt::lean_ctor_set(x_19, 1, x_18);
-                                            return x_19;
+                                            rt::lean_ctor_set(x_19, 0, x_17);
+                                            rt::lean_ctor_set(x_19, 1, x_3);
+                                            {
+                                                let t_0 = x_11;
+                                                let t_1 = x_9;
+                                                let t_2 = x_19;
+                                                x_1 = t_0;
+                                                x_2 = t_1;
+                                                x_3 = t_2;
+                                            }
+                                            __blk = 0;
+                                            continue 'body;
                                         }
                                         1 => {
+                                            rt::lean_dec(x_9);
                                             rt::lean_dec(x_8);
-                                            rt::lean_dec(x_7);
-                                            x_20 = rt::lean_ctor_get(x_15, 0);
-                                            rt::lean_inc(x_20);
-                                            rt::lean_dec_ref(x_15);
-                                            x_21 = rt::lean_ctor_get(x_20, 0);
-                                            x_22 = rt::lean_ctor_get(x_20, 1);
-                                            x_30 = (!rt::lean_is_exclusive(x_20)) as u8;
-                                            match x_30 as u32 {
+                                            x_21 = rt::lean_ctor_get(x_16, 0);
+                                            rt::lean_inc(x_21);
+                                            rt::lean_dec_ref(x_16);
+                                            x_22 = rt::lean_ctor_get(x_21, 0);
+                                            x_23 = rt::lean_ctor_get(x_21, 1);
+                                            x_31 = (!rt::lean_is_exclusive(x_21)) as u8;
+                                            match x_31 as u32 {
                                                 0 => {
                                                     {
-                                                        let t_0 = x_20;
-                                                        let t_1 = x_30;
-                                                        x_24 = t_0;
-                                                        x_25 = t_1;
+                                                        let t_0 = x_21;
+                                                        let t_1 = x_31;
+                                                        x_25 = t_0;
+                                                        x_26 = t_1;
                                                     }
                                                     __blk = 1;
                                                     continue 'body;
                                                 }
                                                 1 => {
+                                                    rt::lean_inc(x_23);
                                                     rt::lean_inc(x_22);
-                                                    rt::lean_inc(x_21);
-                                                    rt::lean_dec(x_20);
+                                                    rt::lean_dec(x_21);
                                                     {
                                                         let t_0 = rt::lean_box(0);
-                                                        let t_1 = x_30;
-                                                        x_24 = t_0;
-                                                        x_25 = t_1;
+                                                        let t_1 = x_31;
+                                                        x_25 = t_0;
+                                                        x_26 = t_1;
                                                     }
                                                     __blk = 1;
                                                     continue 'body;
@@ -2818,18 +2972,18 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
                                     }
                                 }
                                 1 => {
-                                    x_47 = (!rt::lean_is_exclusive(x_2)) as u8;
-                                    match x_47 as u32 {
+                                    x_48 = (!rt::lean_is_exclusive(x_2)) as u8;
+                                    match x_48 as u32 {
                                         0 => {
-                                            x_48 = rt::lean_ctor_get(x_2, 1);
-                                            rt::lean_dec(x_48);
-                                            x_49 = rt::lean_ctor_get(x_2, 0);
+                                            x_49 = rt::lean_ctor_get(x_2, 1);
                                             rt::lean_dec(x_49);
+                                            x_50 = rt::lean_ctor_get(x_2, 0);
+                                            rt::lean_dec(x_50);
                                             {
                                                 let t_0 = x_2;
-                                                let t_1 = x_47;
-                                                x_32 = t_0;
-                                                x_33 = t_1;
+                                                let t_1 = x_48;
+                                                x_33 = t_0;
+                                                x_34 = t_1;
                                             }
                                             __blk = 3;
                                             continue 'body;
@@ -2838,9 +2992,9 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
                                             rt::lean_dec(x_2);
                                             {
                                                 let t_0 = rt::lean_box(0);
-                                                let t_1 = x_47;
-                                                x_32 = t_0;
-                                                x_33 = t_1;
+                                                let t_1 = x_48;
+                                                x_33 = t_0;
+                                                x_34 = t_1;
                                             }
                                             __blk = 3;
                                             continue 'body;
@@ -2856,67 +3010,69 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
-            1 => {
-                x_26 = l_Ritsulint_tokenize(x_10, x_22);
-                rt::lean_dec(x_10);
-                match x_25 as u32 {
-                    0 => {
-                        rt::lean_ctor_set_tag(x_24, 1);
-                        rt::lean_ctor_set(x_24, 1, x_26);
-                        {
-                            let t_0 = x_24;
-                            x_28 = t_0;
-                        }
-                        __blk = 2;
-                        continue 'body;
+            1 => match x_26 as u32 {
+                0 => {
+                    rt::lean_ctor_set_tag(x_25, 1);
+                    rt::lean_ctor_set(x_25, 1, x_3);
+                    {
+                        let t_0 = x_25;
+                        x_28 = t_0;
                     }
-                    1 => {
-                        x_29 =
-                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_29, 0, x_21);
-                        rt::lean_ctor_set(x_29, 1, x_26);
-                        {
-                            let t_0 = x_29;
-                            x_28 = t_0;
-                        }
-                        __blk = 2;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
+                    __blk = 2;
+                    continue 'body;
                 }
-            }
+                1 => {
+                    x_30 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_30, 0, x_22);
+                    rt::lean_ctor_set(x_30, 1, x_3);
+                    {
+                        let t_0 = x_30;
+                        x_28 = t_0;
+                    }
+                    __blk = 2;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
             2 => {
-                return x_28;
+                {
+                    let t_0 = x_11;
+                    let t_1 = x_23;
+                    let t_2 = x_28;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
             }
             3 => {
-                rt::lean_inc(x_8);
-                x_34 = l_Ritsulint_numbered(x_8);
-                match rt::lean_obj_tag(x_34) {
+                rt::lean_inc(x_9);
+                x_35 = l_Ritsulint_numbered(x_9);
+                match rt::lean_obj_tag(x_35) {
                     0 => {
-                        x_35 = l_Ritsulint_tokenize___closed__0();
-                        x_36 = l_Ritsulint_tokenize(x_10, x_8);
-                        rt::lean_dec(x_10);
-                        match x_33 as u32 {
+                        x_36 = l_Ritsulint_tokenizeAux___closed__0();
+                        match x_34 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_32, 1, x_36);
-                                rt::lean_ctor_set(x_32, 0, x_35);
+                                rt::lean_ctor_set(x_33, 1, x_3);
+                                rt::lean_ctor_set(x_33, 0, x_36);
                                 {
-                                    let t_0 = x_32;
+                                    let t_0 = x_33;
                                     x_38 = t_0;
                                 }
                                 __blk = 4;
                                 continue 'body;
                             }
                             1 => {
-                                x_39 = rt::lean_alloc_ctor(
+                                x_40 = rt::lean_alloc_ctor(
                                     1,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 0,
                                 );
-                                rt::lean_ctor_set(x_39, 0, x_35);
-                                rt::lean_ctor_set(x_39, 1, x_36);
+                                rt::lean_ctor_set(x_40, 0, x_36);
+                                rt::lean_ctor_set(x_40, 1, x_3);
                                 {
-                                    let t_0 = x_39;
+                                    let t_0 = x_40;
                                     x_38 = t_0;
                                 }
                                 __blk = 4;
@@ -2926,38 +3082,36 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
                         }
                     }
                     1 => {
-                        rt::lean_dec(x_8);
-                        x_40 = rt::lean_ctor_get(x_34, 0);
-                        rt::lean_inc(x_40);
-                        rt::lean_dec_ref(x_34);
-                        x_41 = rt::lean_ctor_get(x_40, 0);
+                        rt::lean_dec(x_9);
+                        x_41 = rt::lean_ctor_get(x_35, 0);
                         rt::lean_inc(x_41);
-                        x_42 = rt::lean_ctor_get(x_40, 1);
+                        rt::lean_dec_ref(x_35);
+                        x_42 = rt::lean_ctor_get(x_41, 0);
                         rt::lean_inc(x_42);
-                        rt::lean_dec(x_40);
-                        x_43 = l_Ritsulint_tokenize(x_10, x_42);
-                        rt::lean_dec(x_10);
-                        match x_33 as u32 {
+                        x_43 = rt::lean_ctor_get(x_41, 1);
+                        rt::lean_inc(x_43);
+                        rt::lean_dec(x_41);
+                        match x_34 as u32 {
                             0 => {
-                                rt::lean_ctor_set(x_32, 1, x_43);
-                                rt::lean_ctor_set(x_32, 0, x_41);
+                                rt::lean_ctor_set(x_33, 1, x_3);
+                                rt::lean_ctor_set(x_33, 0, x_42);
                                 {
-                                    let t_0 = x_32;
+                                    let t_0 = x_33;
                                     x_45 = t_0;
                                 }
                                 __blk = 5;
                                 continue 'body;
                             }
                             1 => {
-                                x_46 = rt::lean_alloc_ctor(
+                                x_47 = rt::lean_alloc_ctor(
                                     1,
                                     2,
                                     0 * core::mem::size_of::<usize>() as u32 + 0,
                                 );
-                                rt::lean_ctor_set(x_46, 0, x_41);
-                                rt::lean_ctor_set(x_46, 1, x_43);
+                                rt::lean_ctor_set(x_47, 0, x_42);
+                                rt::lean_ctor_set(x_47, 1, x_3);
                                 {
-                                    let t_0 = x_46;
+                                    let t_0 = x_47;
                                     x_45 = t_0;
                                 }
                                 __blk = 5;
@@ -2970,10 +3124,28 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
                 }
             }
             4 => {
-                return x_38;
+                {
+                    let t_0 = x_11;
+                    let t_1 = x_9;
+                    let t_2 = x_38;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
             }
             5 => {
-                return x_45;
+                {
+                    let t_0 = x_11;
+                    let t_1 = x_43;
+                    let t_2 = x_45;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
             }
             _ => rt::lean_internal_panic_unreachable(),
         }
@@ -2991,7 +3163,7 @@ pub(crate) unsafe fn l_Ritsulint_tokenize(mut x_1: Obj, mut x_2: Obj) -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = l_Ritsulint_keywords___closed__95();
+    x_1 = l_Ritsulint_keywords___closed__99();
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -3014,12 +3186,136 @@ pub(crate) unsafe fn l_Ritsulint_keywords() -> Obj {
     unreachable_code,
     clippy::all
 )]
+unsafe fn l_Ritsulint_keywords___closed__99_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_keywords___closed__98();
+    x_2 = l_Ritsulint_keywords___closed__2();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_keywords___closed__99() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_keywords___closed__99_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_keywords___closed__98_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_keywords___closed__97();
+    x_2 = l_Ritsulint_keywords___closed__5();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_keywords___closed__98() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_keywords___closed__98_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_keywords___closed__97_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_keywords___closed__96();
+    x_2 = l_Ritsulint_keywords___closed__8();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_keywords___closed__97() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_keywords___closed__97_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_keywords___closed__96_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_keywords___closed__95();
+    x_2 = l_Ritsulint_keywords___closed__11();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_keywords___closed__96() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_keywords___closed__96_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
 unsafe fn l_Ritsulint_keywords___closed__95_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__94();
-    x_2 = l_Ritsulint_keywords___closed__2();
+    x_2 = l_Ritsulint_keywords___closed__14();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3050,7 +3346,7 @@ unsafe fn l_Ritsulint_keywords___closed__94_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__93();
-    x_2 = l_Ritsulint_keywords___closed__5();
+    x_2 = l_Ritsulint_keywords___closed__17();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3081,7 +3377,7 @@ unsafe fn l_Ritsulint_keywords___closed__93_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__92();
-    x_2 = l_Ritsulint_keywords___closed__8();
+    x_2 = l_Ritsulint_keywords___closed__20();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3112,7 +3408,7 @@ unsafe fn l_Ritsulint_keywords___closed__92_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__91();
-    x_2 = l_Ritsulint_keywords___closed__11();
+    x_2 = l_Ritsulint_keywords___closed__23();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3143,7 +3439,7 @@ unsafe fn l_Ritsulint_keywords___closed__91_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__90();
-    x_2 = l_Ritsulint_keywords___closed__14();
+    x_2 = l_Ritsulint_keywords___closed__26();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3174,7 +3470,7 @@ unsafe fn l_Ritsulint_keywords___closed__90_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__89();
-    x_2 = l_Ritsulint_keywords___closed__17();
+    x_2 = l_Ritsulint_keywords___closed__29();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3205,7 +3501,7 @@ unsafe fn l_Ritsulint_keywords___closed__89_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__88();
-    x_2 = l_Ritsulint_keywords___closed__20();
+    x_2 = l_Ritsulint_keywords___closed__32();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3236,7 +3532,7 @@ unsafe fn l_Ritsulint_keywords___closed__88_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__87();
-    x_2 = l_Ritsulint_keywords___closed__23();
+    x_2 = l_Ritsulint_keywords___closed__35();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3267,7 +3563,7 @@ unsafe fn l_Ritsulint_keywords___closed__87_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__86();
-    x_2 = l_Ritsulint_keywords___closed__26();
+    x_2 = l_Ritsulint_keywords___closed__38();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3298,7 +3594,7 @@ unsafe fn l_Ritsulint_keywords___closed__86_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__85();
-    x_2 = l_Ritsulint_keywords___closed__29();
+    x_2 = l_Ritsulint_keywords___closed__41();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3329,7 +3625,7 @@ unsafe fn l_Ritsulint_keywords___closed__85_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__84();
-    x_2 = l_Ritsulint_keywords___closed__32();
+    x_2 = l_Ritsulint_keywords___closed__44();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3360,7 +3656,7 @@ unsafe fn l_Ritsulint_keywords___closed__84_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__83();
-    x_2 = l_Ritsulint_keywords___closed__35();
+    x_2 = l_Ritsulint_keywords___closed__47();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3391,7 +3687,7 @@ unsafe fn l_Ritsulint_keywords___closed__83_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__82();
-    x_2 = l_Ritsulint_keywords___closed__38();
+    x_2 = l_Ritsulint_keywords___closed__50();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3422,7 +3718,7 @@ unsafe fn l_Ritsulint_keywords___closed__82_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__81();
-    x_2 = l_Ritsulint_keywords___closed__41();
+    x_2 = l_Ritsulint_keywords___closed__53();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3453,7 +3749,7 @@ unsafe fn l_Ritsulint_keywords___closed__81_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__80();
-    x_2 = l_Ritsulint_keywords___closed__44();
+    x_2 = l_Ritsulint_keywords___closed__56();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3484,7 +3780,7 @@ unsafe fn l_Ritsulint_keywords___closed__80_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__79();
-    x_2 = l_Ritsulint_keywords___closed__47();
+    x_2 = l_Ritsulint_keywords___closed__59();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3515,7 +3811,7 @@ unsafe fn l_Ritsulint_keywords___closed__79_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__78();
-    x_2 = l_Ritsulint_keywords___closed__50();
+    x_2 = l_Ritsulint_keywords___closed__62();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3546,7 +3842,7 @@ unsafe fn l_Ritsulint_keywords___closed__78_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__77();
-    x_2 = l_Ritsulint_keywords___closed__53();
+    x_2 = l_Ritsulint_keywords___closed__65();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3577,7 +3873,7 @@ unsafe fn l_Ritsulint_keywords___closed__77_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__76();
-    x_2 = l_Ritsulint_keywords___closed__56();
+    x_2 = l_Ritsulint_keywords___closed__68();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3608,7 +3904,7 @@ unsafe fn l_Ritsulint_keywords___closed__76_init() -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__75();
-    x_2 = l_Ritsulint_keywords___closed__59();
+    x_2 = l_Ritsulint_keywords___closed__71();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3638,8 +3934,8 @@ unsafe fn l_Ritsulint_keywords___closed__75_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = l_Ritsulint_keywords___closed__74();
-    x_2 = l_Ritsulint_keywords___closed__62();
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_keywords___closed__74();
     x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
@@ -3669,9 +3965,9 @@ unsafe fn l_Ritsulint_keywords___closed__74_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = l_Ritsulint_keywords___closed__73();
-    x_2 = l_Ritsulint_keywords___closed__65();
-    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    x_1 = rt::lean_box(9);
+    x_2 = l_Ritsulint_keywords___closed__73();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
     rt::lean_ctor_set(x_3, 1, x_1);
     return x_3;
@@ -3699,13 +3995,9 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__74() -> Obj {
 unsafe fn l_Ritsulint_keywords___closed__73_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
     x_1 = l_Ritsulint_keywords___closed__72();
-    x_2 = l_Ritsulint_keywords___closed__68();
-    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_3, 0, x_2);
-    rt::lean_ctor_set(x_3, 1, x_1);
-    return x_3;
+    x_2 = rt::lean_string_data(x_1);
+    return x_2;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
 pub(crate) unsafe fn l_Ritsulint_keywords___closed__73() -> Obj {
@@ -3729,14 +4021,8 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__73() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__72_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(0);
-    x_2 = l_Ritsulint_keywords___closed__71();
-    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_3, 0, x_2);
-    rt::lean_ctor_set(x_3, 1, x_1);
-    return x_3;
+    x_1 = rt::lean_mk_string_unchecked("、", 3, 1);
+    return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
 pub(crate) unsafe fn l_Ritsulint_keywords___closed__72() -> Obj {
@@ -3762,7 +4048,7 @@ unsafe fn l_Ritsulint_keywords___closed__71_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(9);
+    x_1 = rt::lean_box(11);
     x_2 = l_Ritsulint_keywords___closed__70();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -3818,7 +4104,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__70() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__69_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("、", 3, 1);
+    x_1 = rt::lean_mk_string_unchecked("まで", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -3901,7 +4187,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__67() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__66_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("まで", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("から", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -3928,7 +4214,7 @@ unsafe fn l_Ritsulint_keywords___closed__65_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(11);
+    x_1 = rt::lean_box(2);
     x_2 = l_Ritsulint_keywords___closed__64();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -3984,7 +4270,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__64() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__63_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("から", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("前号", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4067,7 +4353,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__61() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__60_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("前号", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("同号", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4094,7 +4380,7 @@ unsafe fn l_Ritsulint_keywords___closed__59_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(2);
+    x_1 = rt::lean_box(8);
     x_2 = l_Ritsulint_keywords___closed__58();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4150,7 +4436,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__58() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__57_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("同号", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("次項", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4177,7 +4463,7 @@ unsafe fn l_Ritsulint_keywords___closed__56_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(8);
+    x_1 = rt::lean_box(7);
     x_2 = l_Ritsulint_keywords___closed__55();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4233,7 +4519,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__55() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__54_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("次項", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("前項", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4260,7 +4546,7 @@ unsafe fn l_Ritsulint_keywords___closed__53_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(7);
+    x_1 = rt::lean_box(6);
     x_2 = l_Ritsulint_keywords___closed__52();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4316,7 +4602,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__52() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__51_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("前項", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("次条", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4343,7 +4629,7 @@ unsafe fn l_Ritsulint_keywords___closed__50_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(6);
+    x_1 = rt::lean_box(5);
     x_2 = l_Ritsulint_keywords___closed__49();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4399,7 +4685,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__49() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__48_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("次条", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("前条", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4426,7 +4712,7 @@ unsafe fn l_Ritsulint_keywords___closed__47_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(5);
+    x_1 = rt::lean_box(4);
     x_2 = l_Ritsulint_keywords___closed__46();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4482,7 +4768,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__46() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__45_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("前条", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("同項", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4509,7 +4795,7 @@ unsafe fn l_Ritsulint_keywords___closed__44_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(4);
+    x_1 = rt::lean_box(3);
     x_2 = l_Ritsulint_keywords___closed__43();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4565,7 +4851,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__43() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__42_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("同項", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("同条", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4592,7 +4878,7 @@ unsafe fn l_Ritsulint_keywords___closed__41_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(3);
+    x_1 = rt::lean_box(10);
     x_2 = l_Ritsulint_keywords___closed__40();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4648,7 +4934,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__40() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__39_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("同条", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("後段", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4731,7 +5017,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__37() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__36_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("後段", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("前段", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4814,7 +5100,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__34() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__33_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("前段", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("本文", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4841,7 +5127,7 @@ unsafe fn l_Ritsulint_keywords___closed__32_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(10);
+    x_1 = rt::lean_box(9);
     x_2 = l_Ritsulint_keywords___closed__31();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -4897,7 +5183,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__31() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__30_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("本文", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("又は", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -4980,7 +5266,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__28() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__27_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("又は", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("及び", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -5063,7 +5349,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__25() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__24_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("及び", 6, 2);
+    x_1 = rt::lean_mk_string_unchecked("並びに", 9, 3);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -5090,7 +5376,7 @@ unsafe fn l_Ritsulint_keywords___closed__23_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
     let mut x_2: Obj = rt::lean_box(0);
     let mut x_3: Obj = rt::lean_box(0);
-    x_1 = rt::lean_box(9);
+    x_1 = rt::lean_box(10);
     x_2 = l_Ritsulint_keywords___closed__22();
     x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
     rt::lean_ctor_set(x_3, 0, x_2);
@@ -5146,7 +5432,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__22() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__21_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("並びに", 9, 3);
+    x_1 = rt::lean_mk_string_unchecked("それぞれ", 12, 4);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -5229,7 +5515,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__19() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__18_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("それぞれ", 12, 4);
+    x_1 = rt::lean_mk_string_unchecked("の規定", 9, 3);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -5312,7 +5598,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__16() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__15_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("の規定", 9, 3);
+    x_1 = rt::lean_mk_string_unchecked("の見出し", 12, 4);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -5395,7 +5681,7 @@ pub(crate) unsafe fn l_Ritsulint_keywords___closed__13() -> Obj {
 )]
 unsafe fn l_Ritsulint_keywords___closed__12_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("の見出し", 12, 4);
+    x_1 = rt::lean_mk_string_unchecked("各号", 6, 2);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -8864,7 +9150,7 @@ pub(crate) unsafe fn l_List_foldl___at___00Ritsulint_joinKey_spec__0___closed__0
     unreachable_code,
     clippy::all
 )]
-unsafe fn l_Ritsulint_tokenize___closed__0_init() -> Obj {
+unsafe fn l_Ritsulint_tokenizeAux___closed__0_init() -> Obj {
     let mut x_1: u32 = 0;
     let mut x_2: Obj = rt::lean_box(0);
     x_1 = 31532u32;
@@ -8873,12 +9159,12 @@ unsafe fn l_Ritsulint_tokenize___closed__0_init() -> Obj {
     return x_2;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_tokenize___closed__0() -> Obj {
+pub(crate) unsafe fn l_Ritsulint_tokenizeAux___closed__0() -> Obj {
     thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
     if let Some(v) = CELL.with(|c| c.get().copied()) {
         return v;
     }
-    let v = l_Ritsulint_tokenize___closed__0_init();
+    let v = l_Ritsulint_tokenizeAux___closed__0_init();
     rt::lean_mark_persistent(v);
     CELL.with(|c| *c.get_or_init(|| v))
 }
@@ -9745,43 +10031,51 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
     let mut x_78: Obj = rt::lean_box(0);
     let mut x_79: Obj = rt::lean_box(0);
     let mut x_80: Obj = rt::lean_box(0);
-    let mut x_81: Obj = rt::lean_box(0);
-    let mut x_83: Obj = rt::lean_box(0);
-    let mut x_84: u8 = 0;
+    let mut x_82: Obj = rt::lean_box(0);
+    let mut x_83: u8 = 0;
+    let mut x_84: Obj = rt::lean_box(0);
     let mut x_85: Obj = rt::lean_box(0);
-    let mut x_87: Obj = rt::lean_box(0);
-    let mut x_88: u8 = 0;
+    let mut x_86: Obj = rt::lean_box(0);
+    let mut x_88: Obj = rt::lean_box(0);
     let mut x_89: Obj = rt::lean_box(0);
-    let mut x_90: Obj = rt::lean_box(0);
+    let mut x_90: u8 = 0;
     let mut x_91: Obj = rt::lean_box(0);
-    let mut x_92: Obj = rt::lean_box(0);
-    let mut x_94: Obj = rt::lean_box(0);
-    let mut x_95: u8 = 0;
-    let mut x_96: Obj = rt::lean_box(0);
-    let mut x_97: u8 = 0;
+    let mut x_93: Obj = rt::lean_box(0);
+    let mut x_94: u8 = 0;
+    let mut x_95: Obj = rt::lean_box(0);
+    let mut x_97: Obj = rt::lean_box(0);
+    let mut x_98: u8 = 0;
     let mut x_99: Obj = rt::lean_box(0);
     let mut x_100: Obj = rt::lean_box(0);
+    let mut x_101: Obj = rt::lean_box(0);
     let mut x_102: Obj = rt::lean_box(0);
-    let mut x_103: Obj = rt::lean_box(0);
     let mut x_104: Obj = rt::lean_box(0);
+    let mut x_105: u8 = 0;
     let mut x_106: Obj = rt::lean_box(0);
     let mut x_107: u8 = 0;
     let mut x_109: Obj = rt::lean_box(0);
-    let mut x_111: Obj = rt::lean_box(0);
+    let mut x_110: Obj = rt::lean_box(0);
+    let mut x_112: Obj = rt::lean_box(0);
     let mut x_113: Obj = rt::lean_box(0);
-    let mut x_115: Obj = rt::lean_box(0);
+    let mut x_114: Obj = rt::lean_box(0);
     let mut x_116: Obj = rt::lean_box(0);
-    let mut x_117: Obj = rt::lean_box(0);
-    let mut x_118: Obj = rt::lean_box(0);
+    let mut x_117: u8 = 0;
     let mut x_119: Obj = rt::lean_box(0);
-    let mut x_120: u8 = 0;
     let mut x_121: Obj = rt::lean_box(0);
-    let mut x_122: Obj = rt::lean_box(0);
     let mut x_123: Obj = rt::lean_box(0);
-    let mut x_124: u8 = 0;
-    let mut x_125: u8 = 0;
-    let mut x_126: u8 = 0;
+    let mut x_125: Obj = rt::lean_box(0);
+    let mut x_126: Obj = rt::lean_box(0);
     let mut x_127: Obj = rt::lean_box(0);
+    let mut x_128: Obj = rt::lean_box(0);
+    let mut x_129: Obj = rt::lean_box(0);
+    let mut x_130: u8 = 0;
+    let mut x_131: Obj = rt::lean_box(0);
+    let mut x_132: Obj = rt::lean_box(0);
+    let mut x_133: Obj = rt::lean_box(0);
+    let mut x_134: u8 = 0;
+    let mut x_135: u8 = 0;
+    let mut x_136: u8 = 0;
+    let mut x_137: Obj = rt::lean_box(0);
     let mut __blk: u32 = 0;
     'body: loop {
         match __blk {
@@ -10011,35 +10305,58 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
                     rt::lean_inc(x_79);
                     match rt::lean_obj_tag(x_79) {
                         0 => {
-                            rt::lean_dec_ref(x_3);
-                            rt::lean_dec_ref(x_2);
-                            x_80 = rt::lean_box(0);
-                            return x_80;
-                        }
-                        1 => {
-                            x_81 = rt::lean_ctor_get(x_79, 0);
-                            x_126 = (!rt::lean_is_exclusive(x_79)) as u8;
-                            match x_126 as u32 {
+                            x_80 = rt::lean_ctor_get(x_3, 0);
+                            x_90 = (!rt::lean_is_exclusive(x_3)) as u8;
+                            match x_90 as u32 {
                                 0 => {
                                     {
-                                        let t_0 = x_79;
-                                        let t_1 = x_126;
-                                        x_83 = t_0;
-                                        x_84 = t_1;
+                                        let t_0 = x_3;
+                                        let t_1 = x_90;
+                                        x_82 = t_0;
+                                        x_83 = t_1;
                                     }
                                     __blk = 9;
                                     continue 'body;
                                 }
                                 1 => {
-                                    rt::lean_inc(x_81);
+                                    rt::lean_inc(x_80);
+                                    rt::lean_dec(x_3);
+                                    {
+                                        let t_0 = rt::lean_box(0);
+                                        let t_1 = x_90;
+                                        x_82 = t_0;
+                                        x_83 = t_1;
+                                    }
+                                    __blk = 9;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        1 => {
+                            x_91 = rt::lean_ctor_get(x_79, 0);
+                            x_136 = (!rt::lean_is_exclusive(x_79)) as u8;
+                            match x_136 as u32 {
+                                0 => {
+                                    {
+                                        let t_0 = x_79;
+                                        let t_1 = x_136;
+                                        x_93 = t_0;
+                                        x_94 = t_1;
+                                    }
+                                    __blk = 11;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_91);
                                     rt::lean_dec(x_79);
                                     {
                                         let t_0 = rt::lean_box(0);
-                                        let t_1 = x_126;
-                                        x_83 = t_0;
-                                        x_84 = t_1;
+                                        let t_1 = x_136;
+                                        x_93 = t_0;
+                                        x_94 = t_1;
                                     }
-                                    __blk = 9;
+                                    __blk = 11;
                                     continue 'body;
                                 }
                                 _ => rt::lean_internal_panic_unreachable(),
@@ -10050,9 +10367,9 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
                 }
                 _ => {
                     rt::lean_dec(x_3);
-                    x_127 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_127, 0, x_2);
-                    return x_127;
+                    x_137 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_137, 0, x_2);
+                    return x_137;
                 }
             },
             1 => {
@@ -10206,27 +10523,29 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
                 return x_60;
             }
             9 => {
-                x_85 = rt::lean_ctor_get(x_3, 0);
-                x_125 = (!rt::lean_is_exclusive(x_3)) as u8;
-                match x_125 as u32 {
+                x_84 = rt::lean_ctor_get(x_1, 0);
+                rt::lean_inc_ref(x_84);
+                x_85 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_85, 0, x_84);
+                rt::lean_ctor_set(x_85, 1, x_80);
+                x_86 = l_Ritsulint_RefState_start(x_2, x_85);
+                match x_83 as u32 {
                     0 => {
+                        rt::lean_ctor_set(x_82, 0, x_86);
                         {
-                            let t_0 = x_3;
-                            let t_1 = x_125;
-                            x_87 = t_0;
-                            x_88 = t_1;
+                            let t_0 = x_82;
+                            x_88 = t_0;
                         }
                         __blk = 10;
                         continue 'body;
                     }
                     1 => {
-                        rt::lean_inc(x_85);
-                        rt::lean_dec(x_3);
+                        x_89 =
+                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_89, 0, x_86);
                         {
-                            let t_0 = rt::lean_box(0);
-                            let t_1 = x_125;
-                            x_87 = t_0;
-                            x_88 = t_1;
+                            let t_0 = x_89;
+                            x_88 = t_0;
                         }
                         __blk = 10;
                         continue 'body;
@@ -10235,130 +10554,63 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
                 }
             }
             10 => {
-                x_89 = rt::lean_ctor_get(x_2, 1);
-                x_90 = rt::lean_ctor_get(x_2, 2);
-                x_91 = rt::lean_ctor_get(x_81, 0);
-                x_92 = rt::lean_ctor_get(x_81, 1);
-                x_124 = (!rt::lean_is_exclusive(x_81)) as u8;
-                match x_124 as u32 {
-                    0 => {
-                        {
-                            let t_0 = x_81;
-                            let t_1 = x_124;
-                            x_94 = t_0;
-                            x_95 = t_1;
-                        }
-                        __blk = 11;
-                        continue 'body;
-                    }
-                    1 => {
-                        rt::lean_inc(x_92);
-                        rt::lean_inc(x_91);
-                        rt::lean_dec(x_81);
-                        {
-                            let t_0 = rt::lean_box(0);
-                            let t_1 = x_124;
-                            x_94 = t_0;
-                            x_95 = t_1;
-                        }
-                        __blk = 11;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
+                return x_88;
             }
             11 => {
-                x_96 = rt::lean_unsigned_to_nat(0u32);
-                x_97 = rt::lean_nat_dec_eq(x_92, x_96);
-                rt::lean_dec(x_92);
-                match x_97 as u32 {
+                x_95 = rt::lean_ctor_get(x_3, 0);
+                x_135 = (!rt::lean_is_exclusive(x_3)) as u8;
+                match x_135 as u32 {
                     0 => {
-                        rt::lean_del_object(x_87);
-                        match x_95 as u32 {
-                            0 => {
-                                rt::lean_ctor_set(x_94, 1, x_85);
-                                {
-                                    let t_0 = x_94;
-                                    x_99 = t_0;
-                                }
-                                __blk = 12;
-                                continue 'body;
-                            }
-                            1 => {
-                                x_104 = rt::lean_alloc_ctor(
-                                    0,
-                                    2,
-                                    0 * core::mem::size_of::<usize>() as u32 + 0,
-                                );
-                                rt::lean_ctor_set(x_104, 0, x_91);
-                                rt::lean_ctor_set(x_104, 1, x_85);
-                                {
-                                    let t_0 = x_104;
-                                    x_99 = t_0;
-                                }
-                                __blk = 12;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
+                        {
+                            let t_0 = x_3;
+                            let t_1 = x_135;
+                            x_97 = t_0;
+                            x_98 = t_1;
                         }
+                        __blk = 12;
+                        continue 'body;
                     }
                     1 => {
-                        rt::lean_inc(x_90);
-                        rt::lean_inc(x_89);
-                        x_120 = (!rt::lean_is_exclusive(x_2)) as u8;
-                        match x_120 as u32 {
-                            0 => {
-                                x_121 = rt::lean_ctor_get(x_2, 2);
-                                rt::lean_dec(x_121);
-                                x_122 = rt::lean_ctor_get(x_2, 1);
-                                rt::lean_dec(x_122);
-                                x_123 = rt::lean_ctor_get(x_2, 0);
-                                rt::lean_dec(x_123);
-                                {
-                                    let t_0 = x_2;
-                                    let t_1 = x_120;
-                                    x_106 = t_0;
-                                    x_107 = t_1;
-                                }
-                                __blk = 14;
-                                continue 'body;
-                            }
-                            1 => {
-                                rt::lean_dec(x_2);
-                                {
-                                    let t_0 = rt::lean_box(0);
-                                    let t_1 = x_120;
-                                    x_106 = t_0;
-                                    x_107 = t_1;
-                                }
-                                __blk = 14;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
+                        rt::lean_inc(x_95);
+                        rt::lean_dec(x_3);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_135;
+                            x_97 = t_0;
+                            x_98 = t_1;
                         }
+                        __blk = 12;
+                        continue 'body;
                     }
                     _ => rt::lean_internal_panic_unreachable(),
                 }
             }
             12 => {
-                x_100 = l_Ritsulint_RefState_start(x_2, x_99);
-                match x_84 as u32 {
+                x_99 = rt::lean_ctor_get(x_2, 1);
+                x_100 = rt::lean_ctor_get(x_2, 2);
+                x_101 = rt::lean_ctor_get(x_91, 0);
+                x_102 = rt::lean_ctor_get(x_91, 1);
+                x_134 = (!rt::lean_is_exclusive(x_91)) as u8;
+                match x_134 as u32 {
                     0 => {
-                        rt::lean_ctor_set(x_83, 0, x_100);
                         {
-                            let t_0 = x_83;
-                            x_102 = t_0;
+                            let t_0 = x_91;
+                            let t_1 = x_134;
+                            x_104 = t_0;
+                            x_105 = t_1;
                         }
                         __blk = 13;
                         continue 'body;
                     }
                     1 => {
-                        x_103 =
-                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_103, 0, x_100);
+                        rt::lean_inc(x_102);
+                        rt::lean_inc(x_101);
+                        rt::lean_dec(x_91);
                         {
-                            let t_0 = x_103;
-                            x_102 = t_0;
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_134;
+                            x_104 = t_0;
+                            x_105 = t_1;
                         }
                         __blk = 13;
                         continue 'body;
@@ -10367,101 +10619,200 @@ pub(crate) unsafe fn l_Ritsulint_refStep(mut x_1: Obj, mut x_2: Obj, mut x_3: Ob
                 }
             }
             13 => {
-                return x_102;
+                x_106 = rt::lean_unsigned_to_nat(0u32);
+                x_107 = rt::lean_nat_dec_eq(x_102, x_106);
+                rt::lean_dec(x_102);
+                match x_107 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_97);
+                        match x_105 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_104, 1, x_95);
+                                {
+                                    let t_0 = x_104;
+                                    x_109 = t_0;
+                                }
+                                __blk = 14;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_114 = rt::lean_alloc_ctor(
+                                    0,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_114, 0, x_101);
+                                rt::lean_ctor_set(x_114, 1, x_95);
+                                {
+                                    let t_0 = x_114;
+                                    x_109 = t_0;
+                                }
+                                __blk = 14;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        rt::lean_inc(x_100);
+                        rt::lean_inc(x_99);
+                        x_130 = (!rt::lean_is_exclusive(x_2)) as u8;
+                        match x_130 as u32 {
+                            0 => {
+                                x_131 = rt::lean_ctor_get(x_2, 2);
+                                rt::lean_dec(x_131);
+                                x_132 = rt::lean_ctor_get(x_2, 1);
+                                rt::lean_dec(x_132);
+                                x_133 = rt::lean_ctor_get(x_2, 0);
+                                rt::lean_dec(x_133);
+                                {
+                                    let t_0 = x_2;
+                                    let t_1 = x_130;
+                                    x_116 = t_0;
+                                    x_117 = t_1;
+                                }
+                                __blk = 16;
+                                continue 'body;
+                            }
+                            1 => {
+                                rt::lean_dec(x_2);
+                                {
+                                    let t_0 = rt::lean_box(0);
+                                    let t_1 = x_130;
+                                    x_116 = t_0;
+                                    x_117 = t_1;
+                                }
+                                __blk = 16;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
             }
-            14 => match x_95 as u32 {
+            14 => {
+                x_110 = l_Ritsulint_RefState_start(x_2, x_109);
+                match x_94 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_93, 0, x_110);
+                        {
+                            let t_0 = x_93;
+                            x_112 = t_0;
+                        }
+                        __blk = 15;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_113 =
+                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_113, 0, x_110);
+                        {
+                            let t_0 = x_113;
+                            x_112 = t_0;
+                        }
+                        __blk = 15;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            15 => {
+                return x_112;
+            }
+            16 => match x_105 as u32 {
                 0 => {
-                    rt::lean_ctor_set(x_94, 1, x_85);
+                    rt::lean_ctor_set(x_104, 1, x_95);
                     {
-                        let t_0 = x_94;
-                        x_109 = t_0;
-                    }
-                    __blk = 15;
-                    continue 'body;
-                }
-                1 => {
-                    x_119 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_119, 0, x_91);
-                    rt::lean_ctor_set(x_119, 1, x_85);
-                    {
-                        let t_0 = x_119;
-                        x_109 = t_0;
-                    }
-                    __blk = 15;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            15 => match x_84 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_83, 0, x_109);
-                    {
-                        let t_0 = x_83;
-                        x_111 = t_0;
-                    }
-                    __blk = 16;
-                    continue 'body;
-                }
-                1 => {
-                    x_118 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_118, 0, x_109);
-                    {
-                        let t_0 = x_118;
-                        x_111 = t_0;
-                    }
-                    __blk = 16;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            16 => match x_107 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_106, 0, x_111);
-                    {
-                        let t_0 = x_106;
-                        x_113 = t_0;
+                        let t_0 = x_104;
+                        x_119 = t_0;
                     }
                     __blk = 17;
                     continue 'body;
                 }
                 1 => {
-                    x_117 = rt::lean_alloc_ctor(0, 3, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_117, 0, x_111);
-                    rt::lean_ctor_set(x_117, 1, x_89);
-                    rt::lean_ctor_set(x_117, 2, x_90);
+                    x_129 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_129, 0, x_101);
+                    rt::lean_ctor_set(x_129, 1, x_95);
                     {
-                        let t_0 = x_117;
-                        x_113 = t_0;
+                        let t_0 = x_129;
+                        x_119 = t_0;
                     }
                     __blk = 17;
                     continue 'body;
                 }
                 _ => rt::lean_internal_panic_unreachable(),
             },
-            17 => match x_88 as u32 {
+            17 => match x_94 as u32 {
                 0 => {
-                    rt::lean_ctor_set(x_87, 0, x_113);
+                    rt::lean_ctor_set(x_93, 0, x_119);
                     {
-                        let t_0 = x_87;
-                        x_115 = t_0;
+                        let t_0 = x_93;
+                        x_121 = t_0;
                     }
                     __blk = 18;
                     continue 'body;
                 }
                 1 => {
-                    x_116 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_116, 0, x_113);
+                    x_128 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_128, 0, x_119);
+                    {
+                        let t_0 = x_128;
+                        x_121 = t_0;
+                    }
+                    __blk = 18;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            18 => match x_117 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_116, 0, x_121);
                     {
                         let t_0 = x_116;
-                        x_115 = t_0;
+                        x_123 = t_0;
                     }
-                    __blk = 18;
+                    __blk = 19;
+                    continue 'body;
+                }
+                1 => {
+                    x_127 = rt::lean_alloc_ctor(0, 3, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_127, 0, x_121);
+                    rt::lean_ctor_set(x_127, 1, x_99);
+                    rt::lean_ctor_set(x_127, 2, x_100);
+                    {
+                        let t_0 = x_127;
+                        x_123 = t_0;
+                    }
+                    __blk = 19;
                     continue 'body;
                 }
                 _ => rt::lean_internal_panic_unreachable(),
             },
-            18 => {
-                return x_115;
+            19 => match x_98 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_97, 0, x_123);
+                    {
+                        let t_0 = x_97;
+                        x_125 = t_0;
+                    }
+                    __blk = 20;
+                    continue 'body;
+                }
+                1 => {
+                    x_126 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_126, 0, x_123);
+                    {
+                        let t_0 = x_126;
+                        x_125 = t_0;
+                    }
+                    __blk = 20;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            20 => {
+                return x_125;
             }
             _ => rt::lean_internal_panic_unreachable(),
         }
@@ -10845,6 +11196,85 @@ pub(crate) unsafe fn l___private_Init_Data_List_Impl_0__List_takeWhileTR_go___at
     unused_unsafe,
     clippy::all
 )]
+pub(crate) unsafe fn l___private_Init_Data_List_Impl_0__List_takeTR_go___redArg(
+    mut x_1: Obj,
+    mut x_2: Obj,
+    mut x_3: Obj,
+    mut x_4: Obj,
+) -> Obj {
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: u8 = 0;
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    rt::lean_dec_ref(x_4);
+                    rt::lean_dec(x_3);
+                    rt::lean_inc(x_1);
+                    return x_1;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_2, 0);
+                    rt::lean_inc(x_5);
+                    x_6 = rt::lean_ctor_get(x_2, 1);
+                    rt::lean_inc(x_6);
+                    rt::lean_dec_ref(x_2);
+                    x_7 = rt::lean_unsigned_to_nat(0u32);
+                    x_8 = rt::lean_nat_dec_eq(x_3, x_7);
+                    match x_8 as u32 {
+                        1 => {
+                            rt::lean_dec(x_6);
+                            rt::lean_dec(x_5);
+                            rt::lean_dec(x_3);
+                            x_9 = rt::lean_array_to_list(x_4);
+                            return x_9;
+                        }
+                        0 => {
+                            x_10 = rt::lean_unsigned_to_nat(1u32);
+                            x_11 = rt::lean_nat_sub(x_3, x_10);
+                            rt::lean_dec(x_3);
+                            x_12 = rt::lean_array_push(x_4, x_5);
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_6;
+                                let t_2 = x_11;
+                                let t_3 = x_12;
+                                x_1 = t_0;
+                                x_2 = t_1;
+                                x_3 = t_2;
+                                x_4 = t_3;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
 pub(crate) unsafe fn l_List_any___at___00Ritsulint_resolveScope_spec__3(mut x_1: Obj) -> u8 {
     let mut x_2: u8 = 0;
     let mut x_3: Obj = rt::lean_box(0);
@@ -10945,11 +11375,303 @@ pub(crate) unsafe fn l_Ritsulint_isBracketOther(mut x_1: Obj) -> u8 {
     unused_assignments,
     unused_variables,
     unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_any___at___00Ritsulint_resolveScope_spec__4(mut x_1: Obj) -> u8 {
+    let mut x_2: u8 = 0;
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: u8 = 0;
+    let mut x_6: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = 0u8;
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    x_4 = rt::lean_ctor_get(x_1, 1);
+                    x_5 = l_Ritsulint_isArtTok(x_3);
+                    match x_5 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_4;
+                                x_1 = t_0;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        1 => {
+                            return x_5;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_isArtTok(mut x_1: Obj) -> u8 {
+    let mut x_2: u8 = 0;
+    let mut x_3: u8 = 0;
+    match rt::lean_obj_tag(x_1) {
+        0 => {
+            x_2 = 1u8;
+            return x_2;
+        }
+        _ => {
+            x_3 = 0u8;
+            return x_3;
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_filterTR_loop___at___00Ritsulint_resolveScope_spec__5(
+    mut x_1: u8,
+    mut x_2: Obj,
+    mut x_3: Obj,
+) -> Obj {
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: u8 = 0;
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    x_4 = l_List_reverse___redArg(x_3);
+                    return x_4;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_2, 0);
+                    x_6 = rt::lean_ctor_get(x_2, 1);
+                    x_17 = (!rt::lean_is_exclusive(x_2)) as u8;
+                    match x_17 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_2;
+                                let t_1 = x_17;
+                                x_8 = t_0;
+                                x_9 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_6);
+                            rt::lean_inc(x_5);
+                            rt::lean_dec(x_2);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_17;
+                                x_8 = t_0;
+                                x_9 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_10 = l_Ritsulint_isOther(x_5);
+                match x_10 as u32 {
+                    0 => match x_1 as u32 {
+                        0 => {
+                            rt::lean_del_object(x_8);
+                            rt::lean_dec(x_5);
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_6;
+                                let t_2 = x_3;
+                                x_1 = t_0;
+                                x_2 = t_1;
+                                x_3 = t_2;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        1 => match x_9 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_8, 1, x_3);
+                                {
+                                    let t_0 = x_8;
+                                    x_13 = t_0;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_15 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_15, 0, x_5);
+                                rt::lean_ctor_set(x_15, 1, x_3);
+                                {
+                                    let t_0 = x_15;
+                                    x_13 = t_0;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        },
+                        _ => rt::lean_internal_panic_unreachable(),
+                    },
+                    1 => {
+                        rt::lean_del_object(x_8);
+                        rt::lean_dec(x_5);
+                        {
+                            let t_0 = x_1;
+                            let t_1 = x_6;
+                            let t_2 = x_3;
+                            x_1 = t_0;
+                            x_2 = t_1;
+                            x_3 = t_2;
+                        }
+                        __blk = 0;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                {
+                    let t_0 = x_1;
+                    let t_1 = x_6;
+                    let t_2 = x_13;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_analyzeStep___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("refs", 4, 4);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_analyzeStep___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_analyzeStep___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_analyzeStep___lam__0(
+    mut x_1: Obj,
+    mut x_2: Obj,
+    mut x_3: Obj,
+    mut x_4: u8,
+) -> Obj {
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    x_5 = rt::lean_ctor_get(x_1, 0);
+    rt::lean_inc(x_5);
+    x_6 = rt::lean_ctor_get(x_1, 1);
+    rt::lean_inc(x_6);
+    x_7 = rt::lean_ctor_get(x_1, 2);
+    rt::lean_inc(x_7);
+    rt::lean_dec_ref(x_1);
+    x_8 = rt::lean_string_mk(x_5);
+    x_9 = rt::lean_string_mk(x_6);
+    x_10 = rt::lean_string_mk(x_7);
+    x_11 = rt::lean_alloc_ctor(0, 5, 0 * core::mem::size_of::<usize>() as u32 + 1);
+    rt::lean_ctor_set(x_11, 0, x_8);
+    rt::lean_ctor_set(x_11, 1, x_9);
+    rt::lean_ctor_set(x_11, 2, x_10);
+    rt::lean_ctor_set(x_11, 3, x_2);
+    rt::lean_ctor_set(x_11, 4, x_3);
+    rt::lean_ctor_set_uint8(x_11, 5 * core::mem::size_of::<usize>() as u32 + 0, x_4);
+    return x_11;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
     clippy::all
 )]
 unsafe fn l_Ritsulint_analyzeStep___closed__1_init() -> Obj {
     let mut x_1: Obj = rt::lean_box(0);
-    x_1 = rt::lean_mk_string_unchecked("refs", 4, 4);
+    x_1 = rt::lean_mk_string_unchecked("unsupported", 11, 11);
     return x_1;
 }
 #[allow(dead_code, non_snake_case, clippy::all)]
@@ -10986,6 +11708,1418 @@ pub(crate) unsafe fn l_Ritsulint_analyzeStep___closed__2() -> Obj {
     let v = l_Ritsulint_analyzeStep___closed__2_init();
     rt::lean_mark_persistent(v);
     CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_instBEqLead_beq(mut x_1: Obj, mut x_2: Obj) -> u8 {
+    let mut x_3: u8 = 0;
+    let mut x_4: u8 = 0;
+    let mut x_5: u8 = 0;
+    let mut x_6: u8 = 0;
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: u8 = 0;
+    match rt::lean_obj_tag(x_1) {
+        0 => match rt::lean_obj_tag(x_2) {
+            0 => {
+                x_3 = 1u8;
+                return x_3;
+            }
+            _ => {
+                x_4 = 0u8;
+                return x_4;
+            }
+        },
+        1 => match rt::lean_obj_tag(x_2) {
+            1 => {
+                x_5 = 1u8;
+                return x_5;
+            }
+            _ => {
+                x_6 = 0u8;
+                return x_6;
+            }
+        },
+        2 => match rt::lean_obj_tag(x_2) {
+            2 => {
+                x_7 = rt::lean_ctor_get(x_1, 0);
+                x_8 = rt::lean_ctor_get(x_2, 0);
+                x_9 = l_Ritsulint_instBEqTarget_beq(x_7, x_8);
+                return x_9;
+            }
+            _ => {
+                x_10 = 0u8;
+                return x_10;
+            }
+        },
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_instBEqTarget_beq(mut x_1: Obj, mut x_2: Obj) -> u8 {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
+    let mut x_8: u8 = 0;
+    x_3 = rt::lean_ctor_get(x_1, 0);
+    x_4 = rt::lean_ctor_get(x_1, 1);
+    x_5 = rt::lean_ctor_get(x_2, 0);
+    x_6 = rt::lean_ctor_get(x_2, 1);
+    x_7 = rt::lean_string_dec_eq(x_3, x_5);
+    match x_7 as u32 {
+        0 => {
+            return x_7;
+        }
+        1 => {
+            x_8 = rt::lean_nat_dec_eq(x_4, x_6);
+            return x_8;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_hasArtTok(mut x_1: Obj) -> u8 {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: u8 = 0;
+    x_2 = l_List_lengthTR___redArg(x_1);
+    x_3 = l_Ritsulint_tokenize(x_2, x_1);
+    x_4 = l_List_any___at___00Ritsulint_hasArtTok_spec__0(x_3);
+    rt::lean_dec(x_3);
+    return x_4;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_any___at___00Ritsulint_hasArtTok_spec__0(mut x_1: Obj) -> u8 {
+    let mut x_2: u8 = 0;
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: u8 = 0;
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = 0u8;
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    match rt::lean_obj_tag(x_3) {
+                        0 => {
+                            x_4 = 1u8;
+                            return x_4;
+                        }
+                        _ => {
+                            x_5 = rt::lean_ctor_get(x_1, 1);
+                            {
+                                let t_0 = x_5;
+                                x_1 = t_0;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_getLast_x3f___redArg(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    match rt::lean_obj_tag(x_1) {
+        0 => {
+            x_2 = rt::lean_box(0);
+            return x_2;
+        }
+        1 => {
+            x_3 = l_List_getLast___redArg(x_1);
+            x_4 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+            rt::lean_ctor_set(x_4, 0, x_3);
+            return x_4;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_getLast___redArg(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_2 = rt::lean_ctor_get(x_1, 1);
+                match rt::lean_obj_tag(x_2) {
+                    0 => {
+                        x_3 = rt::lean_ctor_get(x_1, 0);
+                        rt::lean_inc(x_3);
+                        return x_3;
+                    }
+                    1 => {
+                        {
+                            let t_0 = x_2;
+                            x_1 = t_0;
+                        }
+                        __blk = 0;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_leadOf(mut x_1: Obj) -> Obj {
+    let mut x_2: u32 = 0;
+    let mut x_3: u8 = 0;
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: u8 = 0;
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: u8 = 0;
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: u8 = 0;
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_31: u8 = 0;
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_36: u8 = 0;
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_2 = 12300u32;
+                x_3 =
+                    l_List_elem___at___00System_Uri_UriEscape_uriEscapeAsciiChar_spec__1(x_2, x_1);
+                match x_3 as u32 {
+                    0 => {
+                        x_4 = l_List_lengthTR___redArg(x_1);
+                        x_5 = l_Ritsulint_tokenize(x_4, x_1);
+                        x_6 = l_List_any___at___00Ritsulint_resolveScope_spec__0(x_5);
+                        match x_6 as u32 {
+                            0 => {
+                                rt::lean_inc(x_5);
+                                x_7 = l_Ritsulint_artKeys(x_5);
+                                x_8 = l_List_eraseDups___at___00Ritsulint_leadOf_spec__0(x_7);
+                                match rt::lean_obj_tag(x_8) {
+                                    1 => {
+                                        x_9 = rt::lean_ctor_get(x_8, 1);
+                                        rt::lean_inc(x_9);
+                                        rt::lean_dec_ref(x_8);
+                                        match rt::lean_obj_tag(x_9) {
+                                            0 => {
+                                                rt::lean_inc(x_5);
+                                                x_10 = l_Ritsulint_firstArtTarget(x_5);
+                                                match rt::lean_obj_tag(x_10) {
+                                                    1 => {
+                                                        x_11 = rt::lean_ctor_get(x_10, 0);
+                                                        x_36 = (!rt::lean_is_exclusive(x_10)) as u8;
+                                                        match x_36 as u32 {
+                                                            0 => {
+                                                                {
+                                                                    let t_0 = x_10;
+                                                                    let t_1 = x_36;
+                                                                    x_13 = t_0;
+                                                                    x_14 = t_1;
+                                                                }
+                                                                __blk = 1;
+                                                                continue 'body;
+                                                            }
+                                                            1 => {
+                                                                rt::lean_inc(x_11);
+                                                                rt::lean_dec(x_10);
+                                                                {
+                                                                    let t_0 = rt::lean_box(0);
+                                                                    let t_1 = x_36;
+                                                                    x_13 = t_0;
+                                                                    x_14 = t_1;
+                                                                }
+                                                                __blk = 1;
+                                                                continue 'body;
+                                                            }
+                                                            _ => {
+                                                                rt::lean_internal_panic_unreachable(
+                                                                )
+                                                            }
+                                                        }
+                                                    }
+                                                    _ => {
+                                                        rt::lean_dec(x_10);
+                                                        rt::lean_dec(x_5);
+                                                        x_37 = rt::lean_box(0);
+                                                        return x_37;
+                                                    }
+                                                }
+                                            }
+                                            _ => {
+                                                rt::lean_dec(x_9);
+                                                rt::lean_dec(x_5);
+                                                x_38 = rt::lean_box(0);
+                                                return x_38;
+                                            }
+                                        }
+                                    }
+                                    _ => {
+                                        rt::lean_dec(x_8);
+                                        rt::lean_dec(x_5);
+                                        x_39 = rt::lean_box(0);
+                                        return x_39;
+                                    }
+                                }
+                            }
+                            1 => {
+                                rt::lean_dec(x_5);
+                                x_40 = rt::lean_box(1);
+                                return x_40;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        rt::lean_dec(x_1);
+                        x_41 = rt::lean_box(0);
+                        return x_41;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            1 => {
+                x_15 = rt::lean_box(0);
+                x_16 = l_List_filterTR_loop___at___00Ritsulint_leadOf_spec__1(x_5, x_15);
+                x_17 = l_List_lengthTR___redArg(x_16);
+                rt::lean_dec(x_16);
+                x_18 = rt::lean_unsigned_to_nat(2u32);
+                x_19 = rt::lean_nat_dec_le(x_17, x_18);
+                rt::lean_dec(x_17);
+                match x_19 as u32 {
+                    0 => {
+                        x_20 = rt::lean_ctor_get(x_11, 0);
+                        x_31 = (!rt::lean_is_exclusive(x_11)) as u8;
+                        match x_31 as u32 {
+                            0 => {
+                                x_32 = rt::lean_ctor_get(x_11, 1);
+                                rt::lean_dec(x_32);
+                                {
+                                    let t_0 = x_11;
+                                    let t_1 = x_31;
+                                    x_22 = t_0;
+                                    x_23 = t_1;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            1 => {
+                                rt::lean_inc(x_20);
+                                rt::lean_dec(x_11);
+                                {
+                                    let t_0 = rt::lean_box(0);
+                                    let t_1 = x_31;
+                                    x_22 = t_0;
+                                    x_23 = t_1;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => match x_14 as u32 {
+                        0 => {
+                            rt::lean_ctor_set_tag(x_13, 2);
+                            {
+                                let t_0 = x_13;
+                                x_34 = t_0;
+                            }
+                            __blk = 5;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_35 = rt::lean_alloc_ctor(
+                                2,
+                                1,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_35, 0, x_11);
+                            {
+                                let t_0 = x_35;
+                                x_34 = t_0;
+                            }
+                            __blk = 5;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    },
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_24 = rt::lean_unsigned_to_nat(0u32);
+                match x_23 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_22, 1, x_24);
+                        {
+                            let t_0 = x_22;
+                            x_26 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_30 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_30, 0, x_20);
+                        rt::lean_ctor_set(x_30, 1, x_24);
+                        {
+                            let t_0 = x_30;
+                            x_26 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => match x_14 as u32 {
+                0 => {
+                    rt::lean_ctor_set_tag(x_13, 2);
+                    rt::lean_ctor_set(x_13, 0, x_26);
+                    {
+                        let t_0 = x_13;
+                        x_28 = t_0;
+                    }
+                    __blk = 4;
+                    continue 'body;
+                }
+                1 => {
+                    x_29 = rt::lean_alloc_ctor(2, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_29, 0, x_26);
+                    {
+                        let t_0 = x_29;
+                        x_28 = t_0;
+                    }
+                    __blk = 4;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            4 => {
+                return x_28;
+            }
+            5 => {
+                return x_34;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_elem___at___00System_Uri_UriEscape_uriEscapeAsciiChar_spec__1(
+    mut x_1: u32,
+    mut x_2: Obj,
+) -> u8 {
+    let mut x_3: u8 = 0;
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: u32 = 0;
+    let mut x_7: u8 = 0;
+    let mut x_8: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    x_3 = 0u8;
+                    return x_3;
+                }
+                1 => {
+                    x_4 = rt::lean_ctor_get(x_2, 0);
+                    x_5 = rt::lean_ctor_get(x_2, 1);
+                    x_6 = rt::lean_unbox_uint32(x_4);
+                    x_7 = rt::lean_uint32_dec_eq(x_1, x_6);
+                    match x_7 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_5;
+                                x_1 = t_0;
+                                x_2 = t_1;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        1 => {
+                            return x_7;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_artKeys(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: u8 = 0;
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = rt::lean_box(0);
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    match rt::lean_obj_tag(x_3) {
+                        0 => {
+                            rt::lean_inc_ref(x_3);
+                            x_4 = rt::lean_ctor_get(x_1, 1);
+                            x_13 = (!rt::lean_is_exclusive(x_1)) as u8;
+                            match x_13 as u32 {
+                                0 => {
+                                    x_14 = rt::lean_ctor_get(x_1, 0);
+                                    rt::lean_dec(x_14);
+                                    {
+                                        let t_0 = x_1;
+                                        let t_1 = x_13;
+                                        x_6 = t_0;
+                                        x_7 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_4);
+                                    rt::lean_dec(x_1);
+                                    {
+                                        let t_0 = rt::lean_box(0);
+                                        let t_1 = x_13;
+                                        x_6 = t_0;
+                                        x_7 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        _ => {
+                            x_15 = rt::lean_ctor_get(x_1, 1);
+                            rt::lean_inc(x_15);
+                            rt::lean_dec_ref(x_1);
+                            {
+                                let t_0 = x_15;
+                                x_1 = t_0;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_8 = rt::lean_ctor_get(x_3, 0);
+                rt::lean_inc_ref(x_8);
+                rt::lean_dec_ref(x_3);
+                x_9 = l_Ritsulint_artKeys(x_4);
+                match x_7 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_6, 1, x_9);
+                        rt::lean_ctor_set(x_6, 0, x_8);
+                        {
+                            let t_0 = x_6;
+                            x_11 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_12 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_12, 0, x_8);
+                        rt::lean_ctor_set(x_12, 1, x_9);
+                        {
+                            let t_0 = x_12;
+                            x_11 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                return x_11;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_eraseDups___at___00Ritsulint_leadOf_spec__0(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_2 = l_List_eraseDups___at___00Ritsulint_leadOf_spec__0___closed__0();
+    x_3 = l_List_eraseDupsBy___redArg(x_2, x_1);
+    return x_3;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_List_eraseDups___at___00Ritsulint_leadOf_spec__0___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_alloc_closure(l_String_decEq___boxed as *const (), 2, 0);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_List_eraseDups___at___00Ritsulint_leadOf_spec__0___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_List_eraseDups___at___00Ritsulint_leadOf_spec__0___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_String_decEq___boxed(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: u8 = 0;
+    let mut x_4: Obj = rt::lean_box(0);
+    x_3 = rt::lean_string_dec_eq(x_1, x_2);
+    rt::lean_dec_ref(x_2);
+    rt::lean_dec_ref(x_1);
+    x_4 = rt::lean_box(x_3 as usize);
+    return x_4;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_eraseDupsBy___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    x_3 = rt::lean_box(0);
+    x_4 = l_List_eraseDupsBy_loop___redArg(x_1, x_2, x_3);
+    return x_4;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_eraseDupsBy_loop___redArg(
+    mut x_1: Obj,
+    mut x_2: Obj,
+    mut x_3: Obj,
+) -> Obj {
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: u8 = 0;
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    rt::lean_dec_ref(x_1);
+                    x_4 = l_List_reverse___redArg(x_3);
+                    return x_4;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_2, 0);
+                    x_6 = rt::lean_ctor_get(x_2, 1);
+                    x_17 = (!rt::lean_is_exclusive(x_2)) as u8;
+                    match x_17 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_2;
+                                let t_1 = x_17;
+                                x_8 = t_0;
+                                x_9 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_6);
+                            rt::lean_inc(x_5);
+                            rt::lean_dec(x_2);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_17;
+                                x_8 = t_0;
+                                x_9 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                rt::lean_inc_ref(x_1);
+                rt::lean_inc(x_5);
+                x_10 = rt::lean_apply_1(x_1, x_5);
+                rt::lean_inc(x_3);
+                x_11 = l_List_any___at___00List_eraseDupsBy_loop_spec__0___redArg(x_10, x_3);
+                match x_11 as u32 {
+                    0 => match x_9 as u32 {
+                        0 => {
+                            rt::lean_ctor_set(x_8, 1, x_3);
+                            {
+                                let t_0 = x_8;
+                                x_13 = t_0;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_15 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_15, 0, x_5);
+                            rt::lean_ctor_set(x_15, 1, x_3);
+                            {
+                                let t_0 = x_15;
+                                x_13 = t_0;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    },
+                    1 => {
+                        rt::lean_del_object(x_8);
+                        rt::lean_dec(x_5);
+                        {
+                            let t_0 = x_1;
+                            let t_1 = x_6;
+                            let t_2 = x_3;
+                            x_1 = t_0;
+                            x_2 = t_1;
+                            x_3 = t_2;
+                        }
+                        __blk = 0;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                {
+                    let t_0 = x_1;
+                    let t_1 = x_6;
+                    let t_2 = x_13;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_any___at___00List_eraseDupsBy_loop_spec__0___redArg(
+    mut x_1: Obj,
+    mut x_2: Obj,
+) -> u8 {
+    let mut x_3: u8 = 0;
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
+    let mut x_8: u8 = 0;
+    let mut x_9: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    rt::lean_dec_ref(x_1);
+                    x_3 = 0u8;
+                    return x_3;
+                }
+                1 => {
+                    x_4 = rt::lean_ctor_get(x_2, 0);
+                    rt::lean_inc(x_4);
+                    x_5 = rt::lean_ctor_get(x_2, 1);
+                    rt::lean_inc(x_5);
+                    rt::lean_dec_ref(x_2);
+                    rt::lean_inc_ref(x_1);
+                    x_6 = rt::lean_apply_1(x_1, x_4);
+                    x_7 = rt::lean_unbox(x_6) as u8;
+                    match x_7 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_5;
+                                x_1 = t_0;
+                                x_2 = t_1;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_dec(x_5);
+                            rt::lean_dec_ref(x_1);
+                            x_9 = rt::lean_unbox(x_6) as u8;
+                            return x_9;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_firstArtTarget(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: u8 = 0;
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: u8 = 0;
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_27: u8 = 0;
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: u8 = 0;
+    let mut x_35: u8 = 0;
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: u8 = 0;
+    let mut x_38: u8 = 0;
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = rt::lean_box(0);
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    rt::lean_inc(x_3);
+                    match rt::lean_obj_tag(x_3) {
+                        0 => {
+                            x_4 = rt::lean_ctor_get(x_1, 1);
+                            x_38 = (!rt::lean_is_exclusive(x_1)) as u8;
+                            match x_38 as u32 {
+                                0 => {
+                                    x_39 = rt::lean_ctor_get(x_1, 0);
+                                    rt::lean_dec(x_39);
+                                    {
+                                        let t_0 = x_1;
+                                        let t_1 = x_38;
+                                        x_6 = t_0;
+                                        x_7 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_4);
+                                    rt::lean_dec(x_1);
+                                    {
+                                        let t_0 = rt::lean_box(0);
+                                        let t_1 = x_38;
+                                        x_6 = t_0;
+                                        x_7 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        _ => {
+                            rt::lean_dec(x_3);
+                            x_40 = rt::lean_ctor_get(x_1, 1);
+                            rt::lean_inc(x_40);
+                            rt::lean_dec_ref(x_1);
+                            {
+                                let t_0 = x_40;
+                                x_1 = t_0;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_8 = rt::lean_ctor_get(x_3, 0);
+                x_37 = (!rt::lean_is_exclusive(x_3)) as u8;
+                match x_37 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_3;
+                            let t_1 = x_37;
+                            x_10 = t_0;
+                            x_11 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_8);
+                        rt::lean_dec(x_3);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_37;
+                            x_10 = t_0;
+                            x_11 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => match rt::lean_obj_tag(x_4) {
+                1 => {
+                    x_20 = rt::lean_ctor_get(x_4, 0);
+                    x_35 = (!rt::lean_is_exclusive(x_4)) as u8;
+                    match x_35 as u32 {
+                        0 => {
+                            x_36 = rt::lean_ctor_get(x_4, 1);
+                            rt::lean_dec(x_36);
+                            {
+                                let t_0 = x_4;
+                                let t_1 = x_35;
+                                x_22 = t_0;
+                                x_23 = t_1;
+                            }
+                            __blk = 6;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_20);
+                            rt::lean_dec(x_4);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_35;
+                                x_22 = t_0;
+                                x_23 = t_1;
+                            }
+                            __blk = 6;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    rt::lean_dec(x_4);
+                    {}
+                    __blk = 3;
+                    continue 'body;
+                }
+            },
+            3 => {
+                x_13 = rt::lean_unsigned_to_nat(0u32);
+                match x_7 as u32 {
+                    0 => {
+                        rt::lean_ctor_set_tag(x_6, 0);
+                        rt::lean_ctor_set(x_6, 1, x_13);
+                        rt::lean_ctor_set(x_6, 0, x_8);
+                        {
+                            let t_0 = x_6;
+                            x_15 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_19 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_19, 0, x_8);
+                        rt::lean_ctor_set(x_19, 1, x_13);
+                        {
+                            let t_0 = x_19;
+                            x_15 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => match x_11 as u32 {
+                0 => {
+                    rt::lean_ctor_set_tag(x_10, 1);
+                    rt::lean_ctor_set(x_10, 0, x_15);
+                    {
+                        let t_0 = x_10;
+                        x_17 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                1 => {
+                    x_18 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_18, 0, x_15);
+                    {
+                        let t_0 = x_18;
+                        x_17 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            5 => {
+                return x_17;
+            }
+            6 => match rt::lean_obj_tag(x_20) {
+                1 => {
+                    rt::lean_del_object(x_10);
+                    rt::lean_del_object(x_6);
+                    x_24 = rt::lean_ctor_get(x_20, 0);
+                    x_34 = (!rt::lean_is_exclusive(x_20)) as u8;
+                    match x_34 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_20;
+                                let t_1 = x_34;
+                                x_26 = t_0;
+                                x_27 = t_1;
+                            }
+                            __blk = 7;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_24);
+                            rt::lean_dec(x_20);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_34;
+                                x_26 = t_0;
+                                x_27 = t_1;
+                            }
+                            __blk = 7;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    rt::lean_del_object(x_22);
+                    rt::lean_dec(x_20);
+                    {}
+                    __blk = 3;
+                    continue 'body;
+                }
+            },
+            7 => match x_23 as u32 {
+                0 => {
+                    rt::lean_ctor_set_tag(x_22, 0);
+                    rt::lean_ctor_set(x_22, 1, x_24);
+                    rt::lean_ctor_set(x_22, 0, x_8);
+                    {
+                        let t_0 = x_22;
+                        x_29 = t_0;
+                    }
+                    __blk = 8;
+                    continue 'body;
+                }
+                1 => {
+                    x_33 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_33, 0, x_8);
+                    rt::lean_ctor_set(x_33, 1, x_24);
+                    {
+                        let t_0 = x_33;
+                        x_29 = t_0;
+                    }
+                    __blk = 8;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            8 => match x_27 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_26, 0, x_29);
+                    {
+                        let t_0 = x_26;
+                        x_31 = t_0;
+                    }
+                    __blk = 9;
+                    continue 'body;
+                }
+                1 => {
+                    x_32 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_32, 0, x_29);
+                    {
+                        let t_0 = x_32;
+                        x_31 = t_0;
+                    }
+                    __blk = 9;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            9 => {
+                return x_31;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_filterTR_loop___at___00Ritsulint_leadOf_spec__1(
+    mut x_1: Obj,
+    mut x_2: Obj,
+) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: u8 = 0;
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_3 = l_List_reverse___redArg(x_2);
+                    return x_3;
+                }
+                1 => {
+                    x_4 = rt::lean_ctor_get(x_1, 0);
+                    x_5 = rt::lean_ctor_get(x_1, 1);
+                    x_15 = (!rt::lean_is_exclusive(x_1)) as u8;
+                    match x_15 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_15;
+                                x_7 = t_0;
+                                x_8 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_5);
+                            rt::lean_inc(x_4);
+                            rt::lean_dec(x_1);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_15;
+                                x_7 = t_0;
+                                x_8 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_9 = l_Ritsulint_isRefTok(x_4);
+                match x_9 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_7);
+                        rt::lean_dec(x_4);
+                        {
+                            let t_0 = x_5;
+                            let t_1 = x_2;
+                            x_1 = t_0;
+                            x_2 = t_1;
+                        }
+                        __blk = 0;
+                        continue 'body;
+                    }
+                    1 => match x_8 as u32 {
+                        0 => {
+                            rt::lean_ctor_set(x_7, 1, x_2);
+                            {
+                                let t_0 = x_7;
+                                x_12 = t_0;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_14 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_14, 0, x_4);
+                            rt::lean_ctor_set(x_14, 1, x_2);
+                            {
+                                let t_0 = x_14;
+                                x_12 = t_0;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    },
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                {
+                    let t_0 = x_5;
+                    let t_1 = x_12;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
 }
 
 #[allow(
