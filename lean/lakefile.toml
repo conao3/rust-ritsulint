@@ -1,0 +1,8 @@
+name = "ritsulint_core"
+defaultTargets = ["Ritsulint"]
+
+[leanOptions]
+autoImplicit = false
+
+[[lean_lib]]
+name = "Ritsulint"

@@ -1,0 +1,68 @@
+# ritsulint
+
+A linter for Japanese statutes. It reads the law XML that [e-Gov](https://laws.e-gov.go.jp/) publishes and reports places where the text of a law no longer agrees with itself.
+
+Japanese law refers to its own provisions by position (`第七条第一項`) and by copying their words. A read-as clause such as `第七条第一項中「各号の一に該当するとき」とあるのは「…」と読み替える` quotes the words of article 7. When an amendment rewrites article 7 and leaves the clause as it was, the clause quotes words that are no longer there. ritsulint finds such clauses.
+
+The warnings describe the consolidated text in the e-Gov data. Whether a warning is an error of the law itself is settled by the amending law as promulgated in the official gazette.
+
+## Rules
+
+| Rule | Reports |
+|---|---|
+| `read-as-quote` | A read-as clause whose quoted words are missing from the provision the clause names |
+
+`Status` tells how the quotation fails:
+
+| Status | Meaning |
+|---|---|
+| `absent` | The article exists and does not contain the quoted words |
+| `other-paragraph` | The quoted words are in another paragraph of the article |
+| `no-paragraph` | The article has no paragraph with that number |
+| `no-article` | The law has no article with that number |
+
+`Confidence` is `low` when words naming another law stand before the reference and the nearest text of the target is unlike the quotation, or when several clauses of one paragraph name articles the law does not have. Such clauses usually refer to another law.
+
+A clause that names a provision of another law, a provision that another read-as has already changed (`…において読み替えて準用する第…条中`), a range (`第…条から第…条まで`) or `これらの規定` is counted in `External` or `Unsupported` and gives no warning. Supplementary provisions are not read.
+
+## Usage
+
+```sh
+nix run github:conao3/rust-ritsulint -- law check-law --xml-file path/to/law.xml
+nix run github:conao3/rust-ritsulint -- corpus check-corpus --xml-dir path/to/xml --as-of 20261117
+```
+
+`corpus check-corpus` reads the directory the e-Gov [bulk download](https://laws.e-gov.go.jp/bulkdownload/) unpacks (`<law id>_<enforcement date>_<amendment id>/<same name>.xml`) and checks, of each law, the latest revision enforced on or before `--as-of`.
+
+- `--output json|text|table` selects the format (default `json`). Keys are in PascalCase.
+- `--fail-on-warnings` makes the exit code 1 when there is a warning.
+- Exit codes: 0 success, 1 warnings found with `--fail-on-warnings`, 252 wrong command line, 254 unreadable input.
+
+Each warning has an `Id` computed from the law, the rule, the paragraph the clause stands in, the words before `中` and the quoted words. The revision is not part of it, so the warnings an amendment introduced are the IDs present in the output for the later revision and absent from the earlier one.
+
+```sh
+ritsulint corpus check-corpus --xml-dir xml --as-of 20240401 | jq -r '.Warnings[].Id' | sort > before
+ritsulint corpus check-corpus --xml-dir xml --as-of 20240610 | jq -r '.Warnings[].Id' | sort > after
+comm -13 before after
+```
+
+## How it is built
+
+The rules that read a provision are written in Lean 4 (`lean/Ritsulint/Core.lean`): kanji numerals, splitting a paragraph into read-as clauses, and resolving the words before `中` to provisions. `lean/Ritsulint/Test.lean` states what these functions return on provisions as they are written, and the Lean kernel checks each statement when the package is built. [leanfran](https://github.com/conao3/lean-leanfran) compiles the Lean code to the Rust module in `src/generated/`.
+
+Rust reads the XML, looks up the provisions, compares the text and prints the report.
+
+## Development
+
+```sh
+nix develop --command make check
+nix develop --command make check-generated
+nix build
+nix develop --command make corpus-check CORPUS=path/to/xml AS_OF=20261117
+```
+
+`make corpus-check` runs the linter over a local copy of the bulk download and requires a high-confidence warning for every law listed in `tests/corpus-expected.txt`.
+
+## License
+
+Apache-2.0

@@ -1,0 +1,5 @@
+/target
+/result
+/lean/.lake
+.claude-dev
+.direnv
