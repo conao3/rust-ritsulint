@@ -506,7 +506,16 @@ export function App() {
             >
               github.com/conao3/rust-ritsulint
             </Link>{" "}
-            にあります。
+            にあります。作った経緯と検査の例は{" "}
+            <Link
+              href="https://s.conao3.com/blog/2026/2a0865"
+              target="_blank"
+              rel="noreferrer"
+              className={`text-blue-800 underline underline-offset-2 dark:text-blue-300 ${focusRing}`}
+            >
+              ブログの記事
+            </Link>{" "}
+            に書きました。
           </p>
         </div>
       </header>
