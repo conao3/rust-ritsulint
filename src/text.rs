@@ -57,31 +57,34 @@ fn large(c: char) -> char {
     }
 }
 
-/// `Some(description)` when the quotation marks of a text do not pair, or its parentheses
-/// outside quotations do not. A quotation may hold half of a pair of parentheses.
-fn unpaired(text: &str) -> Option<String> {
-    let mut depth = 0usize;
-    for c in text.chars() {
+/// The first bracket of a text that has no partner, as its description and its position in
+/// characters: a quotation mark, or a parenthesis outside quotations. A quotation may hold half
+/// of a pair of parentheses.
+fn unpaired(chars: &[char]) -> Option<(String, usize)> {
+    let mut open: Vec<usize> = Vec::new();
+    for (i, c) in chars.iter().enumerate() {
         match c {
-            '「' => depth += 1,
-            '」' if depth == 0 => return Some("」 without 「".to_string()),
-            '」' => depth -= 1,
+            '「' => open.push(i),
+            '」' if open.pop().is_none() => return Some(("」 without 「".to_string(), i)),
             _ => {}
         }
     }
-    if depth > 0 {
-        return Some("「 not closed".to_string());
+    if let Some(&i) = open.first() {
+        return Some(("「 not closed".to_string(), i));
     }
-    let mut depth = 0usize;
-    for c in core::unquote(text).chars() {
+    let mut quotes = 0usize;
+    for (i, c) in chars.iter().enumerate() {
         match c {
-            '（' => depth += 1,
-            '）' if depth == 0 => return Some("） without （".to_string()),
-            '）' => depth -= 1,
+            '「' => quotes += 1,
+            '」' => quotes -= 1,
+            '（' if quotes == 0 => open.push(i),
+            '）' if quotes == 0 && open.pop().is_none() => {
+                return Some(("） without （".to_string(), i));
+            }
             _ => {}
         }
     }
-    (depth > 0).then(|| "（ not closed".to_string())
+    open.first().map(|&i| ("（ not closed".to_string(), i))
 }
 
 const SUFFIXES: [&str; 12] = [
@@ -111,17 +114,26 @@ pub fn check(law: &Law) -> Vec<Warning> {
                 article: article.num.clone(),
                 paragraph: paragraph.num,
             };
+            let chars: Vec<char> = paragraph.prose.chars().collect();
             if !paragraph.text.contains("とあるのは")
-                && let Some(what) = unpaired(&paragraph.prose)
+                && let Some((what, at)) = unpaired(&chars)
             {
+                let opening = matches!(chars[at], '「' | '（');
+                let (from, to) = if opening {
+                    (at, (at + 12).min(chars.len()))
+                } else {
+                    (at.saturating_sub(11), at + 1)
+                };
                 out.push(plain(
                     law,
                     BRACKET_RULE,
                     "unpaired",
                     "medium",
                     source.clone(),
-                    what.chars().take(1).collect(),
-                    paragraph.prose.chars().take(80).collect(),
+                    chars[from..to].iter().collect(),
+                    chars[from.saturating_sub(40)..(to + 40).min(chars.len())]
+                        .iter()
+                        .collect(),
                     what,
                     0,
                 ));
@@ -200,7 +212,7 @@ pub fn check(law: &Law) -> Vec<Warning> {
                 if target.text.contains(term) || target.text.contains(&shorter) {
                     continue;
                 }
-                out.push(plain(
+                let mut warning = plain(
                     law,
                     TERM_RULE,
                     "term-absent",
@@ -214,7 +226,9 @@ pub fn check(law: &Law) -> Vec<Warning> {
                     snippet(&prose, whole.as_str()),
                     target.num.to_string(),
                     occurrence,
-                ));
+                );
+                warning.nearest = target.prose.chars().take(200).collect();
+                out.push(warning);
                 occurrence += 1;
             }
         }
@@ -285,7 +299,10 @@ mod tests {
             [&["事業者（外国法人を除く。以下同じ。は、届け出なければならない。"]];
         assert_eq!(
             found(&articles),
-            [("brackets".to_string(), "（".to_string())]
+            [(
+                "brackets".to_string(),
+                "（外国法人を除く。以下同".to_string()
+            )]
         );
     }
 

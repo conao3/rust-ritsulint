@@ -259,7 +259,26 @@ function Words({ warning }: { warning: Warning }) {
           <>
             <dt className={term}>条文</dt>
             <dd className={quote}>
-              …<Emphasized text={warning.Context ?? ""} part={warning.Quoted} />…
+              …
+              <Emphasized
+                text={warning.Context ?? ""}
+                part={warning.Rule === "unused-definition" ? `「${warning.Quoted}」` : warning.Quoted}
+              />
+              …
+            </dd>
+          </>
+        )}
+        {warning.Rule === "referenced-term" && warning.Nearest !== "" && (
+          <>
+            <dt className={term}>指している項</dt>
+            <dd className={quote}>{warning.Nearest}…</dd>
+          </>
+        )}
+        {warning.Rule === "definition-scope" && warning.Nearest !== "" && (
+          <>
+            <dt className={term}>定義</dt>
+            <dd className={quote}>
+              …<Emphasized text={warning.Nearest} part={`「${warning.Quoted}」`} />…
             </dd>
           </>
         )}

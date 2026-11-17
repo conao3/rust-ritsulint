@@ -22,6 +22,8 @@ struct Definition {
     scope: Option<String>,
     article: usize,
     source: Provision,
+    /// The words around the definition.
+    context: String,
 }
 
 fn definitions(law: &Law) -> Vec<Definition> {
@@ -32,6 +34,14 @@ fn definitions(law: &Law) -> Vec<Definition> {
                 out.push(Definition {
                     term: m[2].to_string(),
                     scope: m.get(1).map(|s| s.as_str().to_string()),
+                    context: {
+                        let whole = m.get(0).expect("the match exists");
+                        let before: Vec<char> = paragraph.text[..whole.start()].chars().collect();
+                        let from = before.len().saturating_sub(50);
+                        let head: String = before[from..].iter().collect();
+                        let tail: String = paragraph.text[whole.end()..].chars().take(12).collect();
+                        format!("{head}{}{tail}", whole.as_str())
+                    },
                     article: index,
                     source: Provision {
                         article: article.num.clone(),
@@ -203,7 +213,7 @@ pub fn check(law: &Law) -> Vec<Warning> {
                 "medium",
                 d.source.clone(),
                 d.term.clone(),
-                String::new(),
+                d.context.clone(),
                 String::new(),
                 0,
             ));
@@ -254,7 +264,7 @@ pub fn check(law: &Law) -> Vec<Warning> {
             if outside_uses(law, &homes, &d.term) > 3 {
                 break;
             }
-            out.push(plain(
+            let mut warning = plain(
                 law,
                 SCOPE_RULE,
                 "definition-scope",
@@ -267,7 +277,9 @@ pub fn check(law: &Law) -> Vec<Warning> {
                 around(&chars, at, term.len()),
                 d.source.article.clone(),
                 0,
-            ));
+            );
+            warning.nearest = d.context.clone();
+            out.push(warning);
             break;
         }
     }
