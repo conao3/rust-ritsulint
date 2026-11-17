@@ -321,6 +321,19 @@ mod tests {
     }
 
     #[test]
+    fn law_without_articles_is_read_by_its_paragraphs() {
+        let body = "<Paragraph Num=\"1\"><ParagraphSentence>法第三条の政令で定める額は、百万円とする。</ParagraphSentence></Paragraph><Paragraph Num=\"2\"><ParagraphSentence>前二項の額は、毎年度改定する。</ParagraphSentence></Paragraph>";
+        let law = law(body);
+        assert_eq!(law.articles.len(), 1);
+        assert_eq!(law.articles[0].num, "");
+        let warnings = check(&law);
+        assert_eq!(warnings.len(), 1);
+        assert_eq!(warnings[0].quoted, "前二項");
+        assert_eq!(warnings[0].source.article, "");
+        assert_eq!(warnings[0].source.paragraph, 2);
+    }
+
+    #[test]
     fn reference_without_its_unit_is_reported() {
         let body = article(
             "1",

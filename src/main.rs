@@ -148,7 +148,7 @@ enum CorpusCommand {
 #[serde(rename_all = "PascalCase")]
 struct Report {
     laws: u64,
-    /// Laws whose main provisions are not divided into articles. No rule reads them.
+    /// Laws whose main provisions are paragraphs without articles.
     laws_without_articles: u64,
     unreadable: Vec<String>,
     counts: Counts,
@@ -204,7 +204,7 @@ fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
         match Law::from_file(file) {
             Ok(law) => {
                 report.laws += 1;
-                if law.articles.is_empty() {
+                if law.articles.iter().all(|a| a.num.is_empty()) {
                     report.laws_without_articles += 1;
                 }
                 let (counts, warnings, clauses) = read_as::check(&law);

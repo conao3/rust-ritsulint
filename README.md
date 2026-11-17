@@ -62,7 +62,7 @@ nix run github:conao3/rust-ritsulint -- history list-origins --xml-dir path/to/r
 ritsulint law check-law --xml-file law.xml --output table
 ```
 
-The rules read the articles of the main provisions. A law whose main provisions are paragraphs without articles is counted in `LawsWithoutArticles` and not checked, and supplementary provisions and appended tables are not read.
+The rules read the main provisions. A law whose main provisions are paragraphs without articles is counted in `LawsWithoutArticles` and read as one article with an empty number (`"Article": ""`). Supplementary provisions and appended tables are not read.
 
 `corpus check-corpus` reads the directory the e-Gov [bulk download](https://laws.e-gov.go.jp/bulkdownload/) unpacks (`<law id>_<enforcement date>_<amendment id>/<same name>.xml`) and checks, of each law, the latest revision enforced on or before `--as-of`.
 

@@ -432,6 +432,19 @@ fn check_article(
                 .map(|t| status_of(law, t, &f.quoted))
                 .collect();
             let best = statuses.iter().copied().min().unwrap_or(Status::Absent);
+            if article.num.is_empty() && best == Status::NoArticle {
+                counts.external += 1;
+                clauses.push(Clause {
+                    law_id: law.law_id.clone(),
+                    source: source.clone(),
+                    scope: f.scope,
+                    targets: Vec::new(),
+                    quoted: f.quoted,
+                    replacement: f.replacement,
+                    result: "external".to_string(),
+                });
+                continue;
+            }
             clauses.push(Clause {
                 law_id: law.law_id.clone(),
                 source: source.clone(),

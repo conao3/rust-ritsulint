@@ -28,6 +28,8 @@ pub struct TocEntry {
     pub body: Option<(String, String)>,
 }
 
+/// An article. `num` is empty for the one article that stands for the main provisions of a law
+/// that is not divided into articles.
 #[derive(Debug)]
 pub struct Article {
     pub num: String,
@@ -109,6 +111,31 @@ fn prose_of(node: Node) -> String {
     let mut out = String::new();
     collect_prose(node, &mut out);
     out
+}
+
+/// The paragraphs that are children of an article, or of the main provisions of a law that
+/// is not divided into articles.
+fn paragraphs_of(node: Node) -> Vec<Paragraph> {
+    node.children()
+        .filter(|n| n.has_tag_name("Paragraph"))
+        .map(|p| Paragraph {
+            num: p.attribute("Num").and_then(|n| n.parse().ok()).unwrap_or(0),
+            text: text_of(p),
+            prose: prose_of(p),
+            items: p
+                .children()
+                .filter(|n| n.has_tag_name("Item"))
+                .map(|i| Item {
+                    num: i.attribute("Num").unwrap_or_default().to_string(),
+                    sentence: i
+                        .children()
+                        .find(|n| n.has_tag_name("ItemSentence"))
+                        .map(prose_of)
+                        .unwrap_or_default(),
+                })
+                .collect(),
+        })
+        .collect()
 }
 
 fn body_tag(toc_tag: &str) -> Option<&'static str> {
@@ -215,33 +242,21 @@ impl Law {
         let mut articles = Vec::new();
         if let Some(main) = doc.descendants().find(|n| n.has_tag_name("MainProvision")) {
             for node in main.descendants().filter(|n| n.has_tag_name("Article")) {
-                let num = node.attribute("Num").unwrap_or_default().to_string();
-                let paragraphs = node
-                    .children()
-                    .filter(|n| n.has_tag_name("Paragraph"))
-                    .map(|p| Paragraph {
-                        num: p.attribute("Num").and_then(|n| n.parse().ok()).unwrap_or(0),
-                        text: text_of(p),
-                        prose: prose_of(p),
-                        items: p
-                            .children()
-                            .filter(|n| n.has_tag_name("Item"))
-                            .map(|i| Item {
-                                num: i.attribute("Num").unwrap_or_default().to_string(),
-                                sentence: i
-                                    .children()
-                                    .find(|n| n.has_tag_name("ItemSentence"))
-                                    .map(prose_of)
-                                    .unwrap_or_default(),
-                            })
-                            .collect(),
-                    })
-                    .collect();
                 articles.push(Article {
-                    num,
+                    num: node.attribute("Num").unwrap_or_default().to_string(),
                     text: text_of(node),
-                    paragraphs,
+                    paragraphs: paragraphs_of(node),
                 });
+            }
+            if articles.is_empty() {
+                let paragraphs = paragraphs_of(main);
+                if !paragraphs.is_empty() {
+                    articles.push(Article {
+                        num: String::new(),
+                        text: text_of(main),
+                        paragraphs,
+                    });
+                }
             }
         }
         let mut index = HashMap::new();

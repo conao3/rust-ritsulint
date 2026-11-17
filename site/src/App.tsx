@@ -89,13 +89,13 @@ function Emphasized({ text, part, only }: { text: string; part: string; only?: "
 }
 
 function actual(text: string): string {
-  const items = /^(\S+)\/(\d+): (\d+) items(?:, item (\d+) of them)?$/.exec(text);
+  const items = /^(\S*)\/(\d+): (\d+) items(?:, item (\d+) of them)?$/.exec(text);
   if (items !== null) {
     const [, num, paragraph, count, position] = items;
     const where = `${article(num ?? "")}第${paragraph}項は${count}号まで`;
     return position === undefined ? where : `${where}。この参照は${position}番目の号にある`;
   }
-  const paragraphs = /^(\S+): (\d+) paragraphs$/.exec(text);
+  const paragraphs = /^(\S*): (\d+) paragraphs$/.exec(text);
   if (paragraphs !== null) {
     return `${article(paragraphs[1] ?? "")}は${paragraphs[2]}項まで`;
   }
@@ -483,8 +483,7 @@ export function App() {
             対象は、e-Gov 法令検索が収録する憲法・法律・政令・勅令・府省令・規則のうち、{report.AsOf}{" "}
             までに施行された {report.Laws.toLocaleString()}{" "}
             件です。各法令のその日までに施行された最新の版の本則を読みます。告示・条例・条約・廃止された法令は
-            e-Gov の収録の外にあります。本則が条に分かれていない {report.LawsWithoutArticles.toLocaleString()}{" "}
-            件 (項だけでできた法令) と、附則・別表は検査していません。警告は{" "}
+            e-Gov の収録の外にあります。附則と別表は検査していません。警告は{" "}
             {report.Warnings.length.toLocaleString()} 件で、このうち確度「高」は{" "}
             {counts.high.toLocaleString()} 件です。読替えの引用は、句 {report.Counts.Clauses.toLocaleString()}{" "}
             件のうち同じ法令の条・項に解決できた {report.Counts.Checked.toLocaleString()}{" "}

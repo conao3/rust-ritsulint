@@ -135,11 +135,17 @@ export function lawKind(lawId: string): LawKind {
 }
 
 export function article(num: string): string {
+  if (num === "") {
+    return "本則";
+  }
   const [head, ...branches] = num.split("_");
   return `第${head ?? ""}条${branches.map((b) => `の${b}`).join("")}`;
 }
 
 export function provision(p: Provision): string {
+  if (p.Article === "") {
+    return p.Paragraph > 0 ? `第${p.Paragraph}項` : "本則";
+  }
   return p.Paragraph > 0 ? `${article(p.Article)}第${p.Paragraph}項` : article(p.Article);
 }
 
