@@ -31,6 +31,7 @@ instance : Arbitrary (Clause Int) :=
 #assay Ritsulint.ReadAs.segs
 #assay Ritsulint.ReadAs.applyAll
 #assay Ritsulint.ReadAs.applySeq
+#assay Ritsulint.ReadAs.rightToLeft
 #assay Ritsulint.ReadAs.noStart
 #assay Ritsulint.ReadAs.clean
 #assay Ritsulint.ReadAs.step

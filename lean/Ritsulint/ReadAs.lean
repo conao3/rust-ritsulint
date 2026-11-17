@@ -23,6 +23,8 @@ longest" was found, so provisions where the choice matters are reported (`rightT
   in what they wrote. Decided on the reading at once only.
 - `applySeq_eq_applyAll`: for independent clauses the two readings agree.
 - `swap_differs`: two clauses that exchange two words read differently one after another.
+- `crossing_differs`: two clauses whose quoted words run into each other read differently from
+  the left and from the right.
 - `vacuous_of_absent`: a clause whose quoted words do not occur in the text changes nothing.
 -/
 
@@ -287,6 +289,15 @@ theorem swap_differs (x y : α) (h : x ≠ y) :
   refine ⟨?_, ?_, ?_⟩ <;>
     simp [applyAll, applySeq, Clause.apply, independent, independentRev, step, clean, noStart,
       segs, pick, starts, Seg.read, Seg.without, Seg.before, h, h']
+
+/-- Two clauses whose quoted words run into each other: read from the left the first is taken,
+read from the right the second. -/
+theorem crossing_differs (x y z a b : α) (h : y ≠ z) :
+    applyAll [⟨[x, y], [a]⟩, ⟨[y, z], [b]⟩] [x, y, z] = [a, z]
+      ∧ rightToLeft [⟨[x, y], [a]⟩, ⟨[y, z], [b]⟩] [x, y, z] = [x, b] := by
+  have h' : z ≠ y := fun e => h e.symm
+  constructor <;>
+    simp [applyAll, rightToLeft, segs, pick, starts, Seg.read, List.isPrefixOf, h, h']
 
 /-- Where the quoted words of two clauses open, the longer are read, in whichever order the
 clauses are written. -/
