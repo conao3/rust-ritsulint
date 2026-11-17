@@ -3,7 +3,7 @@ LEANFRAN ?= leanfran
 .PHONY: all
 all: check
 
-# Build the Lean package (proofs included) and regenerate src/generated/.
+# Build the Lean package (the checks in Test.lean included) and regenerate src/generated/.
 .PHONY: generate
 generate:
 	cd lean && lake build

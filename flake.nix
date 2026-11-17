@@ -1,5 +1,5 @@
 {
-  description = "A linter for Japanese statutes, with its rules written and checked in Lean 4 and compiled to Rust";
+  description = "A linter for Japanese statutes, with its rules for reading provisions written in Lean 4 and compiled to Rust";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
