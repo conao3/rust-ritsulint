@@ -11,7 +11,7 @@ use clap::{Parser, Subcommand, ValueEnum};
 use serde::Serialize;
 
 use law::Law;
-use read_as::{Counts, Skipped, Warning};
+use read_as::{Clause, Counts, Warning};
 
 const EXIT_USAGE: u8 = 252;
 const EXIT_INPUT: u8 = 254;
@@ -86,7 +86,7 @@ struct Report {
     counts: Counts,
     warnings: Vec<Warning>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
-    skipped: Vec<Skipped>,
+    clauses: Vec<Clause>,
 }
 
 fn revision_files(xml_dir: &Path, as_of: &str) -> Result<Vec<PathBuf>, String> {
@@ -119,15 +119,15 @@ fn check_files(files: &[PathBuf], debug: bool) -> Report {
         unreadable: Vec::new(),
         counts: Counts::default(),
         warnings: Vec::new(),
-        skipped: Vec::new(),
+        clauses: Vec::new(),
     };
     for file in files {
         match Law::from_file(file) {
             Ok(law) => {
                 report.laws += 1;
-                let (counts, warnings, skipped) = read_as::check(&law);
+                let (counts, warnings, clauses) = read_as::check(&law);
                 if debug {
-                    report.skipped.extend(skipped);
+                    report.clauses.extend(clauses);
                 }
                 report.counts.add(&counts);
                 report.warnings.extend(warnings);

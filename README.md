@@ -40,6 +40,7 @@ nix run github:conao3/rust-ritsulint -- corpus check-corpus --xml-dir path/to/xm
 
 - `--output json|text|table` selects the format (default `json`). Keys are in PascalCase.
 - `--fail-on-warnings` makes the exit code 1 when there is a warning.
+- `--debug` adds `Clauses` to the JSON: every read-as clause with its source, the words before 中, the resolved provisions, the quoted words, the replacement and the result (`present`, `absent`, `other-paragraph`, `no-paragraph`, `no-article`, `external`, `unsupported`).
 - Exit codes: 0 success, 1 warnings found with `--fail-on-warnings`, 252 wrong command line, 254 unreadable input.
 
 Each warning has an `Id` computed from the law, the rule, the paragraph the clause stands in, the words before `中`, the provisions they resolve to and the quoted words. The revision is not part of it, so the warnings an amendment introduced are the IDs present in the output for the later revision and absent from the earlier one. The e-Gov API serves the XML of each revision (`https://laws.e-gov.go.jp/api/2/law_file/xml/<revision id>`); the bulk download holds the current and the not yet enforced revisions only.

@@ -35,11 +35,14 @@ pub struct Warning {
 
 #[derive(Debug, Serialize, Clone)]
 #[serde(rename_all = "PascalCase")]
-pub struct Skipped {
+pub struct Clause {
     pub law_id: String,
     pub source: Provision,
-    pub kind: String,
     pub scope: String,
+    pub targets: Vec<Provision>,
+    pub quoted: String,
+    pub replacement: String,
+    pub result: String,
 }
 
 #[derive(Debug, Default, Serialize, Clone)]
@@ -310,7 +313,7 @@ fn check_article(
     article: &Article,
     counts: &mut Counts,
     out: &mut Vec<Warning>,
-    skipped: &mut Vec<Skipped>,
+    clauses: &mut Vec<Clause>,
 ) {
     let (prev, next) = neighbors(law, index);
     for paragraph in &article.paragraphs {
@@ -346,11 +349,14 @@ fn check_article(
                     } else {
                         counts.unsupported += 1;
                     }
-                    skipped.push(Skipped {
+                    clauses.push(Clause {
                         law_id: law.law_id.clone(),
                         source: source.clone(),
-                        kind: kind.to_string(),
                         scope: f.scope,
+                        targets: Vec::new(),
+                        quoted: f.quoted,
+                        replacement: f.replacement,
+                        result: kind.to_string(),
                     });
                     continue;
                 }
@@ -374,6 +380,15 @@ fn check_article(
                 .map(|t| status_of(law, t, &f.quoted))
                 .collect();
             let best = statuses.iter().copied().min().unwrap_or(Status::Absent);
+            clauses.push(Clause {
+                law_id: law.law_id.clone(),
+                source: source.clone(),
+                scope: f.scope.clone(),
+                targets: targets.clone(),
+                quoted: f.quoted.clone(),
+                replacement: f.replacement.clone(),
+                result: best.name().to_string(),
+            });
             match best {
                 Status::Present => {
                     counts.matched += 1;
@@ -444,14 +459,14 @@ fn check_article(
     }
 }
 
-pub fn check(law: &Law) -> (Counts, Vec<Warning>, Vec<Skipped>) {
+pub fn check(law: &Law) -> (Counts, Vec<Warning>, Vec<Clause>) {
     let mut counts = Counts::default();
     let mut out = Vec::new();
-    let mut skipped = Vec::new();
+    let mut clauses = Vec::new();
     for (index, article) in law.articles.iter().enumerate() {
-        check_article(law, index, article, &mut counts, &mut out, &mut skipped);
+        check_article(law, index, article, &mut counts, &mut out, &mut clauses);
     }
-    (counts, out, skipped)
+    (counts, out, clauses)
 }
 
 #[cfg(test)]
