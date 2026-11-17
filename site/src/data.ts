@@ -131,7 +131,7 @@ function amendment(id: string): string {
         ? "勅令"
         : "省令・規則";
   const number = Number(law ? digits : digits?.slice(-3));
-  return `${eras[era ?? ""] ?? ""}${Number(year)}年${kind}第${number}号`;
+  return `${eras[era ?? ""] ?? ""}${Number(year) === 1 ? "元" : Number(year)}年${kind}第${number}号`;
 }
 
 const originLabel: Record<string, string> = {
@@ -139,7 +139,6 @@ const originLabel: Record<string, string> = {
   "clause-new": "読替えの句がこの版で書かれた",
   renumbered: "この版で引用先の条・項の番号が変わった",
   "was-unchecked": "この版から照合できる書き方になった",
-  introduced: "この版から",
 };
 
 export function originText(o: Origin): string {
@@ -151,5 +150,7 @@ export function originText(o: Origin): string {
   if (o.Kind === "oldest") {
     return `e-Gov が持つ最古の版 (${day} 施行) から。起点の改正は版の履歴では決まらない`;
   }
-  return `${day} 施行の版 (${amendment(amend ?? "")}) から。${originLabel[o.Kind] ?? ""}`;
+  const since = `${day} 施行の版 (${amendment(amend ?? "")}) から`;
+  const label = originLabel[o.Kind];
+  return label === undefined ? since : `${since}。${label}`;
 }
