@@ -1,5 +1,6 @@
 /target
 /result
 /lean/.lake
+/audit/.lake
 .claude-dev
 .direnv

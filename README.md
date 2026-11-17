@@ -108,11 +108,13 @@ For the Immigration Control Act this prints 1 ID: the amendment enforced on 2024
 
 The rules that read a provision are written in Lean 4 (`lean/Ritsulint/Core.lean`): kanji numerals, splitting a paragraph into read-as clauses, and resolving the words before `中` to provisions. `lean/Ritsulint/Test.lean` states what these functions return on provisions as they are written, and the Lean kernel checks each statement when the package is built. [leanfran](https://github.com/conao3/lean-leanfran) compiles the Lean code to the Rust module in `src/generated/`.
 
+`lean/Ritsulint/Properties.lean` proves properties of the compiled functions for every input: `parseKansuji` reads every number from 1 to 9,999 back from its kanji numeral, `unquote` keeps a text without quotations as it is and reads a quotation as one `〓`, and `stripParens` keeps a text without parentheses as it is and drops a parenthesized remark. `audit/` runs [lean-assay](https://github.com/conao3/lean-assay) on these functions: it breaks each one in small ways, and `make check` fails when a broken version satisfies every theorem about it.
+
 Rust reads the XML, looks up the provisions, compares the text and prints the report.
 
 ## What a warning means, as theorems
 
-`lean/Ritsulint/ReadAs.lean` states what a read-as clause does: `Clause.apply c text` is the text of a provision with every `c.quoted` replaced by `c.replacement`, and `Clause.Vacuous c text` says that the clause leaves the text as it is. The theorem `vacuous_of_absent` proves, for every clause and every text, that a clause whose quoted words don't occur in the text is vacuous.
+`lean/Ritsulint/ReadAs.lean` states what a read-as clause does: `Clause.apply c text` is the text of a provision with every `c.quoted` replaced by `c.replacement`, and `Clause.Vacuous c text` says that the clause leaves the text as it is. The theorem `vacuous_of_absent` proves, for every clause and every text, that a clause whose quoted words don't occur in the text is vacuous. These definitions are stated in Lean only: the linter compares the quoted words with the provision in Rust.
 
 `lean/Ritsulint/Findings.lean` has one theorem for each high-confidence `read-as-quote` warning whose quoted words are absent from a provision the law has. For the Immigration Control Act it states that the clause of article 13 paragraph 7, applied to the text of article 41 paragraph 1 as e-Gov publishes it, changes nothing. The texts are in the theorem as lists of code points, and the Lean kernel checks each one when the package is built.
 

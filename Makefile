@@ -25,6 +25,7 @@ lint:
 .PHONY: test
 test:
 	cd lean && lake build
+	cd audit && lake build --wfail
 	cargo test
 
 .PHONY: check
