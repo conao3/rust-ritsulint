@@ -64,4 +64,40 @@ example :
       = [("refs", [⟨"105_2", 1⟩, ⟨"105_2", 2⟩, ⟨"105_2", 3⟩])] := by
   decide +kernel
 
+def refsOf (text : String) : List (String × Nat × Nat) :=
+  (relativeRefs (unquote text)).map fun r => (r.kind, r.count, r.offset)
+
+/-- 鉄道事業法施行規則 第46条第2項: `前条第二項第一号` names paragraph 2 of the article before. -/
+example :
+    refsOf "前条第二項第一号の索道施設の設置の場所を示す図面には、次に掲げる事項を記載しなければならない。"
+      = [("prev-article-paragraph", 2, 0)] := by
+  decide +kernel
+
+/-- 漁業災害補償法施行規則 第31条第2項: `前項第五号` is also a reference to the paragraph before. -/
+example :
+    refsOf "前項の払戻しを請求する場合は、前項第五号の当該時期による。"
+      = [("prev-paragraphs", 1, 0), ("prev-paragraph-item", 5, 15), ("prev-paragraphs", 1, 15)] := by
+  decide +kernel
+
+/-- A reference inside a quotation is not a reference of the paragraph. -/
+example :
+    refsOf "この場合において、同条中「前項」とあるのは「次項」と読み替えるものとする。" = [] := by
+  decide +kernel
+
+/-- 経済産業省組織規則 第314条第5号 and 行政改革…特例措置に関する法律 第14条第2項. -/
+example : refsOf "前五号に掲げる事務のほか" = [("prev-items", 5, 0)] := by decide +kernel
+example : refsOf "前二項の規定の適用があるものとして" = [("prev-paragraphs", 2, 0)] := by
+  decide +kernel
+example : refsOf "次項において同じ。" = [("next-paragraph", 1, 0)] := by decide +kernel
+
+/-- 経済産業省関係産業競争力強化法施行規則 第60条: `法第九十八第二項` lacks 条. -/
+example :
+    refsOf "法第九十八第二項第二号の経済産業省令で定める方法" = [("missing-unit", 98, 1)] := by
+  decide +kernel
+example : refsOf "法第二十七の二十第二項の規定" = [("missing-unit", 27, 1)] := by decide +kernel
+example : refsOf "法第九十八条第二項第二号" = [] := by decide +kernel
+
+example : kansujiOr0 "四十四" = 44 := by decide
+example : kansujiOr0 "第四" = 0 := by decide
+
 end Ritsulint.Test

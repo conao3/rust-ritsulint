@@ -31,6 +31,17 @@ pub struct Warning {
     pub nearest: String,
     pub similarity: f64,
     pub confidence: String,
+    /// The words around the place the warning is about, for rules other than `read-as-quote`.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub context: String,
+    /// What the law has where the reference points, for rules other than `read-as-quote`.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub actual: String,
+    /// The law the clause names, for `read-as-quote-external`.
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub target_law_id: String,
+    #[serde(skip_serializing_if = "String::is_empty")]
+    pub target_law_title: String,
 }
 
 #[derive(Debug, Serialize, Clone)]
@@ -72,7 +83,7 @@ impl Counts {
 }
 
 #[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
-enum Status {
+pub(crate) enum Status {
     Present,
     PresentWithoutParentheses,
     OtherParagraph,
@@ -82,7 +93,7 @@ enum Status {
 }
 
 impl Status {
-    fn name(self) -> &'static str {
+    pub(crate) fn name(self) -> &'static str {
         match self {
             Status::Present | Status::PresentWithoutParentheses => "present",
             Status::OtherParagraph => "other-paragraph",
@@ -93,7 +104,7 @@ impl Status {
     }
 }
 
-fn status_of(law: &Law, target: &Provision, quoted: &str) -> Status {
+pub(crate) fn status_of(law: &Law, target: &Provision, quoted: &str) -> Status {
     let Some(article) = law.article(&target.article) else {
         return Status::NoArticle;
     };
@@ -117,7 +128,7 @@ fn status_of(law: &Law, target: &Provision, quoted: &str) -> Status {
     }
 }
 
-fn nearest(text: &str, quoted: &str) -> String {
+pub(crate) fn nearest(text: &str, quoted: &str) -> String {
     let t: Vec<char> = text.chars().collect();
     let q: Vec<char> = quoted.chars().collect();
     if t.is_empty() || q.is_empty() || t.len() > 40_000 {
@@ -145,7 +156,7 @@ fn nearest(text: &str, quoted: &str) -> String {
     t[start..end].iter().collect()
 }
 
-fn similarity(quoted: &str, near: &str) -> f64 {
+pub(crate) fn similarity(quoted: &str, near: &str) -> f64 {
     let q: Vec<char> = quoted.chars().collect();
     let n: Vec<char> = near.chars().take(q.len()).collect();
     if q.is_empty() || n.is_empty() {
@@ -263,7 +274,7 @@ fn names_article(scope: &str) -> bool {
         .any(|w| w[1] == '条' && KANSUJI.contains(w[0]))
 }
 
-fn warning_id(
+pub fn warning_id(
     rule: &str,
     law_id: &str,
     source: &Provision,
@@ -445,6 +456,10 @@ fn check_article(
                 nearest: near,
                 similarity: sim,
                 confidence: confidence.to_string(),
+                context: String::new(),
+                actual: String::new(),
+                target_law_id: String::new(),
+                target_law_title: String::new(),
             });
         }
         let missing = out[first..]

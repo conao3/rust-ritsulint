@@ -1,6 +1,10 @@
+mod external;
 mod generated;
+mod history;
 mod law;
 mod read_as;
+mod relative_ref;
+mod structure;
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -51,6 +55,66 @@ enum Command {
         #[command(subcommand)]
         command: CorpusCommand,
     },
+    /// The revisions of laws, as the e-Gov API serves them
+    History {
+        #[command(subcommand)]
+        command: HistoryCommand,
+    },
+}
+
+#[derive(Subcommand)]
+enum HistoryCommand {
+    /// For each warning of the latest revision of every law, the revision it is given since
+    ListOrigins {
+        /// A directory with one `<revision>/<revision>.xml` for every revision of the laws
+        #[arg(long)]
+        xml_dir: PathBuf,
+        /// The date as YYYYMMDD; revisions enforced after it are left out
+        #[arg(long)]
+        as_of: String,
+    },
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "PascalCase")]
+struct Origins {
+    origins: Vec<history::Origin>,
+}
+
+fn all_revisions(xml_dir: &Path, as_of: &str) -> Result<BTreeMap<String, Vec<PathBuf>>, String> {
+    let mut names: Vec<String> = Vec::new();
+    let entries = fs::read_dir(xml_dir).map_err(|e| format!("{}: {e}", xml_dir.display()))?;
+    for entry in entries {
+        let entry = entry.map_err(|e| e.to_string())?;
+        names.push(entry.file_name().to_string_lossy().to_string());
+    }
+    let mut keyed: Vec<(String, String, String)> = names
+        .into_iter()
+        .filter_map(|name| {
+            let mut parts = name.split('_');
+            let (law, date) = (parts.next()?.to_string(), parts.next()?.to_string());
+            parts.next()?;
+            (date.as_str() <= as_of).then_some((law, date, name))
+        })
+        .collect();
+    keyed.sort();
+    let mut out: BTreeMap<String, Vec<PathBuf>> = BTreeMap::new();
+    for (law, _, name) in keyed {
+        out.entry(law)
+            .or_default()
+            .push(xml_dir.join(&name).join(format!("{name}.xml")));
+    }
+    Ok(out)
+}
+
+fn valid_date(as_of: &str) -> Result<(), (u8, String)> {
+    if as_of.len() != 8 || !as_of.chars().all(|c| c.is_ascii_digit()) {
+        return Err((
+            EXIT_USAGE,
+            format!("--as-of takes a date as YYYYMMDD ({as_of} is not one)"),
+        ));
+    }
+    Ok(())
 }
 
 #[derive(Subcommand)]
@@ -84,6 +148,11 @@ struct Report {
     laws: u64,
     unreadable: Vec<String>,
     counts: Counts,
+    /// The read-as clauses that name another law and were looked up there, and how many matched.
+    external_checked: u64,
+    external_matched: u64,
+    /// Warnings by rule.
+    rules: BTreeMap<String, u64>,
     warnings: Vec<Warning>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     clauses: Vec<Clause>,
@@ -113,14 +182,19 @@ fn revision_files(xml_dir: &Path, as_of: &str) -> Result<Vec<PathBuf>, String> {
         .collect())
 }
 
-fn check_files(files: &[PathBuf], debug: bool) -> Report {
+fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
     let mut report = Report {
         laws: 0,
         unreadable: Vec::new(),
         counts: Counts::default(),
+        external_checked: 0,
+        external_matched: 0,
+        rules: BTreeMap::new(),
         warnings: Vec::new(),
         clauses: Vec::new(),
     };
+    let mut index = external::Index::default();
+    let mut pending = Vec::new();
     for file in files {
         match Law::from_file(file) {
             Ok(law) => {
@@ -131,9 +205,26 @@ fn check_files(files: &[PathBuf], debug: bool) -> Report {
                 }
                 report.counts.add(&counts);
                 report.warnings.extend(warnings);
+                report.warnings.extend(relative_ref::check(&law));
+                report.warnings.extend(structure::check(&law));
+                if corpus {
+                    pending.extend(external::collect(&law));
+                    index.add(&law, file.clone());
+                }
             }
             Err(e) => report.unreadable.push(e.to_string()),
         }
+    }
+    if corpus {
+        let (counts, warnings) = external::check(&pending, &index, |id| {
+            index.files.get(id).and_then(|f| Law::from_file(f).ok())
+        });
+        report.external_checked = counts.checked;
+        report.external_matched = counts.matched;
+        report.warnings.extend(warnings);
+    }
+    for w in &report.warnings {
+        *report.rules.entry(w.rule.clone()).or_default() += 1;
     }
     report
 }
@@ -182,6 +273,22 @@ fn print_report(report: &Report, output: Output) {
 }
 
 fn run(cli: Cli) -> Result<u8, (u8, String)> {
+    if let Command::History {
+        command: HistoryCommand::ListOrigins { xml_dir, as_of },
+    } = &cli.command
+    {
+        valid_date(as_of)?;
+        let files = all_revisions(xml_dir, as_of).map_err(|e| (EXIT_INPUT, e))?;
+        let origins = Origins {
+            origins: history::origins(&files),
+        };
+        println!(
+            "{}",
+            serde_json::to_string_pretty(&origins).expect("the origins serialize")
+        );
+        return Ok(0);
+    }
+    let corpus = matches!(cli.command, Command::Corpus { .. });
     let (files, fail_on_warnings) = match cli.command {
         Command::Law {
             command:
@@ -198,19 +305,15 @@ fn run(cli: Cli) -> Result<u8, (u8, String)> {
                     fail_on_warnings,
                 },
         } => {
-            if as_of.len() != 8 || !as_of.chars().all(|c| c.is_ascii_digit()) {
-                return Err((
-                    EXIT_USAGE,
-                    format!("--as-of takes a date as YYYYMMDD ({as_of} is not one)"),
-                ));
-            }
+            valid_date(&as_of)?;
             (
                 revision_files(&xml_dir, &as_of).map_err(|e| (EXIT_INPUT, e))?,
                 fail_on_warnings,
             )
         }
+        Command::History { .. } => unreachable!("handled above"),
     };
-    let report = check_files(&files, cli.debug);
+    let report = check_files(&files, cli.debug, corpus);
     if report.laws == 0 {
         let detail = report
             .unreadable

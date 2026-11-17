@@ -434,4 +434,93 @@ def stripParensAux : List Char → Nat → List Char → List Char
 def stripParens (text : String) : String :=
   String.ofList (stripParensAux text.toList 0 [])
 
+def unquoteAux : List Char → Nat → List Char → List Char
+  | [], _, acc => acc.reverse
+  | '「' :: rest, 0, acc => unquoteAux rest 1 ('〓' :: acc)
+  | '「' :: rest, d + 1, acc => unquoteAux rest (d + 2) acc
+  | '」' :: rest, d + 1, acc => unquoteAux rest d acc
+  | c :: rest, 0, acc => unquoteAux rest 0 (c :: acc)
+  | _ :: rest, d + 1, acc => unquoteAux rest (d + 1) acc
+
+/-- The text with each quotation (`「…」`, nested ones included) replaced by one `〓`. Words in a
+quotation belong to the provision they are quoted from, so a reference such as `前項` inside one
+does not point from the paragraph the quotation stands in. -/
+def unquote (text : String) : String :=
+  String.ofList (unquoteAux text.toList 0 [])
+
+/-- A reference by position, or a reference that lacks its unit. `kind` is one of
+`prev-article-paragraph` (前条第N項), `next-article-paragraph` (次条第N項),
+`prev-paragraph-item` (前項第N号), `prev-paragraphs` (前項, 前N項, 前各項), `next-paragraph` (次項),
+`prev-items` (前号, 前N号, 前各号), `next-item` (次号) and `missing-unit` (第N第M項, 第N第M号).
+`count` is the N of the kind (1 for 前項, 前各項, 前号, 前各号, 次項, 次号, and the first number
+of `missing-unit`). `offset` and `length` are in characters of the text given. -/
+structure RelRef where
+  kind : String
+  count : Nat
+  offset : Nat
+  length : Nat
+deriving Repr, BEq, DecidableEq
+
+def numeral (cs : List Char) : Option (Nat × List Char × Nat) :=
+  let (num, rest) := cs.span isKansuji
+  (parseKansuji num).map fun n => (n, rest, num.length)
+
+def missingUnit (cs : List Char) : List (String × Nat × Nat) :=
+  match numeral cs with
+  | some (n, rest, k) =>
+    let (_, rest2) := branches rest.length rest []
+    match rest2 with
+    | '第' :: rest3 =>
+      match numeral rest3 with
+      | some (_, '項' :: _, k3) => [("missing-unit", n, k + (rest.length - rest2.length) + k3 + 3)]
+      | some (_, '号' :: _, k3) => [("missing-unit", n, k + (rest.length - rest2.length) + k3 + 3)]
+      | _ => []
+    | _ => []
+  | none => []
+
+def counted (cs : List Char) : List (String × Nat × Nat) :=
+  match numeral cs with
+  | some (n, '項' :: _, k) => [("prev-paragraphs", n, k + 2)]
+  | some (n, '号' :: _, k) => [("prev-items", n, k + 2)]
+  | _ => []
+
+def articleParagraph (kind : String) (cs : List Char) : List (String × Nat × Nat) :=
+  match numeral cs with
+  | some (n, '項' :: _, k) => [(kind, n, k + 4)]
+  | _ => []
+
+/-- The references that start at the head of `cs`. -/
+def relAt : List Char → List (String × Nat × Nat)
+  | '前' :: '条' :: '第' :: rest => articleParagraph "prev-article-paragraph" rest
+  | '次' :: '条' :: '第' :: rest => articleParagraph "next-article-paragraph" rest
+  | '前' :: '項' :: '第' :: rest =>
+    match numeral rest with
+    | some (n, '号' :: _, k) => [("prev-paragraph-item", n, k + 4), ("prev-paragraphs", 1, 2)]
+    | _ => [("prev-paragraphs", 1, 2)]
+  | '前' :: '項' :: _ => [("prev-paragraphs", 1, 2)]
+  | '前' :: '各' :: '項' :: _ => [("prev-paragraphs", 1, 3)]
+  | '前' :: '号' :: _ => [("prev-items", 1, 2)]
+  | '前' :: '各' :: '号' :: _ => [("prev-items", 1, 3)]
+  | '次' :: '項' :: _ => [("next-paragraph", 1, 2)]
+  | '次' :: '号' :: _ => [("next-item", 1, 2)]
+  | '前' :: rest => counted rest
+  | '第' :: rest => missingUnit rest
+  | _ => []
+
+def relScan : List Char → Nat → List RelRef → List RelRef
+  | [], _, acc => acc.reverse
+  | c :: rest, pos, acc =>
+    let found := (relAt (c :: rest)).map fun (kind, count, length) =>
+      ({ kind := kind, count := count, offset := pos, length := length } : RelRef)
+    relScan rest (pos + 1) (found.reverse ++ acc)
+
+/-- The references by position and the references without a unit in a text, in the order they
+are written. Give it the text after `unquote`. -/
+def relativeRefs (text : String) : List RelRef :=
+  relScan text.toList 0 []
+
+/-- The number a kanji numeral writes, or 0 when the text is not one. -/
+def kansujiOr0 (text : String) : Nat :=
+  (parseKansuji text.toList).getD 0
+
 end Ritsulint

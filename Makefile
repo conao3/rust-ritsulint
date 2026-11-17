@@ -38,10 +38,10 @@ corpus-check:
 	test -n "$(CORPUS)"
 	cargo build --release
 	./target/release/ritsulint corpus check-corpus --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" > target/corpus.json
-	jq -r '[.Warnings[] | select(.Confidence == "high") | .LawId] | unique | .[]' target/corpus.json > target/corpus-found.txt
-	sort tests/corpus-expected.txt | comm -23 - target/corpus-found.txt > target/corpus-missing.txt
+	jq -r '[.Warnings[] | select(.Confidence == "high") | .Rule + " " + .LawId] | unique | .[]' target/corpus.json | LC_ALL=C sort > target/corpus-found.txt
+	LC_ALL=C sort tests/corpus-expected.txt | LC_ALL=C comm -23 - target/corpus-found.txt > target/corpus-missing.txt
 	test ! -s target/corpus-missing.txt
-	sort tests/corpus-rejected.txt | comm -12 - target/corpus-found.txt > target/corpus-rejected-found.txt
+	LC_ALL=C sort tests/corpus-rejected.txt | LC_ALL=C comm -12 - target/corpus-found.txt > target/corpus-rejected-found.txt
 	test ! -s target/corpus-rejected-found.txt
 	test "$$(jq '.Warnings | length' target/corpus.json)" = "$$(jq '[.Warnings[].Id] | unique | length' target/corpus.json)"
 
@@ -51,8 +51,17 @@ site-data:
 	test -n "$(CORPUS)"
 	cargo build --release
 	./target/release/ritsulint corpus check-corpus --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" \
-		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, Counts, Warnings: [.Warnings[] | {Id, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Replacement, Nearest, Similarity, Confidence}]}' \
+		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, Counts, ExternalChecked, Warnings: [.Warnings[] | {Id, Rule, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Nearest, Confidence} + (if .Context then {Context} else {} end) + (if .Actual then {Actual} else {} end) + (if .TargetLawTitle then {TargetLawId, TargetLawTitle} else {} end)]}' \
 		> site/data/warnings.json
+
+# Write since which revision each warning is given, from every revision of the laws with a
+# warning, unpacked at REVISIONS as <revision>/<revision>.xml (the e-Gov API serves them).
+.PHONY: site-origins
+site-origins:
+	test -n "$(REVISIONS)"
+	cargo build --release
+	./target/release/ritsulint history list-origins --xml-dir "$(REVISIONS)" --as-of "$(AS_OF)" \
+		| jq -c '{Origins: [.Origins[] | {Id, FirstRevisionId, Kind}]}' > site/data/origins.json
 
 .PHONY: site-check
 site-check:

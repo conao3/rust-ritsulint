@@ -1,6 +1,6 @@
 [package]
 name = "ritsulint"
-description = "A linter for Japanese statutes: finds read-as clauses whose quoted words are missing from the provision they name"
+description = "A linter for Japanese statutes: finds quotations, references by position, numbers and tables of contents that no longer agree with the text of the law"
 version = "0.1.0"
 edition = "2024"
 license = "Apache-2.0"
@@ -10,6 +10,7 @@ readme = "README.md"
 [dependencies]
 clap = { version = "4", features = ["derive"] }
 leanfran = { version = "0.6.0", default-features = false }
+regex = "1"
 roxmltree = "0.20"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

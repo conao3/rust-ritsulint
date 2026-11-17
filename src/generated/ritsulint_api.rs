@@ -14,6 +14,4795 @@ use rt::Obj;
     unused_unsafe,
     clippy::all
 )]
+pub(crate) unsafe fn l_Ritsulint_Api_relativeRefs(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    x_2 = l_Ritsulint_relativeRefs(x_1);
+    return x_2;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_relativeRefs(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    x_2 = rt::lean_string_data(x_1);
+    x_3 = rt::lean_unsigned_to_nat(0u32);
+    x_4 = rt::lean_box(0);
+    x_5 = l_Ritsulint_relScan(x_2, x_3, x_4);
+    return x_5;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_relScan(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    rt::lean_dec(x_2);
+                    x_4 = l_List_reverse___redArg(x_3);
+                    return x_4;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_1, 1);
+                    rt::lean_inc(x_5);
+                    x_6 = l_Ritsulint_relAt(x_1);
+                    x_7 = rt::lean_box(0);
+                    rt::lean_inc(x_2);
+                    x_8 = l_List_mapTR_loop___at___00Ritsulint_relScan_spec__0(x_2, x_6, x_7);
+                    x_9 = rt::lean_unsigned_to_nat(1u32);
+                    x_10 = rt::lean_nat_add(x_2, x_9);
+                    rt::lean_dec(x_2);
+                    x_11 = l_List_reverse___redArg(x_8);
+                    x_12 = l_List_appendTR___redArg(x_11, x_3);
+                    {
+                        let t_0 = x_5;
+                        let t_1 = x_10;
+                        let t_2 = x_12;
+                        x_1 = t_0;
+                        x_2 = t_1;
+                        x_3 = t_2;
+                    }
+                    __blk = 0;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_reverse___redArg(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_2 = rt::lean_box(0);
+    x_3 = l_List_reverseAux___redArg(x_1, x_2);
+    return x_3;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_reverseAux___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u8 = 0;
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 0);
+                    x_4 = rt::lean_ctor_get(x_1, 1);
+                    x_12 = (!rt::lean_is_exclusive(x_1)) as u8;
+                    match x_12 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_12;
+                                x_6 = t_0;
+                                x_7 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_4);
+                            rt::lean_inc(x_3);
+                            rt::lean_dec(x_1);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_12;
+                                x_6 = t_0;
+                                x_7 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => match x_7 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_6, 1, x_2);
+                    {
+                        let t_0 = x_6;
+                        x_9 = t_0;
+                    }
+                    __blk = 2;
+                    continue 'body;
+                }
+                1 => {
+                    x_11 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_11, 0, x_3);
+                    rt::lean_ctor_set(x_11, 1, x_2);
+                    {
+                        let t_0 = x_11;
+                        x_9 = t_0;
+                    }
+                    __blk = 2;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            2 => {
+                {
+                    let t_0 = x_4;
+                    let t_1 = x_9;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_relAt(mut x_1: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: u32 = 0;
+    let mut x_9: u32 = 0;
+    let mut x_10: u8 = 0;
+    let mut x_11: u32 = 0;
+    let mut x_12: u32 = 0;
+    let mut x_13: u8 = 0;
+    let mut x_14: u32 = 0;
+    let mut x_15: u32 = 0;
+    let mut x_16: u8 = 0;
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_21: u32 = 0;
+    let mut x_22: u32 = 0;
+    let mut x_23: u8 = 0;
+    let mut x_24: u32 = 0;
+    let mut x_25: u32 = 0;
+    let mut x_26: u8 = 0;
+    let mut x_27: u32 = 0;
+    let mut x_28: u32 = 0;
+    let mut x_29: u8 = 0;
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: u32 = 0;
+    let mut x_36: u32 = 0;
+    let mut x_37: u8 = 0;
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
+    let mut x_43: Obj = rt::lean_box(0);
+    let mut x_44: Obj = rt::lean_box(0);
+    let mut x_45: u32 = 0;
+    let mut x_46: u32 = 0;
+    let mut x_47: u8 = 0;
+    let mut x_48: u32 = 0;
+    let mut x_49: u32 = 0;
+    let mut x_50: u8 = 0;
+    let mut x_51: u32 = 0;
+    let mut x_52: u32 = 0;
+    let mut x_53: u8 = 0;
+    let mut x_54: u32 = 0;
+    let mut x_55: u32 = 0;
+    let mut x_56: u8 = 0;
+    let mut x_57: Obj = rt::lean_box(0);
+    let mut x_58: Obj = rt::lean_box(0);
+    let mut x_60: Obj = rt::lean_box(0);
+    let mut x_61: u8 = 0;
+    let mut x_62: Obj = rt::lean_box(0);
+    let mut x_63: u32 = 0;
+    let mut x_64: u8 = 0;
+    let mut x_65: u32 = 0;
+    let mut x_66: u32 = 0;
+    let mut x_67: u8 = 0;
+    let mut x_68: Obj = rt::lean_box(0);
+    let mut x_70: Obj = rt::lean_box(0);
+    let mut x_71: Obj = rt::lean_box(0);
+    let mut x_72: Obj = rt::lean_box(0);
+    let mut x_73: Obj = rt::lean_box(0);
+    let mut x_74: Obj = rt::lean_box(0);
+    let mut x_75: Obj = rt::lean_box(0);
+    let mut x_77: Obj = rt::lean_box(0);
+    let mut x_78: Obj = rt::lean_box(0);
+    let mut x_79: Obj = rt::lean_box(0);
+    let mut x_80: u8 = 0;
+    let mut x_81: Obj = rt::lean_box(0);
+    let mut x_82: Obj = rt::lean_box(0);
+    let mut x_83: Obj = rt::lean_box(0);
+    let mut x_84: Obj = rt::lean_box(0);
+    let mut x_85: u32 = 0;
+    let mut x_86: u32 = 0;
+    let mut x_87: u8 = 0;
+    let mut x_88: Obj = rt::lean_box(0);
+    let mut x_89: Obj = rt::lean_box(0);
+    let mut x_90: Obj = rt::lean_box(0);
+    let mut x_91: Obj = rt::lean_box(0);
+    let mut x_92: Obj = rt::lean_box(0);
+    let mut x_94: Obj = rt::lean_box(0);
+    let mut x_95: u8 = 0;
+    let mut x_96: Obj = rt::lean_box(0);
+    let mut x_98: Obj = rt::lean_box(0);
+    let mut x_99: u8 = 0;
+    let mut x_100: Obj = rt::lean_box(0);
+    let mut x_102: Obj = rt::lean_box(0);
+    let mut x_103: u8 = 0;
+    let mut x_104: u32 = 0;
+    let mut x_105: u32 = 0;
+    let mut x_106: u8 = 0;
+    let mut x_107: Obj = rt::lean_box(0);
+    let mut x_108: Obj = rt::lean_box(0);
+    let mut x_109: Obj = rt::lean_box(0);
+    let mut x_111: Obj = rt::lean_box(0);
+    let mut x_113: Obj = rt::lean_box(0);
+    let mut x_114: Obj = rt::lean_box(0);
+    let mut x_116: Obj = rt::lean_box(0);
+    let mut x_117: Obj = rt::lean_box(0);
+    let mut x_118: Obj = rt::lean_box(0);
+    let mut x_119: Obj = rt::lean_box(0);
+    let mut x_120: u8 = 0;
+    let mut x_121: Obj = rt::lean_box(0);
+    let mut x_122: u8 = 0;
+    let mut x_123: Obj = rt::lean_box(0);
+    let mut x_124: u8 = 0;
+    let mut x_125: Obj = rt::lean_box(0);
+    let mut x_127: Obj = rt::lean_box(0);
+    let mut x_128: u8 = 0;
+    let mut x_129: Obj = rt::lean_box(0);
+    let mut x_130: Obj = rt::lean_box(0);
+    let mut x_131: u32 = 0;
+    let mut x_132: u32 = 0;
+    let mut x_133: u8 = 0;
+    let mut x_134: Obj = rt::lean_box(0);
+    let mut x_136: Obj = rt::lean_box(0);
+    let mut x_137: Obj = rt::lean_box(0);
+    let mut x_138: Obj = rt::lean_box(0);
+    let mut x_139: Obj = rt::lean_box(0);
+    let mut x_140: Obj = rt::lean_box(0);
+    let mut x_141: Obj = rt::lean_box(0);
+    let mut x_143: Obj = rt::lean_box(0);
+    let mut x_144: Obj = rt::lean_box(0);
+    let mut x_145: Obj = rt::lean_box(0);
+    let mut x_146: u8 = 0;
+    let mut x_147: Obj = rt::lean_box(0);
+    let mut x_148: Obj = rt::lean_box(0);
+    let mut x_149: Obj = rt::lean_box(0);
+    let mut x_150: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                1 => {
+                    x_6 = rt::lean_ctor_get(x_1, 0);
+                    rt::lean_inc(x_6);
+                    x_7 = rt::lean_ctor_get(x_1, 1);
+                    rt::lean_inc(x_7);
+                    rt::lean_dec_ref(x_1);
+                    x_8 = 21069u32;
+                    x_9 = rt::lean_unbox_uint32(x_6);
+                    x_10 = rt::lean_uint32_dec_eq(x_9, x_8);
+                    match x_10 as u32 {
+                        0 => {
+                            x_11 = 27425u32;
+                            x_12 = rt::lean_unbox_uint32(x_6);
+                            x_13 = rt::lean_uint32_dec_eq(x_12, x_11);
+                            match x_13 as u32 {
+                                0 => {
+                                    x_14 = 31532u32;
+                                    x_15 = rt::lean_unbox_uint32(x_6);
+                                    rt::lean_dec(x_6);
+                                    x_16 = rt::lean_uint32_dec_eq(x_15, x_14);
+                                    match x_16 as u32 {
+                                        0 => {
+                                            rt::lean_dec(x_7);
+                                            x_17 = rt::lean_box(0);
+                                            return x_17;
+                                        }
+                                        1 => {
+                                            x_18 = l_Ritsulint_missingUnit(x_7);
+                                            return x_18;
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                1 => {
+                                    rt::lean_dec(x_6);
+                                    match rt::lean_obj_tag(x_7) {
+                                        1 => {
+                                            x_19 = rt::lean_ctor_get(x_7, 0);
+                                            rt::lean_inc(x_19);
+                                            x_20 = rt::lean_ctor_get(x_7, 1);
+                                            rt::lean_inc(x_20);
+                                            rt::lean_dec_ref(x_7);
+                                            x_21 = 26465u32;
+                                            x_22 = rt::lean_unbox_uint32(x_19);
+                                            x_23 = rt::lean_uint32_dec_eq(x_22, x_21);
+                                            match x_23 as u32 {
+                                                0 => {
+                                                    rt::lean_dec(x_20);
+                                                    x_24 = 38917u32;
+                                                    x_25 = rt::lean_unbox_uint32(x_19);
+                                                    x_26 = rt::lean_uint32_dec_eq(x_25, x_24);
+                                                    match x_26 as u32 {
+                                                        0 => {
+                                                            x_27 = 21495u32;
+                                                            x_28 = rt::lean_unbox_uint32(x_19);
+                                                            rt::lean_dec(x_19);
+                                                            x_29 =
+                                                                rt::lean_uint32_dec_eq(x_28, x_27);
+                                                            match x_29 as u32 {
+0 => {
+x_30 = rt::lean_box(0);
+return x_30;
+}
+1 => {
+x_31 = l_Ritsulint_relAt___closed__5();
+return x_31;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        1 => {
+                                                            rt::lean_dec(x_19);
+                                                            x_32 = l_Ritsulint_relAt___closed__8();
+                                                            return x_32;
+                                                        }
+                                                        _ => rt::lean_internal_panic_unreachable(),
+                                                    }
+                                                }
+                                                1 => {
+                                                    rt::lean_dec(x_19);
+                                                    match rt::lean_obj_tag(x_20) {
+                                                        1 => {
+                                                            x_33 = rt::lean_ctor_get(x_20, 0);
+                                                            rt::lean_inc(x_33);
+                                                            x_34 = rt::lean_ctor_get(x_20, 1);
+                                                            rt::lean_inc(x_34);
+                                                            rt::lean_dec_ref(x_20);
+                                                            x_35 = 31532u32;
+                                                            x_36 = rt::lean_unbox_uint32(x_33);
+                                                            rt::lean_dec(x_33);
+                                                            x_37 =
+                                                                rt::lean_uint32_dec_eq(x_36, x_35);
+                                                            match x_37 as u32 {
+0 => {
+rt::lean_dec(x_34);
+x_38 = rt::lean_box(0);
+return x_38;
+}
+1 => {
+x_39 = l_Ritsulint_relAt___closed__9();
+x_40 = l_Ritsulint_articleParagraph(x_39, x_34);
+return x_40;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        _ => {
+                                                            rt::lean_dec(x_20);
+                                                            x_41 = rt::lean_box(0);
+                                                            return x_41;
+                                                        }
+                                                    }
+                                                }
+                                                _ => rt::lean_internal_panic_unreachable(),
+                                            }
+                                        }
+                                        _ => {
+                                            rt::lean_dec(x_7);
+                                            x_42 = rt::lean_box(0);
+                                            return x_42;
+                                        }
+                                    }
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        1 => {
+                            rt::lean_dec(x_6);
+                            match rt::lean_obj_tag(x_7) {
+                                1 => {
+                                    x_43 = rt::lean_ctor_get(x_7, 0);
+                                    x_44 = rt::lean_ctor_get(x_7, 1);
+                                    x_45 = 26465u32;
+                                    x_46 = rt::lean_unbox_uint32(x_43);
+                                    x_47 = rt::lean_uint32_dec_eq(x_46, x_45);
+                                    match x_47 as u32 {
+                                        0 => {
+                                            x_48 = 38917u32;
+                                            x_49 = rt::lean_unbox_uint32(x_43);
+                                            x_50 = rt::lean_uint32_dec_eq(x_49, x_48);
+                                            match x_50 as u32 {
+                                                0 => {
+                                                    x_51 = 21508u32;
+                                                    x_52 = rt::lean_unbox_uint32(x_43);
+                                                    x_53 = rt::lean_uint32_dec_eq(x_52, x_51);
+                                                    match x_53 as u32 {
+                                                        0 => {
+                                                            x_54 = 21495u32;
+                                                            x_55 = rt::lean_unbox_uint32(x_43);
+                                                            x_56 =
+                                                                rt::lean_uint32_dec_eq(x_55, x_54);
+                                                            match x_56 as u32 {
+0 => {
+x_57 = l_Ritsulint_counted(x_7);
+return x_57;
+}
+1 => {
+rt::lean_dec_ref(x_7);
+x_58 = l_Ritsulint_relAt___closed__11();
+return x_58;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        1 => {
+                                                            rt::lean_inc(x_44);
+                                                            x_80 =
+                                                                (!rt::lean_is_exclusive(x_7)) as u8;
+                                                            match x_80 as u32 {
+0 => {
+x_81 = rt::lean_ctor_get(x_7, 1);
+rt::lean_dec(x_81);
+x_82 = rt::lean_ctor_get(x_7, 0);
+rt::lean_dec(x_82);
+{ let t_0 = x_7; let t_1 = x_80; x_60 = t_0; x_61 = t_1; }
+__blk = 3; continue 'body;
+}
+1 => {
+rt::lean_dec(x_7);
+{ let t_0 = rt::lean_box(0); let t_1 = x_80; x_60 = t_0; x_61 = t_1; }
+__blk = 3; continue 'body;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        _ => rt::lean_internal_panic_unreachable(),
+                                                    }
+                                                }
+                                                1 => {
+                                                    rt::lean_inc(x_44);
+                                                    rt::lean_dec_ref(x_7);
+                                                    match rt::lean_obj_tag(x_44) {
+                                                        1 => {
+                                                            x_83 = rt::lean_ctor_get(x_44, 0);
+                                                            rt::lean_inc(x_83);
+                                                            x_84 = rt::lean_ctor_get(x_44, 1);
+                                                            rt::lean_inc(x_84);
+                                                            rt::lean_dec_ref(x_44);
+                                                            x_85 = 31532u32;
+                                                            x_86 = rt::lean_unbox_uint32(x_83);
+                                                            rt::lean_dec(x_83);
+                                                            x_87 =
+                                                                rt::lean_uint32_dec_eq(x_86, x_85);
+                                                            match x_87 as u32 {
+0 => {
+rt::lean_dec(x_84);
+{ }
+__blk = 1; continue 'body;
+}
+1 => {
+x_88 = l_Ritsulint_numeral(x_84);
+match rt::lean_obj_tag(x_88) {
+1 => {
+x_89 = rt::lean_ctor_get(x_88, 0);
+rt::lean_inc(x_89);
+rt::lean_dec_ref(x_88);
+x_90 = rt::lean_ctor_get(x_89, 1);
+rt::lean_inc(x_90);
+x_91 = rt::lean_ctor_get(x_90, 0);
+rt::lean_inc(x_91);
+match rt::lean_obj_tag(x_91) {
+1 => {
+x_92 = rt::lean_ctor_get(x_89, 0);
+x_124 = (!rt::lean_is_exclusive(x_89)) as u8;
+match x_124 as u32 {
+0 => {
+x_125 = rt::lean_ctor_get(x_89, 1);
+rt::lean_dec(x_125);
+{ let t_0 = x_89; let t_1 = x_124; x_94 = t_0; x_95 = t_1; }
+__blk = 6; continue 'body;
+}
+1 => {
+rt::lean_inc(x_92);
+rt::lean_dec(x_89);
+{ let t_0 = rt::lean_box(0); let t_1 = x_124; x_94 = t_0; x_95 = t_1; }
+__blk = 6; continue 'body;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+}
+_ => {
+rt::lean_dec(x_91);
+rt::lean_dec(x_90);
+rt::lean_dec(x_89);
+{ }
+__blk = 2; continue 'body;
+}
+}
+}
+_ => {
+rt::lean_dec(x_88);
+{ }
+__blk = 2; continue 'body;
+}
+}
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        _ => {
+                                                            rt::lean_dec(x_44);
+                                                            {}
+                                                            __blk = 1;
+                                                            continue 'body;
+                                                        }
+                                                    }
+                                                }
+                                                _ => rt::lean_internal_panic_unreachable(),
+                                            }
+                                        }
+                                        1 => {
+                                            rt::lean_inc(x_44);
+                                            x_146 = (!rt::lean_is_exclusive(x_7)) as u8;
+                                            match x_146 as u32 {
+                                                0 => {
+                                                    x_147 = rt::lean_ctor_get(x_7, 1);
+                                                    rt::lean_dec(x_147);
+                                                    x_148 = rt::lean_ctor_get(x_7, 0);
+                                                    rt::lean_dec(x_148);
+                                                    {
+                                                        let t_0 = x_7;
+                                                        let t_1 = x_146;
+                                                        x_127 = t_0;
+                                                        x_128 = t_1;
+                                                    }
+                                                    __blk = 12;
+                                                    continue 'body;
+                                                }
+                                                1 => {
+                                                    rt::lean_dec(x_7);
+                                                    {
+                                                        let t_0 = rt::lean_box(0);
+                                                        let t_1 = x_146;
+                                                        x_127 = t_0;
+                                                        x_128 = t_1;
+                                                    }
+                                                    __blk = 12;
+                                                    continue 'body;
+                                                }
+                                                _ => rt::lean_internal_panic_unreachable(),
+                                            }
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                _ => {
+                                    x_149 = l_Ritsulint_counted(x_7);
+                                    return x_149;
+                                }
+                            }
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    rt::lean_dec(x_1);
+                    x_150 = rt::lean_box(0);
+                    return x_150;
+                }
+            },
+            1 => {
+                x_3 = l_Ritsulint_relAt___closed__2();
+                return x_3;
+            }
+            2 => {
+                x_5 = l_Ritsulint_relAt___closed__2();
+                return x_5;
+            }
+            3 => match rt::lean_obj_tag(x_44) {
+                1 => {
+                    x_62 = rt::lean_ctor_get(x_44, 0);
+                    x_63 = rt::lean_unbox_uint32(x_62);
+                    x_64 = rt::lean_uint32_dec_eq(x_63, x_48);
+                    match x_64 as u32 {
+                        0 => {
+                            x_65 = 21495u32;
+                            x_66 = rt::lean_unbox_uint32(x_62);
+                            x_67 = rt::lean_uint32_dec_eq(x_66, x_65);
+                            match x_67 as u32 {
+                                0 => {
+                                    x_68 = l_Ritsulint_relAt___boxed__const__1();
+                                    match x_61 as u32 {
+                                        0 => {
+                                            rt::lean_ctor_set(x_60, 0, x_68);
+                                            {
+                                                let t_0 = x_60;
+                                                x_70 = t_0;
+                                            }
+                                            __blk = 4;
+                                            continue 'body;
+                                        }
+                                        1 => {
+                                            x_72 = rt::lean_alloc_ctor(
+                                                1,
+                                                2,
+                                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                                            );
+                                            rt::lean_ctor_set(x_72, 0, x_68);
+                                            rt::lean_ctor_set(x_72, 1, x_44);
+                                            {
+                                                let t_0 = x_72;
+                                                x_70 = t_0;
+                                            }
+                                            __blk = 4;
+                                            continue 'body;
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                1 => {
+                                    rt::lean_dec_ref(x_44);
+                                    rt::lean_del_object(x_60);
+                                    x_73 = l_Ritsulint_relAt___closed__14();
+                                    return x_73;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        1 => {
+                            rt::lean_dec_ref(x_44);
+                            rt::lean_del_object(x_60);
+                            x_74 = l_Ritsulint_relAt___closed__16();
+                            return x_74;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    x_75 = l_Ritsulint_relAt___boxed__const__1();
+                    match x_61 as u32 {
+                        0 => {
+                            rt::lean_ctor_set(x_60, 0, x_75);
+                            {
+                                let t_0 = x_60;
+                                x_77 = t_0;
+                            }
+                            __blk = 5;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_79 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_79, 0, x_75);
+                            rt::lean_ctor_set(x_79, 1, x_44);
+                            {
+                                let t_0 = x_79;
+                                x_77 = t_0;
+                            }
+                            __blk = 5;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+            },
+            4 => {
+                x_71 = l_Ritsulint_counted(x_70);
+                return x_71;
+            }
+            5 => {
+                x_78 = l_Ritsulint_counted(x_77);
+                return x_78;
+            }
+            6 => {
+                x_96 = rt::lean_ctor_get(x_90, 1);
+                x_122 = (!rt::lean_is_exclusive(x_90)) as u8;
+                match x_122 as u32 {
+                    0 => {
+                        x_123 = rt::lean_ctor_get(x_90, 0);
+                        rt::lean_dec(x_123);
+                        {
+                            let t_0 = x_90;
+                            let t_1 = x_122;
+                            x_98 = t_0;
+                            x_99 = t_1;
+                        }
+                        __blk = 7;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_96);
+                        rt::lean_dec(x_90);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_122;
+                            x_98 = t_0;
+                            x_99 = t_1;
+                        }
+                        __blk = 7;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            7 => {
+                x_100 = rt::lean_ctor_get(x_91, 0);
+                x_120 = (!rt::lean_is_exclusive(x_91)) as u8;
+                match x_120 as u32 {
+                    0 => {
+                        x_121 = rt::lean_ctor_get(x_91, 1);
+                        rt::lean_dec(x_121);
+                        {
+                            let t_0 = x_91;
+                            let t_1 = x_120;
+                            x_102 = t_0;
+                            x_103 = t_1;
+                        }
+                        __blk = 8;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_100);
+                        rt::lean_dec(x_91);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_120;
+                            x_102 = t_0;
+                            x_103 = t_1;
+                        }
+                        __blk = 8;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            8 => {
+                x_104 = 21495u32;
+                x_105 = rt::lean_unbox_uint32(x_100);
+                rt::lean_dec(x_100);
+                x_106 = rt::lean_uint32_dec_eq(x_105, x_104);
+                match x_106 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_102);
+                        rt::lean_del_object(x_98);
+                        rt::lean_dec(x_96);
+                        rt::lean_del_object(x_94);
+                        rt::lean_dec(x_92);
+                        {}
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_107 = l_Ritsulint_relAt___closed__17();
+                        x_108 = rt::lean_unsigned_to_nat(4u32);
+                        x_109 = rt::lean_nat_add(x_96, x_108);
+                        rt::lean_dec(x_96);
+                        match x_99 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_98, 1, x_109);
+                                rt::lean_ctor_set(x_98, 0, x_92);
+                                {
+                                    let t_0 = x_98;
+                                    x_111 = t_0;
+                                }
+                                __blk = 9;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_119 = rt::lean_alloc_ctor(
+                                    0,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_119, 0, x_92);
+                                rt::lean_ctor_set(x_119, 1, x_109);
+                                {
+                                    let t_0 = x_119;
+                                    x_111 = t_0;
+                                }
+                                __blk = 9;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            9 => match x_95 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_94, 1, x_111);
+                    rt::lean_ctor_set(x_94, 0, x_107);
+                    {
+                        let t_0 = x_94;
+                        x_113 = t_0;
+                    }
+                    __blk = 10;
+                    continue 'body;
+                }
+                1 => {
+                    x_118 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_118, 0, x_107);
+                    rt::lean_ctor_set(x_118, 1, x_111);
+                    {
+                        let t_0 = x_118;
+                        x_113 = t_0;
+                    }
+                    __blk = 10;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            10 => {
+                x_114 = l_Ritsulint_relAt___closed__2();
+                match x_103 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_102, 1, x_114);
+                        rt::lean_ctor_set(x_102, 0, x_113);
+                        {
+                            let t_0 = x_102;
+                            x_116 = t_0;
+                        }
+                        __blk = 11;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_117 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_117, 0, x_113);
+                        rt::lean_ctor_set(x_117, 1, x_114);
+                        {
+                            let t_0 = x_117;
+                            x_116 = t_0;
+                        }
+                        __blk = 11;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            11 => {
+                return x_116;
+            }
+            12 => match rt::lean_obj_tag(x_44) {
+                1 => {
+                    x_129 = rt::lean_ctor_get(x_44, 0);
+                    x_130 = rt::lean_ctor_get(x_44, 1);
+                    x_131 = 31532u32;
+                    x_132 = rt::lean_unbox_uint32(x_129);
+                    x_133 = rt::lean_uint32_dec_eq(x_132, x_131);
+                    match x_133 as u32 {
+                        0 => {
+                            x_134 = l_Ritsulint_relAt___boxed__const__2();
+                            match x_128 as u32 {
+                                0 => {
+                                    rt::lean_ctor_set(x_127, 0, x_134);
+                                    {
+                                        let t_0 = x_127;
+                                        x_136 = t_0;
+                                    }
+                                    __blk = 13;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    x_138 = rt::lean_alloc_ctor(
+                                        1,
+                                        2,
+                                        0 * core::mem::size_of::<usize>() as u32 + 0,
+                                    );
+                                    rt::lean_ctor_set(x_138, 0, x_134);
+                                    rt::lean_ctor_set(x_138, 1, x_44);
+                                    {
+                                        let t_0 = x_138;
+                                        x_136 = t_0;
+                                    }
+                                    __blk = 13;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        1 => {
+                            rt::lean_inc(x_130);
+                            rt::lean_dec_ref(x_44);
+                            rt::lean_del_object(x_127);
+                            x_139 = l_Ritsulint_relAt___closed__18();
+                            x_140 = l_Ritsulint_articleParagraph(x_139, x_130);
+                            return x_140;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    x_141 = l_Ritsulint_relAt___boxed__const__2();
+                    match x_128 as u32 {
+                        0 => {
+                            rt::lean_ctor_set(x_127, 0, x_141);
+                            {
+                                let t_0 = x_127;
+                                x_143 = t_0;
+                            }
+                            __blk = 14;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_145 = rt::lean_alloc_ctor(
+                                1,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_145, 0, x_141);
+                            rt::lean_ctor_set(x_145, 1, x_44);
+                            {
+                                let t_0 = x_145;
+                                x_143 = t_0;
+                            }
+                            __blk = 14;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+            },
+            13 => {
+                x_137 = l_Ritsulint_counted(x_136);
+                return x_137;
+            }
+            14 => {
+                x_144 = l_Ritsulint_counted(x_143);
+                return x_144;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__2_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__1();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__2() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__2_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__1_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__0();
+    x_2 = l_Ritsulint_counted___closed__1();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(2u32);
+    x_2 = rt::lean_unsigned_to_nat(1u32);
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_counted___closed__1_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("prev-paragraphs", 15, 15);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_counted___closed__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_counted___closed__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_missingUnit(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_21: u8 = 0;
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_27: Obj = rt::lean_box(0);
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: u32 = 0;
+    let mut x_43: u32 = 0;
+    let mut x_44: u8 = 0;
+    let mut x_45: Obj = rt::lean_box(0);
+    let mut x_46: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: Obj = rt::lean_box(0);
+    let mut x_49: Obj = rt::lean_box(0);
+    let mut x_50: Obj = rt::lean_box(0);
+    let mut x_51: u32 = 0;
+    let mut x_52: u32 = 0;
+    let mut x_53: u8 = 0;
+    let mut x_54: u32 = 0;
+    let mut x_55: u32 = 0;
+    let mut x_56: u8 = 0;
+    let mut x_57: u8 = 0;
+    let mut x_58: Obj = rt::lean_box(0);
+    let mut x_59: u8 = 0;
+    let mut x_60: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_2 = l_Ritsulint_numeral(x_1);
+                match rt::lean_obj_tag(x_2) {
+                    0 => {
+                        x_3 = rt::lean_box(0);
+                        return x_3;
+                    }
+                    1 => {
+                        x_4 = rt::lean_ctor_get(x_2, 0);
+                        rt::lean_inc(x_4);
+                        rt::lean_dec_ref(x_2);
+                        x_5 = rt::lean_ctor_get(x_4, 1);
+                        x_6 = rt::lean_ctor_get(x_4, 0);
+                        x_60 = (!rt::lean_is_exclusive(x_4)) as u8;
+                        match x_60 as u32 {
+                            0 => {
+                                {
+                                    let t_0 = x_4;
+                                    let t_1 = x_60;
+                                    x_8 = t_0;
+                                    x_9 = t_1;
+                                }
+                                __blk = 1;
+                                continue 'body;
+                            }
+                            1 => {
+                                rt::lean_inc(x_5);
+                                rt::lean_inc(x_6);
+                                rt::lean_dec(x_4);
+                                {
+                                    let t_0 = rt::lean_box(0);
+                                    let t_1 = x_60;
+                                    x_8 = t_0;
+                                    x_9 = t_1;
+                                }
+                                __blk = 1;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            1 => {
+                x_10 = rt::lean_ctor_get(x_5, 0);
+                x_11 = rt::lean_ctor_get(x_5, 1);
+                x_59 = (!rt::lean_is_exclusive(x_5)) as u8;
+                match x_59 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_5;
+                            let t_1 = x_59;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_11);
+                        rt::lean_inc(x_10);
+                        rt::lean_dec(x_5);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_59;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_15 = l_List_lengthTR___redArg(x_10);
+                x_16 = rt::lean_box(0);
+                rt::lean_inc(x_15);
+                x_17 = l_Ritsulint_branches(x_15, x_10, x_16);
+                x_18 = rt::lean_ctor_get(x_17, 1);
+                x_57 = (!rt::lean_is_exclusive(x_17)) as u8;
+                match x_57 as u32 {
+                    0 => {
+                        x_58 = rt::lean_ctor_get(x_17, 0);
+                        rt::lean_dec(x_58);
+                        {
+                            let t_0 = x_17;
+                            let t_1 = x_57;
+                            x_20 = t_0;
+                            x_21 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_18);
+                        rt::lean_dec(x_17);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_57;
+                            x_20 = t_0;
+                            x_21 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => match rt::lean_obj_tag(x_18) {
+                1 => {
+                    x_40 = rt::lean_ctor_get(x_18, 0);
+                    x_41 = rt::lean_ctor_get(x_18, 1);
+                    x_42 = 31532u32;
+                    x_43 = rt::lean_unbox_uint32(x_40);
+                    x_44 = rt::lean_uint32_dec_eq(x_43, x_42);
+                    match x_44 as u32 {
+                        0 => {
+                            rt::lean_dec_ref(x_18);
+                            rt::lean_del_object(x_20);
+                            rt::lean_dec(x_15);
+                            rt::lean_del_object(x_13);
+                            rt::lean_dec(x_11);
+                            rt::lean_del_object(x_8);
+                            rt::lean_dec(x_6);
+                            return x_16;
+                        }
+                        1 => {
+                            rt::lean_inc(x_41);
+                            x_45 = l_Ritsulint_numeral(x_41);
+                            match rt::lean_obj_tag(x_45) {
+                                1 => {
+                                    x_46 = rt::lean_ctor_get(x_45, 0);
+                                    rt::lean_inc(x_46);
+                                    rt::lean_dec_ref(x_45);
+                                    x_47 = rt::lean_ctor_get(x_46, 1);
+                                    rt::lean_inc(x_47);
+                                    rt::lean_dec(x_46);
+                                    x_48 = rt::lean_ctor_get(x_47, 0);
+                                    rt::lean_inc(x_48);
+                                    match rt::lean_obj_tag(x_48) {
+                                        1 => {
+                                            x_49 = rt::lean_ctor_get(x_47, 1);
+                                            rt::lean_inc(x_49);
+                                            rt::lean_dec(x_47);
+                                            x_50 = rt::lean_ctor_get(x_48, 0);
+                                            rt::lean_inc(x_50);
+                                            rt::lean_dec_ref(x_48);
+                                            x_51 = 38917u32;
+                                            x_52 = rt::lean_unbox_uint32(x_50);
+                                            x_53 = rt::lean_uint32_dec_eq(x_52, x_51);
+                                            match x_53 as u32 {
+                                                0 => {
+                                                    x_54 = 21495u32;
+                                                    x_55 = rt::lean_unbox_uint32(x_50);
+                                                    rt::lean_dec(x_50);
+                                                    x_56 = rt::lean_uint32_dec_eq(x_55, x_54);
+                                                    match x_56 as u32 {
+                                                        0 => {
+                                                            rt::lean_dec(x_49);
+                                                            rt::lean_dec_ref(x_18);
+                                                            rt::lean_del_object(x_20);
+                                                            rt::lean_dec(x_15);
+                                                            rt::lean_del_object(x_13);
+                                                            rt::lean_dec(x_11);
+                                                            rt::lean_del_object(x_8);
+                                                            rt::lean_dec(x_6);
+                                                            return x_16;
+                                                        }
+                                                        1 => {
+                                                            {
+                                                                let t_0 = x_49;
+                                                                x_23 = t_0;
+                                                            }
+                                                            __blk = 4;
+                                                            continue 'body;
+                                                        }
+                                                        _ => rt::lean_internal_panic_unreachable(),
+                                                    }
+                                                }
+                                                1 => {
+                                                    rt::lean_dec(x_50);
+                                                    {
+                                                        let t_0 = x_49;
+                                                        x_23 = t_0;
+                                                    }
+                                                    __blk = 4;
+                                                    continue 'body;
+                                                }
+                                                _ => rt::lean_internal_panic_unreachable(),
+                                            }
+                                        }
+                                        _ => {
+                                            rt::lean_dec(x_48);
+                                            rt::lean_dec(x_47);
+                                            rt::lean_dec_ref(x_18);
+                                            rt::lean_del_object(x_20);
+                                            rt::lean_dec(x_15);
+                                            rt::lean_del_object(x_13);
+                                            rt::lean_dec(x_11);
+                                            rt::lean_del_object(x_8);
+                                            rt::lean_dec(x_6);
+                                            return x_16;
+                                        }
+                                    }
+                                }
+                                _ => {
+                                    rt::lean_dec(x_45);
+                                    rt::lean_dec_ref(x_18);
+                                    rt::lean_del_object(x_20);
+                                    rt::lean_dec(x_15);
+                                    rt::lean_del_object(x_13);
+                                    rt::lean_dec(x_11);
+                                    rt::lean_del_object(x_8);
+                                    rt::lean_dec(x_6);
+                                    return x_16;
+                                }
+                            }
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => {
+                    rt::lean_del_object(x_20);
+                    rt::lean_dec(x_18);
+                    rt::lean_dec(x_15);
+                    rt::lean_del_object(x_13);
+                    rt::lean_dec(x_11);
+                    rt::lean_del_object(x_8);
+                    rt::lean_dec(x_6);
+                    return x_16;
+                }
+            },
+            4 => {
+                x_24 = l_Ritsulint_missingUnit___closed__0();
+                x_25 = l_List_lengthTR___redArg(x_18);
+                rt::lean_dec(x_18);
+                x_26 = rt::lean_nat_sub(x_15, x_25);
+                rt::lean_dec(x_25);
+                rt::lean_dec(x_15);
+                x_27 = rt::lean_nat_add(x_11, x_26);
+                rt::lean_dec(x_26);
+                rt::lean_dec(x_11);
+                x_28 = rt::lean_nat_add(x_27, x_23);
+                rt::lean_dec(x_23);
+                rt::lean_dec(x_27);
+                x_29 = rt::lean_unsigned_to_nat(3u32);
+                x_30 = rt::lean_nat_add(x_28, x_29);
+                rt::lean_dec(x_28);
+                match x_21 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_20, 1, x_30);
+                        rt::lean_ctor_set(x_20, 0, x_6);
+                        {
+                            let t_0 = x_20;
+                            x_32 = t_0;
+                        }
+                        __blk = 5;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_39 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_39, 0, x_6);
+                        rt::lean_ctor_set(x_39, 1, x_30);
+                        {
+                            let t_0 = x_39;
+                            x_32 = t_0;
+                        }
+                        __blk = 5;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            5 => match x_14 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_13, 1, x_32);
+                    rt::lean_ctor_set(x_13, 0, x_24);
+                    {
+                        let t_0 = x_13;
+                        x_34 = t_0;
+                    }
+                    __blk = 6;
+                    continue 'body;
+                }
+                1 => {
+                    x_38 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_38, 0, x_24);
+                    rt::lean_ctor_set(x_38, 1, x_32);
+                    {
+                        let t_0 = x_38;
+                        x_34 = t_0;
+                    }
+                    __blk = 6;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            6 => match x_9 as u32 {
+                0 => {
+                    rt::lean_ctor_set_tag(x_8, 1);
+                    rt::lean_ctor_set(x_8, 1, x_16);
+                    rt::lean_ctor_set(x_8, 0, x_34);
+                    {
+                        let t_0 = x_8;
+                        x_36 = t_0;
+                    }
+                    __blk = 7;
+                    continue 'body;
+                }
+                1 => {
+                    x_37 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_37, 0, x_34);
+                    rt::lean_ctor_set(x_37, 1, x_16);
+                    {
+                        let t_0 = x_37;
+                        x_36 = t_0;
+                    }
+                    __blk = 7;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            7 => {
+                return x_36;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_numeral(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: u8 = 0;
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_21: Obj = rt::lean_box(0);
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: u8 = 0;
+    let mut x_24: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_2 = rt::lean_box(0);
+                x_3 = l_List_span_loop___at___00Ritsulint_branches_spec__0(x_1, x_2);
+                x_4 = rt::lean_ctor_get(x_3, 0);
+                x_5 = rt::lean_ctor_get(x_3, 1);
+                x_24 = (!rt::lean_is_exclusive(x_3)) as u8;
+                match x_24 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_3;
+                            let t_1 = x_24;
+                            x_7 = t_0;
+                            x_8 = t_1;
+                        }
+                        __blk = 1;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_5);
+                        rt::lean_inc(x_4);
+                        rt::lean_dec(x_3);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_24;
+                            x_7 = t_0;
+                            x_8 = t_1;
+                        }
+                        __blk = 1;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            1 => {
+                x_9 = l_Ritsulint_parseKansuji(x_4);
+                match rt::lean_obj_tag(x_9) {
+                    0 => {
+                        rt::lean_del_object(x_7);
+                        rt::lean_dec(x_5);
+                        rt::lean_dec(x_4);
+                        x_10 = rt::lean_box(0);
+                        return x_10;
+                    }
+                    1 => {
+                        x_11 = rt::lean_ctor_get(x_9, 0);
+                        x_23 = (!rt::lean_is_exclusive(x_9)) as u8;
+                        match x_23 as u32 {
+                            0 => {
+                                {
+                                    let t_0 = x_9;
+                                    let t_1 = x_23;
+                                    x_13 = t_0;
+                                    x_14 = t_1;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            1 => {
+                                rt::lean_inc(x_11);
+                                rt::lean_dec(x_9);
+                                {
+                                    let t_0 = rt::lean_box(0);
+                                    let t_1 = x_23;
+                                    x_13 = t_0;
+                                    x_14 = t_1;
+                                }
+                                __blk = 2;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_15 = l_List_lengthTR___redArg(x_4);
+                rt::lean_dec(x_4);
+                match x_8 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_7, 1, x_15);
+                        rt::lean_ctor_set(x_7, 0, x_5);
+                        {
+                            let t_0 = x_7;
+                            x_17 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_22 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_22, 0, x_5);
+                        rt::lean_ctor_set(x_22, 1, x_15);
+                        {
+                            let t_0 = x_22;
+                            x_17 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                x_18 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_18, 0, x_11);
+                rt::lean_ctor_set(x_18, 1, x_17);
+                match x_14 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_13, 0, x_18);
+                        {
+                            let t_0 = x_13;
+                            x_20 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_21 =
+                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_21, 0, x_18);
+                        {
+                            let t_0 = x_21;
+                            x_20 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => {
+                return x_20;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_span_loop___at___00Ritsulint_branches_spec__0(
+    mut x_1: Obj,
+    mut x_2: Obj,
+) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: u32 = 0;
+    let mut x_8: u8 = 0;
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: u8 = 0;
+    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_3 = l_List_reverse___redArg(x_2);
+                    x_4 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_4, 0, x_3);
+                    rt::lean_ctor_set(x_4, 1, x_1);
+                    return x_4;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_1, 0);
+                    x_6 = rt::lean_ctor_get(x_1, 1);
+                    x_7 = rt::lean_unbox_uint32(x_5);
+                    x_8 = l_Ritsulint_isKansuji(x_7);
+                    match x_8 as u32 {
+                        0 => {
+                            x_9 = l_List_reverse___redArg(x_2);
+                            x_10 = rt::lean_alloc_ctor(
+                                0,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_10, 0, x_9);
+                            rt::lean_ctor_set(x_10, 1, x_1);
+                            return x_10;
+                        }
+                        1 => {
+                            rt::lean_inc(x_6);
+                            rt::lean_inc(x_5);
+                            x_18 = (!rt::lean_is_exclusive(x_1)) as u8;
+                            match x_18 as u32 {
+                                0 => {
+                                    x_19 = rt::lean_ctor_get(x_1, 1);
+                                    rt::lean_dec(x_19);
+                                    x_20 = rt::lean_ctor_get(x_1, 0);
+                                    rt::lean_dec(x_20);
+                                    {
+                                        let t_0 = x_1;
+                                        let t_1 = x_18;
+                                        x_12 = t_0;
+                                        x_13 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_dec(x_1);
+                                    {
+                                        let t_0 = rt::lean_box(0);
+                                        let t_1 = x_18;
+                                        x_12 = t_0;
+                                        x_13 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => match x_13 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_12, 1, x_2);
+                    {
+                        let t_0 = x_12;
+                        x_15 = t_0;
+                    }
+                    __blk = 2;
+                    continue 'body;
+                }
+                1 => {
+                    x_17 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_17, 0, x_5);
+                    rt::lean_ctor_set(x_17, 1, x_2);
+                    {
+                        let t_0 = x_17;
+                        x_15 = t_0;
+                    }
+                    __blk = 2;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            2 => {
+                {
+                    let t_0 = x_6;
+                    let t_1 = x_15;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_isKansuji(mut x_1: u32) -> u8 {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: u8 = 0;
+    let mut x_5: u8 = 0;
+    let mut x_6: u8 = 0;
+    x_2 = l_Ritsulint_kansujiDigit_x3f(x_1);
+    match rt::lean_obj_tag(x_2) {
+        0 => {
+            x_3 = l_Ritsulint_kansujiUnit_x3f(x_1);
+            match rt::lean_obj_tag(x_3) {
+                0 => {
+                    x_4 = 0u8;
+                    return x_4;
+                }
+                1 => {
+                    rt::lean_dec_ref(x_3);
+                    x_5 = 1u8;
+                    return x_5;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            }
+        }
+        1 => {
+            rt::lean_dec_ref(x_2);
+            x_6 = 1u8;
+            return x_6;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f(mut x_1: u32) -> Obj {
+    let mut x_2: u32 = 0;
+    let mut x_3: u8 = 0;
+    let mut x_4: u32 = 0;
+    let mut x_5: u8 = 0;
+    let mut x_6: u32 = 0;
+    let mut x_7: u8 = 0;
+    let mut x_8: u32 = 0;
+    let mut x_9: u8 = 0;
+    let mut x_10: u32 = 0;
+    let mut x_11: u8 = 0;
+    let mut x_12: u32 = 0;
+    let mut x_13: u8 = 0;
+    let mut x_14: u32 = 0;
+    let mut x_15: u8 = 0;
+    let mut x_16: u32 = 0;
+    let mut x_17: u8 = 0;
+    let mut x_18: u32 = 0;
+    let mut x_19: u8 = 0;
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut x_21: Obj = rt::lean_box(0);
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_27: Obj = rt::lean_box(0);
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    x_2 = 19968u32;
+    x_3 = rt::lean_uint32_dec_eq(x_1, x_2);
+    match x_3 as u32 {
+        0 => {
+            x_4 = 20108u32;
+            x_5 = rt::lean_uint32_dec_eq(x_1, x_4);
+            match x_5 as u32 {
+                0 => {
+                    x_6 = 19977u32;
+                    x_7 = rt::lean_uint32_dec_eq(x_1, x_6);
+                    match x_7 as u32 {
+                        0 => {
+                            x_8 = 22235u32;
+                            x_9 = rt::lean_uint32_dec_eq(x_1, x_8);
+                            match x_9 as u32 {
+                                0 => {
+                                    x_10 = 20116u32;
+                                    x_11 = rt::lean_uint32_dec_eq(x_1, x_10);
+                                    match x_11 as u32 {
+                                        0 => {
+                                            x_12 = 20845u32;
+                                            x_13 = rt::lean_uint32_dec_eq(x_1, x_12);
+                                            match x_13 as u32 {
+                                                0 => {
+                                                    x_14 = 19971u32;
+                                                    x_15 = rt::lean_uint32_dec_eq(x_1, x_14);
+                                                    match x_15 as u32 {
+                                                        0 => {
+                                                            x_16 = 20843u32;
+                                                            x_17 =
+                                                                rt::lean_uint32_dec_eq(x_1, x_16);
+                                                            match x_17 as u32 {
+0 => {
+x_18 = 20061u32;
+x_19 = rt::lean_uint32_dec_eq(x_1, x_18);
+match x_19 as u32 {
+0 => {
+x_20 = rt::lean_box(0);
+return x_20;
+}
+1 => {
+x_21 = l_Ritsulint_kansujiDigit_x3f___closed__0();
+return x_21;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+}
+1 => {
+x_22 = l_Ritsulint_kansujiDigit_x3f___closed__1();
+return x_22;
+}
+_ => rt::lean_internal_panic_unreachable(),
+}
+                                                        }
+                                                        1 => {
+                                                            x_23 = l_Ritsulint_kansujiDigit_x3f___closed__2();
+                                                            return x_23;
+                                                        }
+                                                        _ => rt::lean_internal_panic_unreachable(),
+                                                    }
+                                                }
+                                                1 => {
+                                                    x_24 =
+                                                        l_Ritsulint_kansujiDigit_x3f___closed__3();
+                                                    return x_24;
+                                                }
+                                                _ => rt::lean_internal_panic_unreachable(),
+                                            }
+                                        }
+                                        1 => {
+                                            x_25 = l_Ritsulint_kansujiDigit_x3f___closed__4();
+                                            return x_25;
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                1 => {
+                                    x_26 = l_Ritsulint_kansujiDigit_x3f___closed__5();
+                                    return x_26;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        1 => {
+                            x_27 = l_Ritsulint_kansujiDigit_x3f___closed__6();
+                            return x_27;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                1 => {
+                    x_28 = l_Ritsulint_kansujiDigit_x3f___closed__7();
+                    return x_28;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            }
+        }
+        1 => {
+            x_29 = l_Ritsulint_kansujiDigit_x3f___closed__8();
+            return x_29;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(9u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__1_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(8u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__2_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(7u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__2() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__2_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__3_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(6u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__3() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__3_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__4_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(5u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__4() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__4_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__5_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(4u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__5() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__5_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__6_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(3u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__6() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__6_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__7_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(2u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__7() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__7_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__8_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(1u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__8() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiDigit_x3f___closed__8_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f(mut x_1: u32) -> Obj {
+    let mut x_2: u32 = 0;
+    let mut x_3: u8 = 0;
+    let mut x_4: u32 = 0;
+    let mut x_5: u8 = 0;
+    let mut x_6: u32 = 0;
+    let mut x_7: u8 = 0;
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    x_2 = 21313u32;
+    x_3 = rt::lean_uint32_dec_eq(x_1, x_2);
+    match x_3 as u32 {
+        0 => {
+            x_4 = 30334u32;
+            x_5 = rt::lean_uint32_dec_eq(x_1, x_4);
+            match x_5 as u32 {
+                0 => {
+                    x_6 = 21315u32;
+                    x_7 = rt::lean_uint32_dec_eq(x_1, x_6);
+                    match x_7 as u32 {
+                        0 => {
+                            x_8 = rt::lean_box(0);
+                            return x_8;
+                        }
+                        1 => {
+                            x_9 = l_Ritsulint_kansujiUnit_x3f___closed__0();
+                            return x_9;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                1 => {
+                    x_10 = l_Ritsulint_kansujiUnit_x3f___closed__1();
+                    return x_10;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            }
+        }
+        1 => {
+            x_11 = l_Ritsulint_kansujiUnit_x3f___closed__2();
+            return x_11;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(1000u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiUnit_x3f___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__1_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(100u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiUnit_x3f___closed__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__2_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(10u32);
+    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__2() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_kansujiUnit_x3f___closed__2_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_parseKansuji(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_16: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    x_2 = rt::lean_box(0);
+                    return x_2;
+                }
+                _ => {
+                    x_3 = l_Ritsulint_parseKansuji___closed__0();
+                    x_4 = l_List_foldlM___at___00Ritsulint_parseKansuji_spec__0(x_3, x_1);
+                    match rt::lean_obj_tag(x_4) {
+                        0 => {
+                            x_5 = rt::lean_box(0);
+                            return x_5;
+                        }
+                        1 => {
+                            x_6 = rt::lean_ctor_get(x_4, 0);
+                            x_16 = (!rt::lean_is_exclusive(x_4)) as u8;
+                            match x_16 as u32 {
+                                0 => {
+                                    {
+                                        let t_0 = x_4;
+                                        let t_1 = x_16;
+                                        x_8 = t_0;
+                                        x_9 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_6);
+                                    rt::lean_dec(x_4);
+                                    {
+                                        let t_0 = rt::lean_box(0);
+                                        let t_1 = x_16;
+                                        x_8 = t_0;
+                                        x_9 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+            },
+            1 => {
+                x_10 = rt::lean_ctor_get(x_6, 0);
+                rt::lean_inc(x_10);
+                x_11 = rt::lean_ctor_get(x_6, 1);
+                rt::lean_inc(x_11);
+                rt::lean_dec(x_6);
+                x_12 = rt::lean_nat_add(x_10, x_11);
+                rt::lean_dec(x_11);
+                rt::lean_dec(x_10);
+                match x_9 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_8, 0, x_12);
+                        {
+                            let t_0 = x_8;
+                            x_14 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_15 =
+                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_15, 0, x_12);
+                        {
+                            let t_0 = x_15;
+                            x_14 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                return x_14;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_parseKansuji___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(0u32);
+    x_2 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_2, 0, x_1);
+    rt::lean_ctor_set(x_2, 1, x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_parseKansuji___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_parseKansuji___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_foldlM___at___00Ritsulint_parseKansuji_spec__0(
+    mut x_1: Obj,
+    mut x_2: Obj,
+) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: u32 = 0;
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    x_3 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_3, 0, x_1);
+                    return x_3;
+                }
+                1 => {
+                    x_4 = rt::lean_ctor_get(x_2, 0);
+                    x_5 = rt::lean_ctor_get(x_2, 1);
+                    x_6 = rt::lean_unbox_uint32(x_4);
+                    x_7 = l_Ritsulint_kansujiStep(x_1, x_6);
+                    match rt::lean_obj_tag(x_7) {
+                        0 => {
+                            return x_7;
+                        }
+                        1 => {
+                            x_8 = rt::lean_ctor_get(x_7, 0);
+                            rt::lean_inc(x_8);
+                            rt::lean_dec_ref(x_7);
+                            {
+                                let t_0 = x_8;
+                                let t_1 = x_5;
+                                x_1 = t_0;
+                                x_2 = t_1;
+                            }
+                            __blk = 0;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_kansujiStep(mut x_1: Obj, mut x_2: u32) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_21: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: u8 = 0;
+    let mut x_27: Obj = rt::lean_box(0);
+    let mut x_28: u8 = 0;
+    let mut x_29: u8 = 0;
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: u8 = 0;
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: u8 = 0;
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: u8 = 0;
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_43: Obj = rt::lean_box(0);
+    let mut x_45: Obj = rt::lean_box(0);
+    let mut x_46: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: u8 = 0;
+    let mut x_49: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_3 = l_Ritsulint_kansujiDigit_x3f(x_2);
+                match rt::lean_obj_tag(x_3) {
+                    0 => {
+                        x_4 = l_Ritsulint_kansujiUnit_x3f(x_2);
+                        match rt::lean_obj_tag(x_4) {
+                            0 => {
+                                rt::lean_dec_ref(x_1);
+                                x_5 = rt::lean_box(0);
+                                return x_5;
+                            }
+                            1 => {
+                                x_6 = rt::lean_ctor_get(x_4, 0);
+                                x_29 = (!rt::lean_is_exclusive(x_4)) as u8;
+                                match x_29 as u32 {
+                                    0 => {
+                                        {
+                                            let t_0 = x_4;
+                                            let t_1 = x_29;
+                                            x_8 = t_0;
+                                            x_9 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    1 => {
+                                        rt::lean_inc(x_6);
+                                        rt::lean_dec(x_4);
+                                        {
+                                            let t_0 = rt::lean_box(0);
+                                            let t_1 = x_29;
+                                            x_8 = t_0;
+                                            x_9 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        x_30 = rt::lean_ctor_get(x_3, 0);
+                        x_49 = (!rt::lean_is_exclusive(x_3)) as u8;
+                        match x_49 as u32 {
+                            0 => {
+                                {
+                                    let t_0 = x_3;
+                                    let t_1 = x_49;
+                                    x_32 = t_0;
+                                    x_33 = t_1;
+                                }
+                                __blk = 6;
+                                continue 'body;
+                            }
+                            1 => {
+                                rt::lean_inc(x_30);
+                                rt::lean_dec(x_3);
+                                {
+                                    let t_0 = rt::lean_box(0);
+                                    let t_1 = x_49;
+                                    x_32 = t_0;
+                                    x_33 = t_1;
+                                }
+                                __blk = 6;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            1 => {
+                x_10 = rt::lean_ctor_get(x_1, 0);
+                x_11 = rt::lean_ctor_get(x_1, 1);
+                x_28 = (!rt::lean_is_exclusive(x_1)) as u8;
+                match x_28 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_1;
+                            let t_1 = x_28;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_11);
+                        rt::lean_inc(x_10);
+                        rt::lean_dec(x_1);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_28;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_15 = rt::lean_unsigned_to_nat(0u32);
+                x_26 = rt::lean_nat_dec_eq(x_11, x_15);
+                match x_26 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_11;
+                            x_17 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_dec(x_11);
+                        x_27 = rt::lean_unsigned_to_nat(1u32);
+                        {
+                            let t_0 = x_27;
+                            x_17 = t_0;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                x_18 = rt::lean_nat_mul(x_17, x_6);
+                rt::lean_dec(x_6);
+                rt::lean_dec(x_17);
+                x_19 = rt::lean_nat_add(x_10, x_18);
+                rt::lean_dec(x_18);
+                rt::lean_dec(x_10);
+                match x_14 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_13, 1, x_15);
+                        rt::lean_ctor_set(x_13, 0, x_19);
+                        {
+                            let t_0 = x_13;
+                            x_21 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_25 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_25, 0, x_19);
+                        rt::lean_ctor_set(x_25, 1, x_15);
+                        {
+                            let t_0 = x_25;
+                            x_21 = t_0;
+                        }
+                        __blk = 4;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => match x_9 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_8, 0, x_21);
+                    {
+                        let t_0 = x_8;
+                        x_23 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                1 => {
+                    x_24 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_24, 0, x_21);
+                    {
+                        let t_0 = x_24;
+                        x_23 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            5 => {
+                return x_23;
+            }
+            6 => {
+                x_34 = rt::lean_ctor_get(x_1, 0);
+                x_35 = rt::lean_ctor_get(x_1, 1);
+                x_48 = (!rt::lean_is_exclusive(x_1)) as u8;
+                match x_48 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_1;
+                            let t_1 = x_48;
+                            x_37 = t_0;
+                            x_38 = t_1;
+                        }
+                        __blk = 7;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_35);
+                        rt::lean_inc(x_34);
+                        rt::lean_dec(x_1);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_48;
+                            x_37 = t_0;
+                            x_38 = t_1;
+                        }
+                        __blk = 7;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            7 => {
+                x_39 = rt::lean_unsigned_to_nat(0u32);
+                x_40 = rt::lean_nat_dec_eq(x_35, x_39);
+                rt::lean_dec(x_35);
+                match x_40 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_37);
+                        rt::lean_dec(x_34);
+                        rt::lean_del_object(x_32);
+                        rt::lean_dec(x_30);
+                        x_41 = rt::lean_box(0);
+                        return x_41;
+                    }
+                    1 => match x_38 as u32 {
+                        0 => {
+                            rt::lean_ctor_set(x_37, 1, x_30);
+                            {
+                                let t_0 = x_37;
+                                x_43 = t_0;
+                            }
+                            __blk = 8;
+                            continue 'body;
+                        }
+                        1 => {
+                            x_47 = rt::lean_alloc_ctor(
+                                0,
+                                2,
+                                0 * core::mem::size_of::<usize>() as u32 + 0,
+                            );
+                            rt::lean_ctor_set(x_47, 0, x_34);
+                            rt::lean_ctor_set(x_47, 1, x_30);
+                            {
+                                let t_0 = x_47;
+                                x_43 = t_0;
+                            }
+                            __blk = 8;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    },
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            8 => match x_33 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_32, 0, x_43);
+                    {
+                        let t_0 = x_32;
+                        x_45 = t_0;
+                    }
+                    __blk = 9;
+                    continue 'body;
+                }
+                1 => {
+                    x_46 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_46, 0, x_43);
+                    {
+                        let t_0 = x_46;
+                        x_45 = t_0;
+                    }
+                    __blk = 9;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            9 => {
+                return x_45;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_lengthTR___redArg(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_2 = rt::lean_unsigned_to_nat(0u32);
+    x_3 = l_List_lengthTRAux___redArg(x_1, x_2);
+    return x_3;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_lengthTRAux___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    return x_2;
+                }
+                1 => {
+                    x_3 = rt::lean_ctor_get(x_1, 1);
+                    x_4 = rt::lean_unsigned_to_nat(1u32);
+                    x_5 = rt::lean_nat_add(x_2, x_4);
+                    rt::lean_dec(x_2);
+                    {
+                        let t_0 = x_3;
+                        let t_1 = x_5;
+                        x_1 = t_0;
+                        x_2 = t_1;
+                    }
+                    __blk = 0;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_branches(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: u8 = 0;
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_15: u32 = 0;
+    let mut x_16: u32 = 0;
+    let mut x_17: u8 = 0;
+    let mut x_19: Obj = rt::lean_box(0);
+    let mut x_20: u8 = 0;
+    let mut x_21: Obj = rt::lean_box(0);
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_27: u8 = 0;
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
+    let mut x_43: Obj = rt::lean_box(0);
+    let mut x_44: u8 = 0;
+    let mut x_45: u8 = 0;
+    let mut x_46: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_9 = rt::lean_unsigned_to_nat(0u32);
+                x_10 = rt::lean_nat_dec_eq(x_1, x_9);
+                match x_10 as u32 {
+                    1 => {
+                        rt::lean_dec(x_1);
+                        x_11 = l_List_reverse___redArg(x_3);
+                        x_12 =
+                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_12, 0, x_11);
+                        rt::lean_ctor_set(x_12, 1, x_2);
+                        return x_12;
+                    }
+                    0 => match rt::lean_obj_tag(x_2) {
+                        1 => {
+                            x_13 = rt::lean_ctor_get(x_2, 0);
+                            x_14 = rt::lean_ctor_get(x_2, 1);
+                            x_15 = 12398u32;
+                            x_16 = rt::lean_unbox_uint32(x_13);
+                            x_17 = rt::lean_uint32_dec_eq(x_16, x_15);
+                            match x_17 as u32 {
+                                0 => {
+                                    rt::lean_dec(x_1);
+                                    {
+                                        let t_0 = x_2;
+                                        let t_1 = x_3;
+                                        x_5 = t_0;
+                                        x_6 = t_1;
+                                    }
+                                    __blk = 1;
+                                    continue 'body;
+                                }
+                                1 => {
+                                    rt::lean_inc(x_14);
+                                    x_45 = (!rt::lean_is_exclusive(x_2)) as u8;
+                                    match x_45 as u32 {
+                                        0 => {
+                                            x_46 = rt::lean_ctor_get(x_2, 1);
+                                            rt::lean_dec(x_46);
+                                            x_47 = rt::lean_ctor_get(x_2, 0);
+                                            rt::lean_dec(x_47);
+                                            {
+                                                let t_0 = x_2;
+                                                let t_1 = x_45;
+                                                x_19 = t_0;
+                                                x_20 = t_1;
+                                            }
+                                            __blk = 2;
+                                            continue 'body;
+                                        }
+                                        1 => {
+                                            rt::lean_dec(x_2);
+                                            {
+                                                let t_0 = rt::lean_box(0);
+                                                let t_1 = x_45;
+                                                x_19 = t_0;
+                                                x_20 = t_1;
+                                            }
+                                            __blk = 2;
+                                            continue 'body;
+                                        }
+                                        _ => rt::lean_internal_panic_unreachable(),
+                                    }
+                                }
+                                _ => rt::lean_internal_panic_unreachable(),
+                            }
+                        }
+                        _ => {
+                            rt::lean_dec(x_1);
+                            {
+                                let t_0 = x_2;
+                                let t_1 = x_3;
+                                x_5 = t_0;
+                                x_6 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                    },
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            1 => {
+                x_7 = l_List_reverse___redArg(x_6);
+                x_8 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_8, 0, x_7);
+                rt::lean_ctor_set(x_8, 1, x_5);
+                return x_8;
+            }
+            2 => {
+                x_21 = rt::lean_box(0);
+                rt::lean_inc(x_14);
+                x_22 = l_List_span_loop___at___00Ritsulint_branches_spec__0(x_14, x_21);
+                x_23 = rt::lean_ctor_get(x_22, 0);
+                x_24 = rt::lean_ctor_get(x_22, 1);
+                x_44 = (!rt::lean_is_exclusive(x_22)) as u8;
+                match x_44 as u32 {
+                    0 => {
+                        {
+                            let t_0 = x_22;
+                            let t_1 = x_44;
+                            x_26 = t_0;
+                            x_27 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_24);
+                        rt::lean_inc(x_23);
+                        rt::lean_dec(x_22);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_44;
+                            x_26 = t_0;
+                            x_27 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                x_28 = l_Ritsulint_parseKansuji(x_23);
+                rt::lean_dec(x_23);
+                match rt::lean_obj_tag(x_28) {
+                    0 => {
+                        rt::lean_dec(x_24);
+                        rt::lean_dec(x_1);
+                        x_29 = l_List_reverse___redArg(x_3);
+                        x_30 = l_Ritsulint_branches___boxed__const__1();
+                        match x_20 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_19, 0, x_30);
+                                {
+                                    let t_0 = x_19;
+                                    x_32 = t_0;
+                                }
+                                __blk = 4;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_36 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_36, 0, x_30);
+                                rt::lean_ctor_set(x_36, 1, x_14);
+                                {
+                                    let t_0 = x_36;
+                                    x_32 = t_0;
+                                }
+                                __blk = 4;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        rt::lean_del_object(x_26);
+                        rt::lean_dec(x_14);
+                        x_37 = rt::lean_ctor_get(x_28, 0);
+                        rt::lean_inc(x_37);
+                        rt::lean_dec_ref(x_28);
+                        x_38 = rt::lean_unsigned_to_nat(1u32);
+                        x_39 = rt::lean_nat_sub(x_1, x_38);
+                        rt::lean_dec(x_1);
+                        match x_20 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_19, 1, x_3);
+                                rt::lean_ctor_set(x_19, 0, x_37);
+                                {
+                                    let t_0 = x_19;
+                                    x_41 = t_0;
+                                }
+                                __blk = 6;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_43 = rt::lean_alloc_ctor(
+                                    1,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_43, 0, x_37);
+                                rt::lean_ctor_set(x_43, 1, x_3);
+                                {
+                                    let t_0 = x_43;
+                                    x_41 = t_0;
+                                }
+                                __blk = 6;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => match x_27 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_26, 1, x_32);
+                    rt::lean_ctor_set(x_26, 0, x_29);
+                    {
+                        let t_0 = x_26;
+                        x_34 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                1 => {
+                    x_35 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_35, 0, x_29);
+                    rt::lean_ctor_set(x_35, 1, x_32);
+                    {
+                        let t_0 = x_35;
+                        x_34 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            5 => {
+                return x_34;
+            }
+            6 => {
+                {
+                    let t_0 = x_39;
+                    let t_1 = x_24;
+                    let t_2 = x_41;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_branches___boxed__const__1_init() -> Obj {
+    let mut x_1: u32 = 0;
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = 12398u32;
+    x_2 = rt::lean_box_uint32(x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_branches___boxed__const__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_branches___boxed__const__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_missingUnit___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("missing-unit", 12, 12);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_missingUnit___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_missingUnit___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__5_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__4();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__5() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__5_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__4_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__0();
+    x_2 = l_Ritsulint_relAt___closed__3();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__4() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__4_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__3_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("next-item", 9, 9);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__3() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__3_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__8_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__7();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__8() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__8_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__7_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__0();
+    x_2 = l_Ritsulint_relAt___closed__6();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__7() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__7_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__6_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("next-paragraph", 14, 14);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__6() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__6_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__9_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("next-article-paragraph", 22, 22);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__9() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__9_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_articleParagraph(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: u8 = 0;
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: u8 = 0;
+    let mut x_15: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: u8 = 0;
+    let mut x_19: u32 = 0;
+    let mut x_20: u32 = 0;
+    let mut x_21: u8 = 0;
+    let mut x_22: Obj = rt::lean_box(0);
+    let mut x_23: Obj = rt::lean_box(0);
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: u8 = 0;
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: u8 = 0;
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: u8 = 0;
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_3 = l_Ritsulint_numeral(x_2);
+                match rt::lean_obj_tag(x_3) {
+                    1 => {
+                        x_4 = rt::lean_ctor_get(x_3, 0);
+                        rt::lean_inc(x_4);
+                        rt::lean_dec_ref(x_3);
+                        x_5 = rt::lean_ctor_get(x_4, 1);
+                        rt::lean_inc(x_5);
+                        x_6 = rt::lean_ctor_get(x_5, 0);
+                        rt::lean_inc(x_6);
+                        match rt::lean_obj_tag(x_6) {
+                            1 => {
+                                x_7 = rt::lean_ctor_get(x_4, 0);
+                                x_39 = (!rt::lean_is_exclusive(x_4)) as u8;
+                                match x_39 as u32 {
+                                    0 => {
+                                        x_40 = rt::lean_ctor_get(x_4, 1);
+                                        rt::lean_dec(x_40);
+                                        {
+                                            let t_0 = x_4;
+                                            let t_1 = x_39;
+                                            x_9 = t_0;
+                                            x_10 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    1 => {
+                                        rt::lean_inc(x_7);
+                                        rt::lean_dec(x_4);
+                                        {
+                                            let t_0 = rt::lean_box(0);
+                                            let t_1 = x_39;
+                                            x_9 = t_0;
+                                            x_10 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            _ => {
+                                rt::lean_dec(x_6);
+                                rt::lean_dec(x_5);
+                                rt::lean_dec(x_4);
+                                rt::lean_dec_ref(x_1);
+                                x_41 = rt::lean_box(0);
+                                return x_41;
+                            }
+                        }
+                    }
+                    _ => {
+                        rt::lean_dec(x_3);
+                        rt::lean_dec_ref(x_1);
+                        x_42 = rt::lean_box(0);
+                        return x_42;
+                    }
+                }
+            }
+            1 => {
+                x_11 = rt::lean_ctor_get(x_5, 1);
+                x_37 = (!rt::lean_is_exclusive(x_5)) as u8;
+                match x_37 as u32 {
+                    0 => {
+                        x_38 = rt::lean_ctor_get(x_5, 0);
+                        rt::lean_dec(x_38);
+                        {
+                            let t_0 = x_5;
+                            let t_1 = x_37;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_11);
+                        rt::lean_dec(x_5);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_37;
+                            x_13 = t_0;
+                            x_14 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_15 = rt::lean_ctor_get(x_6, 0);
+                x_35 = (!rt::lean_is_exclusive(x_6)) as u8;
+                match x_35 as u32 {
+                    0 => {
+                        x_36 = rt::lean_ctor_get(x_6, 1);
+                        rt::lean_dec(x_36);
+                        {
+                            let t_0 = x_6;
+                            let t_1 = x_35;
+                            x_17 = t_0;
+                            x_18 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_15);
+                        rt::lean_dec(x_6);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_35;
+                            x_17 = t_0;
+                            x_18 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                x_19 = 38917u32;
+                x_20 = rt::lean_unbox_uint32(x_15);
+                rt::lean_dec(x_15);
+                x_21 = rt::lean_uint32_dec_eq(x_20, x_19);
+                match x_21 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_17);
+                        rt::lean_del_object(x_13);
+                        rt::lean_dec(x_11);
+                        rt::lean_del_object(x_9);
+                        rt::lean_dec(x_7);
+                        rt::lean_dec_ref(x_1);
+                        x_22 = rt::lean_box(0);
+                        return x_22;
+                    }
+                    1 => {
+                        x_23 = rt::lean_unsigned_to_nat(4u32);
+                        x_24 = rt::lean_nat_add(x_11, x_23);
+                        rt::lean_dec(x_11);
+                        match x_14 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_13, 1, x_24);
+                                rt::lean_ctor_set(x_13, 0, x_7);
+                                {
+                                    let t_0 = x_13;
+                                    x_26 = t_0;
+                                }
+                                __blk = 4;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_34 = rt::lean_alloc_ctor(
+                                    0,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_34, 0, x_7);
+                                rt::lean_ctor_set(x_34, 1, x_24);
+                                {
+                                    let t_0 = x_34;
+                                    x_26 = t_0;
+                                }
+                                __blk = 4;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => match x_10 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_9, 1, x_26);
+                    rt::lean_ctor_set(x_9, 0, x_1);
+                    {
+                        let t_0 = x_9;
+                        x_28 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                1 => {
+                    x_33 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_33, 0, x_1);
+                    rt::lean_ctor_set(x_33, 1, x_26);
+                    {
+                        let t_0 = x_33;
+                        x_28 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            5 => {
+                x_29 = rt::lean_box(0);
+                match x_18 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_17, 1, x_29);
+                        rt::lean_ctor_set(x_17, 0, x_28);
+                        {
+                            let t_0 = x_17;
+                            x_31 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_32 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_32, 0, x_28);
+                        rt::lean_ctor_set(x_32, 1, x_29);
+                        {
+                            let t_0 = x_32;
+                            x_31 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            6 => {
+                return x_31;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_counted(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: u8 = 0;
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: u8 = 0;
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: u8 = 0;
+    let mut x_18: u32 = 0;
+    let mut x_19: u32 = 0;
+    let mut x_20: u8 = 0;
+    let mut x_21: u32 = 0;
+    let mut x_22: u32 = 0;
+    let mut x_23: u8 = 0;
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: Obj = rt::lean_box(0);
+    let mut x_26: Obj = rt::lean_box(0);
+    let mut x_27: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: Obj = rt::lean_box(0);
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_40: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
+    let mut x_44: Obj = rt::lean_box(0);
+    let mut x_45: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: Obj = rt::lean_box(0);
+    let mut x_49: Obj = rt::lean_box(0);
+    let mut x_50: Obj = rt::lean_box(0);
+    let mut x_51: u8 = 0;
+    let mut x_52: Obj = rt::lean_box(0);
+    let mut x_53: u8 = 0;
+    let mut x_54: Obj = rt::lean_box(0);
+    let mut x_55: u8 = 0;
+    let mut x_56: Obj = rt::lean_box(0);
+    let mut x_57: Obj = rt::lean_box(0);
+    let mut x_58: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => {
+                x_2 = l_Ritsulint_numeral(x_1);
+                match rt::lean_obj_tag(x_2) {
+                    1 => {
+                        x_3 = rt::lean_ctor_get(x_2, 0);
+                        rt::lean_inc(x_3);
+                        rt::lean_dec_ref(x_2);
+                        x_4 = rt::lean_ctor_get(x_3, 1);
+                        rt::lean_inc(x_4);
+                        x_5 = rt::lean_ctor_get(x_4, 0);
+                        rt::lean_inc(x_5);
+                        match rt::lean_obj_tag(x_5) {
+                            1 => {
+                                x_6 = rt::lean_ctor_get(x_3, 0);
+                                x_55 = (!rt::lean_is_exclusive(x_3)) as u8;
+                                match x_55 as u32 {
+                                    0 => {
+                                        x_56 = rt::lean_ctor_get(x_3, 1);
+                                        rt::lean_dec(x_56);
+                                        {
+                                            let t_0 = x_3;
+                                            let t_1 = x_55;
+                                            x_8 = t_0;
+                                            x_9 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    1 => {
+                                        rt::lean_inc(x_6);
+                                        rt::lean_dec(x_3);
+                                        {
+                                            let t_0 = rt::lean_box(0);
+                                            let t_1 = x_55;
+                                            x_8 = t_0;
+                                            x_9 = t_1;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            _ => {
+                                rt::lean_dec(x_5);
+                                rt::lean_dec(x_4);
+                                rt::lean_dec(x_3);
+                                x_57 = rt::lean_box(0);
+                                return x_57;
+                            }
+                        }
+                    }
+                    _ => {
+                        rt::lean_dec(x_2);
+                        x_58 = rt::lean_box(0);
+                        return x_58;
+                    }
+                }
+            }
+            1 => {
+                x_10 = rt::lean_ctor_get(x_4, 1);
+                x_53 = (!rt::lean_is_exclusive(x_4)) as u8;
+                match x_53 as u32 {
+                    0 => {
+                        x_54 = rt::lean_ctor_get(x_4, 0);
+                        rt::lean_dec(x_54);
+                        {
+                            let t_0 = x_4;
+                            let t_1 = x_53;
+                            x_12 = t_0;
+                            x_13 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_10);
+                        rt::lean_dec(x_4);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_53;
+                            x_12 = t_0;
+                            x_13 = t_1;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                x_14 = rt::lean_ctor_get(x_5, 0);
+                x_51 = (!rt::lean_is_exclusive(x_5)) as u8;
+                match x_51 as u32 {
+                    0 => {
+                        x_52 = rt::lean_ctor_get(x_5, 1);
+                        rt::lean_dec(x_52);
+                        {
+                            let t_0 = x_5;
+                            let t_1 = x_51;
+                            x_16 = t_0;
+                            x_17 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    1 => {
+                        rt::lean_inc(x_14);
+                        rt::lean_dec(x_5);
+                        {
+                            let t_0 = rt::lean_box(0);
+                            let t_1 = x_51;
+                            x_16 = t_0;
+                            x_17 = t_1;
+                        }
+                        __blk = 3;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                x_18 = 38917u32;
+                x_19 = rt::lean_unbox_uint32(x_14);
+                x_20 = rt::lean_uint32_dec_eq(x_19, x_18);
+                match x_20 as u32 {
+                    0 => {
+                        x_21 = 21495u32;
+                        x_22 = rt::lean_unbox_uint32(x_14);
+                        rt::lean_dec(x_14);
+                        x_23 = rt::lean_uint32_dec_eq(x_22, x_21);
+                        match x_23 as u32 {
+                            0 => {
+                                rt::lean_del_object(x_16);
+                                rt::lean_del_object(x_12);
+                                rt::lean_dec(x_10);
+                                rt::lean_del_object(x_8);
+                                rt::lean_dec(x_6);
+                                x_24 = rt::lean_box(0);
+                                return x_24;
+                            }
+                            1 => {
+                                x_25 = l_Ritsulint_counted___closed__0();
+                                x_26 = rt::lean_unsigned_to_nat(2u32);
+                                x_27 = rt::lean_nat_add(x_10, x_26);
+                                rt::lean_dec(x_10);
+                                match x_13 as u32 {
+                                    0 => {
+                                        rt::lean_ctor_set(x_12, 1, x_27);
+                                        rt::lean_ctor_set(x_12, 0, x_6);
+                                        {
+                                            let t_0 = x_12;
+                                            x_29 = t_0;
+                                        }
+                                        __blk = 4;
+                                        continue 'body;
+                                    }
+                                    1 => {
+                                        x_37 = rt::lean_alloc_ctor(
+                                            0,
+                                            2,
+                                            0 * core::mem::size_of::<usize>() as u32 + 0,
+                                        );
+                                        rt::lean_ctor_set(x_37, 0, x_6);
+                                        rt::lean_ctor_set(x_37, 1, x_27);
+                                        {
+                                            let t_0 = x_37;
+                                            x_29 = t_0;
+                                        }
+                                        __blk = 4;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        rt::lean_dec(x_14);
+                        x_38 = l_Ritsulint_counted___closed__1();
+                        x_39 = rt::lean_unsigned_to_nat(2u32);
+                        x_40 = rt::lean_nat_add(x_10, x_39);
+                        rt::lean_dec(x_10);
+                        match x_13 as u32 {
+                            0 => {
+                                rt::lean_ctor_set(x_12, 1, x_40);
+                                rt::lean_ctor_set(x_12, 0, x_6);
+                                {
+                                    let t_0 = x_12;
+                                    x_42 = t_0;
+                                }
+                                __blk = 7;
+                                continue 'body;
+                            }
+                            1 => {
+                                x_50 = rt::lean_alloc_ctor(
+                                    0,
+                                    2,
+                                    0 * core::mem::size_of::<usize>() as u32 + 0,
+                                );
+                                rt::lean_ctor_set(x_50, 0, x_6);
+                                rt::lean_ctor_set(x_50, 1, x_40);
+                                {
+                                    let t_0 = x_50;
+                                    x_42 = t_0;
+                                }
+                                __blk = 7;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            4 => match x_9 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_8, 1, x_29);
+                    rt::lean_ctor_set(x_8, 0, x_25);
+                    {
+                        let t_0 = x_8;
+                        x_31 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                1 => {
+                    x_36 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_36, 0, x_25);
+                    rt::lean_ctor_set(x_36, 1, x_29);
+                    {
+                        let t_0 = x_36;
+                        x_31 = t_0;
+                    }
+                    __blk = 5;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            5 => {
+                x_32 = rt::lean_box(0);
+                match x_17 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_16, 1, x_32);
+                        rt::lean_ctor_set(x_16, 0, x_31);
+                        {
+                            let t_0 = x_16;
+                            x_34 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_35 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_35, 0, x_31);
+                        rt::lean_ctor_set(x_35, 1, x_32);
+                        {
+                            let t_0 = x_35;
+                            x_34 = t_0;
+                        }
+                        __blk = 6;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            6 => {
+                return x_34;
+            }
+            7 => match x_9 as u32 {
+                0 => {
+                    rt::lean_ctor_set(x_8, 1, x_42);
+                    rt::lean_ctor_set(x_8, 0, x_38);
+                    {
+                        let t_0 = x_8;
+                        x_44 = t_0;
+                    }
+                    __blk = 8;
+                    continue 'body;
+                }
+                1 => {
+                    x_49 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                    rt::lean_ctor_set(x_49, 0, x_38);
+                    rt::lean_ctor_set(x_49, 1, x_42);
+                    {
+                        let t_0 = x_49;
+                        x_44 = t_0;
+                    }
+                    __blk = 8;
+                    continue 'body;
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            8 => {
+                x_45 = rt::lean_box(0);
+                match x_17 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_16, 1, x_45);
+                        rt::lean_ctor_set(x_16, 0, x_44);
+                        {
+                            let t_0 = x_16;
+                            x_47 = t_0;
+                        }
+                        __blk = 9;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_48 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_48, 0, x_44);
+                        rt::lean_ctor_set(x_48, 1, x_45);
+                        {
+                            let t_0 = x_48;
+                            x_47 = t_0;
+                        }
+                        __blk = 9;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            9 => {
+                return x_47;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_counted___closed__0_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("prev-items", 10, 10);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_counted___closed__0() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_counted___closed__0_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__11_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__10();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__11() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__11_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__10_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__0();
+    x_2 = l_Ritsulint_counted___closed__0();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__10() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__10_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___boxed__const__1_init() -> Obj {
+    let mut x_1: u32 = 0;
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = 21508u32;
+    x_2 = rt::lean_box_uint32(x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___boxed__const__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___boxed__const__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__14_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__13();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__14() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__14_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__13_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__12();
+    x_2 = l_Ritsulint_counted___closed__0();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__13() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__13_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__12_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_unsigned_to_nat(3u32);
+    x_2 = rt::lean_unsigned_to_nat(1u32);
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__12() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__12_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__16_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = rt::lean_box(0);
+    x_2 = l_Ritsulint_relAt___closed__15();
+    x_3 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__16() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__16_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__15_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    x_1 = l_Ritsulint_relAt___closed__12();
+    x_2 = l_Ritsulint_counted___closed__1();
+    x_3 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+    rt::lean_ctor_set(x_3, 0, x_2);
+    rt::lean_ctor_set(x_3, 1, x_1);
+    return x_3;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__15() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__15_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__17_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("prev-paragraph-item", 19, 19);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__17() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__17_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___boxed__const__2_init() -> Obj {
+    let mut x_1: u32 = 0;
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = 26465u32;
+    x_2 = rt::lean_box_uint32(x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___boxed__const__2() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___boxed__const__2_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_relAt___closed__18_init() -> Obj {
+    let mut x_1: Obj = rt::lean_box(0);
+    x_1 = rt::lean_mk_string_unchecked("prev-article-paragraph", 22, 22);
+    return x_1;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_relAt___closed__18() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_relAt___closed__18_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_mapTR_loop___at___00Ritsulint_relScan_spec__0(
+    mut x_1: Obj,
+    mut x_2: Obj,
+    mut x_3: Obj,
+) -> Obj {
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: u8 = 0;
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: Obj = rt::lean_box(0);
+    let mut x_18: Obj = rt::lean_box(0);
+    let mut x_19: u8 = 0;
+    let mut x_20: Obj = rt::lean_box(0);
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_2) {
+                0 => {
+                    rt::lean_dec(x_1);
+                    x_4 = l_List_reverse___redArg(x_3);
+                    return x_4;
+                }
+                1 => {
+                    x_5 = rt::lean_ctor_get(x_2, 0);
+                    rt::lean_inc(x_5);
+                    x_6 = rt::lean_ctor_get(x_5, 1);
+                    rt::lean_inc(x_6);
+                    x_7 = rt::lean_ctor_get(x_2, 1);
+                    x_19 = (!rt::lean_is_exclusive(x_2)) as u8;
+                    match x_19 as u32 {
+                        0 => {
+                            x_20 = rt::lean_ctor_get(x_2, 0);
+                            rt::lean_dec(x_20);
+                            {
+                                let t_0 = x_2;
+                                let t_1 = x_19;
+                                x_9 = t_0;
+                                x_10 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_7);
+                            rt::lean_dec(x_2);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_19;
+                                x_9 = t_0;
+                                x_10 = t_1;
+                            }
+                            __blk = 1;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_11 = rt::lean_ctor_get(x_5, 0);
+                rt::lean_inc(x_11);
+                rt::lean_dec(x_5);
+                x_12 = rt::lean_ctor_get(x_6, 0);
+                rt::lean_inc(x_12);
+                x_13 = rt::lean_ctor_get(x_6, 1);
+                rt::lean_inc(x_13);
+                rt::lean_dec(x_6);
+                rt::lean_inc(x_1);
+                x_14 = rt::lean_alloc_ctor(0, 4, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_14, 0, x_11);
+                rt::lean_ctor_set(x_14, 1, x_12);
+                rt::lean_ctor_set(x_14, 2, x_1);
+                rt::lean_ctor_set(x_14, 3, x_13);
+                match x_10 as u32 {
+                    0 => {
+                        rt::lean_ctor_set(x_9, 1, x_3);
+                        rt::lean_ctor_set(x_9, 0, x_14);
+                        {
+                            let t_0 = x_9;
+                            x_16 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    1 => {
+                        x_18 =
+                            rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                        rt::lean_ctor_set(x_18, 0, x_14);
+                        rt::lean_ctor_set(x_18, 1, x_3);
+                        {
+                            let t_0 = x_18;
+                            x_16 = t_0;
+                        }
+                        __blk = 2;
+                        continue 'body;
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            2 => {
+                {
+                    let t_0 = x_1;
+                    let t_1 = x_7;
+                    let t_2 = x_16;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_List_appendTR___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    x_3 = l_List_reverse___redArg(x_1);
+    x_4 = l_List_reverseAux___redArg(x_3, x_2);
+    return x_4;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
 pub(crate) unsafe fn l_Ritsulint_Api_analyze(
     mut x_1: Obj,
     mut x_2: Obj,
@@ -118,67 +4907,6 @@ pub(crate) unsafe fn l_Ritsulint_rawClauses(mut x_1: Obj) -> Obj {
     x_3 = rt::lean_box(0);
     x_4 = l_Ritsulint_scan(x_2, x_1, x_3, x_3, x_3, x_3, x_3);
     return x_4;
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_lengthTR___redArg(mut x_1: Obj) -> Obj {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    x_2 = rt::lean_unsigned_to_nat(0u32);
-    x_3 = l_List_lengthTRAux___redArg(x_1, x_2);
-    return x_3;
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_lengthTRAux___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => match rt::lean_obj_tag(x_1) {
-                0 => {
-                    return x_2;
-                }
-                1 => {
-                    x_3 = rt::lean_ctor_get(x_1, 1);
-                    x_4 = rt::lean_unsigned_to_nat(1u32);
-                    x_5 = rt::lean_nat_add(x_2, x_4);
-                    rt::lean_dec(x_2);
-                    {
-                        let t_0 = x_3;
-                        let t_1 = x_5;
-                        x_1 = t_0;
-                        x_2 = t_1;
-                    }
-                    __blk = 0;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
 }
 
 #[allow(
@@ -825,121 +5553,6 @@ pub(crate) unsafe fn l_Ritsulint_scan(
     unused_unsafe,
     clippy::all
 )]
-pub(crate) unsafe fn l_List_reverse___redArg(mut x_1: Obj) -> Obj {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    x_2 = rt::lean_box(0);
-    x_3 = l_List_reverseAux___redArg(x_1, x_2);
-    return x_3;
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_reverseAux___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_7: u8 = 0;
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: Obj = rt::lean_box(0);
-    let mut x_12: u8 = 0;
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => match rt::lean_obj_tag(x_1) {
-                0 => {
-                    return x_2;
-                }
-                1 => {
-                    x_3 = rt::lean_ctor_get(x_1, 0);
-                    x_4 = rt::lean_ctor_get(x_1, 1);
-                    x_12 = (!rt::lean_is_exclusive(x_1)) as u8;
-                    match x_12 as u32 {
-                        0 => {
-                            {
-                                let t_0 = x_1;
-                                let t_1 = x_12;
-                                x_6 = t_0;
-                                x_7 = t_1;
-                            }
-                            __blk = 1;
-                            continue 'body;
-                        }
-                        1 => {
-                            rt::lean_inc(x_4);
-                            rt::lean_inc(x_3);
-                            rt::lean_dec(x_1);
-                            {
-                                let t_0 = rt::lean_box(0);
-                                let t_1 = x_12;
-                                x_6 = t_0;
-                                x_7 = t_1;
-                            }
-                            __blk = 1;
-                            continue 'body;
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            1 => match x_7 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_6, 1, x_2);
-                    {
-                        let t_0 = x_6;
-                        x_9 = t_0;
-                    }
-                    __blk = 2;
-                    continue 'body;
-                }
-                1 => {
-                    x_11 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_11, 0, x_3);
-                    rt::lean_ctor_set(x_11, 1, x_2);
-                    {
-                        let t_0 = x_11;
-                        x_9 = t_0;
-                    }
-                    __blk = 2;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            2 => {
-                {
-                    let t_0 = x_4;
-                    let t_1 = x_9;
-                    x_1 = t_0;
-                    x_2 = t_1;
-                }
-                __blk = 0;
-                continue 'body;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
 pub(crate) unsafe fn l_Ritsulint_takeQuote(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
     let mut x_4: Obj = rt::lean_box(0);
     let mut x_5: Obj = rt::lean_box(0);
@@ -1367,24 +5980,6 @@ pub(crate) unsafe fn l_List_isEmpty___redArg(mut x_1: Obj) -> u8 {
         }
         _ => rt::lean_internal_panic_unreachable(),
     }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_appendTR___redArg(mut x_1: Obj, mut x_2: Obj) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    x_3 = l_List_reverse___redArg(x_1);
-    x_4 = l_List_reverseAux___redArg(x_3, x_2);
-    return x_4;
 }
 
 #[allow(
@@ -6651,1594 +11246,6 @@ pub(crate) unsafe fn l_Ritsulint_numbered(mut x_1: Obj) -> Obj {
     unused_unsafe,
     clippy::all
 )]
-pub(crate) unsafe fn l_List_span_loop___at___00Ritsulint_branches_spec__0(
-    mut x_1: Obj,
-    mut x_2: Obj,
-) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_7: u32 = 0;
-    let mut x_8: u8 = 0;
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_12: Obj = rt::lean_box(0);
-    let mut x_13: u8 = 0;
-    let mut x_15: Obj = rt::lean_box(0);
-    let mut x_16: Obj = rt::lean_box(0);
-    let mut x_17: Obj = rt::lean_box(0);
-    let mut x_18: u8 = 0;
-    let mut x_19: Obj = rt::lean_box(0);
-    let mut x_20: Obj = rt::lean_box(0);
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => match rt::lean_obj_tag(x_1) {
-                0 => {
-                    x_3 = l_List_reverse___redArg(x_2);
-                    x_4 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_4, 0, x_3);
-                    rt::lean_ctor_set(x_4, 1, x_1);
-                    return x_4;
-                }
-                1 => {
-                    x_5 = rt::lean_ctor_get(x_1, 0);
-                    x_6 = rt::lean_ctor_get(x_1, 1);
-                    x_7 = rt::lean_unbox_uint32(x_5);
-                    x_8 = l_Ritsulint_isKansuji(x_7);
-                    match x_8 as u32 {
-                        0 => {
-                            x_9 = l_List_reverse___redArg(x_2);
-                            x_10 = rt::lean_alloc_ctor(
-                                0,
-                                2,
-                                0 * core::mem::size_of::<usize>() as u32 + 0,
-                            );
-                            rt::lean_ctor_set(x_10, 0, x_9);
-                            rt::lean_ctor_set(x_10, 1, x_1);
-                            return x_10;
-                        }
-                        1 => {
-                            rt::lean_inc(x_6);
-                            rt::lean_inc(x_5);
-                            x_18 = (!rt::lean_is_exclusive(x_1)) as u8;
-                            match x_18 as u32 {
-                                0 => {
-                                    x_19 = rt::lean_ctor_get(x_1, 1);
-                                    rt::lean_dec(x_19);
-                                    x_20 = rt::lean_ctor_get(x_1, 0);
-                                    rt::lean_dec(x_20);
-                                    {
-                                        let t_0 = x_1;
-                                        let t_1 = x_18;
-                                        x_12 = t_0;
-                                        x_13 = t_1;
-                                    }
-                                    __blk = 1;
-                                    continue 'body;
-                                }
-                                1 => {
-                                    rt::lean_dec(x_1);
-                                    {
-                                        let t_0 = rt::lean_box(0);
-                                        let t_1 = x_18;
-                                        x_12 = t_0;
-                                        x_13 = t_1;
-                                    }
-                                    __blk = 1;
-                                    continue 'body;
-                                }
-                                _ => rt::lean_internal_panic_unreachable(),
-                            }
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            1 => match x_13 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_12, 1, x_2);
-                    {
-                        let t_0 = x_12;
-                        x_15 = t_0;
-                    }
-                    __blk = 2;
-                    continue 'body;
-                }
-                1 => {
-                    x_17 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_17, 0, x_5);
-                    rt::lean_ctor_set(x_17, 1, x_2);
-                    {
-                        let t_0 = x_17;
-                        x_15 = t_0;
-                    }
-                    __blk = 2;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            2 => {
-                {
-                    let t_0 = x_6;
-                    let t_1 = x_15;
-                    x_1 = t_0;
-                    x_2 = t_1;
-                }
-                __blk = 0;
-                continue 'body;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_isKansuji(mut x_1: u32) -> u8 {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: u8 = 0;
-    let mut x_5: u8 = 0;
-    let mut x_6: u8 = 0;
-    x_2 = l_Ritsulint_kansujiDigit_x3f(x_1);
-    match rt::lean_obj_tag(x_2) {
-        0 => {
-            x_3 = l_Ritsulint_kansujiUnit_x3f(x_1);
-            match rt::lean_obj_tag(x_3) {
-                0 => {
-                    x_4 = 0u8;
-                    return x_4;
-                }
-                1 => {
-                    rt::lean_dec_ref(x_3);
-                    x_5 = 1u8;
-                    return x_5;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            }
-        }
-        1 => {
-            rt::lean_dec_ref(x_2);
-            x_6 = 1u8;
-            return x_6;
-        }
-        _ => rt::lean_internal_panic_unreachable(),
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f(mut x_1: u32) -> Obj {
-    let mut x_2: u32 = 0;
-    let mut x_3: u8 = 0;
-    let mut x_4: u32 = 0;
-    let mut x_5: u8 = 0;
-    let mut x_6: u32 = 0;
-    let mut x_7: u8 = 0;
-    let mut x_8: u32 = 0;
-    let mut x_9: u8 = 0;
-    let mut x_10: u32 = 0;
-    let mut x_11: u8 = 0;
-    let mut x_12: u32 = 0;
-    let mut x_13: u8 = 0;
-    let mut x_14: u32 = 0;
-    let mut x_15: u8 = 0;
-    let mut x_16: u32 = 0;
-    let mut x_17: u8 = 0;
-    let mut x_18: u32 = 0;
-    let mut x_19: u8 = 0;
-    let mut x_20: Obj = rt::lean_box(0);
-    let mut x_21: Obj = rt::lean_box(0);
-    let mut x_22: Obj = rt::lean_box(0);
-    let mut x_23: Obj = rt::lean_box(0);
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: Obj = rt::lean_box(0);
-    let mut x_26: Obj = rt::lean_box(0);
-    let mut x_27: Obj = rt::lean_box(0);
-    let mut x_28: Obj = rt::lean_box(0);
-    let mut x_29: Obj = rt::lean_box(0);
-    x_2 = 19968u32;
-    x_3 = rt::lean_uint32_dec_eq(x_1, x_2);
-    match x_3 as u32 {
-        0 => {
-            x_4 = 20108u32;
-            x_5 = rt::lean_uint32_dec_eq(x_1, x_4);
-            match x_5 as u32 {
-                0 => {
-                    x_6 = 19977u32;
-                    x_7 = rt::lean_uint32_dec_eq(x_1, x_6);
-                    match x_7 as u32 {
-                        0 => {
-                            x_8 = 22235u32;
-                            x_9 = rt::lean_uint32_dec_eq(x_1, x_8);
-                            match x_9 as u32 {
-                                0 => {
-                                    x_10 = 20116u32;
-                                    x_11 = rt::lean_uint32_dec_eq(x_1, x_10);
-                                    match x_11 as u32 {
-                                        0 => {
-                                            x_12 = 20845u32;
-                                            x_13 = rt::lean_uint32_dec_eq(x_1, x_12);
-                                            match x_13 as u32 {
-                                                0 => {
-                                                    x_14 = 19971u32;
-                                                    x_15 = rt::lean_uint32_dec_eq(x_1, x_14);
-                                                    match x_15 as u32 {
-                                                        0 => {
-                                                            x_16 = 20843u32;
-                                                            x_17 =
-                                                                rt::lean_uint32_dec_eq(x_1, x_16);
-                                                            match x_17 as u32 {
-0 => {
-x_18 = 20061u32;
-x_19 = rt::lean_uint32_dec_eq(x_1, x_18);
-match x_19 as u32 {
-0 => {
-x_20 = rt::lean_box(0);
-return x_20;
-}
-1 => {
-x_21 = l_Ritsulint_kansujiDigit_x3f___closed__0();
-return x_21;
-}
-_ => rt::lean_internal_panic_unreachable(),
-}
-}
-1 => {
-x_22 = l_Ritsulint_kansujiDigit_x3f___closed__1();
-return x_22;
-}
-_ => rt::lean_internal_panic_unreachable(),
-}
-                                                        }
-                                                        1 => {
-                                                            x_23 = l_Ritsulint_kansujiDigit_x3f___closed__2();
-                                                            return x_23;
-                                                        }
-                                                        _ => rt::lean_internal_panic_unreachable(),
-                                                    }
-                                                }
-                                                1 => {
-                                                    x_24 =
-                                                        l_Ritsulint_kansujiDigit_x3f___closed__3();
-                                                    return x_24;
-                                                }
-                                                _ => rt::lean_internal_panic_unreachable(),
-                                            }
-                                        }
-                                        1 => {
-                                            x_25 = l_Ritsulint_kansujiDigit_x3f___closed__4();
-                                            return x_25;
-                                        }
-                                        _ => rt::lean_internal_panic_unreachable(),
-                                    }
-                                }
-                                1 => {
-                                    x_26 = l_Ritsulint_kansujiDigit_x3f___closed__5();
-                                    return x_26;
-                                }
-                                _ => rt::lean_internal_panic_unreachable(),
-                            }
-                        }
-                        1 => {
-                            x_27 = l_Ritsulint_kansujiDigit_x3f___closed__6();
-                            return x_27;
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-                1 => {
-                    x_28 = l_Ritsulint_kansujiDigit_x3f___closed__7();
-                    return x_28;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            }
-        }
-        1 => {
-            x_29 = l_Ritsulint_kansujiDigit_x3f___closed__8();
-            return x_29;
-        }
-        _ => rt::lean_internal_panic_unreachable(),
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__0_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(9u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__0() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__0_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__1_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(8u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__1() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__1_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__2_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(7u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__2() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__2_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__3_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(6u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__3() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__3_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__4_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(5u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__4() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__4_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__5_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(4u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__5() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__5_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__6_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(3u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__6() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__6_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__7_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(2u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__7() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__7_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__8_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(1u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiDigit_x3f___closed__8() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiDigit_x3f___closed__8_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f(mut x_1: u32) -> Obj {
-    let mut x_2: u32 = 0;
-    let mut x_3: u8 = 0;
-    let mut x_4: u32 = 0;
-    let mut x_5: u8 = 0;
-    let mut x_6: u32 = 0;
-    let mut x_7: u8 = 0;
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: Obj = rt::lean_box(0);
-    x_2 = 21313u32;
-    x_3 = rt::lean_uint32_dec_eq(x_1, x_2);
-    match x_3 as u32 {
-        0 => {
-            x_4 = 30334u32;
-            x_5 = rt::lean_uint32_dec_eq(x_1, x_4);
-            match x_5 as u32 {
-                0 => {
-                    x_6 = 21315u32;
-                    x_7 = rt::lean_uint32_dec_eq(x_1, x_6);
-                    match x_7 as u32 {
-                        0 => {
-                            x_8 = rt::lean_box(0);
-                            return x_8;
-                        }
-                        1 => {
-                            x_9 = l_Ritsulint_kansujiUnit_x3f___closed__0();
-                            return x_9;
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-                1 => {
-                    x_10 = l_Ritsulint_kansujiUnit_x3f___closed__1();
-                    return x_10;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            }
-        }
-        1 => {
-            x_11 = l_Ritsulint_kansujiUnit_x3f___closed__2();
-            return x_11;
-        }
-        _ => rt::lean_internal_panic_unreachable(),
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__0_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(1000u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__0() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiUnit_x3f___closed__0_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__1_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(100u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__1() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiUnit_x3f___closed__1_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__2_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(10u32);
-    x_2 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_kansujiUnit_x3f___closed__2() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_kansujiUnit_x3f___closed__2_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_parseKansuji(mut x_1: Obj) -> Obj {
-    let mut x_2: Obj = rt::lean_box(0);
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: u8 = 0;
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: Obj = rt::lean_box(0);
-    let mut x_12: Obj = rt::lean_box(0);
-    let mut x_14: Obj = rt::lean_box(0);
-    let mut x_15: Obj = rt::lean_box(0);
-    let mut x_16: u8 = 0;
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => match rt::lean_obj_tag(x_1) {
-                0 => {
-                    x_2 = rt::lean_box(0);
-                    return x_2;
-                }
-                _ => {
-                    x_3 = l_Ritsulint_parseKansuji___closed__0();
-                    x_4 = l_List_foldlM___at___00Ritsulint_parseKansuji_spec__0(x_3, x_1);
-                    match rt::lean_obj_tag(x_4) {
-                        0 => {
-                            x_5 = rt::lean_box(0);
-                            return x_5;
-                        }
-                        1 => {
-                            x_6 = rt::lean_ctor_get(x_4, 0);
-                            x_16 = (!rt::lean_is_exclusive(x_4)) as u8;
-                            match x_16 as u32 {
-                                0 => {
-                                    {
-                                        let t_0 = x_4;
-                                        let t_1 = x_16;
-                                        x_8 = t_0;
-                                        x_9 = t_1;
-                                    }
-                                    __blk = 1;
-                                    continue 'body;
-                                }
-                                1 => {
-                                    rt::lean_inc(x_6);
-                                    rt::lean_dec(x_4);
-                                    {
-                                        let t_0 = rt::lean_box(0);
-                                        let t_1 = x_16;
-                                        x_8 = t_0;
-                                        x_9 = t_1;
-                                    }
-                                    __blk = 1;
-                                    continue 'body;
-                                }
-                                _ => rt::lean_internal_panic_unreachable(),
-                            }
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-            },
-            1 => {
-                x_10 = rt::lean_ctor_get(x_6, 0);
-                rt::lean_inc(x_10);
-                x_11 = rt::lean_ctor_get(x_6, 1);
-                rt::lean_inc(x_11);
-                rt::lean_dec(x_6);
-                x_12 = rt::lean_nat_add(x_10, x_11);
-                rt::lean_dec(x_11);
-                rt::lean_dec(x_10);
-                match x_9 as u32 {
-                    0 => {
-                        rt::lean_ctor_set(x_8, 0, x_12);
-                        {
-                            let t_0 = x_8;
-                            x_14 = t_0;
-                        }
-                        __blk = 2;
-                        continue 'body;
-                    }
-                    1 => {
-                        x_15 =
-                            rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_15, 0, x_12);
-                        {
-                            let t_0 = x_15;
-                            x_14 = t_0;
-                        }
-                        __blk = 2;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            2 => {
-                return x_14;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_parseKansuji___closed__0_init() -> Obj {
-    let mut x_1: Obj = rt::lean_box(0);
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = rt::lean_unsigned_to_nat(0u32);
-    x_2 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-    rt::lean_ctor_set(x_2, 0, x_1);
-    rt::lean_ctor_set(x_2, 1, x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_parseKansuji___closed__0() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_parseKansuji___closed__0_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_List_foldlM___at___00Ritsulint_parseKansuji_spec__0(
-    mut x_1: Obj,
-    mut x_2: Obj,
-) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: u32 = 0;
-    let mut x_7: Obj = rt::lean_box(0);
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => match rt::lean_obj_tag(x_2) {
-                0 => {
-                    x_3 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_3, 0, x_1);
-                    return x_3;
-                }
-                1 => {
-                    x_4 = rt::lean_ctor_get(x_2, 0);
-                    x_5 = rt::lean_ctor_get(x_2, 1);
-                    x_6 = rt::lean_unbox_uint32(x_4);
-                    x_7 = l_Ritsulint_kansujiStep(x_1, x_6);
-                    match rt::lean_obj_tag(x_7) {
-                        0 => {
-                            return x_7;
-                        }
-                        1 => {
-                            x_8 = rt::lean_ctor_get(x_7, 0);
-                            rt::lean_inc(x_8);
-                            rt::lean_dec_ref(x_7);
-                            {
-                                let t_0 = x_8;
-                                let t_1 = x_5;
-                                x_1 = t_0;
-                                x_2 = t_1;
-                            }
-                            __blk = 0;
-                            continue 'body;
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    }
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_kansujiStep(mut x_1: Obj, mut x_2: u32) -> Obj {
-    let mut x_3: Obj = rt::lean_box(0);
-    let mut x_4: Obj = rt::lean_box(0);
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: u8 = 0;
-    let mut x_10: Obj = rt::lean_box(0);
-    let mut x_11: Obj = rt::lean_box(0);
-    let mut x_13: Obj = rt::lean_box(0);
-    let mut x_14: u8 = 0;
-    let mut x_15: Obj = rt::lean_box(0);
-    let mut x_17: Obj = rt::lean_box(0);
-    let mut x_18: Obj = rt::lean_box(0);
-    let mut x_19: Obj = rt::lean_box(0);
-    let mut x_21: Obj = rt::lean_box(0);
-    let mut x_23: Obj = rt::lean_box(0);
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_25: Obj = rt::lean_box(0);
-    let mut x_26: u8 = 0;
-    let mut x_27: Obj = rt::lean_box(0);
-    let mut x_28: u8 = 0;
-    let mut x_29: u8 = 0;
-    let mut x_30: Obj = rt::lean_box(0);
-    let mut x_32: Obj = rt::lean_box(0);
-    let mut x_33: u8 = 0;
-    let mut x_34: Obj = rt::lean_box(0);
-    let mut x_35: Obj = rt::lean_box(0);
-    let mut x_37: Obj = rt::lean_box(0);
-    let mut x_38: u8 = 0;
-    let mut x_39: Obj = rt::lean_box(0);
-    let mut x_40: u8 = 0;
-    let mut x_41: Obj = rt::lean_box(0);
-    let mut x_43: Obj = rt::lean_box(0);
-    let mut x_45: Obj = rt::lean_box(0);
-    let mut x_46: Obj = rt::lean_box(0);
-    let mut x_47: Obj = rt::lean_box(0);
-    let mut x_48: u8 = 0;
-    let mut x_49: u8 = 0;
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => {
-                x_3 = l_Ritsulint_kansujiDigit_x3f(x_2);
-                match rt::lean_obj_tag(x_3) {
-                    0 => {
-                        x_4 = l_Ritsulint_kansujiUnit_x3f(x_2);
-                        match rt::lean_obj_tag(x_4) {
-                            0 => {
-                                rt::lean_dec_ref(x_1);
-                                x_5 = rt::lean_box(0);
-                                return x_5;
-                            }
-                            1 => {
-                                x_6 = rt::lean_ctor_get(x_4, 0);
-                                x_29 = (!rt::lean_is_exclusive(x_4)) as u8;
-                                match x_29 as u32 {
-                                    0 => {
-                                        {
-                                            let t_0 = x_4;
-                                            let t_1 = x_29;
-                                            x_8 = t_0;
-                                            x_9 = t_1;
-                                        }
-                                        __blk = 1;
-                                        continue 'body;
-                                    }
-                                    1 => {
-                                        rt::lean_inc(x_6);
-                                        rt::lean_dec(x_4);
-                                        {
-                                            let t_0 = rt::lean_box(0);
-                                            let t_1 = x_29;
-                                            x_8 = t_0;
-                                            x_9 = t_1;
-                                        }
-                                        __blk = 1;
-                                        continue 'body;
-                                    }
-                                    _ => rt::lean_internal_panic_unreachable(),
-                                }
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
-                        }
-                    }
-                    1 => {
-                        x_30 = rt::lean_ctor_get(x_3, 0);
-                        x_49 = (!rt::lean_is_exclusive(x_3)) as u8;
-                        match x_49 as u32 {
-                            0 => {
-                                {
-                                    let t_0 = x_3;
-                                    let t_1 = x_49;
-                                    x_32 = t_0;
-                                    x_33 = t_1;
-                                }
-                                __blk = 6;
-                                continue 'body;
-                            }
-                            1 => {
-                                rt::lean_inc(x_30);
-                                rt::lean_dec(x_3);
-                                {
-                                    let t_0 = rt::lean_box(0);
-                                    let t_1 = x_49;
-                                    x_32 = t_0;
-                                    x_33 = t_1;
-                                }
-                                __blk = 6;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
-                        }
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            1 => {
-                x_10 = rt::lean_ctor_get(x_1, 0);
-                x_11 = rt::lean_ctor_get(x_1, 1);
-                x_28 = (!rt::lean_is_exclusive(x_1)) as u8;
-                match x_28 as u32 {
-                    0 => {
-                        {
-                            let t_0 = x_1;
-                            let t_1 = x_28;
-                            x_13 = t_0;
-                            x_14 = t_1;
-                        }
-                        __blk = 2;
-                        continue 'body;
-                    }
-                    1 => {
-                        rt::lean_inc(x_11);
-                        rt::lean_inc(x_10);
-                        rt::lean_dec(x_1);
-                        {
-                            let t_0 = rt::lean_box(0);
-                            let t_1 = x_28;
-                            x_13 = t_0;
-                            x_14 = t_1;
-                        }
-                        __blk = 2;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            2 => {
-                x_15 = rt::lean_unsigned_to_nat(0u32);
-                x_26 = rt::lean_nat_dec_eq(x_11, x_15);
-                match x_26 as u32 {
-                    0 => {
-                        {
-                            let t_0 = x_11;
-                            x_17 = t_0;
-                        }
-                        __blk = 3;
-                        continue 'body;
-                    }
-                    1 => {
-                        rt::lean_dec(x_11);
-                        x_27 = rt::lean_unsigned_to_nat(1u32);
-                        {
-                            let t_0 = x_27;
-                            x_17 = t_0;
-                        }
-                        __blk = 3;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            3 => {
-                x_18 = rt::lean_nat_mul(x_17, x_6);
-                rt::lean_dec(x_6);
-                rt::lean_dec(x_17);
-                x_19 = rt::lean_nat_add(x_10, x_18);
-                rt::lean_dec(x_18);
-                rt::lean_dec(x_10);
-                match x_14 as u32 {
-                    0 => {
-                        rt::lean_ctor_set(x_13, 1, x_15);
-                        rt::lean_ctor_set(x_13, 0, x_19);
-                        {
-                            let t_0 = x_13;
-                            x_21 = t_0;
-                        }
-                        __blk = 4;
-                        continue 'body;
-                    }
-                    1 => {
-                        x_25 =
-                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_25, 0, x_19);
-                        rt::lean_ctor_set(x_25, 1, x_15);
-                        {
-                            let t_0 = x_25;
-                            x_21 = t_0;
-                        }
-                        __blk = 4;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            4 => match x_9 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_8, 0, x_21);
-                    {
-                        let t_0 = x_8;
-                        x_23 = t_0;
-                    }
-                    __blk = 5;
-                    continue 'body;
-                }
-                1 => {
-                    x_24 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_24, 0, x_21);
-                    {
-                        let t_0 = x_24;
-                        x_23 = t_0;
-                    }
-                    __blk = 5;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            5 => {
-                return x_23;
-            }
-            6 => {
-                x_34 = rt::lean_ctor_get(x_1, 0);
-                x_35 = rt::lean_ctor_get(x_1, 1);
-                x_48 = (!rt::lean_is_exclusive(x_1)) as u8;
-                match x_48 as u32 {
-                    0 => {
-                        {
-                            let t_0 = x_1;
-                            let t_1 = x_48;
-                            x_37 = t_0;
-                            x_38 = t_1;
-                        }
-                        __blk = 7;
-                        continue 'body;
-                    }
-                    1 => {
-                        rt::lean_inc(x_35);
-                        rt::lean_inc(x_34);
-                        rt::lean_dec(x_1);
-                        {
-                            let t_0 = rt::lean_box(0);
-                            let t_1 = x_48;
-                            x_37 = t_0;
-                            x_38 = t_1;
-                        }
-                        __blk = 7;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            7 => {
-                x_39 = rt::lean_unsigned_to_nat(0u32);
-                x_40 = rt::lean_nat_dec_eq(x_35, x_39);
-                rt::lean_dec(x_35);
-                match x_40 as u32 {
-                    0 => {
-                        rt::lean_del_object(x_37);
-                        rt::lean_dec(x_34);
-                        rt::lean_del_object(x_32);
-                        rt::lean_dec(x_30);
-                        x_41 = rt::lean_box(0);
-                        return x_41;
-                    }
-                    1 => match x_38 as u32 {
-                        0 => {
-                            rt::lean_ctor_set(x_37, 1, x_30);
-                            {
-                                let t_0 = x_37;
-                                x_43 = t_0;
-                            }
-                            __blk = 8;
-                            continue 'body;
-                        }
-                        1 => {
-                            x_47 = rt::lean_alloc_ctor(
-                                0,
-                                2,
-                                0 * core::mem::size_of::<usize>() as u32 + 0,
-                            );
-                            rt::lean_ctor_set(x_47, 0, x_34);
-                            rt::lean_ctor_set(x_47, 1, x_30);
-                            {
-                                let t_0 = x_47;
-                                x_43 = t_0;
-                            }
-                            __blk = 8;
-                            continue 'body;
-                        }
-                        _ => rt::lean_internal_panic_unreachable(),
-                    },
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            8 => match x_33 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_32, 0, x_43);
-                    {
-                        let t_0 = x_32;
-                        x_45 = t_0;
-                    }
-                    __blk = 9;
-                    continue 'body;
-                }
-                1 => {
-                    x_46 = rt::lean_alloc_ctor(1, 1, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_46, 0, x_43);
-                    {
-                        let t_0 = x_46;
-                        x_45 = t_0;
-                    }
-                    __blk = 9;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            9 => {
-                return x_45;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
-pub(crate) unsafe fn l_Ritsulint_branches(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
-    let mut x_5: Obj = rt::lean_box(0);
-    let mut x_6: Obj = rt::lean_box(0);
-    let mut x_7: Obj = rt::lean_box(0);
-    let mut x_8: Obj = rt::lean_box(0);
-    let mut x_9: Obj = rt::lean_box(0);
-    let mut x_10: u8 = 0;
-    let mut x_11: Obj = rt::lean_box(0);
-    let mut x_12: Obj = rt::lean_box(0);
-    let mut x_13: Obj = rt::lean_box(0);
-    let mut x_14: Obj = rt::lean_box(0);
-    let mut x_15: u32 = 0;
-    let mut x_16: u32 = 0;
-    let mut x_17: u8 = 0;
-    let mut x_19: Obj = rt::lean_box(0);
-    let mut x_20: u8 = 0;
-    let mut x_21: Obj = rt::lean_box(0);
-    let mut x_22: Obj = rt::lean_box(0);
-    let mut x_23: Obj = rt::lean_box(0);
-    let mut x_24: Obj = rt::lean_box(0);
-    let mut x_26: Obj = rt::lean_box(0);
-    let mut x_27: u8 = 0;
-    let mut x_28: Obj = rt::lean_box(0);
-    let mut x_29: Obj = rt::lean_box(0);
-    let mut x_30: Obj = rt::lean_box(0);
-    let mut x_32: Obj = rt::lean_box(0);
-    let mut x_34: Obj = rt::lean_box(0);
-    let mut x_35: Obj = rt::lean_box(0);
-    let mut x_36: Obj = rt::lean_box(0);
-    let mut x_37: Obj = rt::lean_box(0);
-    let mut x_38: Obj = rt::lean_box(0);
-    let mut x_39: Obj = rt::lean_box(0);
-    let mut x_41: Obj = rt::lean_box(0);
-    let mut x_42: Obj = rt::lean_box(0);
-    let mut x_43: Obj = rt::lean_box(0);
-    let mut x_44: u8 = 0;
-    let mut x_45: u8 = 0;
-    let mut x_46: Obj = rt::lean_box(0);
-    let mut x_47: Obj = rt::lean_box(0);
-    let mut __blk: u32 = 0;
-    'body: loop {
-        match __blk {
-            0 => {
-                x_9 = rt::lean_unsigned_to_nat(0u32);
-                x_10 = rt::lean_nat_dec_eq(x_1, x_9);
-                match x_10 as u32 {
-                    1 => {
-                        rt::lean_dec(x_1);
-                        x_11 = l_List_reverse___redArg(x_3);
-                        x_12 =
-                            rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                        rt::lean_ctor_set(x_12, 0, x_11);
-                        rt::lean_ctor_set(x_12, 1, x_2);
-                        return x_12;
-                    }
-                    0 => match rt::lean_obj_tag(x_2) {
-                        1 => {
-                            x_13 = rt::lean_ctor_get(x_2, 0);
-                            x_14 = rt::lean_ctor_get(x_2, 1);
-                            x_15 = 12398u32;
-                            x_16 = rt::lean_unbox_uint32(x_13);
-                            x_17 = rt::lean_uint32_dec_eq(x_16, x_15);
-                            match x_17 as u32 {
-                                0 => {
-                                    rt::lean_dec(x_1);
-                                    {
-                                        let t_0 = x_2;
-                                        let t_1 = x_3;
-                                        x_5 = t_0;
-                                        x_6 = t_1;
-                                    }
-                                    __blk = 1;
-                                    continue 'body;
-                                }
-                                1 => {
-                                    rt::lean_inc(x_14);
-                                    x_45 = (!rt::lean_is_exclusive(x_2)) as u8;
-                                    match x_45 as u32 {
-                                        0 => {
-                                            x_46 = rt::lean_ctor_get(x_2, 1);
-                                            rt::lean_dec(x_46);
-                                            x_47 = rt::lean_ctor_get(x_2, 0);
-                                            rt::lean_dec(x_47);
-                                            {
-                                                let t_0 = x_2;
-                                                let t_1 = x_45;
-                                                x_19 = t_0;
-                                                x_20 = t_1;
-                                            }
-                                            __blk = 2;
-                                            continue 'body;
-                                        }
-                                        1 => {
-                                            rt::lean_dec(x_2);
-                                            {
-                                                let t_0 = rt::lean_box(0);
-                                                let t_1 = x_45;
-                                                x_19 = t_0;
-                                                x_20 = t_1;
-                                            }
-                                            __blk = 2;
-                                            continue 'body;
-                                        }
-                                        _ => rt::lean_internal_panic_unreachable(),
-                                    }
-                                }
-                                _ => rt::lean_internal_panic_unreachable(),
-                            }
-                        }
-                        _ => {
-                            rt::lean_dec(x_1);
-                            {
-                                let t_0 = x_2;
-                                let t_1 = x_3;
-                                x_5 = t_0;
-                                x_6 = t_1;
-                            }
-                            __blk = 1;
-                            continue 'body;
-                        }
-                    },
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            1 => {
-                x_7 = l_List_reverse___redArg(x_6);
-                x_8 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                rt::lean_ctor_set(x_8, 0, x_7);
-                rt::lean_ctor_set(x_8, 1, x_5);
-                return x_8;
-            }
-            2 => {
-                x_21 = rt::lean_box(0);
-                rt::lean_inc(x_14);
-                x_22 = l_List_span_loop___at___00Ritsulint_branches_spec__0(x_14, x_21);
-                x_23 = rt::lean_ctor_get(x_22, 0);
-                x_24 = rt::lean_ctor_get(x_22, 1);
-                x_44 = (!rt::lean_is_exclusive(x_22)) as u8;
-                match x_44 as u32 {
-                    0 => {
-                        {
-                            let t_0 = x_22;
-                            let t_1 = x_44;
-                            x_26 = t_0;
-                            x_27 = t_1;
-                        }
-                        __blk = 3;
-                        continue 'body;
-                    }
-                    1 => {
-                        rt::lean_inc(x_24);
-                        rt::lean_inc(x_23);
-                        rt::lean_dec(x_22);
-                        {
-                            let t_0 = rt::lean_box(0);
-                            let t_1 = x_44;
-                            x_26 = t_0;
-                            x_27 = t_1;
-                        }
-                        __blk = 3;
-                        continue 'body;
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            3 => {
-                x_28 = l_Ritsulint_parseKansuji(x_23);
-                rt::lean_dec(x_23);
-                match rt::lean_obj_tag(x_28) {
-                    0 => {
-                        rt::lean_dec(x_24);
-                        rt::lean_dec(x_1);
-                        x_29 = l_List_reverse___redArg(x_3);
-                        x_30 = l_Ritsulint_branches___boxed__const__1();
-                        match x_20 as u32 {
-                            0 => {
-                                rt::lean_ctor_set(x_19, 0, x_30);
-                                {
-                                    let t_0 = x_19;
-                                    x_32 = t_0;
-                                }
-                                __blk = 4;
-                                continue 'body;
-                            }
-                            1 => {
-                                x_36 = rt::lean_alloc_ctor(
-                                    1,
-                                    2,
-                                    0 * core::mem::size_of::<usize>() as u32 + 0,
-                                );
-                                rt::lean_ctor_set(x_36, 0, x_30);
-                                rt::lean_ctor_set(x_36, 1, x_14);
-                                {
-                                    let t_0 = x_36;
-                                    x_32 = t_0;
-                                }
-                                __blk = 4;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
-                        }
-                    }
-                    1 => {
-                        rt::lean_del_object(x_26);
-                        rt::lean_dec(x_14);
-                        x_37 = rt::lean_ctor_get(x_28, 0);
-                        rt::lean_inc(x_37);
-                        rt::lean_dec_ref(x_28);
-                        x_38 = rt::lean_unsigned_to_nat(1u32);
-                        x_39 = rt::lean_nat_sub(x_1, x_38);
-                        rt::lean_dec(x_1);
-                        match x_20 as u32 {
-                            0 => {
-                                rt::lean_ctor_set(x_19, 1, x_3);
-                                rt::lean_ctor_set(x_19, 0, x_37);
-                                {
-                                    let t_0 = x_19;
-                                    x_41 = t_0;
-                                }
-                                __blk = 6;
-                                continue 'body;
-                            }
-                            1 => {
-                                x_43 = rt::lean_alloc_ctor(
-                                    1,
-                                    2,
-                                    0 * core::mem::size_of::<usize>() as u32 + 0,
-                                );
-                                rt::lean_ctor_set(x_43, 0, x_37);
-                                rt::lean_ctor_set(x_43, 1, x_3);
-                                {
-                                    let t_0 = x_43;
-                                    x_41 = t_0;
-                                }
-                                __blk = 6;
-                                continue 'body;
-                            }
-                            _ => rt::lean_internal_panic_unreachable(),
-                        }
-                    }
-                    _ => rt::lean_internal_panic_unreachable(),
-                }
-            }
-            4 => match x_27 as u32 {
-                0 => {
-                    rt::lean_ctor_set(x_26, 1, x_32);
-                    rt::lean_ctor_set(x_26, 0, x_29);
-                    {
-                        let t_0 = x_26;
-                        x_34 = t_0;
-                    }
-                    __blk = 5;
-                    continue 'body;
-                }
-                1 => {
-                    x_35 = rt::lean_alloc_ctor(0, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
-                    rt::lean_ctor_set(x_35, 0, x_29);
-                    rt::lean_ctor_set(x_35, 1, x_32);
-                    {
-                        let t_0 = x_35;
-                        x_34 = t_0;
-                    }
-                    __blk = 5;
-                    continue 'body;
-                }
-                _ => rt::lean_internal_panic_unreachable(),
-            },
-            5 => {
-                return x_34;
-            }
-            6 => {
-                {
-                    let t_0 = x_39;
-                    let t_1 = x_24;
-                    let t_2 = x_41;
-                    x_1 = t_0;
-                    x_2 = t_1;
-                    x_3 = t_2;
-                }
-                __blk = 0;
-                continue 'body;
-            }
-            _ => rt::lean_internal_panic_unreachable(),
-        }
-    }
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    clippy::all
-)]
-unsafe fn l_Ritsulint_branches___boxed__const__1_init() -> Obj {
-    let mut x_1: u32 = 0;
-    let mut x_2: Obj = rt::lean_box(0);
-    x_1 = 12398u32;
-    x_2 = rt::lean_box_uint32(x_1);
-    return x_2;
-}
-#[allow(dead_code, non_snake_case, clippy::all)]
-pub(crate) unsafe fn l_Ritsulint_branches___boxed__const__1() -> Obj {
-    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
-    if let Some(v) = CELL.with(|c| c.get().copied()) {
-        return v;
-    }
-    let v = l_Ritsulint_branches___boxed__const__1_init();
-    rt::lean_mark_persistent(v);
-    CELL.with(|c| *c.get_or_init(|| v))
-}
-
-#[allow(
-    dead_code,
-    non_snake_case,
-    unused_mut,
-    unused_assignments,
-    unused_variables,
-    unreachable_code,
-    unused_unsafe,
-    clippy::all
-)]
 pub(crate) unsafe fn l_Ritsulint_joinKey(mut x_1: Obj, mut x_2: Obj) -> Obj {
     let mut x_3: Obj = rt::lean_box(0);
     let mut x_4: Obj = rt::lean_box(0);
@@ -13132,6 +16139,356 @@ pub(crate) unsafe fn l_List_filterTR_loop___at___00Ritsulint_leadOf_spec__1(
     unused_unsafe,
     clippy::all
 )]
+pub(crate) unsafe fn l_Ritsulint_Api_unquote(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    x_2 = l_Ritsulint_unquote(x_1);
+    return x_2;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_unquote(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    let mut x_6: Obj = rt::lean_box(0);
+    x_2 = rt::lean_string_data(x_1);
+    x_3 = rt::lean_unsigned_to_nat(0u32);
+    x_4 = rt::lean_box(0);
+    x_5 = l_Ritsulint_unquoteAux(x_2, x_3, x_4);
+    x_6 = rt::lean_string_mk(x_5);
+    return x_6;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_unquoteAux(mut x_1: Obj, mut x_2: Obj, mut x_3: Obj) -> Obj {
+    let mut x_5: u32 = 0;
+    let mut x_6: Obj = rt::lean_box(0);
+    let mut x_7: Obj = rt::lean_box(0);
+    let mut x_8: Obj = rt::lean_box(0);
+    let mut x_9: Obj = rt::lean_box(0);
+    let mut x_10: Obj = rt::lean_box(0);
+    let mut x_11: Obj = rt::lean_box(0);
+    let mut x_12: Obj = rt::lean_box(0);
+    let mut x_13: Obj = rt::lean_box(0);
+    let mut x_14: Obj = rt::lean_box(0);
+    let mut x_16: Obj = rt::lean_box(0);
+    let mut x_17: u8 = 0;
+    let mut x_18: u32 = 0;
+    let mut x_19: u32 = 0;
+    let mut x_20: u8 = 0;
+    let mut x_21: u32 = 0;
+    let mut x_22: u32 = 0;
+    let mut x_23: u8 = 0;
+    let mut x_24: Obj = rt::lean_box(0);
+    let mut x_25: u8 = 0;
+    let mut x_26: u32 = 0;
+    let mut x_27: Obj = rt::lean_box(0);
+    let mut x_28: Obj = rt::lean_box(0);
+    let mut x_29: Obj = rt::lean_box(0);
+    let mut x_30: Obj = rt::lean_box(0);
+    let mut x_31: Obj = rt::lean_box(0);
+    let mut x_32: u8 = 0;
+    let mut x_33: Obj = rt::lean_box(0);
+    let mut x_34: Obj = rt::lean_box(0);
+    let mut x_35: Obj = rt::lean_box(0);
+    let mut x_36: Obj = rt::lean_box(0);
+    let mut x_37: u8 = 0;
+    let mut x_38: Obj = rt::lean_box(0);
+    let mut x_39: Obj = rt::lean_box(0);
+    let mut x_41: Obj = rt::lean_box(0);
+    let mut x_42: Obj = rt::lean_box(0);
+    let mut x_43: Obj = rt::lean_box(0);
+    let mut x_44: Obj = rt::lean_box(0);
+    let mut x_45: Obj = rt::lean_box(0);
+    let mut x_46: Obj = rt::lean_box(0);
+    let mut x_47: Obj = rt::lean_box(0);
+    let mut x_48: Obj = rt::lean_box(0);
+    let mut x_49: u8 = 0;
+    let mut __blk: u32 = 0;
+    'body: loop {
+        match __blk {
+            0 => match rt::lean_obj_tag(x_1) {
+                0 => {
+                    rt::lean_dec(x_2);
+                    x_12 = l_List_reverse___redArg(x_3);
+                    return x_12;
+                }
+                1 => {
+                    x_13 = rt::lean_ctor_get(x_1, 0);
+                    x_14 = rt::lean_ctor_get(x_1, 1);
+                    x_49 = (!rt::lean_is_exclusive(x_1)) as u8;
+                    match x_49 as u32 {
+                        0 => {
+                            {
+                                let t_0 = x_1;
+                                let t_1 = x_49;
+                                x_16 = t_0;
+                                x_17 = t_1;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        1 => {
+                            rt::lean_inc(x_14);
+                            rt::lean_inc(x_13);
+                            rt::lean_dec(x_1);
+                            {
+                                let t_0 = rt::lean_box(0);
+                                let t_1 = x_49;
+                                x_16 = t_0;
+                                x_17 = t_1;
+                            }
+                            __blk = 2;
+                            continue 'body;
+                        }
+                        _ => rt::lean_internal_panic_unreachable(),
+                    }
+                }
+                _ => rt::lean_internal_panic_unreachable(),
+            },
+            1 => {
+                x_8 = rt::lean_unsigned_to_nat(0u32);
+                x_9 = rt::lean_box_uint32(x_5);
+                x_10 = rt::lean_alloc_ctor(1, 2, 0 * core::mem::size_of::<usize>() as u32 + 0);
+                rt::lean_ctor_set(x_10, 0, x_9);
+                rt::lean_ctor_set(x_10, 1, x_7);
+                {
+                    let t_0 = x_6;
+                    let t_1 = x_8;
+                    let t_2 = x_10;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            2 => {
+                x_18 = 12300u32;
+                x_19 = rt::lean_unbox_uint32(x_13);
+                x_20 = rt::lean_uint32_dec_eq(x_19, x_18);
+                match x_20 as u32 {
+                    0 => {
+                        rt::lean_del_object(x_16);
+                        x_21 = 12301u32;
+                        x_22 = rt::lean_unbox_uint32(x_13);
+                        x_23 = rt::lean_uint32_dec_eq(x_22, x_21);
+                        match x_23 as u32 {
+                            0 => {
+                                x_24 = rt::lean_unsigned_to_nat(0u32);
+                                x_25 = rt::lean_nat_dec_eq(x_2, x_24);
+                                match x_25 as u32 {
+                                    1 => {
+                                        rt::lean_dec(x_2);
+                                        x_26 = rt::lean_unbox_uint32(x_13);
+                                        rt::lean_dec(x_13);
+                                        {
+                                            let t_0 = x_26;
+                                            let t_1 = x_14;
+                                            let t_2 = x_3;
+                                            x_5 = t_0;
+                                            x_6 = t_1;
+                                            x_7 = t_2;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    0 => {
+                                        rt::lean_dec(x_13);
+                                        x_27 = rt::lean_unsigned_to_nat(1u32);
+                                        x_28 = rt::lean_nat_sub(x_2, x_27);
+                                        rt::lean_dec(x_2);
+                                        x_29 = rt::lean_nat_add(x_28, x_27);
+                                        rt::lean_dec(x_28);
+                                        {
+                                            let t_0 = x_14;
+                                            let t_1 = x_29;
+                                            let t_2 = x_3;
+                                            x_1 = t_0;
+                                            x_2 = t_1;
+                                            x_3 = t_2;
+                                        }
+                                        __blk = 0;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            1 => {
+                                rt::lean_dec(x_13);
+                                x_31 = rt::lean_unsigned_to_nat(0u32);
+                                x_32 = rt::lean_nat_dec_eq(x_2, x_31);
+                                match x_32 as u32 {
+                                    1 => {
+                                        rt::lean_dec(x_2);
+                                        {
+                                            let t_0 = x_21;
+                                            let t_1 = x_14;
+                                            let t_2 = x_3;
+                                            x_5 = t_0;
+                                            x_6 = t_1;
+                                            x_7 = t_2;
+                                        }
+                                        __blk = 1;
+                                        continue 'body;
+                                    }
+                                    0 => {
+                                        x_33 = rt::lean_unsigned_to_nat(1u32);
+                                        x_34 = rt::lean_nat_sub(x_2, x_33);
+                                        rt::lean_dec(x_2);
+                                        {
+                                            let t_0 = x_14;
+                                            let t_1 = x_34;
+                                            let t_2 = x_3;
+                                            x_1 = t_0;
+                                            x_2 = t_1;
+                                            x_3 = t_2;
+                                        }
+                                        __blk = 0;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    1 => {
+                        rt::lean_dec(x_13);
+                        x_36 = rt::lean_unsigned_to_nat(0u32);
+                        x_37 = rt::lean_nat_dec_eq(x_2, x_36);
+                        match x_37 as u32 {
+                            1 => {
+                                rt::lean_dec(x_2);
+                                x_38 = rt::lean_unsigned_to_nat(1u32);
+                                x_39 = l_Ritsulint_unquoteAux___boxed__const__1();
+                                match x_17 as u32 {
+                                    0 => {
+                                        rt::lean_ctor_set(x_16, 1, x_3);
+                                        rt::lean_ctor_set(x_16, 0, x_39);
+                                        {
+                                            let t_0 = x_16;
+                                            x_41 = t_0;
+                                        }
+                                        __blk = 3;
+                                        continue 'body;
+                                    }
+                                    1 => {
+                                        x_43 = rt::lean_alloc_ctor(
+                                            1,
+                                            2,
+                                            0 * core::mem::size_of::<usize>() as u32 + 0,
+                                        );
+                                        rt::lean_ctor_set(x_43, 0, x_39);
+                                        rt::lean_ctor_set(x_43, 1, x_3);
+                                        {
+                                            let t_0 = x_43;
+                                            x_41 = t_0;
+                                        }
+                                        __blk = 3;
+                                        continue 'body;
+                                    }
+                                    _ => rt::lean_internal_panic_unreachable(),
+                                }
+                            }
+                            0 => {
+                                rt::lean_del_object(x_16);
+                                x_44 = rt::lean_unsigned_to_nat(1u32);
+                                x_45 = rt::lean_nat_sub(x_2, x_44);
+                                rt::lean_dec(x_2);
+                                x_46 = rt::lean_unsigned_to_nat(2u32);
+                                x_47 = rt::lean_nat_add(x_45, x_46);
+                                rt::lean_dec(x_45);
+                                {
+                                    let t_0 = x_14;
+                                    let t_1 = x_47;
+                                    let t_2 = x_3;
+                                    x_1 = t_0;
+                                    x_2 = t_1;
+                                    x_3 = t_2;
+                                }
+                                __blk = 0;
+                                continue 'body;
+                            }
+                            _ => rt::lean_internal_panic_unreachable(),
+                        }
+                    }
+                    _ => rt::lean_internal_panic_unreachable(),
+                }
+            }
+            3 => {
+                {
+                    let t_0 = x_14;
+                    let t_1 = x_38;
+                    let t_2 = x_41;
+                    x_1 = t_0;
+                    x_2 = t_1;
+                    x_3 = t_2;
+                }
+                __blk = 0;
+                continue 'body;
+            }
+            _ => rt::lean_internal_panic_unreachable(),
+        }
+    }
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    clippy::all
+)]
+unsafe fn l_Ritsulint_unquoteAux___boxed__const__1_init() -> Obj {
+    let mut x_1: u32 = 0;
+    let mut x_2: Obj = rt::lean_box(0);
+    x_1 = 12307u32;
+    x_2 = rt::lean_box_uint32(x_1);
+    return x_2;
+}
+#[allow(dead_code, non_snake_case, clippy::all)]
+pub(crate) unsafe fn l_Ritsulint_unquoteAux___boxed__const__1() -> Obj {
+    thread_local! { static CELL: core::cell::OnceCell<Obj> = const { core::cell::OnceCell::new() }; }
+    if let Some(v) = CELL.with(|c| c.get().copied()) {
+        return v;
+    }
+    let v = l_Ritsulint_unquoteAux___boxed__const__1_init();
+    rt::lean_mark_persistent(v);
+    CELL.with(|c| *c.get_or_init(|| v))
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
 pub(crate) unsafe fn l_Ritsulint_Api_stripParens(mut x_1: Obj) -> Obj {
     let mut x_2: Obj = rt::lean_box(0);
     x_2 = l_Ritsulint_stripParens(x_1);
@@ -13344,6 +16701,92 @@ pub(crate) unsafe fn l_Ritsulint_stripParensAux(mut x_1: Obj, mut x_2: Obj, mut 
     }
 }
 
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_Api_kansuji(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    x_2 = l_Ritsulint_kansujiOr0(x_1);
+    return x_2;
+}
+
+#[allow(
+    dead_code,
+    non_snake_case,
+    unused_mut,
+    unused_assignments,
+    unused_variables,
+    unreachable_code,
+    unused_unsafe,
+    clippy::all
+)]
+pub(crate) unsafe fn l_Ritsulint_kansujiOr0(mut x_1: Obj) -> Obj {
+    let mut x_2: Obj = rt::lean_box(0);
+    let mut x_3: Obj = rt::lean_box(0);
+    let mut x_4: Obj = rt::lean_box(0);
+    let mut x_5: Obj = rt::lean_box(0);
+    x_2 = rt::lean_string_data(x_1);
+    x_3 = l_Ritsulint_parseKansuji(x_2);
+    rt::lean_dec(x_2);
+    match rt::lean_obj_tag(x_3) {
+        0 => {
+            x_4 = rt::lean_unsigned_to_nat(0u32);
+            return x_4;
+        }
+        1 => {
+            x_5 = rt::lean_ctor_get(x_3, 0);
+            rt::lean_inc(x_5);
+            rt::lean_dec_ref(x_3);
+            return x_5;
+        }
+        _ => rt::lean_internal_panic_unreachable(),
+    }
+}
+
+#[doc = "Lean type `Ritsulint.RelRef` (module `Ritsulint.Core`)."]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub struct RitsulintRelRef {
+    pub kind: String,
+    pub count: rt::Nat,
+    pub offset: rt::Nat,
+    pub length: rt::Nat,
+}
+impl rt::ToLean for RitsulintRelRef {
+    unsafe fn to_lean(self) -> Obj {
+        let RitsulintRelRef {
+            kind: f0,
+            count: f1,
+            offset: f2,
+            length: f3,
+        } = self;
+        {
+            let o = rt::lean_alloc_ctor(0, 4, 0 * core::mem::size_of::<usize>() as u32 + 0);
+            rt::lean_ctor_set(o, 0, rt::ToLean::to_lean(f0));
+            rt::lean_ctor_set(o, 1, rt::ToLean::to_lean(f1));
+            rt::lean_ctor_set(o, 2, rt::ToLean::to_lean(f2));
+            rt::lean_ctor_set(o, 3, rt::ToLean::to_lean(f3));
+            o
+        }
+    }
+}
+impl rt::FromLean for RitsulintRelRef {
+    unsafe fn from_lean(o: Obj) -> Self {
+        RitsulintRelRef {
+            kind: <String as rt::FromLean>::from_lean(rt::lean_ctor_get(o, 0)),
+            count: <rt::Nat as rt::FromLean>::from_lean(rt::lean_ctor_get(o, 1)),
+            offset: <rt::Nat as rt::FromLean>::from_lean(rt::lean_ctor_get(o, 2)),
+            length: <rt::Nat as rt::FromLean>::from_lean(rt::lean_ctor_get(o, 3)),
+        }
+    }
+}
+
 #[doc = "Lean type `Ritsulint.Target` (module `Ritsulint.Core`)."]
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct RitsulintTarget {
@@ -13423,6 +16866,18 @@ impl rt::FromLean for RitsulintFinding {
     }
 }
 
+#[doc = "Lean: `Ritsulint.Api.relativeRefs : String → List Ritsulint.RelRef` (module `Ritsulint.Api`)."]
+#[::leanfran::exported("Ritsulint.Api.relativeRefs")]
+pub fn relative_refs(text: impl AsRef<str>) -> Vec<RitsulintRelRef> {
+    unsafe {
+        let __a0: Obj = rt::ToLean::to_lean(text.as_ref());
+        let __r: Obj = l_Ritsulint_Api_relativeRefs(__a0);
+        let __v = rt::list_from_lean(__r, |v0| <RitsulintRelRef as rt::FromLean>::from_lean(v0));
+        rt::lean_dec(__r);
+        __v
+    }
+}
+
 #[doc = "Lean: `Ritsulint.Api.analyze : String → String → String → String → Nat → List Ritsulint.Finding` (module `Ritsulint.Api`)."]
 #[::leanfran::exported("Ritsulint.Api.analyze")]
 pub fn analyze(
@@ -13445,6 +16900,18 @@ pub fn analyze(
     }
 }
 
+#[doc = "Lean: `Ritsulint.Api.unquote : String → String` (module `Ritsulint.Api`)."]
+#[::leanfran::exported("Ritsulint.Api.unquote")]
+pub fn unquote(text: impl AsRef<str>) -> String {
+    unsafe {
+        let __a0: Obj = rt::ToLean::to_lean(text.as_ref());
+        let __r: Obj = l_Ritsulint_Api_unquote(__a0);
+        let __v = <String as rt::FromLean>::from_lean(__r);
+        rt::lean_dec(__r);
+        __v
+    }
+}
+
 #[doc = "Lean: `Ritsulint.Api.stripParens : String → String` (module `Ritsulint.Api`)."]
 #[::leanfran::exported("Ritsulint.Api.stripParens")]
 pub fn strip_parens(text: impl AsRef<str>) -> String {
@@ -13452,6 +16919,18 @@ pub fn strip_parens(text: impl AsRef<str>) -> String {
         let __a0: Obj = rt::ToLean::to_lean(text.as_ref());
         let __r: Obj = l_Ritsulint_Api_stripParens(__a0);
         let __v = <String as rt::FromLean>::from_lean(__r);
+        rt::lean_dec(__r);
+        __v
+    }
+}
+
+#[doc = "Lean: `Ritsulint.Api.kansuji : String → Nat` (module `Ritsulint.Api`)."]
+#[::leanfran::exported("Ritsulint.Api.kansuji")]
+pub fn kansuji(text: impl AsRef<str>) -> rt::Nat {
+    unsafe {
+        let __a0: Obj = rt::ToLean::to_lean(text.as_ref());
+        let __r: Obj = l_Ritsulint_Api_kansuji(__a0);
+        let __v = <rt::Nat as rt::FromLean>::from_lean(__r);
         rt::lean_dec(__r);
         __v
     }

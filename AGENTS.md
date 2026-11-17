@@ -4,13 +4,15 @@
 
 - `lean/Ritsulint/Core.lean`: the rules that read a provision (kanji numerals, read-as clauses, references). `lean/Ritsulint/Api.lean`: the functions Rust calls. `lean/Ritsulint/Test.lean`: kernel-checked statements about `Core` on real provisions.
 - `src/generated/`: Rust generated from `Ritsulint.Api` by leanfran. Regenerate it with `make generate` and commit it with the Lean change.
-- `src/law.rs`: e-Gov law XML to articles and paragraphs. `src/read_as.rs`: the `read-as-quote` rule. `src/main.rs`: the CLI.
+- `src/law.rs`: e-Gov law XML to articles, paragraphs, items and the table of contents. `src/main.rs`: the CLI.
+- Rules: `src/read_as.rs` (`read-as-quote`), `src/external.rs` (`read-as-quote-external`, needs the whole corpus), `src/relative_ref.rs` (`relative-ref`, `missing-unit`), `src/structure.rs` (`numbering`, `toc-range`). `src/history.rs`: since which revision a warning is given.
 - `site/`: the page at https://ritsulint.conao3.com/ that lists the warnings (React 19, react-aria-components, Tailwind CSS v4, built with Vite+ and served as static assets of a Cloudflare Worker). `site/data/warnings.json` is written by `make site-data`.
-- `tests/corpus-expected.txt`: law IDs that `make corpus-check` requires a high-confidence warning for. Each was confirmed by reading the provisions. `tests/corpus-rejected.txt`: law IDs that must have no high-confidence warning; each once gave a warning for a clause that names another law or quotes an item number.
+- `tests/corpus-expected.txt`: `<rule> <law ID>` lines that `make corpus-check` requires a high-confidence warning for. The `read-as-quote` and `relative-ref` lines were confirmed by reading the provisions; the `missing-unit`, `numbering` and `toc-range` lines by reading the list of warnings. `tests/corpus-rejected.txt`: lines that must have no high-confidence warning; each once gave a warning for a clause that names another law, quotes an item number, or stands in a table or a form.
 
 ## Lean and Rust
 
 - Lean decides what a paragraph says: which clauses it has, which provisions each names, whether a clause is outside what the linter resolves. Add or change such rules in `Core.lean`, with a statement in `Test.lean` for the provision that motivated the change.
+- `external.rs` finds the clauses that name another law with regular expressions in Rust, and takes numerals from Lean.
 - Rust does input and output, looks provisions up in a law, compares text and computes the nearest text, the similarity and the warning ID.
 - The statements in `Test.lean` are checked by the kernel (`decide`, `decide +kernel`). They are checks on given provisions, not theorems about every input.
 

@@ -5,9 +5,27 @@ use std::path::Path;
 use roxmltree::{Document, Node};
 
 #[derive(Debug)]
+pub struct Item {
+    pub num: String,
+    pub sentence: String,
+}
+
+#[derive(Debug)]
 pub struct Paragraph {
     pub num: u64,
     pub text: String,
+    /// The text without numbers, titles, captions, tables, figures and forms.
+    pub prose: String,
+    pub items: Vec<Item>,
+}
+
+/// An entry of the table of contents that gives a range of articles, with the first and last
+/// article of the part of the main provisions it stands for.
+#[derive(Debug)]
+pub struct TocEntry {
+    pub label: String,
+    pub range: String,
+    pub body: Option<(String, String)>,
 }
 
 #[derive(Debug)]
@@ -22,6 +40,8 @@ pub struct Law {
     pub law_id: String,
     pub revision_id: String,
     pub title: String,
+    pub law_num: String,
+    pub toc: Vec<TocEntry>,
     pub articles: Vec<Article>,
     index: HashMap<String, usize>,
 }
@@ -56,6 +76,95 @@ fn text_of(node: Node) -> String {
     out
 }
 
+const NOT_PROSE: [&str; 12] = [
+    "Rt",
+    "ParagraphNum",
+    "ParagraphCaption",
+    "ItemTitle",
+    "Subitem1Title",
+    "Subitem2Title",
+    "Subitem3Title",
+    "TableStruct",
+    "Table",
+    "FigStruct",
+    "StyleStruct",
+    "FormatStruct",
+];
+
+fn collect_prose(node: Node, out: &mut String) {
+    for child in node.children() {
+        if child.is_text() {
+            if let Some(t) = child.text() {
+                out.extend(t.chars().filter(|c| !c.is_whitespace()));
+            }
+        } else if child.is_element() && !NOT_PROSE.contains(&child.tag_name().name()) {
+            collect_prose(child, out);
+        }
+    }
+}
+
+fn prose_of(node: Node) -> String {
+    let mut out = String::new();
+    collect_prose(node, &mut out);
+    out
+}
+
+fn body_tag(toc_tag: &str) -> Option<&'static str> {
+    match toc_tag {
+        "TOCPart" => Some("Part"),
+        "TOCChapter" => Some("Chapter"),
+        "TOCSection" => Some("Section"),
+        "TOCSubsection" => Some("Subsection"),
+        "TOCDivision" => Some("Division"),
+        _ => None,
+    }
+}
+
+fn collect_toc(toc: Node, body: Option<Node>, out: &mut Vec<TocEntry>) {
+    for entry in toc.children().filter(|n| n.is_element()) {
+        let Some(tag) = body_tag(entry.tag_name().name()) else {
+            continue;
+        };
+        let found = body.and_then(|b| {
+            b.children()
+                .find(|n| n.has_tag_name(tag) && n.attribute("Num") == entry.attribute("Num"))
+        });
+        let nested = entry
+            .children()
+            .any(|n| n.is_element() && body_tag(n.tag_name().name()).is_some());
+        if let Some(range) = entry.children().find(|n| n.has_tag_name("ArticleRange")) {
+            let nums: Vec<&str> = found
+                .map(|f| {
+                    if nested {
+                        f.children()
+                            .filter(|n| n.has_tag_name("Article"))
+                            .filter_map(|n| n.attribute("Num"))
+                            .collect()
+                    } else {
+                        f.descendants()
+                            .filter(|n| n.has_tag_name("Article"))
+                            .filter_map(|n| n.attribute("Num"))
+                            .collect()
+                    }
+                })
+                .unwrap_or_default();
+            out.push(TocEntry {
+                label: entry
+                    .children()
+                    .find(|n| n.tag_name().name().ends_with("Title"))
+                    .map(text_of)
+                    .unwrap_or_default(),
+                range: text_of(range),
+                body: match (nums.first(), nums.last()) {
+                    (Some(a), Some(b)) => Some((a.to_string(), b.to_string())),
+                    _ => None,
+                },
+            });
+        }
+        collect_toc(entry, found, out);
+    }
+}
+
 impl Law {
     pub fn from_file(path: &Path) -> Result<Law, LawError> {
         let err = |message: String| LawError {
@@ -83,6 +192,19 @@ impl Law {
             .find(|n| n.has_tag_name("LawTitle"))
             .map(text_of)
             .unwrap_or_default();
+        let law_num = doc
+            .descendants()
+            .find(|n| n.has_tag_name("LawNum"))
+            .map(text_of)
+            .unwrap_or_default();
+        let mut toc = Vec::new();
+        if let Some(node) = doc.descendants().find(|n| n.has_tag_name("TOC")) {
+            collect_toc(
+                node,
+                doc.descendants().find(|n| n.has_tag_name("MainProvision")),
+                &mut toc,
+            );
+        }
         let mut articles = Vec::new();
         if let Some(main) = doc.descendants().find(|n| n.has_tag_name("MainProvision")) {
             for node in main.descendants().filter(|n| n.has_tag_name("Article")) {
@@ -93,6 +215,19 @@ impl Law {
                     .map(|p| Paragraph {
                         num: p.attribute("Num").and_then(|n| n.parse().ok()).unwrap_or(0),
                         text: text_of(p),
+                        prose: prose_of(p),
+                        items: p
+                            .children()
+                            .filter(|n| n.has_tag_name("Item"))
+                            .map(|i| Item {
+                                num: i.attribute("Num").unwrap_or_default().to_string(),
+                                sentence: i
+                                    .children()
+                                    .find(|n| n.has_tag_name("ItemSentence"))
+                                    .map(prose_of)
+                                    .unwrap_or_default(),
+                            })
+                            .collect(),
                     })
                     .collect();
                 articles.push(Article {
@@ -110,6 +245,8 @@ impl Law {
             law_id,
             revision_id: revision_id.to_string(),
             title,
+            law_num,
+            toc,
             articles,
             index,
         })
