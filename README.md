@@ -35,6 +35,7 @@ The warnings describe the consolidated text in the e-Gov data. Whether a warning
 |---|---|
 | `read-as-quote` | A read-as clause whose quoted words are missing from the provision of the same law the clause names |
 | `read-as-quote-external` | A read-as clause whose quoted words are missing from the provision of another law the clause names (`corpus check-corpus` only) |
+| `read-as-overlap` | Two read-as clauses for one provision whose quoted words run into each other there, so that the text read depends on which is taken first |
 | `relative-ref` | A reference by position (`前条第二項`, `次項`, `前三号`) to a paragraph or an item the law doesn't have |
 | `missing-unit` | A reference that lacks its unit (`第九十八第二項` for `第九十八条第二項`) |
 | `numbering` | A paragraph or item number that occurs twice in its article or paragraph, or an item number that skips one |
@@ -58,6 +59,8 @@ For the 2 read-as rules, `Status` tells how the quotation fails:
 For the other rules `Status` is `no-paragraph` or `no-item` (`relative-ref`), `missing-unit`, `duplicate-paragraph`, `duplicate-item` or `item-gap` (`numbering`), and `toc-range` or `toc-malformed` (a range written without `第`). `Quoted` is the reference or the number, `Context` the words around it, and `Actual` what the law has there.
 
 `referenced-term`, `brackets`, `spelling` and `unused-definition` are `medium`: a paragraph may refer to a term by other words, a law writes the title of another law in the spelling of that law, and a definition may be used only in a form the XML holds as an image. `near-term` and `definition-scope` are `low`: most of what they report is another term of the law or an ordinary word. `brackets` and `referenced-term` don't read a paragraph that has a read-as clause, since a quotation may hold half of a pair.
+
+`read-as-overlap` is `medium`. It's given when reading the provision from the left and from the right give different texts (`変更の登録` and `登録の日` over `変更の登録の日`).
 
 `read-as-quote-external` names the other law by the title, the law number in parentheses or an abbreviation the law defines with a law number (`（昭和二十二年法律第五十号。以下「法」という。）`) written right before the article, and follows `同法` and `同条` after such a clause. A clause that reaches the other law through the words earlier in the sentence isn't looked up. Its confidence is `low` when the title of the law marks a transitional or special-measures law, which quotes the other law as it was, and `medium` otherwise.
 
@@ -112,17 +115,35 @@ The rules that read a provision are written in Lean 4 (`lean/Ritsulint/Core.lean
 
 Rust reads the XML, looks up the provisions, compares the text and prints the report.
 
-## What a warning means, as theorems
+## What is proved
 
-`lean/Ritsulint/ReadAs.lean` states what a read-as clause does: `Clause.apply c text` is the text of a provision with every `c.quoted` replaced by `c.replacement`, and `Clause.Vacuous c text` says that the clause leaves the text as it is. The theorem `vacuous_of_absent` proves, for every clause and every text, that a clause whose quoted words don't occur in the text is vacuous. These definitions are stated in Lean only: the linter compares the quoted words with the provision in Rust.
+`lean/Ritsulint/ReadAs.lean` defines what the read-as clauses of a paragraph do to the provision they name, and the linter runs that definition.
 
-`lean/Ritsulint/Findings.lean` has one theorem for each high-confidence `read-as-quote` warning whose quoted words are absent from a provision the law has. For the Immigration Control Act it states that the clause of article 13 paragraph 7, applied to the text of article 41 paragraph 1 as e-Gov publishes it, changes nothing. The texts are in the theorem as lists of code points, and the Lean kernel checks each one when the package is built.
+**The reading.** `applyAll cs text` goes through the text once from the left. At each place it takes the clause whose quoted words stand there, the longest when several do, writes its replacement and goes on after the quoted words. What a clause wrote is not read again. The statutes need the clauses to be read at once: 公職選挙法第三十四条の二第四項 reads `長の任期満了による選挙` as `議会の議員の任期満了による一般選挙` and the latter as the former in one sentence. No official source for "from the left" and "the longest" was found. Where that choice changes the text, the linter gives a `read-as-overlap` warning.
 
-```sh
-nix develop --command make findings CORPUS=path/to/xml AS_OF=20261117
+**The theorem.** `applySeq cs text` replaces clause by clause in the order written, which is what a reader or a program does without the definition above. `independent cs text` holds when no clause meets the places of the clauses written before it or finds its quoted words in what they wrote; it is decided on the reading at once only.
+
+```lean
+theorem applySeq_eq_applyAll (cs : List (Clause α)) (t : List α)
+    (h : independent cs t = true) : applySeq cs t = applyAll cs t
 ```
 
-writes the file from the corpus. The theorems are about the consolidated text in the e-Gov data, as the warnings are.
+It holds for all clauses and all texts. `swap_differs` proves that two clauses exchanging two words are not independent and read differently one after another. `readAs_inOrder` in `Api.lean` is the theorem for the function the Rust crate calls.
+
+**On the laws.** Of the provisions read under two or more clauses of one paragraph (4,854 as of 2026-11-17), 4,602 are independent, so replacing clause by clause gives the text read at once. In 219 the two readings differ, and 12 get a `read-as-overlap` warning. `make corpus-check` requires that no independent provision reads differently, which checks the generated Rust against the theorem on every law.
+
+**The audit.** `make check` breaks `starts`, `pick`, `segs`, `applyAll`, `applySeq`, `noStart`, `clean`, `step` and `independentRev` in small ways ([lean-assay](https://github.com/conao3/lean-assay)) and requires that the theorems tell every broken version from the original: 51 of 51.
+
+**Certificates.** `lean/Ritsulint/Findings.lean` has one kernel-checked computation for each high-confidence `read-as-quote` warning whose quoted words are absent from a provision the law has (36 for 35 warnings): the clause, applied to the text the linter took for the provision, leaves it as it is. A certificate is about the lists written in it. Which law and provision they come from is in its comment. `make findings CORPUS=path/to/xml AS_OF=20261117` writes the file.
+
+**Outside the proofs.** These are trusted, not proved:
+
+- the e-Gov data, which is the consolidated text and not the Official Gazette;
+- reading the XML into articles and paragraphs (`src/law.rs`);
+- splitting a paragraph into clauses and resolving the words before `中` to a provision (`Core.lean`, checked on given provisions in `Test.lean`);
+- that a provision is one text: clauses for an item or a proviso are read on the whole paragraph, and provisions where the same words are read as two things (51) are left out;
+- leanfran, which compiles the Lean definitions to Rust;
+- the confidence of a warning, which is a heuristic.
 
 ## Development
 
@@ -133,7 +154,7 @@ nix build
 nix develop --command make corpus-check CORPUS=path/to/xml AS_OF=20261117
 ```
 
-`make corpus-check` runs the linter over a local copy of the bulk download and requires a high-confidence warning for every rule and law listed in `tests/corpus-expected.txt`.
+`make corpus-check` runs the linter over a local copy of the bulk download and requires a high-confidence warning for every rule and law listed in `tests/corpus-expected.txt`, and that no provision with independent read-as clauses reads differently one after another and at once.
 
 ## Site
 

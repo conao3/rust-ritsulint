@@ -33,7 +33,8 @@ check: fmt-check lint test
 
 # Run the release build over the e-Gov bulk download unpacked at CORPUS. Require a
 # high-confidence warning for every law listed in tests/corpus-expected.txt, no high-confidence
-# warning for the laws listed in tests/corpus-rejected.txt, and distinct warning IDs.
+# warning for the laws listed in tests/corpus-rejected.txt, distinct warning IDs, and no
+# provision where independent read-as clauses read differently one after another and at once.
 .PHONY: corpus-check
 corpus-check:
 	test -n "$(CORPUS)"
@@ -45,9 +46,10 @@ corpus-check:
 	LC_ALL=C sort tests/corpus-rejected.txt | LC_ALL=C comm -12 - target/corpus-found.txt > target/corpus-rejected-found.txt
 	test ! -s target/corpus-rejected-found.txt
 	test "$$(jq '.Warnings | length' target/corpus.json)" = "$$(jq '[.Warnings[].Id] | unique | length' target/corpus.json)"
+	test "$$(jq '.Readings.IndependentButDiffers' target/corpus.json)" = 0
 
-# Write lean/Ritsulint/Findings.lean: a theorem for each high-confidence read-as warning of the
-# corpus at CORPUS as of AS_OF (YYYYMMDD). `lake build` checks them.
+# Write lean/Ritsulint/Findings.lean: a certificate for each high-confidence read-as warning of
+# the corpus at CORPUS as of AS_OF (YYYYMMDD). `lake build` checks them.
 .PHONY: findings
 findings:
 	test -n "$(CORPUS)"
@@ -60,7 +62,7 @@ site-data:
 	test -n "$(CORPUS)"
 	cargo build --release
 	./target/release/ritsulint corpus check-corpus --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" \
-		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, LawsWithoutArticles, Counts, ExternalChecked, Warnings: [.Warnings[] | {Id, Rule, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Nearest, Confidence} + (if .Context then {Context} else {} end) + (if .Actual then {Actual} else {} end) + (if .TargetLawTitle then {TargetLawId, TargetLawTitle} else {} end)]}' \
+		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, LawsWithoutArticles, Counts, ExternalChecked, Readings, Warnings: [.Warnings[] | {Id, Rule, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Nearest, Confidence} + (if .Context then {Context} else {} end) + (if .Actual then {Actual} else {} end) + (if .TargetLawTitle then {TargetLawId, TargetLawTitle} else {} end) + (if .Rule == "read-as-overlap" then {Replacement} else {} end)]}' \
 		> site/data/warnings.json
 
 # Write since which revision each warning is given, from every revision of the laws with a

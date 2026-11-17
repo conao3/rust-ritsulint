@@ -86,7 +86,7 @@ pub fn theorems(law: &Law, warnings: &[Warning]) -> String {
     out
 }
 
-pub const HEADER: &str = "import Ritsulint.ReadAs\n\n/-!\n# Read-as clauses of the laws in force that change nothing\n\n`ritsulint corpus write-findings` writes this file from the e-Gov law XML: one theorem for each\nhigh-confidence `read-as-quote` warning. Each states that the clause, applied to the text of the\nprovision it names, leaves the text as it is, and the kernel checks it. A text is the list of the\ncode points of its characters; the comment of a theorem gives the words. The name of a theorem\nends in the ID of the warning.\n-/\n\nset_option maxRecDepth 100000\n\nnamespace Ritsulint.Findings\n\nopen Ritsulint.ReadAs\n";
+pub const HEADER: &str = "import Ritsulint.ReadAs\n\n/-!\n# Certificates: read-as clauses of the laws in force that change nothing\n\n`ritsulint corpus write-findings` writes this file from the e-Gov law XML: one certificate for\neach high-confidence `read-as-quote` warning. A certificate is the kernel's check of one\ncomputation: the clause, applied to the text the linter took for the provision it names, leaves\nthat text as it is. It is about the three lists written here. Which law, provision and clause\nthey come from is in the comment, and is what the linter read from the XML. A text is the list\nof the code points of its characters. The name of a certificate ends in the ID of the warning.\n-/\n\nset_option maxRecDepth 100000\n\nnamespace Ritsulint.Findings\n\nopen Ritsulint.ReadAs\n";
 
 pub const FOOTER: &str = "\nend Ritsulint.Findings\n";
 

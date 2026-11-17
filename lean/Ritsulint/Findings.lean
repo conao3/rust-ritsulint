@@ -1,13 +1,14 @@
 import Ritsulint.ReadAs
 
 /-!
-# Read-as clauses of the laws in force that change nothing
+# Certificates: read-as clauses of the laws in force that change nothing
 
-`ritsulint corpus write-findings` writes this file from the e-Gov law XML: one theorem for each
-high-confidence `read-as-quote` warning. Each states that the clause, applied to the text of the
-provision it names, leaves the text as it is, and the kernel checks it. A text is the list of the
-code points of its characters; the comment of a theorem gives the words. The name of a theorem
-ends in the ID of the warning.
+`ritsulint corpus write-findings` writes this file from the e-Gov law XML: one certificate for
+each high-confidence `read-as-quote` warning. A certificate is the kernel's check of one
+computation: the clause, applied to the text the linter took for the provision it names, leaves
+that text as it is. It is about the three lists written here. Which law, provision and clause
+they come from is in the comment, and is what the linter read from the XML. A text is the list
+of the code points of its characters. The name of a certificate ends in the ID of the warning.
 -/
 
 set_option maxRecDepth 100000

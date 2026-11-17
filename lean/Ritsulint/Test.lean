@@ -1,5 +1,6 @@
 import Ritsulint.Core
 import Ritsulint.ReadAs
+import Ritsulint.Api
 
 /-!
 # Checks of `Ritsulint.Core` on provisions as they are written
@@ -108,5 +109,60 @@ example : ReadAs.occurs [1, 2] [0, 1, 3, 2] = false := by decide
 example : (ReadAs.Clause.apply ⟨[1, 2], [9]⟩ [0, 1, 2, 3, 1, 2]) = [0, 9, 3, 9] := by decide
 example : (ReadAs.Clause.apply ⟨[1, 2], [9]⟩ [0, 1, 3, 2]) = [0, 1, 3, 2] := by decide
 example : ¬ ReadAs.Clause.Vacuous ⟨[1, 2], [9]⟩ [0, 1, 2, 3] := by decide
+
+/-- 公職選挙法 第34条の2第4項 reads two phrases of its 第3項 as each other. On an excerpt of 第3項
+under these two clauses: read at once the phrases change places, replaced one after the other
+both become the first, and the clauses are not independent. -/
+def exchange : List Api.ReadClause :=
+  [⟨"長の任期満了による選挙", "議会の議員の任期満了による一般選挙"⟩,
+   ⟨"議会の議員の任期満了による一般選挙", "長の任期満了による選挙"⟩]
+
+def exchangeText : String :=
+  "長の任期満了による選挙の期日の告示がなされるまでに当該地方公共団体の議会の議員の任期満了による一般選挙"
+
+example :
+    (Api.readAs exchange exchangeText).atOnce
+      = "議会の議員の任期満了による一般選挙の期日の告示がなされるまでに当該地方公共団体の長の任期満了による選挙" := by
+  decide +kernel
+example :
+    (Api.readAs exchange exchangeText).inOrder
+      = "長の任期満了による選挙の期日の告示がなされるまでに当該地方公共団体の長の任期満了による選挙" := by
+  decide +kernel
+example : (Api.readAs exchange exchangeText).independent = false := by decide +kernel
+
+/-- 土地収用法 第35条第3項 reads `土地` in 第12条第3項 as `土地又は工作物` and a longer phrase that
+ends in `土地` as another. Read at once the longer phrase is taken where it stands; replaced one
+after the other, the second clause reads `土地` again in what the first wrote. -/
+def nested : List Api.ReadClause :=
+  [⟨"又はかき、さく等で囲まれた土地", "若しくはかき、さく等で囲まれた土地又は工作物"⟩,
+   ⟨"土地", "土地又は工作物"⟩]
+
+example :
+    (Api.readAs nested "宅地又はかき、さく等で囲まれた土地に立ち入ろうとする場合においては、その土地に").atOnce
+      = "宅地若しくはかき、さく等で囲まれた土地又は工作物に立ち入ろうとする場合においては、その土地又は工作物に" := by
+  decide +kernel
+example :
+    (Api.readAs nested "宅地又はかき、さく等で囲まれた土地に立ち入ろうとする場合においては、その土地に").inOrder
+      = "宅地若しくはかき、さく等で囲まれた土地又は工作物又は工作物に立ち入ろうとする場合においては、その土地又は工作物に" := by
+  decide +kernel
+
+/-- Two clauses whose quoted words run into each other in `変更の登録の日`: the reading from the
+left and the reading from the right differ. -/
+def crossing : List Api.ReadClause :=
+  [⟨"変更の登録", "指定の変更"⟩, ⟨"登録の日", "指定の日"⟩]
+
+example : (Api.readAs crossing "当該変更の登録の日").atOnce = "当該指定の変更の日" := by
+  decide +kernel
+example : (Api.readAs crossing "当該変更の登録の日").fromRight = "当該変更の指定の日" := by
+  decide +kernel
+
+/-- Clauses for separate words are independent, and the two readings agree. -/
+example :
+    (Api.readAs [⟨"市長", "町長"⟩, ⟨"条例", "規則"⟩] "市長は、条例で定める。").independent = true := by
+  decide +kernel
+example :
+    (Api.readAs [⟨"市長", "町長"⟩, ⟨"条例", "規則"⟩] "市長は、条例で定める。").inOrder
+      = "町長は、規則で定める。" := by
+  decide +kernel
 
 end Ritsulint.Test

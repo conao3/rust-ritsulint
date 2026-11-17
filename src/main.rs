@@ -4,6 +4,7 @@ mod generated;
 mod history;
 mod law;
 mod read_as;
+mod reading;
 mod relative_ref;
 mod structure;
 mod terms;
@@ -164,11 +165,15 @@ struct Report {
     /// The read-as clauses that name another law and were looked up there, and how many matched.
     external_checked: u64,
     external_matched: u64,
+    /// The provisions read under several read-as clauses.
+    readings: reading::Counts,
     /// Warnings by rule.
     rules: BTreeMap<String, u64>,
     warnings: Vec<Warning>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     clauses: Vec<Clause>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    reading_groups: Vec<reading::Group>,
 }
 
 fn revision_files(xml_dir: &Path, as_of: &str) -> Result<Vec<PathBuf>, String> {
@@ -203,9 +208,11 @@ fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
         counts: Counts::default(),
         external_checked: 0,
         external_matched: 0,
+        readings: reading::Counts::default(),
         rules: BTreeMap::new(),
         warnings: Vec::new(),
         clauses: Vec::new(),
+        reading_groups: Vec::new(),
     };
     let mut index = external::Index::default();
     let mut pending = Vec::new();
@@ -217,8 +224,12 @@ fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
                     report.laws_without_articles += 1;
                 }
                 let (counts, warnings, clauses) = read_as::check(&law);
+                let (readings, overlaps, groups) = reading::check(&law, &clauses);
+                report.readings.add(&readings);
+                report.warnings.extend(overlaps);
                 if debug {
                     report.clauses.extend(clauses);
+                    report.reading_groups.extend(groups);
                 }
                 report.counts.add(&counts);
                 report.warnings.extend(warnings);

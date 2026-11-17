@@ -6,6 +6,7 @@ export type Confidence = "high" | "medium" | "low";
 export type Rule =
   | "read-as-quote"
   | "read-as-quote-external"
+  | "read-as-overlap"
   | "relative-ref"
   | "missing-unit"
   | "numbering"
@@ -33,6 +34,7 @@ export type Warning = {
   Actual?: string;
   TargetLawId?: string;
   TargetLawTitle?: string;
+  Replacement?: string;
 };
 
 type Report = {
@@ -41,6 +43,13 @@ type Report = {
   LawsWithoutArticles: number;
   Counts: { Clauses: number; Checked: number };
   ExternalChecked: number;
+  Readings: {
+    Several: number;
+    FinerScope: number;
+    Independent: number;
+    OrderChanges: number;
+    DirectionChanges: number;
+  };
   Warnings: Warning[];
 };
 
@@ -53,6 +62,7 @@ export const origins = new Map((rawOrigins as { Origins: Origin[] }).Origins.map
 export const rules: Rule[] = [
   "read-as-quote",
   "read-as-quote-external",
+  "read-as-overlap",
   "relative-ref",
   "missing-unit",
   "numbering",
@@ -68,6 +78,7 @@ export const rules: Rule[] = [
 export const ruleLabel: Record<Rule, string> = {
   "read-as-quote": "読替えの引用",
   "read-as-quote-external": "読替えの引用 (別の法令)",
+  "read-as-overlap": "読替えの引用の重なり",
   "relative-ref": "相対参照",
   "missing-unit": "単位の脱字",
   numbering: "番号",
@@ -85,6 +96,8 @@ export const ruleNote: Record<Rule, string> = {
     "「第○条中「A」とあるのは「B」と読み替える」の A が、同じ法令の引用先の条・項にない。引用先だけが改正されると生じる",
   "read-as-quote-external":
     "別の法令の条を引用する読替えの A が、その法令の条・項にない。法令名・法令番号・定義された略称で法令を特定できた句が対象",
+  "read-as-overlap":
+    "同じ条・項を読み替える 2 つの句の引用が、条文の上で一部だけ重なる。どちらの句を先に当てるかで、読み替えたあとの文が変わる",
   "relative-ref":
     "「前条第二項」「次項」「前三号」のように位置で指す参照の先に、項や号がない。間に条を足す改正で指す先がずれると生じる",
   "missing-unit": "「第九十八第二項」のように、条番号のあとの「条」がない参照",

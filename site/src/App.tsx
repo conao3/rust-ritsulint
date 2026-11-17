@@ -157,6 +157,27 @@ function Reference({ warning }: { warning: Warning }) {
   );
 }
 
+function Overlap({ warning }: { warning: Warning }) {
+  return (
+    <>
+      <p className={lead}>
+        <span className="font-medium">{provision(warning.Source)}</span> が{" "}
+        <span className="font-medium">{warning.Targets.map(provision).join("・")}</span> を読み替える句のうち
+        2 つの引用が、条文の「{warning.Quoted}
+        」で一部だけ重なる。左から読むか右から読むかで、読み替えたあとの文が変わる。
+      </p>
+      <dl className="mt-3 grid gap-x-3 gap-y-2 text-sm sm:grid-cols-[7rem_1fr]">
+        <dt className={term}>重なる句</dt>
+        <dd className={quote}>{warning.Replacement ?? ""}</dd>
+        <dt className={term}>左から読んだ文</dt>
+        <dd className={quote}>…{warning.Context ?? ""}…</dd>
+        <dt className={term}>右から読んだ文</dt>
+        <dd className={quote}>…{warning.Actual ?? ""}…</dd>
+      </dl>
+    </>
+  );
+}
+
 function Numbering({ warning }: { warning: Warning }) {
   const where =
     warning.Status === "duplicate-paragraph" ? article(warning.Source.Article) : provision(warning.Source);
@@ -306,6 +327,8 @@ function Body({ warning }: { warning: Warning }) {
     case "read-as-quote":
     case "read-as-quote-external":
       return <ReadAs warning={warning} />;
+    case "read-as-overlap":
+      return <Overlap warning={warning} />;
     case "relative-ref":
     case "missing-unit":
       return <Reference warning={warning} />;
@@ -496,10 +519,15 @@ export function App() {
           </p>
           <p>
             ritsulint は Rust で書いたコマンドラインのツールで、条文の読み方
-            (漢数字、読替え規定の分解、参照の解決) を Lean 4 で書いて Rust に変換しています。読替えの意味も
-            Lean
-            で定義していて、確度「高」の読替えの警告のうち引用先の条・項があるものは「この読替えを引用先の条文に適用しても条文は変わらない」という定理として
-            Lean のカーネルが検査しています。ソースコード、検査の定義、手元の法令 XML への実行方法は{" "}
+            (漢数字、読替え規定の分解、参照の解決) を Lean 4 で書いて Rust
+            に変換しています。読替えの意味は「同じ条・項にかかる句を、左から 1 回で同時に読む」と Lean
+            で定義し、句を書かれた順に 1
+            つずつ置き換えた文と一致する条件を、すべての句と条文について証明しています。2 つ以上の句がかかる{" "}
+            {(report.Readings.Several - report.Readings.FinerScope).toLocaleString()}{" "}
+            組のうち、この条件を満たすのは {report.Readings.Independent.toLocaleString()} 組です。1
+            つずつ置き換えると文が変わる組は {report.Readings.OrderChanges.toLocaleString()}{" "}
+            あり、互いを入れ替える読替えのように、同時に読むことを前提にした書き方がここに入ります。ソースコード、検査の定義、手元の法令
+            XML への実行方法は{" "}
             <Link
               href="https://github.com/conao3/rust-ritsulint"
               target="_blank"
