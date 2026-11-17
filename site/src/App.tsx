@@ -198,6 +198,82 @@ function Toc({ warning }: { warning: Warning }) {
   );
 }
 
+function bracket(text: string): string {
+  const open = /^(.) not closed$/.exec(text);
+  if (open !== null) {
+    return `「${open[1]}」が閉じていない`;
+  }
+  const close = /^(.) without (.)$/.exec(text);
+  return close === null ? text : `「${close[1]}」に対応する「${close[2]}」がない`;
+}
+
+function Words({ warning }: { warning: Warning }) {
+  const here = <span className="font-medium">{provision(warning.Source)}</span>;
+  const actual = warning.Actual ?? "";
+  const sentence = (() => {
+    switch (warning.Rule) {
+      case "referenced-term":
+        return (
+          <>
+            {here} の「{warning.Quoted}」が指す第{actual}項に、この語がない。
+          </>
+        );
+      case "brackets":
+        return (
+          <>
+            {here} で、{bracket(actual)}。
+          </>
+        );
+      case "spelling":
+        return (
+          <>
+            {here} の「{warning.Quoted}」は、同じ法令のほかの箇所と表記が違う。
+          </>
+        );
+      case "unused-definition":
+        return (
+          <>
+            {here} が定義する「{warning.Quoted}」が、定義のほかに出てこない。
+          </>
+        );
+      case "near-term":
+        return (
+          <>
+            {here} の「{warning.Quoted}」は、定義された語「{actual}」と 1 字違う。
+          </>
+        );
+      default:
+        return (
+          <>
+            {article(actual)} が「この条において」と定義する「{warning.Quoted}」が、{here} で使われている。
+          </>
+        );
+    }
+  })();
+  const spelling = warning.Rule === "spelling";
+  return (
+    <>
+      <p className={lead}>{sentence}</p>
+      <dl className="mt-3 grid gap-x-3 gap-y-2 text-sm sm:grid-cols-[7rem_1fr]">
+        {(warning.Context ?? "") !== "" && (
+          <>
+            <dt className={term}>条文</dt>
+            <dd className={quote}>
+              …<Emphasized text={warning.Context ?? ""} part={warning.Quoted} />…
+            </dd>
+          </>
+        )}
+        {spelling && (
+          <>
+            <dt className={term}>出現</dt>
+            <dd className="leading-6">{actual.replaceAll(" times", " 回")}</dd>
+          </>
+        )}
+      </dl>
+    </>
+  );
+}
+
 function Body({ warning }: { warning: Warning }) {
   switch (warning.Rule) {
     case "read-as-quote":
@@ -210,6 +286,8 @@ function Body({ warning }: { warning: Warning }) {
       return <Numbering warning={warning} />;
     case "toc-range":
       return <Toc warning={warning} />;
+    default:
+      return <Words warning={warning} />;
   }
 }
 

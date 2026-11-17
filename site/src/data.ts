@@ -9,7 +9,13 @@ export type Rule =
   | "relative-ref"
   | "missing-unit"
   | "numbering"
-  | "toc-range";
+  | "toc-range"
+  | "referenced-term"
+  | "brackets"
+  | "spelling"
+  | "unused-definition"
+  | "near-term"
+  | "definition-scope";
 
 export type Warning = {
   Id: string;
@@ -50,6 +56,12 @@ export const rules: Rule[] = [
   "missing-unit",
   "numbering",
   "toc-range",
+  "referenced-term",
+  "brackets",
+  "spelling",
+  "unused-definition",
+  "near-term",
+  "definition-scope",
 ];
 
 export const ruleLabel: Record<Rule, string> = {
@@ -59,6 +71,12 @@ export const ruleLabel: Record<Rule, string> = {
   "missing-unit": "単位の脱字",
   numbering: "番号",
   "toc-range": "目次",
+  "referenced-term": "参照先にない語",
+  brackets: "括弧の対応",
+  spelling: "表記の不統一",
+  "unused-definition": "使われない定義",
+  "near-term": "定義語と 1 字違い",
+  "definition-scope": "定義の範囲の外",
 };
 
 export const ruleNote: Record<Rule, string> = {
@@ -71,14 +89,24 @@ export const ruleNote: Record<Rule, string> = {
   "missing-unit": "「第九十八第二項」のように、条番号のあとの「条」がない参照",
   numbering: "同じ条の中に同じ番号の項、同じ項の中に同じ番号の号が 2 つある。または号の番号が飛んでいる",
   "toc-range": "目次が章・節に書く条の範囲「（第 A 条―第 B 条）」の外に、その章・節の条がある",
+  "referenced-term":
+    "「前項に規定する X」「第 N 項に規定する X」の X が、指している項の文にない。X が 5 字以上の語のときだけ見る",
+  brackets: "1 つの項の中で、鉤括弧か丸括弧の開きと閉じが対応していない。読替え規定の項は見ない",
+  spelling:
+    "同じ法令の中で、同じ片仮名の語を小書きの字 (ッ、ャ、ァ) と大きい字 (ツ、ヤ、ア) の両方で書いている。ほかの法令の題名を元の表記で引いている場合を含む",
+  "unused-definition": "「以下「X」という。」で定義した語が、その法令の定義のほかに出てこない",
+  "near-term":
+    "定義した語と 1 字だけ違う語が、まれに使われている。別の語であることが多く、誤検出が大半を占める",
+  "definition-scope":
+    "「以下この条において「X」という。」と定義した語が、定義のない別の条で使われている。一般の語であることが多く、誤検出が大半を占める",
 };
 
 export const confidenceLabel: Record<Confidence, string> = { high: "高", medium: "中", low: "低" };
 
 export const confidenceNote: Record<Confidence, string> = {
   high: "条文を読んで確かめたもの。番号・目次・脱字は条文の構造だけで決まる",
-  medium: "参照先や法令の解決違いによる誤検出を含む",
-  low: "別の法令の条や、表・様式の中の文を指している疑いが強い",
+  medium: "誤検出を含む。参照先や法令の解決違い、同じ意味の言い換えなど",
+  low: "誤検出が大半を占める見込みのもの",
 };
 
 const statusLabel: Record<string, string> = {

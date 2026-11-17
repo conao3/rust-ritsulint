@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use crate::law::Law;
 use crate::read_as::{self, Clause, Warning};
-use crate::{relative_ref, structure};
+use crate::{relative_ref, structure, terms, text};
 
 /// Since which revision a warning of the latest revision has been given, and what the revision
 /// before that had in its place.
@@ -40,6 +40,8 @@ fn read(file: &Path) -> Option<Revision> {
     let (_, mut warnings, clauses) = read_as::check(&law);
     warnings.extend(relative_ref::check(&law));
     warnings.extend(structure::check(&law));
+    warnings.extend(terms::check(&law));
+    warnings.extend(text::check(&law));
     Some(Revision {
         id: law.revision_id,
         warnings,

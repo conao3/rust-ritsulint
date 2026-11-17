@@ -5,6 +5,8 @@ mod law;
 mod read_as;
 mod relative_ref;
 mod structure;
+mod terms;
+mod text;
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -207,6 +209,8 @@ fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
                 report.warnings.extend(warnings);
                 report.warnings.extend(relative_ref::check(&law));
                 report.warnings.extend(structure::check(&law));
+                report.warnings.extend(terms::check(&law));
+                report.warnings.extend(text::check(&law));
                 if corpus {
                     pending.extend(external::collect(&law));
                     index.add(&law, file.clone());

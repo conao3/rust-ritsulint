@@ -42,6 +42,8 @@ pub struct Law {
     pub title: String,
     pub law_num: String,
     pub toc: Vec<TocEntry>,
+    /// The whole text of the law: main and supplementary provisions, tables and forms.
+    pub full_text: String,
     pub articles: Vec<Article>,
     index: HashMap<String, usize>,
 }
@@ -205,6 +207,11 @@ impl Law {
                 &mut toc,
             );
         }
+        let full_text = doc
+            .descendants()
+            .find(|n| n.has_tag_name("LawBody"))
+            .map(text_of)
+            .unwrap_or_default();
         let mut articles = Vec::new();
         if let Some(main) = doc.descendants().find(|n| n.has_tag_name("MainProvision")) {
             for node in main.descendants().filter(|n| n.has_tag_name("Article")) {
@@ -247,6 +254,7 @@ impl Law {
             title,
             law_num,
             toc,
+            full_text,
             articles,
             index,
         })

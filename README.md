@@ -16,6 +16,12 @@ The warnings describe the consolidated text in the e-Gov data. Whether a warning
 | `missing-unit` | A reference that lacks its unit (`第九十八第二項` for `第九十八条第二項`) |
 | `numbering` | A paragraph or item number that occurs twice in its article or paragraph, or an item number that skips one |
 | `toc-range` | A range of the table of contents (`（第三条―第七条）`) that leaves out an article of the chapter or section it stands for |
+| `referenced-term` | `前項に規定するX` or `第N項に規定するX` where the paragraph named has no `X` (for `X` of five characters or more) |
+| `brackets` | Quotation marks or parentheses that do not pair within a paragraph |
+| `spelling` | A katakana word written with both a small and a large kana (`インターネット`, `インターネツト`) in one law |
+| `unused-definition` | A term defined with `以下「X」という。` that the law writes nowhere else |
+| `near-term` | A rare word one character away from a defined term |
+| `definition-scope` | A term defined with `以下この条において「X」という。` and written in another article that does not define it |
 
 For the two read-as rules, `Status` tells how the quotation fails:
 
@@ -27,6 +33,8 @@ For the two read-as rules, `Status` tells how the quotation fails:
 | `no-article` | The law has no article with that number |
 
 For the other rules `Status` is `no-paragraph` or `no-item` (`relative-ref`), `missing-unit`, `duplicate-paragraph`, `duplicate-item` or `item-gap` (`numbering`), and `toc-range` or `toc-malformed` (a range written without `第`). `Quoted` is the reference or the number, `Context` the words around it, and `Actual` what the law has there.
+
+`referenced-term`, `brackets`, `spelling` and `unused-definition` are `medium`: a paragraph may refer to a term by other words, a law writes the title of another law in the spelling of that law, and a definition may be used only in a form the XML holds as an image. `near-term` and `definition-scope` are `low`: most of what they report is another term of the law or an ordinary word. `brackets` and `referenced-term` do not read a paragraph that has a read-as clause, since a quotation may hold half of a pair.
 
 `read-as-quote-external` names the other law by the title, the law number in parentheses or an abbreviation the law defines with a law number (`（昭和二十二年法律第五十号。以下「法」という。）`) written right before the article, and follows `同法` and `同条` after such a clause. A clause that reaches the other law through the words earlier in the sentence is not looked up. Its confidence is `low` when the title of the law marks a transitional or special-measures law, which quotes the other law as it was, and `medium` otherwise.
 

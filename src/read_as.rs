@@ -308,6 +308,42 @@ pub fn warning_id(
         .collect()
 }
 
+/// A warning of a rule that names no provision: the words it is about, the words around them
+/// and what the law has. `occurrence` tells apart warnings with the same source and words.
+#[allow(clippy::too_many_arguments)]
+pub fn plain(
+    law: &Law,
+    rule: &str,
+    status: &str,
+    confidence: &str,
+    source: Provision,
+    quoted: String,
+    context: String,
+    actual: String,
+    occurrence: usize,
+) -> Warning {
+    Warning {
+        id: warning_id(rule, &law.law_id, &source, status, &[], &quoted, occurrence),
+        rule: rule.to_string(),
+        status: status.to_string(),
+        law_id: law.law_id.clone(),
+        law_revision_id: law.revision_id.clone(),
+        law_title: law.title.clone(),
+        source,
+        scope: String::new(),
+        targets: Vec::new(),
+        quoted,
+        replacement: String::new(),
+        nearest: String::new(),
+        similarity: 0.0,
+        confidence: confidence.to_string(),
+        context,
+        actual,
+        target_law_id: String::new(),
+        target_law_title: String::new(),
+    }
+}
+
 fn neighbors(law: &Law, index: usize) -> (&str, &str) {
     let prev = if index == 0 {
         ""
