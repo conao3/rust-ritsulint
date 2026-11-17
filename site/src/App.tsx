@@ -69,16 +69,21 @@ const lead = "mt-2 text-sm text-stone-700 dark:text-stone-300";
 const term = "text-xs leading-6 text-stone-500 dark:text-stone-400";
 const quote = "font-serif leading-6 break-all";
 
-function Emphasized({ text, part }: { text: string; part: string }) {
-  const at = text.indexOf(part);
-  if (at === -1 || part === "") {
+/** `text` with `part` marked. `only` marks one character of `part`: its first or its last. */
+function Emphasized({ text, part, only }: { text: string; part: string; only?: "first" | "last" }) {
+  const found = text.indexOf(part);
+  if (found === -1 || part === "") {
     return <>{text}</>;
   }
+  const at = only === "last" ? found + part.length - 1 : found;
+  const length = only === undefined ? part.length : 1;
   return (
     <>
       {text.slice(0, at)}
-      <mark className="rounded-xs bg-yellow-200 text-inherit dark:bg-yellow-700/60">{part}</mark>
-      {text.slice(at + part.length)}
+      <mark className="rounded-xs bg-yellow-200 text-inherit dark:bg-yellow-700/60">
+        {text.slice(at, at + length)}
+      </mark>
+      {text.slice(at + length)}
     </>
   );
 }
@@ -263,6 +268,9 @@ function Words({ warning }: { warning: Warning }) {
               <Emphasized
                 text={warning.Context ?? ""}
                 part={warning.Rule === "unused-definition" ? `「${warning.Quoted}」` : warning.Quoted}
+                only={
+                  warning.Rule !== "brackets" ? undefined : actual.endsWith("not closed") ? "first" : "last"
+                }
               />
               …
             </dd>
