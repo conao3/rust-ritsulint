@@ -111,7 +111,7 @@ For the Immigration Control Act this prints 1 ID: the amendment enforced on 2024
 
 The rules that read a provision are written in Lean 4 (`lean/Ritsulint/Core.lean`): kanji numerals, splitting a paragraph into read-as clauses, and resolving the words before `中` to provisions. `lean/Ritsulint/Test.lean` states what these functions return on provisions as they are written, and the Lean kernel checks each statement when the package is built. [leanfran](https://github.com/conao3/lean-leanfran) compiles the Lean code to the Rust module in `src/generated/`.
 
-`lean/Ritsulint/Properties.lean` proves properties of the compiled functions for every input: `parseKansuji` reads every number from 1 to 9,999 back from its kanji numeral, `unquote` keeps a text without quotations as it is and reads a quotation as one `〓`, and `stripParens` keeps a text without parentheses as it is and drops a parenthesized remark. `audit/` runs [lean-assay](https://github.com/conao3/lean-assay) on these functions: it breaks each one in small ways, and `make check` fails when a broken version satisfies every theorem about it.
+`lean/Ritsulint/Properties.lean` proves properties of the compiled functions for every input: `parseKansuji` reads every number from 1 to 9,999 back from its kanji numeral, `unquote` keeps a text without quotations as it is and reads a quotation as one `〓`, and `stripParens` keeps a text without parentheses as it is and drops a parenthesized remark. `audit/` runs [leanassay](https://github.com/conao3/lean-leanassay) on these functions: it breaks each one in small ways, and `make check` fails when a broken version satisfies every theorem about it.
 
 Rust reads the XML, looks up the provisions, compares the text and prints the report.
 
@@ -132,7 +132,7 @@ It holds for all clauses and all texts. `swap_differs` proves that two clauses e
 
 **On the laws.** Of the provisions read under two or more clauses of one paragraph (4,854 as of 2026-11-17), 4,602 are independent, so replacing clause by clause gives the text read at once. In 219 the two readings differ, and 12 get a `read-as-overlap` warning. `make corpus-check` requires that no independent provision reads differently, which checks the generated Rust against the theorem on every law.
 
-**The audit.** `make check` breaks `starts`, `pick`, `segs`, `applyAll`, `applySeq`, `noStart`, `clean`, `step` and `independentRev` in small ways ([lean-assay](https://github.com/conao3/lean-assay)) and requires that the theorems tell every broken version from the original: 51 of 51.
+**The audit.** `make check` breaks `starts`, `pick`, `segs`, `applyAll`, `applySeq`, `noStart`, `clean`, `step` and `independentRev` in small ways ([leanassay](https://github.com/conao3/lean-leanassay)) and requires that the theorems tell every broken version from the original: 51 of 51.
 
 **Certificates.** `lean/Ritsulint/Findings.lean` has one kernel-checked computation for each high-confidence `read-as-quote` warning whose quoted words are absent from a provision the law has (36 for 35 warnings): the clause, applied to the text the linter took for the provision, leaves it as it is. A certificate is about the lists written in it. Which law and provision they come from is in its comment. `make findings CORPUS=path/to/xml AS_OF=20261117` writes the file.
 
