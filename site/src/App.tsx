@@ -323,7 +323,7 @@ function Card({ warning }: { warning: Warning }) {
   return (
     <li
       id={warning.Id}
-      className="rounded-lg border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-800"
+      className="scroll-mt-4 rounded-lg border border-stone-200 bg-white p-4 [contain-intrinsic-size:auto_220px] [content-visibility:auto] dark:border-stone-700 dark:bg-stone-800"
     >
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span className={`rounded px-1.5 py-0.5 text-xs font-semibold ${badge[warning.Confidence]}`}>
@@ -406,6 +406,13 @@ export function App() {
       window.history.replaceState(null, "", `${window.location.pathname}${search}${window.location.hash}`);
     }
   }, [filters]);
+
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id !== "") {
+      document.getElementById(id)?.scrollIntoView();
+    }
+  }, []);
 
   useEffect(() => {
     const restore = () => setFilters(readFilters());
