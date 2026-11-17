@@ -464,8 +464,9 @@ export function App() {
         <p className="mt-1 text-stone-600 dark:text-stone-300">日本の法令の linter</p>
         <div className="mt-6 space-y-3 text-sm leading-7 text-stone-700 dark:text-stone-300">
           <p>
-            法令は、ほかの規定を名前でなく位置 (第○条第○項)
-            と文言の引用で指します。規定の一方だけが改正されると、指す先や引用が合わなくなります。ritsulint は{" "}
+            法令は、ほかの規定を位置 (第○条第○項)
+            と文言の引用で指し、語を「以下「X」という。」と定義して使います。条文は改正のたびに一部だけが書き換えられるので、指す先のない参照、引用先にない引用、番号の重複のような食い違いが残ることがあります。ritsulint
+            は{" "}
             <Link
               href="https://laws.e-gov.go.jp/"
               target="_blank"
@@ -474,18 +475,36 @@ export function App() {
             >
               e-Gov 法令検索
             </Link>{" "}
-            の法令 XML を機械で読み、そのような箇所を警告として出します。
+            の法令 XML を機械で読み、{rules.length} 種類の検査
+            (読替えの引用、位置で指す参照、番号、目次、括弧、表記、定義した語)
+            で見つけた箇所を警告として出します。
           </p>
           <p>
-            {report.AsOf} 時点で施行されている {report.Laws.toLocaleString()} 法令の本則が対象で、警告は{" "}
-            {report.Warnings.length.toLocaleString()} 件です。読替えは、句{" "}
-            {report.Counts.Clauses.toLocaleString()} 件のうち同じ法令の条・項に解決できた{" "}
-            {report.Counts.Checked.toLocaleString()} 件と、別の法令を特定できた{" "}
-            {report.ExternalChecked.toLocaleString()} 件を照合しています。
+            対象は、{report.AsOf} を基準日として、各法令のその日までに施行された最新の版の本則です (
+            {report.Laws.toLocaleString()} 法令)。附則と別表は検査していません。警告は{" "}
+            {report.Warnings.length.toLocaleString()} 件で、このうち確度「高」は{" "}
+            {counts.high.toLocaleString()} 件です。読替えの引用は、句 {report.Counts.Clauses.toLocaleString()}{" "}
+            件のうち同じ法令の条・項に解決できた {report.Counts.Checked.toLocaleString()}{" "}
+            件と、別の法令を特定できた {report.ExternalChecked.toLocaleString()}{" "}
+            件を照合しています。残りの句は引用先を機械で決められず、照合していません。
           </p>
           <p className="rounded-md border border-stone-300 bg-stone-100 px-3 py-2 dark:border-stone-600 dark:bg-stone-800">
             警告は e-Gov
             のデータの上の不一致です。官報に載った法令そのものの誤りかどうかは、改正法令の原文との照合が要ります。確度「中」「低」は誤検出を含みます。
+          </p>
+          <p>
+            ritsulint は Rust で書いたコマンドラインのツールで、条文の読み方
+            (漢数字、読替え規定の分解、参照の解決) を Lean 4 で書いて Rust
+            に変換しています。ソースコード、検査の定義、手元の法令 XML への実行方法は{" "}
+            <Link
+              href="https://github.com/conao3/rust-ritsulint"
+              target="_blank"
+              rel="noreferrer"
+              className={`text-blue-800 underline underline-offset-2 dark:text-blue-300 ${focusRing}`}
+            >
+              github.com/conao3/rust-ritsulint
+            </Link>{" "}
+            にあります。
           </p>
         </div>
       </header>
@@ -598,8 +617,8 @@ export function App() {
 
       <footer className="mt-12 border-t border-stone-200 pt-6 text-xs leading-6 text-stone-500 dark:border-stone-700 dark:text-stone-400">
         <p>
-          法令のデータは e-Gov 法令検索の一括ダウンロード ({report.AsOf} 取得)
-          によります。条文の文言は各法令のリンク先で確かめられます。
+          法令のデータは e-Gov 法令検索の一括ダウンロードによります (基準日 {report.AsOf}
+          )。条文の文言は各法令のリンク先で確かめられます。
         </p>
         <p>
           作成:{" "}
