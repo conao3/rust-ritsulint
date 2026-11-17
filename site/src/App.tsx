@@ -506,7 +506,7 @@ export function App() {
             >
               github.com/conao3/rust-ritsulint
             </Link>{" "}
-            にあります。作った経緯と検査の例は{" "}
+            にあります。検査の例と仕組みは{" "}
             <Link
               href="https://s.conao3.com/blog/2026/2a0865"
               target="_blank"
