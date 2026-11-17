@@ -5,6 +5,7 @@
 - `lean/Ritsulint/Core.lean`: the rules that read a provision (kanji numerals, read-as clauses, references). `lean/Ritsulint/Api.lean`: the functions Rust calls. `lean/Ritsulint/Test.lean`: kernel-checked statements about `Core` on real provisions.
 - `src/generated/`: Rust generated from `Ritsulint.Api` by leanfran. Regenerate it with `make generate` and commit it with the Lean change.
 - `src/law.rs`: e-Gov law XML to articles and paragraphs. `src/read_as.rs`: the `read-as-quote` rule. `src/main.rs`: the CLI.
+- `site/`: the page at https://ritsulint.conao3.com/ that lists the warnings (React 19, react-aria-components, Tailwind CSS v4, built with Vite+ and served as static assets of a Cloudflare Worker). `site/data/warnings.json` is written by `make site-data`.
 - `tests/corpus-expected.txt`: law IDs that `make corpus-check` requires a high-confidence warning for. Each was confirmed by reading the provisions. `tests/corpus-rejected.txt`: law IDs that must have no high-confidence warning; each once gave a warning for a clause that names another law or quotes an item number.
 
 ## Lean and Rust
@@ -19,6 +20,9 @@
 - `nix develop --command make check-generated`: regenerates `src/generated/` and fails on a difference.
 - `nix build`: the package `nix run` starts.
 - `nix develop --command make corpus-check CORPUS=<dir> AS_OF=<YYYYMMDD>`: the full corpus. Run it after changing `Core.lean` or `read_as.rs`. The corpus is the unpacked e-Gov bulk download and is not in the repository.
+
+- `nix develop --command make site-check`: format, lint, type check and build of `site/`.
+- `nix develop --command make site-data CORPUS=<dir> AS_OF=<YYYYMMDD>` then `make site-deploy`: refresh the warnings and publish the site.
 
 ## Conventions
 

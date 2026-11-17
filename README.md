@@ -70,6 +70,18 @@ nix develop --command make corpus-check CORPUS=path/to/xml AS_OF=20261117
 
 `make corpus-check` runs the linter over a local copy of the bulk download and requires a high-confidence warning for every law listed in `tests/corpus-expected.txt`.
 
+## Site
+
+`site/` is the page at <https://ritsulint.conao3.com/> that lists the warnings for the laws in force on a date. It is a static page (React, react-aria-components, Tailwind CSS) served as the assets of a Cloudflare Worker.
+
+```sh
+nix develop --command make site-data CORPUS=path/to/xml AS_OF=20261117
+nix develop --command make site-check
+nix develop --command make site-deploy
+```
+
+`make site-data` writes `site/data/warnings.json`, and `make site-deploy` needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+
 ## License
 
 Apache-2.0

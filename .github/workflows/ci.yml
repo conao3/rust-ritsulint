@@ -17,3 +17,4 @@ jobs:
       - run: nix develop --command make check
       - run: nix develop --command make check-generated
       - run: nix build
+      - run: nix develop --command make site-check

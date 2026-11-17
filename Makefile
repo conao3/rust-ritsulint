@@ -44,3 +44,21 @@ corpus-check:
 	sort tests/corpus-rejected.txt | comm -12 - target/corpus-found.txt > target/corpus-rejected-found.txt
 	test ! -s target/corpus-rejected-found.txt
 	test "$$(jq '.Warnings | length' target/corpus.json)" = "$$(jq '[.Warnings[].Id] | unique | length' target/corpus.json)"
+
+# Write the warnings the site shows from the corpus at CORPUS as of AS_OF (YYYYMMDD).
+.PHONY: site-data
+site-data:
+	test -n "$(CORPUS)"
+	cargo build --release
+	./target/release/ritsulint corpus check-corpus --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" \
+		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, Counts, Warnings: [.Warnings[] | {Id, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Replacement, Nearest, Similarity, Confidence}]}' \
+		> site/data/warnings.json
+
+.PHONY: site-check
+site-check:
+	cd site && pnpm install --frozen-lockfile && pnpm run check && pnpm run build
+
+# Publish site/dist to the Worker. Needs CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+.PHONY: site-deploy
+site-deploy: site-check
+	cd site && pnpm run deploy

@@ -65,6 +65,9 @@
               pkgs.lean4
               inputs.leanfran.packages.${system}.rust-compiler
               pkgs.gnumake
+              pkgs.jq
+              pkgs.nodejs_26
+              pkgs.pnpm
             ];
           };
 
