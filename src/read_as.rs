@@ -151,8 +151,13 @@ pub(crate) fn nearest(text: &str, quoted: &str) -> String {
     if best.0 == 0 {
         return String::new();
     }
-    let start = (best.1 - best.0).saturating_sub(best.2 - best.0);
-    let end = (start + q.len() + 4).min(t.len());
+    let aligned = (best.1 - best.0).saturating_sub(best.2 - best.0);
+    let lead = |s: usize| t[s..].iter().zip(&q).take_while(|(a, b)| a == b).count();
+    let start = (aligned.saturating_sub(4)..=aligned)
+        .rev()
+        .max_by_key(|&s| lead(s))
+        .unwrap_or(aligned);
+    let end = (start + q.len() + 4 + (aligned - start)).min(t.len());
     t[start..end].iter().collect()
 }
 
