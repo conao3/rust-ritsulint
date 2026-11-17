@@ -148,6 +148,8 @@ enum CorpusCommand {
 #[serde(rename_all = "PascalCase")]
 struct Report {
     laws: u64,
+    /// Laws whose main provisions are not divided into articles. No rule reads them.
+    laws_without_articles: u64,
     unreadable: Vec<String>,
     counts: Counts,
     /// The read-as clauses that name another law and were looked up there, and how many matched.
@@ -187,6 +189,7 @@ fn revision_files(xml_dir: &Path, as_of: &str) -> Result<Vec<PathBuf>, String> {
 fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
     let mut report = Report {
         laws: 0,
+        laws_without_articles: 0,
         unreadable: Vec::new(),
         counts: Counts::default(),
         external_checked: 0,
@@ -201,6 +204,9 @@ fn check_files(files: &[PathBuf], debug: bool, corpus: bool) -> Report {
         match Law::from_file(file) {
             Ok(law) => {
                 report.laws += 1;
+                if law.articles.is_empty() {
+                    report.laws_without_articles += 1;
+                }
                 let (counts, warnings, clauses) = read_as::check(&law);
                 if debug {
                     report.clauses.extend(clauses);

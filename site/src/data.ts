@@ -38,6 +38,7 @@ export type Warning = {
 type Report = {
   AsOf: string;
   Laws: number;
+  LawsWithoutArticles: number;
   Counts: { Clauses: number; Checked: number };
   ExternalChecked: number;
   Warnings: Warning[];

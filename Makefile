@@ -51,7 +51,7 @@ site-data:
 	test -n "$(CORPUS)"
 	cargo build --release
 	./target/release/ritsulint corpus check-corpus --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" \
-		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, Counts, ExternalChecked, Warnings: [.Warnings[] | {Id, Rule, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Nearest, Confidence} + (if .Context then {Context} else {} end) + (if .Actual then {Actual} else {} end) + (if .TargetLawTitle then {TargetLawId, TargetLawTitle} else {} end)]}' \
+		| jq -c --arg asof "$(AS_OF)" '{AsOf: ($$asof[0:4] + "-" + $$asof[4:6] + "-" + $$asof[6:8]), Laws, LawsWithoutArticles, Counts, ExternalChecked, Warnings: [.Warnings[] | {Id, Rule, Status, LawId, LawTitle, Source, Scope, Targets, Quoted, Nearest, Confidence} + (if .Context then {Context} else {} end) + (if .Actual then {Actual} else {} end) + (if .TargetLawTitle then {TargetLawId, TargetLawTitle} else {} end)]}' \
 		> site/data/warnings.json
 
 # Write since which revision each warning is given, from every revision of the laws with a
