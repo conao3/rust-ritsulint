@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Input,
   Label,
@@ -346,11 +346,64 @@ function Card({ warning }: { warning: Warning }) {
   );
 }
 
+type Filters = { query: string; shown: Confidence[]; kind: string; rule: string };
+
+const defaultShown: Confidence[] = ["high", "medium"];
+
+/** The state of the controls as the query string writes it: `c`, `rule`, `kind` and `q`. */
+function readFilters(): Filters {
+  const params = new URLSearchParams(window.location.search);
+  const c = params.get("c");
+  const rule = params.get("rule") ?? "";
+  const kind = params.get("kind") ?? "";
+  return {
+    query: params.get("q") ?? "",
+    shown: c === null ? defaultShown : confidences.filter((x) => c.split(",").includes(x)),
+    kind: (kinds as string[]).includes(kind) ? kind : "すべて",
+    rule: (rules as string[]).includes(rule) ? rule : "すべて",
+  };
+}
+
+function writeFilters(filters: Filters): string {
+  const params = new URLSearchParams();
+  if (filters.shown.join(",") !== defaultShown.join(",")) {
+    params.set("c", filters.shown.join(","));
+  }
+  if (filters.rule !== "すべて") {
+    params.set("rule", filters.rule);
+  }
+  if (filters.kind !== "すべて") {
+    params.set("kind", filters.kind);
+  }
+  if (filters.query !== "") {
+    params.set("q", filters.query);
+  }
+  const text = params.toString();
+  return text === "" ? "" : `?${text}`;
+}
+
 export function App() {
-  const [query, setQuery] = useState("");
-  const [shown, setShown] = useState<Set<Key>>(new Set(["high", "medium"]));
-  const [kind, setKind] = useState<Key>("すべて");
-  const [rule, setRule] = useState<Key>("すべて");
+  const [filters, setFilters] = useState(readFilters);
+  const { query, kind, rule } = filters;
+  const shown = useMemo(() => new Set<Key>(filters.shown), [filters.shown]);
+  const setQuery = (value: string) => setFilters((f) => ({ ...f, query: value }));
+  const setKind = (value: Key) => setFilters((f) => ({ ...f, kind: String(value) }));
+  const setRule = (value: Key) => setFilters((f) => ({ ...f, rule: String(value) }));
+  const setShown = (keys: Set<Key>) =>
+    setFilters((f) => ({ ...f, shown: confidences.filter((c) => keys.has(c)) }));
+
+  useEffect(() => {
+    const search = writeFilters(filters);
+    if (search !== window.location.search) {
+      window.history.replaceState(null, "", `${window.location.pathname}${search}${window.location.hash}`);
+    }
+  }, [filters]);
+
+  useEffect(() => {
+    const restore = () => setFilters(readFilters());
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
 
   const counts = useMemo(() => {
     const out: Record<Confidence, number> = { high: 0, medium: 0, low: 0 };
