@@ -87,6 +87,18 @@ The rules that read a provision are written in Lean 4 (`lean/Ritsulint/Core.lean
 
 Rust reads the XML, looks up the provisions, compares the text and prints the report.
 
+## What a warning means, as theorems
+
+`lean/Ritsulint/ReadAs.lean` states what a read-as clause does: `Clause.apply c text` is the text of a provision with every `c.quoted` replaced by `c.replacement`, and `Clause.Vacuous c text` says that the clause leaves the text as it is. The theorem `vacuous_of_absent` proves, for every clause and every text, that a clause whose quoted words do not occur in the text is vacuous.
+
+`lean/Ritsulint/Findings.lean` has one theorem for each high-confidence `read-as-quote` warning whose quoted words are absent from a provision the law has. For the Immigration Control Act it states that the clause of article 13 paragraph 7, applied to the text of article 41 paragraph 1 as e-Gov publishes it, changes nothing. The texts are in the theorem as lists of code points, and the Lean kernel checks each one when the package is built.
+
+```sh
+nix develop --command make findings CORPUS=path/to/xml AS_OF=20261117
+```
+
+writes the file from the corpus. The theorems are about the consolidated text in the e-Gov data, as the warnings are.
+
 ## Development
 
 ```sh

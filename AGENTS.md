@@ -3,6 +3,7 @@
 ## Layout
 
 - `lean/Ritsulint/Core.lean`: the rules that read a provision (kanji numerals, read-as clauses, references). `lean/Ritsulint/Api.lean`: the functions Rust calls. `lean/Ritsulint/Test.lean`: kernel-checked statements about `Core` on real provisions.
+- `lean/Ritsulint/ReadAs.lean`: what a read-as clause does to a text, and the theorem that a clause whose quoted words are absent changes nothing. `lean/Ritsulint/Findings.lean`: one theorem for each high-confidence `read-as-quote` warning, written by `make findings` (`src/findings.rs`) and checked by `lake build`.
 - `src/generated/`: Rust generated from `Ritsulint.Api` by leanfran. Regenerate it with `make generate` and commit it with the Lean change.
 - `src/law.rs`: e-Gov law XML to articles, paragraphs, items and the table of contents. `src/main.rs`: the CLI.
 - Rules: `src/read_as.rs` (`read-as-quote`), `src/external.rs` (`read-as-quote-external`, needs the whole corpus), `src/relative_ref.rs` (`relative-ref`, `missing-unit`), `src/structure.rs` (`numbering`, `toc-range`), `src/text.rs` (`referenced-term`, `brackets`, `spelling`), `src/terms.rs` (`unused-definition`, `near-term`, `definition-scope`). `src/history.rs`: since which revision a warning is given.

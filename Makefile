@@ -45,6 +45,14 @@ corpus-check:
 	test ! -s target/corpus-rejected-found.txt
 	test "$$(jq '.Warnings | length' target/corpus.json)" = "$$(jq '[.Warnings[].Id] | unique | length' target/corpus.json)"
 
+# Write lean/Ritsulint/Findings.lean: a theorem for each high-confidence read-as warning of the
+# corpus at CORPUS as of AS_OF (YYYYMMDD). `lake build` checks them.
+.PHONY: findings
+findings:
+	test -n "$(CORPUS)"
+	cargo build --release
+	./target/release/ritsulint corpus write-findings --xml-dir "$(CORPUS)" --as-of "$(AS_OF)" > lean/Ritsulint/Findings.lean
+
 # Write the warnings the site shows from the corpus at CORPUS as of AS_OF (YYYYMMDD).
 .PHONY: site-data
 site-data:

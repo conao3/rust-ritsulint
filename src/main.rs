@@ -1,4 +1,5 @@
 mod external;
+mod findings;
 mod generated;
 mod history;
 mod law;
@@ -141,6 +142,14 @@ enum CorpusCommand {
         as_of: String,
         #[arg(long)]
         fail_on_warnings: bool,
+    },
+    /// Write the Lean theorems for the high-confidence read-as warnings
+    WriteFindings {
+        #[arg(long)]
+        xml_dir: PathBuf,
+        /// The date as YYYYMMDD; of each law, the latest revision enforced on or before it
+        #[arg(long)]
+        as_of: String,
     },
 }
 
@@ -298,6 +307,22 @@ fn run(cli: Cli) -> Result<u8, (u8, String)> {
         );
         return Ok(0);
     }
+    if let Command::Corpus {
+        command: CorpusCommand::WriteFindings { xml_dir, as_of },
+    } = &cli.command
+    {
+        valid_date(as_of)?;
+        let files = revision_files(xml_dir, as_of).map_err(|e| (EXIT_INPUT, e))?;
+        print!("{}", findings::HEADER);
+        for file in &files {
+            if let Ok(law) = Law::from_file(file) {
+                let (_, warnings, _) = read_as::check(&law);
+                print!("{}", findings::theorems(&law, &warnings));
+            }
+        }
+        print!("{}", findings::FOOTER);
+        return Ok(0);
+    }
     let corpus = matches!(cli.command, Command::Corpus { .. });
     let (files, fail_on_warnings) = match cli.command {
         Command::Law {
@@ -321,7 +346,10 @@ fn run(cli: Cli) -> Result<u8, (u8, String)> {
                 fail_on_warnings,
             )
         }
-        Command::History { .. } => unreachable!("handled above"),
+        Command::History { .. }
+        | Command::Corpus {
+            command: CorpusCommand::WriteFindings { .. },
+        } => unreachable!("handled above"),
     };
     let report = check_files(&files, cli.debug, corpus);
     if report.laws == 0 {

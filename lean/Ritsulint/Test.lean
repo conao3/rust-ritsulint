@@ -1,4 +1,5 @@
 import Ritsulint.Core
+import Ritsulint.ReadAs
 
 /-!
 # Checks of `Ritsulint.Core` on provisions as they are written
@@ -99,5 +100,13 @@ example : refsOf "法第九十八条第二項第二号" = [] := by decide +kerne
 
 example : kansujiOr0 "四十四" = 44 := by decide
 example : kansujiOr0 "第四" = 0 := by decide
+
+/-- A read-as clause replaces every occurrence of its quoted words, and leaves a text without
+them as it is. -/
+example : ReadAs.occurs [1, 2] [0, 1, 2, 3] = true := by decide
+example : ReadAs.occurs [1, 2] [0, 1, 3, 2] = false := by decide
+example : (ReadAs.Clause.apply ⟨[1, 2], [9]⟩ [0, 1, 2, 3, 1, 2]) = [0, 9, 3, 9] := by decide
+example : (ReadAs.Clause.apply ⟨[1, 2], [9]⟩ [0, 1, 3, 2]) = [0, 1, 3, 2] := by decide
+example : ¬ ReadAs.Clause.Vacuous ⟨[1, 2], [9]⟩ [0, 1, 2, 3] := by decide
 
 end Ritsulint.Test
