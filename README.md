@@ -13,11 +13,11 @@
 </p>
 
 <p align="center">
-  <a href="#rules">Rules</a> ·
-  <a href="#usage">Usage</a> ·
-  <a href="#how-its-built">How it's built</a> ·
-  <a href="#development">Development</a> ·
-  <a href="https://ritsulint.conao3.com/">Site</a> ·
+  <a href="#rules">Rules</a> |
+  <a href="#usage">Usage</a> |
+  <a href="#how-its-built">How it's built</a> |
+  <a href="#development">Development</a> |
+  <a href="https://ritsulint.conao3.com/">Site</a> |
   <a href="https://github.com/conao3/lean-leanfran">leanfran</a>
 </p>
 
