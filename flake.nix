@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     leanfran = {
-      url = "github:conao3/lean-leanfran/e46c9e81b0cc92a6aa0997a8cb15b36d1d0f5438";
+      url = "github:conao3/lean-leanfran/420a7dce66dda3cbfd03b884d453cb8de63a0fc6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -63,7 +63,7 @@
             packages = [
               rust
               pkgs.lean4
-              inputs.leanfran.packages.${system}.rust-compiler
+              inputs.leanfran.packages.${system}.leanfran
               pkgs.gnumake
               pkgs.jq
               pkgs.nodejs_26

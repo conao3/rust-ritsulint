@@ -7,7 +7,7 @@ all: check
 .PHONY: generate
 generate:
 	cd lean && lake build
-	$(LEANFRAN) project generate --lake-dir lean --output-dir src/generated --modules Ritsulint.Api --output text
+	$(LEANFRAN) --lang rust project generate --lake-dir lean --output-dir src/generated --modules Ritsulint.Api --output text
 	rustfmt --edition 2024 src/generated/mod.rs
 
 .PHONY: check-generated
