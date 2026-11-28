@@ -12,4 +12,4 @@ path = "../lean"
 [[require]]
 name = "assay"
 git = "https://github.com/conao3/lean-leanassay"
-rev = "ef054d7c45ab4f9e14a201ae7e3bfbe9dd080abb"
+rev = "c137d1d059aa213ee21d043ffd4faf8220e2bf33"
